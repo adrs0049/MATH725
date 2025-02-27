@@ -13,6 +13,14 @@
     font-weight: bold;
 }
 
+/* Fix the QED symbol for actual proofs */
+.proof::after {
+    content: "□";
+    float: right;
+    font-style: normal;
+}
+
+
 /* Remove QED symbol from non-proof environments */
 .definition::after,
 .theorem::after,
@@ -20,12 +28,5 @@
 .lemma::after,
 .remark::after {
     content: none !important;
-}
-
-/* Fix the QED symbol for actual proofs */
-.proof::after {
-    content: "□";
-    float: right;
-    font-style: normal;
 }
 
