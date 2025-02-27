@@ -1,12 +1,10 @@
-# Week 2 - Math 725
+# The Basics
 *February 3, 2024*
 *Weekly Course Outline*
 
 **Note**, this week did not have a Tuesday lecture due to delayed term start.
 
-## Lesson: Tuesday
-
-### Learning Goals
+## Learning Goals
 
 The goals of these few lectures is to review a few core ideas, and set the stage of classic function spaces we will use to develop the theory.
 
