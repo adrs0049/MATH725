@@ -1,64 +1,84 @@
+/* Override sphinx-proof's default behavior */
+.proof-type::before {
+  content: none !important;
+}
+
+/* Make each type render its own title */
+.definition-type::before {
+  content: "Definition" !important;
+  font-weight: bold;
+}
+
+.theorem-type::before {
+  content: "Theorem" !important;
+  font-weight: bold;
+}
+
+.example-type::before {
+  content: "Example" !important;
+  font-weight: bold;
+}
+
+.lemma-type::before {
+  content: "Lemma" !important;
+  font-weight: bold;
+}
+
+/* Only keep "Proof:" for actual proofs */
+.proof-type::before {
+  content: "Proof:" !important;
+  font-weight: bold;
+}
+
+/* Remove admonition icons */
+.admonition-title::before {
+  content: none !important;
+}
+
 /* Definition styling */
 div.definition {
-    background-color: #e8f4f8;
-    border-left: 5px solid #209ce4;
-    padding: 0.5em 1em;
-    margin: 1em 0;
+  background-color: #e8f4f8;
+  border-left: 5px solid #209ce4;
+  padding: 0.5em 1em;
+  margin: 1em 0;
 }
 
 /* Theorem styling */
 div.theorem {
-    background-color: #f5f1eb;
-    border-left: 5px solid #d9a765;
-    padding: 0.5em 1em;
-    margin: 1em 0;
+  background-color: #f5f1eb;
+  border-left: 5px solid #d9a765;
+  padding: 0.5em 1em;
+  margin: 1em 0;
 }
 
 /* Example styling */
 div.example {
-    background-color: #e8f8e8;
-    border-left: 5px solid #42a758;
-    padding: 0.5em 1em;
-    margin: 1em 0;
+  background-color: #e8f8e8;
+  border-left: 5px solid #42a758;
+  padding: 0.5em 1em;
+  margin: 1em 0;
 }
 
 /* Lemma styling */
 div.lemma {
-    background-color: #eeeeff;
-    border-left: 5px solid #7777dd;
-    padding: 0.5em 1em;
-    margin: 1em 0;
+  background-color: #eeeeff;
+  border-left: 5px solid #7777dd;
+  padding: 0.5em 1em;
+  margin: 1em 0;
 }
 
 /* Proof styling */
 div.proof {
-    background-color: #f8f8f8;
-    border-left: 5px solid #aaaaaa;
-    padding: 0.5em 1em;
-    margin: 1em 0;
-    font-style: italic;
+  background-color: #f8f8f8;
+  border-left: 5px solid #aaaaaa;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  font-style: italic;
 }
 
-/* Add a "Proof" text at the beginning */
-div.proof::before {
-    content: "Proof:";
-    font-weight: bold;
-    font-style: normal;
-}
-
-/* Add QED symbol at the end */
+/* Add QED symbol at the end of proofs */
 div.proof::after {
-    content: "□";
-    float: right;
-    font-style: normal;
-}
-
-/* Remove the "Proof:" text from all environments */
-.proof-type::before {
-    content: "" !important;
-}
-
-/* Remove the bell icon */
-.admonition-title::before {
-    content: "" !important;
+  content: "□";
+  float: right;
+  font-style: normal;
 }
