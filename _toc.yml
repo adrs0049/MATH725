@@ -9,4 +9,6 @@ parts:
     - file: notebooks/01_linear_systems.ipynb
   - caption: Appendix
     chapters:
-    - file: appendix/index.md
+    - file: appendix/multiplication.md
+    - file: appendix/solving_special_matrices.md
+    - file: appendix/gaussian_elimination_process.md
