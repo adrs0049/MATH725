@@ -1,9 +1,10 @@
 format: jb-book
 root: index
 parts:
-  - caption: First Chapter
+  - caption: Notes by Week
     chapters:
-    - file: chapter/index.md
+    - file: notes/week1.md
+    - file: notes/week2.md
   - caption: Jupyter Notebooks
     chapters:
     - file: notebooks/01_linear_systems.ipynb
