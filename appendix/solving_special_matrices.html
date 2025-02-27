@@ -1,0 +1,616 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Solving special matrices &#8212; Applied Linear Algebra</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/main.css?v=fba13057" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendix/solving_special_matrices';</script>
+    <script src="../_static/main.js?v=53e03820"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Gaussian Elimination" href="gaussian_elimination_process.html" />
+    <link rel="prev" title="Matrix Multiplication" href="multiplication.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Applied Linear Algebra</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    MATH 725 Introduction to Functional Analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/01_linear_systems.html">Linear Systems of Equations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="multiplication.html">Matrix Multiplication</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Solving special matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gaussian_elimination_process.html">Gaussian Elimination</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/adrs0049/MATH725" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/appendix/solving_special_matrices.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Solving special matrices</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-diagonal-matrices">Solving diagonal matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-triangular-matrices-backward-substitution">Upper triangular matrices (Backward Substitution)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-triangular-matrices-forward-substitution">Lower triangular matrices (Forward Substitution)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="solving-special-matrices">
+<h1>Solving special matrices<a class="headerlink" href="#solving-special-matrices" title="Link to this heading">#</a></h1>
+<section id="solving-diagonal-matrices">
+<h2>Solving diagonal matrices<a class="headerlink" href="#solving-diagonal-matrices" title="Link to this heading">#</a></h2>
+<div class="problem docutils">
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{D}\)</span> be a diagonal <span class="math notranslate nohighlight">\(n \times n\)</span> matrix i.e. the only non-zero elements are those on the main diagonal
+of the matrix.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{D} \boldsymbol{x} = \begin{pmatrix}
+        d_1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0  \\
+        0 &amp; d_2 &amp; 0 &amp; \cdots &amp; 0  \\
+        \vdots &amp; &amp; \ddots &amp; &amp; \vdots \\
+        0 &amp; \cdots &amp; 0 &amp; d_{n-1} &amp; 0 \\
+        0 &amp; \cdots &amp; 0 &amp; 0 &amp; d_n
+    \end{pmatrix}
+    \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}
+    =
+    \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{pmatrix}
+\end{split}\]</div>
+<hr class="docutils" />
+<p><em>Solution.</em> Note that in this case each equation is “uncoupled” from the others and we can write</p>
+<div class="math notranslate nohighlight">
+\[
+    d_i x_i = b_i\ \forall i \quad\implies\quad x_i = \frac{b_i}{d_i}\ \forall i.
+\]</div>
+</div>
+<p>The cost of this algorithm is <span class="math notranslate nohighlight">\(n\)</span> floating point operations.</p>
+</section>
+<section id="upper-triangular-matrices-backward-substitution">
+<h2>Upper triangular matrices (Backward Substitution)<a class="headerlink" href="#upper-triangular-matrices-backward-substitution" title="Link to this heading">#</a></h2>
+<div class="problem docutils">
+<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{U}\)</span> be an upper triangular <span class="math notranslate nohighlight">\(n \times n\)</span> matrix i.e. all elements below the main-diagonal are zero.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol{U} \boldsymbol{x}  =
+    \begin{pmatrix}
+        u_{11} &amp; u_{12} &amp; u_{13} &amp; \cdots &amp; u_{1n}  \\
+        0 &amp; u_{22} &amp; u_{23} &amp; \cdots &amp; u_{2n}  \\
+        \vdots &amp; &amp; \ddots &amp; &amp; \vdots \\
+        0 &amp; \cdots &amp; 0 &amp; u_{n-1n-1} &amp; u_{n-1n} \\
+        0 &amp; \cdots &amp; 0 &amp; 0 &amp; u_{nn}
+    \end{pmatrix}
+    \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_{n-1} \\ x_n \end{pmatrix}
+    =
+    \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_{n-1} \\ b_n \end{pmatrix}
+\end{split}\]</div>
+<p>Note that in this case, the last equation (\aka the last row) is ``uncoupled’’
+from the other rows. Thus we can write</p>
+<div class="math notranslate nohighlight">
+\[
+    x_n = \frac{b_n}{u_{nn}}.
+\]</div>
+<p>Then consider the second to last equation (i.e. the second to last row).
+This row now reads</p>
+<div class="math notranslate nohighlight">
+\[
+    u_{n-1n-1}x_{n-1} + u_{n-1n}x_n = b_{n-1}.
+\]</div>
+<p>Note that since we already know <span class="math notranslate nohighlight">\(x_n\)</span> this is a single linear equation for a
+single unknown, hence we can solve for <span class="math notranslate nohighlight">\(x_{n-1}\)</span>. This gives us</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{n-1} = \frac{b_{n-1} - u_{n-1n}x_n}{u_{n-1n-1}}.
+\]</div>
+<p>Next consider the next row up, once again we find a linear equation with
+a single unknown <span class="math notranslate nohighlight">\(x_{n-2}\)</span> for which we can solve. We can repeat this procedure
+until we arrive at the ``top most row’’, leading to the following algorithm.</p>
+<div class="math notranslate nohighlight">
+\[
+    x_i = \frac{b_i - \displaystyle\sum_{j=i+1}^{n} u_{ij} x_{j}}{u_{ii}}
+\]</div>
+</div>
+<p>What is the cost of this algorithm? We count the number of floating point operations (flops):</p>
+<div class="math notranslate nohighlight">
+\[
+    1 + \sum_{k=1}^{n-1} ((n-k) + (n - k) + 1) = \sum_{k=1}^{n}(2(n-k) + 1) = n^2.
+\]</div>
+<p>Thus solving an upper triangular <span class="math notranslate nohighlight">\(n \times n\)</span> matrix costs <span class="math notranslate nohighlight">\(n^2\)</span> floating point operations.</p>
+</section>
+<section id="lower-triangular-matrices-forward-substitution">
+<h2>Lower triangular matrices (Forward Substitution)<a class="headerlink" href="#lower-triangular-matrices-forward-substitution" title="Link to this heading">#</a></h2>
+<p>Consider the case when <span class="math notranslate nohighlight">\(\boldsymbol{L}\)</span> is lower triangular. Note that <span class="math notranslate nohighlight">\(\boldsymbol{L} = \boldsymbol{U}^T\)</span>, so we
+could simply take the transpose and apply the algorithm for upper triangular matrices.
+However, since this is such a fundamental algorithm we present it in full detail.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \boldsymbol{L}\boldsymbol{x} =
+    \begin{pmatrix}
+        l_{11}   &amp;      0 &amp; 0          &amp; \cdots     &amp; 0  \\
+        l_{21}   &amp; l_{22} &amp; 0          &amp; \cdots     &amp; 0  \\
+        \vdots   &amp;        &amp; \ddots     &amp;            &amp; \vdots \\
+        l_{n-11} &amp; \cdots &amp; l_{n-2n-1} &amp; l_{n-1n-1} &amp; 0 \\
+        l_{n1}   &amp; \cdots &amp; l_{n-2n}   &amp; l_{nn-1}   &amp; l_{nn}
+    \end{pmatrix}
+    \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_{n-1} \\ x_n \end{pmatrix}
+    =
+    \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_{n-1} \\ b_n \end{pmatrix}
+\end{split}\]</div>
+<p>Note how the pattern here is different compared to the upper triangular case. We
+essentially flip our strategy around. Starting with the first equation (i.e. first row)
+we can write</p>
+<div class="math notranslate nohighlight">
+\[
+    x_1 = \frac{b_1}{l_{11}}.
+\]</div>
+<p>Then consider the second equation (\aka the second row).
+This row now reads</p>
+<div class="math notranslate nohighlight">
+\[
+    l_{21} x_1 + l_{22} x_2 = b_2.
+\]</div>
+<p>Note that since we already know <span class="math notranslate nohighlight">\(x_1\)</span> this is a single linear equation for a
+single unknown, hence we can solve for <span class="math notranslate nohighlight">\(x_{2}\)</span>. This gives us</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{2} = \frac{b_{2} - l_{21} x_1}{l_{22}}.
+\]</div>
+<p>Next consider the next row down, once again we find a linear equation with
+a single unknown <span class="math notranslate nohighlight">\(x_{3}\)</span> for which we can solve. We can repeat this procedure
+until we arrive at the last row, leading to the following algorithm.</p>
+<div class="math notranslate nohighlight">
+\[
+    x_i = \frac{b_i - \displaystyle\sum_{j=1}^{i-1} l_{ij} x_{j}}{l_{ii}}
+\]</div>
+<p>The cost of this algorithm is also <span class="math notranslate nohighlight">\(n^2\)</span>, the same as the cost for solving an upper triangular matrix.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./appendix"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="multiplication.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Matrix Multiplication</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="gaussian_elimination_process.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Gaussian Elimination</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-diagonal-matrices">Solving diagonal matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-triangular-matrices-backward-substitution">Upper triangular matrices (Backward Substitution)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-triangular-matrices-forward-substitution">Lower triangular matrices (Forward Substitution)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Buttenschoen.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
