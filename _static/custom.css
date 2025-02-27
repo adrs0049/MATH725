@@ -7,6 +7,15 @@
     content: none !important;
 }
 
+/* Remove QED symbol from non-proof environments */
+.definition::after,
+.theorem::after,
+.example::after,
+.lemma::after,
+.remark::after {
+    content: none !important;
+}
+
 /* Only keep "Proof:" for actual proofs */
 .proof > p::before {
     content: "Proof: " !important;
@@ -20,11 +29,3 @@
     font-style: normal;
 }
 
-/* Remove QED symbol from non-proof environments */
-.definition::after,
-.theorem::after,
-.example::after,
-.lemma::after,
-.remark::after {
-    content: none !important;
-}
