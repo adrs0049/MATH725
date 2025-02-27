@@ -52,3 +52,13 @@ div.proof::after {
     float: right;
     font-style: normal;
 }
+
+/* Remove the "Proof:" text from all environments */
+.proof-type::before {
+    content: "" !important;
+}
+
+/* Remove the bell icon */
+.admonition-title::before {
+    content: "" !important;
+}
