@@ -91,6 +91,4 @@ Recall that this define a norm via $\|x\| = \sqrt{(x, x)}$. Then $\mathcal{L}$ c
 
 The final note is that the linear operator $\Delta$ is crucially associated with the boundary conditions. Different boundary conditions lead to different basis and thus different function spaces. Much of PDE theory is concerned with the identification of the correct basis functions and right function spaces. We will come back to this later when discussing operator theory.
 
----
-
 

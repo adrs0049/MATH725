@@ -211,5 +211,4 @@ A key result from this lecture is the "rainbow" of function spaces. The spaces o
 In particular, spaces of integrable functions are only nestable when the measure of the domain is finite or the counting measure (in this case the role of $p$ and $q$ reverse). Thus crucially spaces of integrable functions with unbounded domains are **not** nested.
 :::
 
----
 
