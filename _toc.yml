@@ -1,0 +1,12 @@
+format: jb-book
+root: index
+parts:
+  - caption: First Chapter
+    chapters:
+    - file: chapter/index.md
+  - caption: Jupyter Notebooks
+    chapters:
+    - file: notebooks/01_linear_systems.ipynb
+  - caption: Appendix
+    chapters:
+    - file: appendix/index.md
