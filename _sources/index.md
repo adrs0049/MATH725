@@ -9,7 +9,7 @@ This is a one-semester introduction to Functional Analysis: I plan to cover most
 * Duality;
 * Sobolev Spaces and Distributions;
 * Calculus: Integration and Differentiation;
-* Fixed Point Theorems;
+* Fixed Point Theorems (and nonlinear functional analysis);
 * Calculus of Variations;
 * Spectral theory;
 * Semigroup theory;
@@ -19,6 +19,8 @@ This is a one-semester introduction to Functional Analysis: I plan to cover most
     * Numerical tools (as time permits);
     * Neural-networks;
 
+If you have any topics of interest please let me know. I have already found some texts that nicely connect functional analysis with stochastic theory, so I might be able to do some examples in that direction.
+
 ## Course Text
 
 * [**Elements of Applied Functional Analysis**](https://www.math.ualberta.ca/~thillen/FA-book-June2023.pdf) by [Thomas Hillen](https://www.math.ualberta.ca/~thillen).
@@ -27,6 +29,10 @@ This is a one-semester introduction to Functional Analysis: I plan to cover most
 
 * Learn functional analysis.
 * To be confirmed.
+
+## Construction Warning
+
+These notes are under **heavy** construction, and for the time being will be sequential.
 
 ## Mathematical Python resources
 

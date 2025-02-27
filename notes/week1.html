@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Solving special matrices &#8212; Applied Linear Algebra</title>
+    <title>Modern Applied Mathematics &#8212; Applied Linear Algebra</title>
   
   
   
@@ -60,12 +60,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'appendix/solving_special_matrices';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/week1';</script>
     <script src="../_static/main.js?v=53e03820"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Gaussian Elimination" href="gaussian_elimination_process.html" />
-    <link rel="prev" title="Matrix Multiplication" href="multiplication.html" />
+    <link rel="next" title="Week 2 - Math 725" href="week2.html" />
+    <link rel="prev" title="MATH 725 Introduction to Functional Analysis" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -178,19 +178,19 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes by Week</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../notes/week1.html">Modern Applied Mathematics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notes/week2.html">Week 2 - Math 725</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modern Applied Mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="week2.html">Week 2 - Math 725</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/01_linear_systems.html">Linear Systems of Equations</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="multiplication.html">Matrix Multiplication</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Solving special matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gaussian_elimination_process.html">Gaussian Elimination</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix/multiplication.html">Matrix Multiplication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/solving_special_matrices.html">Solving special matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/gaussian_elimination_process.html">Gaussian Elimination</a></li>
 </ul>
 
     </div>
@@ -260,7 +260,7 @@
       
       
       
-      <li><a href="../_sources/appendix/solving_special_matrices.md" target="_blank"
+      <li><a href="../_sources/notes/week1.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -344,7 +344,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Solving special matrices</h1>
+    <h1>Modern Applied Mathematics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -354,9 +354,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-diagonal-matrices">Solving diagonal matrices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-triangular-matrices-backward-substitution">Upper triangular matrices (Backward Substitution)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-triangular-matrices-forward-substitution">Lower triangular matrices (Forward Substitution)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-equations">Differential equations</a></li>
 </ul>
             </nav>
         </div>
@@ -368,132 +366,84 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="solving-special-matrices">
-<h1>Solving special matrices<a class="headerlink" href="#solving-special-matrices" title="Link to this heading">#</a></h1>
-<section id="solving-diagonal-matrices">
-<h2>Solving diagonal matrices<a class="headerlink" href="#solving-diagonal-matrices" title="Link to this heading">#</a></h2>
-<div class="problem docutils">
-<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{D}\)</span> be a diagonal <span class="math notranslate nohighlight">\(n \times n\)</span> matrix i.e. the only non-zero elements are those on the main diagonal
-of the matrix.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\boldsymbol{D} \boldsymbol{x} = \begin{pmatrix}
-        d_1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0  \\
-        0 &amp; d_2 &amp; 0 &amp; \cdots &amp; 0  \\
-        \vdots &amp; &amp; \ddots &amp; &amp; \vdots \\
-        0 &amp; \cdots &amp; 0 &amp; d_{n-1} &amp; 0 \\
-        0 &amp; \cdots &amp; 0 &amp; 0 &amp; d_n
-    \end{pmatrix}
-    \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}
-    =
-    \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{pmatrix}
-\end{split}\]</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="modern-applied-mathematics">
+<h1>Modern Applied Mathematics<a class="headerlink" href="#modern-applied-mathematics" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Development of new mathematical models (modeling).</p></li>
+<li><p><strong>Theoretical analysis of mathematical models.</strong></p></li>
+<li><p>Numerical solutions of these models.</p></li>
+<li><p>Data inferences and statistical learning.</p></li>
+</ul>
+<p>Here we will focus on the second point.</p>
 <hr class="docutils" />
-<p><em>Solution.</em> Note that in this case each equation is “uncoupled” from the others and we can write</p>
+<section id="differential-equations">
+<h2>Differential equations<a class="headerlink" href="#differential-equations" title="Link to this heading">#</a></h2>
+<p>We motivate the need for the development of functional analysis through the ubiquitous nature of differential equations. Similar functional analytical techniques are useful when studying stochastic differential equations, and many other applications.</p>
+<ul>
+<li><p><strong>ODEs</strong> (ordinary differential equations) are defined by having a finite number of variables of a single independent variable usually <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>For example the following is a linear ODE:</p>
 <div class="math notranslate nohighlight">
-\[
-    d_i x_i = b_i\ \forall i \quad\implies\quad x_i = \frac{b_i}{d_i}\ \forall i.
-\]</div>
-</div>
-<p>The cost of this algorithm is <span class="math notranslate nohighlight">\(n\)</span> floating point operations.</p>
-</section>
-<section id="upper-triangular-matrices-backward-substitution">
-<h2>Upper triangular matrices (Backward Substitution)<a class="headerlink" href="#upper-triangular-matrices-backward-substitution" title="Link to this heading">#</a></h2>
-<div class="problem docutils">
-<p>Let <span class="math notranslate nohighlight">\(\boldsymbol{U}\)</span> be an upper triangular <span class="math notranslate nohighlight">\(n \times n\)</span> matrix i.e. all elements below the main-diagonal are zero.</p>
+\[\frac{d \vec{x}}{d t} = A\vec{x}\]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> is a <span class="math notranslate nohighlight">\(n \times n\)</span> matrix. Then the solution is:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-    \boldsymbol{U} \boldsymbol{x}  =
-    \begin{pmatrix}
-        u_{11} &amp; u_{12} &amp; u_{13} &amp; \cdots &amp; u_{1n}  \\
-        0 &amp; u_{22} &amp; u_{23} &amp; \cdots &amp; u_{2n}  \\
-        \vdots &amp; &amp; \ddots &amp; &amp; \vdots \\
-        0 &amp; \cdots &amp; 0 &amp; u_{n-1n-1} &amp; u_{n-1n} \\
-        0 &amp; \cdots &amp; 0 &amp; 0 &amp; u_{nn}
-    \end{pmatrix}
-    \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_{n-1} \\ x_n \end{pmatrix}
-    =
-    \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_{n-1} \\ b_n \end{pmatrix}
-\end{split}\]</div>
-<p>Note that in this case, the last equation (\aka the last row) is ``uncoupled’’
-from the other rows. Thus we can write</p>
+\[t \mapsto \vec{x}(t) \in \mathbb{R}^n\]</div>
+<p>The space in which the solution of a differential equation “lives” is usually called a <strong>phase-space</strong>.</p>
+</li>
+<li><p><strong>PDEs</strong> require new language.</p>
+<ul class="simple">
+<li><p>State space is a Banach space of functions.</p></li>
+<li><p>PDEs are operators between Banach spaces.</p></li>
+<li><p>Solutions often arise as weak or weak* limits in these Banach spaces.</p></li>
+</ul>
+</li>
+<li><p>The following reaction-diffusion is an example of a PDE:</p>
 <div class="math notranslate nohighlight">
-\[
-    x_n = \frac{b_n}{u_{nn}}.
-\]</div>
-<p>Then consider the second to last equation (i.e. the second to last row).
-This row now reads</p>
+\[\frac{\partial u}{\partial t} = d \Delta u + f(u)\]</div>
+<p>for an unknown function <span class="math notranslate nohighlight">\(u(x, t)\)</span>. Here <span class="math notranslate nohighlight">\(\Delta\)</span> is the Laplacian:</p>
 <div class="math notranslate nohighlight">
-\[
-    u_{n-1n-1}x_{n-1} + u_{n-1n}x_n = b_{n-1}.
-\]</div>
-<p>Note that since we already know <span class="math notranslate nohighlight">\(x_n\)</span> this is a single linear equation for a
-single unknown, hence we can solve for <span class="math notranslate nohighlight">\(x_{n-1}\)</span>. This gives us</p>
+\[\Delta := \sum_{i = 1}^{n} \frac{\partial^2}{\partial x_i^2}\]</div>
+<p>If we formally introduce the linear operator:</p>
 <div class="math notranslate nohighlight">
-\[
-    x_{n-1} = \frac{b_{n-1} - u_{n-1n}x_n}{u_{n-1n-1}}.
-\]</div>
-<p>Next consider the next row up, once again we find a linear equation with
-a single unknown <span class="math notranslate nohighlight">\(x_{n-2}\)</span> for which we can solve. We can repeat this procedure
-until we arrive at the ``top most row’’, leading to the following algorithm.</p>
+\[A[u] := d \Delta u\]</div>
+<p>then we can rewrite the PDE as:</p>
 <div class="math notranslate nohighlight">
-\[
-    x_i = \frac{b_i - \displaystyle\sum_{j=i+1}^{n} u_{ij} x_{j}}{u_{ii}}
-\]</div>
-</div>
-<p>What is the cost of this algorithm? We count the number of floating point operations (flops):</p>
+\[\frac{\partial u}{\partial t} = A[u] + f(u)\]</div>
+<p>and it looks like an ODE.</p>
+</li>
+<li><p>If the PDE was an ODE we can use the variation of constant formula and the matrix exponential to find a solution i.e.:</p>
 <div class="math notranslate nohighlight">
-\[
-    1 + \sum_{k=1}^{n-1} ((n-k) + (n - k) + 1) = \sum_{k=1}^{n}(2(n-k) + 1) = n^2.
-\]</div>
-<p>Thus solving an upper triangular <span class="math notranslate nohighlight">\(n \times n\)</span> matrix costs <span class="math notranslate nohighlight">\(n^2\)</span> floating point operations.</p>
-</section>
-<section id="lower-triangular-matrices-forward-substitution">
-<h2>Lower triangular matrices (Forward Substitution)<a class="headerlink" href="#lower-triangular-matrices-forward-substitution" title="Link to this heading">#</a></h2>
-<p>Consider the case when <span class="math notranslate nohighlight">\(\boldsymbol{L}\)</span> is lower triangular. Note that <span class="math notranslate nohighlight">\(\boldsymbol{L} = \boldsymbol{U}^T\)</span>, so we
-could simply take the transpose and apply the algorithm for upper triangular matrices.
-However, since this is such a fundamental algorithm we present it in full detail.</p>
+\[u(t) = e^{At} u_0 + \int_0^t e^{A(t-s)} f(u(s)) ds.\]</div>
+<p><strong>But</strong> here <span class="math notranslate nohighlight">\(A\)</span> is a differential operator and not a matrix. Can we define matrix exponentials for unbounded operators? The answer is yes as we will see in the chapter on semigroup theory.</p>
+</li>
+<li><p>If <span class="math notranslate nohighlight">\(u(x; t)\)</span> is a solution of the “ODE” then we have a mapping:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-    \boldsymbol{L}\boldsymbol{x} =
-    \begin{pmatrix}
-        l_{11}   &amp;      0 &amp; 0          &amp; \cdots     &amp; 0  \\
-        l_{21}   &amp; l_{22} &amp; 0          &amp; \cdots     &amp; 0  \\
-        \vdots   &amp;        &amp; \ddots     &amp;            &amp; \vdots \\
-        l_{n-11} &amp; \cdots &amp; l_{n-2n-1} &amp; l_{n-1n-1} &amp; 0 \\
-        l_{n1}   &amp; \cdots &amp; l_{n-2n}   &amp; l_{nn-1}   &amp; l_{nn}
-    \end{pmatrix}
-    \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_{n-1} \\ x_n \end{pmatrix}
-    =
-    \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_{n-1} \\ b_n \end{pmatrix}
-\end{split}\]</div>
-<p>Note how the pattern here is different compared to the upper triangular case. We
-essentially flip our strategy around. Starting with the first equation (i.e. first row)
-we can write</p>
+\[t \mapsto u(x; t) \in \text{Function Space}.\]</div>
+<p>Thus the phase-space for a PDE is a function space, and the PDE becomes an operator between function spaces. Whether we can invert these operators we will discuss in our chapter on operator theory.</p>
+</li>
+</ul>
+<hr class="docutils" />
+<p>Let’s discuss the heat / diffusion equation example in a bit more detail. Suppose we have the heat equation on the interval <span class="math notranslate nohighlight">\([0, L]\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[
-    x_1 = \frac{b_1}{l_{11}}.
-\]</div>
-<p>Then consider the second equation (\aka the second row).
-This row now reads</p>
+\[\begin{split}\begin{cases}
+    u_t &amp;= d u_{xx} \\
+    u(t,0) &amp;= u(t, L) = 0 \\
+    u(x, 0) &amp;= u_0(x).
+\end{cases}\end{split}\]</div>
+<p>Using separation of variables and the principles of superposition we find a solution as a Fourier sine series:</p>
 <div class="math notranslate nohighlight">
-\[
-    l_{21} x_1 + l_{22} x_2 = b_2.
-\]</div>
-<p>Note that since we already know <span class="math notranslate nohighlight">\(x_1\)</span> this is a single linear equation for a
-single unknown, hence we can solve for <span class="math notranslate nohighlight">\(x_{2}\)</span>. This gives us</p>
+\[u(x, t) = \sum_{k=1}^{\infty} a_n e^{-\lambda_n d t} \sin\left(\frac{n \pi x}{L}\right)\]</div>
+<p>The coefficients <span class="math notranslate nohighlight">\(a_n\)</span> are determined from the initial condition i.e.:</p>
 <div class="math notranslate nohighlight">
-\[
-    x_{2} = \frac{b_{2} - l_{21} x_1}{l_{22}}.
-\]</div>
-<p>Next consider the next row down, once again we find a linear equation with
-a single unknown <span class="math notranslate nohighlight">\(x_{3}\)</span> for which we can solve. We can repeat this procedure
-until we arrive at the last row, leading to the following algorithm.</p>
+\[u_0(x) = \sum_{k=1}^{\infty} a_n \sin\left(\frac{n \pi x}{L}\right)\]</div>
+<p>and we can use the Fourier trick to solve this equation for <span class="math notranslate nohighlight">\(a_n\)</span>. Now the family of functions:</p>
 <div class="math notranslate nohighlight">
-\[
-    x_i = \frac{b_i - \displaystyle\sum_{j=1}^{i-1} l_{ij} x_{j}}{l_{ii}}
-\]</div>
-<p>The cost of this algorithm is also <span class="math notranslate nohighlight">\(n^2\)</span>, the same as the cost for solving an upper triangular matrix.</p>
+\[\mathcal{L}:= \left\{ \sin\left(\frac{n \pi x }{L}\right) : n \in \mathbb{N} \right\}\]</div>
+<p>forms an orthogonal set with the inner product:</p>
+<div class="math notranslate nohighlight">
+\[(\phi_n, \phi_m) = \int_0^L \phi_n(x) \phi_m(x) dx\]</div>
+<p>Recall that this define a norm via <span class="math notranslate nohighlight">\(\|x\| = \sqrt{(x, x)}\)</span>. Then <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> can be seen as the basis of the function space <span class="math notranslate nohighlight">\(L^2(0, L)\)</span> the square integrable functions. Since <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> is infinite, <span class="math notranslate nohighlight">\(L^2(0, L)\)</span> is an infinite dimensional vector space. Thus we understand the heat equation as an infinite dimensional differential equation.</p>
+<p>The final note is that the linear operator <span class="math notranslate nohighlight">\(\Delta\)</span> is crucially associated with the boundary conditions. Different boundary conditions lead to different basis and thus different function spaces. Much of PDE theory is concerned with the identification of the correct basis functions and right function spaces. We will come back to this later when discussing operator theory.</p>
+<hr class="docutils" />
 </section>
 </section>
 
@@ -510,7 +460,7 @@ until we arrive at the last row, leading to the following algorithm.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./appendix"
+            path: "./notes"
         },
         predefinedOutput: true
     }
@@ -528,20 +478,20 @@ until we arrive at the last row, leading to the following algorithm.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="multiplication.html"
+       href="../index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Matrix Multiplication</p>
+        <p class="prev-next-title">MATH 725 Introduction to Functional Analysis</p>
       </div>
     </a>
     <a class="right-next"
-       href="gaussian_elimination_process.html"
+       href="week2.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Gaussian Elimination</p>
+        <p class="prev-next-title">Week 2 - Math 725</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -561,9 +511,7 @@ until we arrive at the last row, leading to the following algorithm.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-diagonal-matrices">Solving diagonal matrices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-triangular-matrices-backward-substitution">Upper triangular matrices (Backward Substitution)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lower-triangular-matrices-forward-substitution">Lower triangular matrices (Forward Substitution)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-equations">Differential equations</a></li>
 </ul>
   </nav></div>
 

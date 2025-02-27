@@ -1,0 +1,624 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Week 2 - Math 725 &#8212; Applied Linear Algebra</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/main.css?v=fba13057" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/week2';</script>
+    <script src="../_static/main.js?v=53e03820"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Linear Systems of Equations" href="../notebooks/01_linear_systems.html" />
+    <link rel="prev" title="Modern Applied Mathematics" href="week1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Applied Linear Algebra</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    MATH 725 Introduction to Functional Analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes by Week</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="week1.html">Modern Applied Mathematics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Week 2 - Math 725</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/01_linear_systems.html">Linear Systems of Equations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix/multiplication.html">Matrix Multiplication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/solving_special_matrices.html">Solving special matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/gaussian_elimination_process.html">Gaussian Elimination</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/adrs0049/MATH725" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notes/week2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Week 2 - Math 725</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-tuesday">Lesson: Tuesday</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-thursday">Lesson: Thursday</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Learning Goals</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="week-2-math-725">
+<h1>Week 2 - Math 725<a class="headerlink" href="#week-2-math-725" title="Link to this heading">#</a></h1>
+<p><em>February 3, 2024</em>
+<em>Weekly Course Outline</em></p>
+<section id="lesson-tuesday">
+<h2>Lesson: Tuesday<a class="headerlink" href="#lesson-tuesday" title="Link to this heading">#</a></h2>
+<section id="learning-goals">
+<h3>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h3>
+<p>The goals of these few lectures is to review a few core ideas, and set the stage of classic function spaces we will use to develop the theory.</p>
+<ol class="arabic simple">
+<li><p>The Basics of Functional Analysis.</p></li>
+<li><p>What is a Banach Space?</p></li>
+<li><p>Density, separability and compactness.</p></li>
+</ol>
+<hr class="docutils" />
+<p><strong>Definition</strong>
+A Banach space <span class="math notranslate nohighlight">\((X, \|\cdot\|_X)\)</span> is a complete normed vector space.</p>
+<p><strong>Example</strong>
+<span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> is a Banach space with any p-norm i.e.
+$<span class="math notranslate nohighlight">\(\|x\|_p = \left( \sum_{i=1}^{n}|x_i|^p \right)^{1/p}\)</span>$</p>
+<hr class="docutils" />
+<p>We need the following basic topological notions.</p>
+<p><strong>Definition</strong>
+A subset <span class="math notranslate nohighlight">\(Y\subset X\)</span> is dense in <span class="math notranslate nohighlight">\(X\)</span> if <span class="math notranslate nohighlight">\(\bar{Y} = X\)</span>. Equivalently, given <span class="math notranslate nohighlight">\(x\in X\)</span> <span class="math notranslate nohighlight">\(\forall \varepsilon &gt; 0\)</span> <span class="math notranslate nohighlight">\(\exists y \in Y\)</span> such that <span class="math notranslate nohighlight">\(\|x - y\| &lt; \varepsilon\)</span>.</p>
+<p><strong>Example</strong>
+<span class="math notranslate nohighlight">\(\bar{\mathbb{Q}} = \mathbb{R}\)</span>. Let <span class="math notranslate nohighlight">\(r \in \mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(\varepsilon &gt; 0\)</span> then there is <span class="math notranslate nohighlight">\(n\)</span> such that <span class="math notranslate nohighlight">\(\frac{1}{n} &lt; \varepsilon\)</span>. Define <span class="math notranslate nohighlight">\(q_n = \frac{\lfloor nr\rfloor}{n}\)</span> which implies that
+$<span class="math notranslate nohighlight">\(\|r - \frac{nr}{n}\| &lt; \frac{1}{n} &lt; \varepsilon\)</span>$</p>
+<p>In other words we can approximate any real number <span class="math notranslate nohighlight">\(r\)</span> arbitrarily well by elements in the rationals e.g. the rationals are dense in the reals. This property of the rationals is crucially important for finite arithmetic approximations of the reals on computers.</p>
+<p><strong>Example (Weierstrass theorem)</strong>
+Let <span class="math notranslate nohighlight">\(f \in \mathcal{C}^0([-1, 1])\)</span> and let <span class="math notranslate nohighlight">\(\varepsilon &gt; 0\)</span> then there exists a polynomial <span class="math notranslate nohighlight">\(p\)</span> such that <span class="math notranslate nohighlight">\(\|f - p\|_{\infty} &lt; \varepsilon\)</span>.</p>
+<p><strong>Definition</strong>
+A Banach space which contains a dense <strong>countable</strong> subset is called separable.</p>
+<p><strong>Example</strong>
+Since the rationals are countable and dense in <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>, thus <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is separable.</p>
+<p><strong>Example</strong>
+<span class="math notranslate nohighlight">\(\mathcal{C}^0([-1, 1])\)</span> define the basis set
+$<span class="math notranslate nohighlight">\(\{ ax^n : a \in \mathbb{Q},\ n \in \mathbb{N} \cup \{ 0 \} \}\)</span>$</p>
+<p>this set is countable and dense in <span class="math notranslate nohighlight">\(\mathcal{C}^0([-1, 1])\)</span> in other words we can approximate any continuous function using a polynomial having rational coefficients. Thus we have a countable Banach space.</p>
+<p><strong>Example</strong>
+The space of square integrable functions <span class="math notranslate nohighlight">\(L^2([-1, 1])\)</span> has basis set
+$<span class="math notranslate nohighlight">\(\{ 1,\ \cos(nx),\ \sin(nx)\}\)</span>$</p>
+<p>which is countable and hence it is a separable space.</p>
+<p><strong>Example</strong>
+<span class="math notranslate nohighlight">\(L^\infty([-1, 1])\)</span> is not separable (see homework).</p>
+<p><strong>Definition</strong>
+A subset <span class="math notranslate nohighlight">\(E \subset X\)</span> is compact if either:</p>
+<ol class="arabic simple">
+<li><p>each open cover contains a finite subcover.</p></li>
+<li><p>each sequence <span class="math notranslate nohighlight">\(\{x_n\} \subset E\)</span> contains a convergent subsequence.</p></li>
+</ol>
+<p><strong>Example</strong>
+The closed unit ball
+$<span class="math notranslate nohighlight">\(B_1(0) = \{x \in \mathbb{R}^n : \|x\|_p \leq 1\}\)</span>$</p>
+<p>is compact by Heine-Borel. Equivalently, we can take any sequence <span class="math notranslate nohighlight">\(\{x_n\} \subset B_1(0)\)</span>. Since that sequence is bounded Bolzano-Weierstrass implies that it has a convergence subsequence.</p>
+<p><strong>Remark</strong>
+While any closed and bounded subset of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> is compact, this dramatically changes in infinite dimensions where the closed unit ball is not compact (we see this at the end of this week). For this reason, compactness results play a crucial role in functional analysis.</p>
+<p><strong>Definition</strong>
+Two norms <span class="math notranslate nohighlight">\(\|x\|^1\)</span> and <span class="math notranslate nohighlight">\(\|x\|^2\)</span> are equivalent if there exists <span class="math notranslate nohighlight">\(a, b &gt; 0\)</span> such that
+$<span class="math notranslate nohighlight">\(a \|x\|^1 \leq \|x\|^2 \leq b \|x\|^1\quad \forall x \in X\)</span>$</p>
+<p>Note that the previous definition calls two norms equivalent when they induce the same underlying topology on <span class="math notranslate nohighlight">\(X\)</span>. In other words, they generate the same open sets or intuitively induce the same notion of two elements being close.</p>
+<p><strong>Theorem</strong>
+In <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> all norms are equivalent.</p>
+<p><em>Proof</em>: This is merely a sketch of a proof. They key idea is that in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> all the unit balls can be scaled so that they fit into each other. Allowing us to show that the open sets in <span class="math notranslate nohighlight">\((\mathbb{R}^n, \|x\|_p)\)</span> are the same as in <span class="math notranslate nohighlight">\((\mathbb{R}^n, \|x\|_q)\)</span>.</p>
+</section>
+</section>
+<section id="lesson-thursday">
+<h2>Lesson: Thursday<a class="headerlink" href="#lesson-thursday" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Learning Goals<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Define some typical function spaces that are central to the theory.</p>
+<ol class="arabic simple">
+<li><p>The spaces of continuous, differentiable and integral functions.</p></li>
+<li><p>Density, Separability in <span class="math notranslate nohighlight">\(L^p\)</span> spaces e.g. approximation of functions by simple functions.</p></li>
+<li><p>The Rainbow of function spaces.</p></li>
+</ol>
+<hr class="docutils" />
+<p>For the definitions of the spaces of continuous, continuously differentiable and Hoelder continuous functions see the class textbook.</p>
+<hr class="docutils" />
+<p><strong>Definition</strong>
+For <span class="math notranslate nohighlight">\(1 \leq p &lt; \infty\)</span> we define the spaces of integrable functions
+$<span class="math notranslate nohighlight">\(L^p(\Omega) = \{f : \Omega \mapsto \mathbb{R} : \|f\|_p = \left( \int_{\Omega} |f(x)|^p d\mu \right)^{1/p} &lt; \infty \}\)</span>$</p>
+<p><strong>Theorem (Mollifiers)</strong>
+Given <span class="math notranslate nohighlight">\(f \in \mathcal{C}^0_c(\Omega)\)</span>, for each <span class="math notranslate nohighlight">\(\varepsilon &gt; 0\)</span> <span class="math notranslate nohighlight">\(\exists \phi \in \mathcal{C}^\infty_c(\Omega)\)</span> such that
+$<span class="math notranslate nohighlight">\(\|f - \phi\|_{\infty} &lt; \varepsilon\)</span>$</p>
+<p><strong>Theorem</strong>
+Let <span class="math notranslate nohighlight">\(\Omega\)</span> be bounded, then <span class="math notranslate nohighlight">\(\mathcal{C}^0(\Omega)\)</span> is dense in <span class="math notranslate nohighlight">\(L^p(\Omega)\)</span> i.e.
+$<span class="math notranslate nohighlight">\(L^p(\Omega) = \overline{\mathcal{C}^0_c(\Omega)}\)</span>$</p>
+<p>where the closure is wrt. to the p-norm, and <span class="math notranslate nohighlight">\(L^p\)</span> is separable.</p>
+<p><em>Proof</em>: The key to the proof is to recall that any measurable function can be approximated using simple functions. Recall that we say a function is simple if
+$<span class="math notranslate nohighlight">\(s_n = \sum_{i = 1}^{n} c_j \chi_{I_j}(x)\)</span>$</p>
+<p>where <span class="math notranslate nohighlight">\(\chi_{I_j}\)</span> is the indicator function of a set, recall that from the construction of the Lebesque integral these sets can be complicated (i.e. contain several disjointed pieces). Then given any measurable function <span class="math notranslate nohighlight">\(f(x)\)</span> we can find a sequence of increasing simple functions (i.e. <span class="math notranslate nohighlight">\(s_1(x) \leq s_2(x) \leq \dots \leq f(x)\)</span>) such that <span class="math notranslate nohighlight">\(s_n(x) \to f(x)\)</span> pointwise for almost every <span class="math notranslate nohighlight">\(x\)</span> i.e. <span class="math notranslate nohighlight">\(|s_n - f| &lt; \varepsilon\)</span>.</p>
+<p>We have that <span class="math notranslate nohighlight">\(|s_n - f|^p \leq 2|f|^p \in L^1\)</span> and the Lebesgue dominated convergence theorem implies that
+$<span class="math notranslate nohighlight">\(\lim_{n\to\infty} \int |s_n - f|^p d\mu = \int \lim_{n\to\infty} |s_n - f|^p d\mu \leq C \varepsilon\)</span>$</p>
+<p>Thus we have that <span class="math notranslate nohighlight">\(\|s_n - f\|_p \to 0\)</span>.
+Finally note that each simple function is continuous and we can pick the weights to be rational, and for the final step mollify each of the characteristic functions.</p>
+<p><strong>Theorem</strong>
+<span class="math notranslate nohighlight">\(L^p\)</span> is a Banach space.</p>
+<p><em>Proof</em>: We must show that every Cauchy sequence in <span class="math notranslate nohighlight">\(L^p\)</span> converges. Let <span class="math notranslate nohighlight">\(\{f_n\}\)</span> be a Cauchy sequence in <span class="math notranslate nohighlight">\(L^p\)</span> i.e. <span class="math notranslate nohighlight">\(\forall \varepsilon &gt; 0\)</span> <span class="math notranslate nohighlight">\(\exists N :\)</span> <span class="math notranslate nohighlight">\(\|f_n - f_m\| &lt; \varepsilon\)</span> <span class="math notranslate nohighlight">\(\forall n,m &gt; N\)</span>.</p>
+<p>Recall that we can extract a subsequence from a Cauchy sequence (I believe this is often called a diagonal Cantor argument?) by selecting an increasing sequence <span class="math notranslate nohighlight">\(n_j\)</span> such that
+$<span class="math notranslate nohighlight">\(\|f_{n_{k+1}} - f_{n_k}\| &lt; 2^{-k},\ k = 1, 2, \dots\)</span>$</p>
+<p>Define
+$<span class="math notranslate nohighlight">\(G_k := \sum_{k=1}^{K} |f_{n_{k+1}} - f_{n_k}|\)</span>$</p>
+<p>and <span class="math notranslate nohighlight">\(G = \lim_k G_k\)</span>. By Minkowski’s inequality we have
+$<span class="math notranslate nohighlight">\(\|G_k\|_p \leq \sum_{k=1}^{K} \|f_{n_{k+1}} - f_{n_k}\| \leq 1\)</span>$</p>
+<p>for all <span class="math notranslate nohighlight">\(k\)</span>. Since <span class="math notranslate nohighlight">\(G_k\)</span> is an increasing sequence we apply the Monotone convergence theorem
+$<span class="math notranslate nohighlight">\(\int G^p d\mu = \int \lim_k G_k^p d\mu = \lim_k \int G_k^p d\mu \leq 1\)</span>$</p>
+<p>This implies that <span class="math notranslate nohighlight">\(G \in L^p\)</span> and thus <span class="math notranslate nohighlight">\(G(x) &lt; \infty\)</span> almost everywhere.
+Define
+$<span class="math notranslate nohighlight">\(f(x) = f_{n_1} + \sum_{k=1}^{\infty} f_{n_{k+1}} - f_{n_k}\)</span>$</p>
+<p>Note that this is a telescoping sum so we have that <span class="math notranslate nohighlight">\(f_{n_k} \to f(x)\)</span> almost everywhere. We also have
+$<span class="math notranslate nohighlight">\(\|f\|_p \leq \|f_{n_1}\|_p + \|G\|_p &lt; \infty\)</span>$</p>
+<p>Thus <span class="math notranslate nohighlight">\(f \in L^p\)</span>.
+Finally, we apply Fatou’s lemma (to show that <span class="math notranslate nohighlight">\(f_n \to f\)</span> in <span class="math notranslate nohighlight">\(L^p\)</span>)
+$<span class="math notranslate nohighlight">\(\int \|f - f_n\|^p d\mu = \int \lim_{k \to \infty} \|f_{n_k} - f_n\|^p d \mu \leq \liminf_{k \to \infty} \int \|f_{n_k} - f_n\|^p d \mu \leq \varepsilon^p\)</span>$</p>
+<p>when <span class="math notranslate nohighlight">\(n_k &gt; N\)</span>. Thus we have that <span class="math notranslate nohighlight">\(\|f - f_n\| \to 0\)</span>.</p>
+<hr class="docutils" />
+<p>A key result from this lecture is the “rainbow” of function spaces. The spaces of continuous and differentiable functions naturally are nested. Similarly, the spaces of integrable functions are nested by Hoelder’s inequality for bounded domains. In particular, spaces of integrable functions are only nestable when the measure of the domain is finite or the counting measure (in this case the role of <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> reverse). Thus crucially spaces of integrable functions with unbounded domains are <strong>not</strong> nested.</p>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="week1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Modern Applied Mathematics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../notebooks/01_linear_systems.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Linear Systems of Equations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-tuesday">Lesson: Tuesday</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-thursday">Lesson: Thursday</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Learning Goals</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Buttenschoen.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
