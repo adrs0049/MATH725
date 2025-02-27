@@ -1,9 +1,4 @@
 jupyter-book >= 0.11
-numpy
-matplotlib
-scipy
-scikit-learn
-networkx
 sphinx-proof
 myst-parser
 sphinx-book-theme
