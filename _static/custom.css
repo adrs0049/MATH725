@@ -7,6 +7,12 @@
     content: none !important;
 }
 
+/* Only keep "Proof:" for actual proofs */
+.proof > p::before {
+    content: "Proof: " !important;
+    font-weight: bold;
+}
+
 /* Remove QED symbol from non-proof environments */
 .definition::after,
 .theorem::after,
@@ -14,12 +20,6 @@
 .lemma::after,
 .remark::after {
     content: none !important;
-}
-
-/* Only keep "Proof:" for actual proofs */
-.proof > p::before {
-    content: "Proof: " !important;
-    font-weight: bold;
 }
 
 /* Fix the QED symbol for actual proofs */
