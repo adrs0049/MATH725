@@ -4,14 +4,24 @@ logo: img/nn.png
 copyright : "2025"
 use_issues_button : true
 sphinx:
+  extra_extensions:
+    - sphinx_proof
   config:
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    myst_enable_extensions:
+      - amsmath
+      - colon_fence
+      - deflist
+      - dollarmath
+      - html_image
 only_build_toc_files: true
 execute:
     execute_notebooks: cache
 html:
   home_page_in_navbar: true
   use_repository_button: true
+  extra_css:
+    - _static/custom.css
   google_analytics_id:
 launch_buttons:
   colab_url: "https://colab.research.google.com"

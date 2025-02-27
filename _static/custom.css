@@ -1,0 +1,54 @@
+/* Definition styling */
+div.definition {
+    background-color: #e8f4f8;
+    border-left: 5px solid #209ce4;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+}
+
+/* Theorem styling */
+div.theorem {
+    background-color: #f5f1eb;
+    border-left: 5px solid #d9a765;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+}
+
+/* Example styling */
+div.example {
+    background-color: #e8f8e8;
+    border-left: 5px solid #42a758;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+}
+
+/* Lemma styling */
+div.lemma {
+    background-color: #eeeeff;
+    border-left: 5px solid #7777dd;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+}
+
+/* Proof styling */
+div.proof {
+    background-color: #f8f8f8;
+    border-left: 5px solid #aaaaaa;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    font-style: italic;
+}
+
+/* Add a "Proof" text at the beginning */
+div.proof::before {
+    content: "Proof:";
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Add QED symbol at the end */
+div.proof::after {
+    content: "□";
+    float: right;
+    font-style: normal;
+}
