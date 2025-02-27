@@ -2,8 +2,6 @@
 *February 3, 2024*
 *Weekly Course Outline*
 
-**Note**, this week did not have a Tuesday lecture due to delayed term start.
-
 ## Learning Goals
 
 The goals of these few lectures is to review a few core ideas, and set the stage of classic function spaces we will use to develop the theory.
@@ -26,7 +24,7 @@ A Banach space $(X, \|\cdot\|_X)$ is a complete normed vector space.
 :label: ex-rn-banach
 
 $\mathbb{R}^n$ is a Banach space with any p-norm i.e.
-$$\|x\|_p = \left( \sum_{i=1}^{n}|x_i|^p \right)^{1/p}$$
+$\|x\|_p = \left( \sum_{i=1}^{n}|x_i|^p \right)^{1/p}$
 :::
 
 ---
