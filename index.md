@@ -2,12 +2,31 @@
 
 ## Description
 
-Math 545 is a course introducing functional analysis.
+This is a one-semester introduction to Functional Analysis: I plan to cover most of the chapters in Hillen (as time permits), as well as some uses for functional analysis in Neural Networks, and numerical tools to explore functional analysis.
 
+* Function Spaces;
+* Linear Operators and Subspaces;
+* Duality;
+* Sobolev Spaces and Distributions;
+* Calculus: Integration and Differentiation;
+* Fixed Point Theorems;
+* Calculus of Variations;
+* Spectral theory;
+* Semigroup theory;
+* Applications of functional analysis:
+    * Reaction-diffusion equations.
+    * Bifurcation theory;
+    * Numerical tools (as time permits);
+    * Neural-networks;
+
+## Course Text
+
+* [**Elements of Applied Functional Analysis**](https://www.math.ualberta.ca/~thillen/FA-book-June2023.pdf) by [Thomas Hillen](https://www.math.ualberta.ca/~thillen).
 
 ## Learning Goals
 
 * Learn functional analysis.
+* To be confirmed.
 
 ## Mathematical Python resources
 
