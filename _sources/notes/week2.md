@@ -12,15 +12,13 @@ The goals of these few lectures is to review a few core ideas, and set the stage
 
 ---
 
-:::{prf:definition} Banach Space
-:class: definition
+````{prf:definition} Banach Space
 :label: def-banach
 
 A Banach space $(X, \|\cdot\|_X)$ is a complete normed vector space.
-:::
+````
 
 :::{prf:example} Basic Banach Space
-:class: example
 :label: ex-rn-banach
 
 $\mathbb{R}^n$ is a Banach space with any p-norm i.e.
