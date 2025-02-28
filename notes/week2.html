@@ -36,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=21baea2c" />
     <link rel="stylesheet" type="text/css" href="../_static/main.css?v=fba13057" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -407,7 +406,7 @@ document.write(`
 <p class="admonition-title"><span class="caption-number">Example 2 </span> (Rationals in Reals)</p>
 <section class="example-content" id="proof-content">
 <p><span class="math notranslate nohighlight">\(\bar{\mathbb{Q}} = \mathbb{R}\)</span>. Let <span class="math notranslate nohighlight">\(r \in \mathbb{R}\)</span> and <span class="math notranslate nohighlight">\(\varepsilon &gt; 0\)</span> then there is <span class="math notranslate nohighlight">\(n\)</span> such that <span class="math notranslate nohighlight">\(\frac{1}{n} &lt; \varepsilon\)</span>. Define <span class="math notranslate nohighlight">\(q_n = \frac{\lfloor nr\rfloor}{n}\)</span> which implies that
-$<span class="math notranslate nohighlight">\(\|r - \frac{nr}{n}\| &lt; \frac{1}{n} &lt; \varepsilon\)</span>$</p>
+<span class="math notranslate nohighlight">\(\|r - \frac{nr}{n}\| &lt; \frac{1}{n} &lt; \varepsilon\)</span></p>
 <p>In other words we can approximate any real number <span class="math notranslate nohighlight">\(r\)</span> arbitrarily well by elements in the rationals e.g. the rationals are dense in the reals. This property of the rationals is crucially important for finite arithmetic approximations of the reals on computers.</p>
 </section>
 </div><div class="proof example admonition" id="ex-weierstrass">
@@ -429,14 +428,14 @@ $<span class="math notranslate nohighlight">\(\|r - \frac{nr}{n}\| &lt; \frac{1}
 <p class="admonition-title"><span class="caption-number">Example 5 </span> (Separability of Continuous Functions)</p>
 <section class="example-content" id="proof-content">
 <p><span class="math notranslate nohighlight">\(\mathcal{C}^0([-1, 1])\)</span> define the basis set
-$<span class="math notranslate nohighlight">\(\{ ax^n : a \in \mathbb{Q},\ n \in \mathbb{N} \cup \{ 0 \} \}\)</span>$</p>
+<span class="math notranslate nohighlight">\(\{ ax^n : a \in \mathbb{Q},\ n \in \mathbb{N} \cup \{ 0 \} \}\)</span></p>
 <p>this set is countable and dense in <span class="math notranslate nohighlight">\(\mathcal{C}^0([-1, 1])\)</span> in other words we can approximate any continuous function using a polynomial having rational coefficients. Thus we have a countable Banach space.</p>
 </section>
 </div><div class="proof example admonition" id="ex-l2-separable">
 <p class="admonition-title"><span class="caption-number">Example 6 </span> (Separability of Square Integrable Functions)</p>
 <section class="example-content" id="proof-content">
 <p>The space of square integrable functions <span class="math notranslate nohighlight">\(L^2([-1, 1])\)</span> has basis set
-$<span class="math notranslate nohighlight">\(\{ 1,\ \cos(nx),\ \sin(nx)\}\)</span>$</p>
+<span class="math notranslate nohighlight">\(\{ 1,\ \cos(nx),\ \sin(nx)\}\)</span></p>
 <p>which is countable and hence it is a separable space.</p>
 </section>
 </div><div class="proof example admonition" id="ex-linf-not-separable">
@@ -457,7 +456,7 @@ $<span class="math notranslate nohighlight">\(\{ 1,\ \cos(nx),\ \sin(nx)\}\)</sp
 <p class="admonition-title"><span class="caption-number">Example 8 </span> (Compactness of Unit Ball in R^n)</p>
 <section class="example-content" id="proof-content">
 <p>The closed unit ball
-$<span class="math notranslate nohighlight">\(B_1(0) = \{x \in \mathbb{R}^n : \|x\|_p \leq 1\}\)</span>$</p>
+<span class="math notranslate nohighlight">\(B_1(0) = \{x \in \mathbb{R}^n : \|x\|_p \leq 1\}\)</span></p>
 <p>is compact by Heine-Borel. Equivalently, we can take any sequence <span class="math notranslate nohighlight">\(\{x_n\} \subset B_1(0)\)</span>. Since that sequence is bounded Bolzano-Weierstrass implies that it has a convergence subsequence.</p>
 </section>
 </div><div class="proof remark admonition" id="rem-compact-infinite">
@@ -469,7 +468,7 @@ $<span class="math notranslate nohighlight">\(B_1(0) = \{x \in \mathbb{R}^n : \|
 <p class="admonition-title"><span class="caption-number">Definition 5 </span> (Equivalent Norms)</p>
 <section class="definition-content" id="proof-content">
 <p>Two norms <span class="math notranslate nohighlight">\(\|x\|^1\)</span> and <span class="math notranslate nohighlight">\(\|x\|^2\)</span> are equivalent if there exists <span class="math notranslate nohighlight">\(a, b &gt; 0\)</span> such that
-$<span class="math notranslate nohighlight">\(a \|x\|^1 \leq \|x\|^2 \leq b \|x\|^1\quad \forall x \in X\)</span>$</p>
+<span class="math notranslate nohighlight">\(a \|x\|^1 \leq \|x\|^2 \leq b \|x\|^1\quad \forall x \in X\)</span></p>
 </section>
 </div><p>Note that the previous definition calls two norms equivalent when they induce the same underlying topology on <span class="math notranslate nohighlight">\(X\)</span>. In other words, they generate the same open sets or intuitively induce the same notion of two elements being close.</p>
 <div class="proof theorem admonition" id="thm-rn-norms-equiv">
@@ -498,27 +497,27 @@ $<span class="math notranslate nohighlight">\(a \|x\|^1 \leq \|x\|^2 \leq b \|x\
 <p class="admonition-title"><span class="caption-number">Definition 6 </span> (L^p Spaces)</p>
 <section class="definition-content" id="proof-content">
 <p>For <span class="math notranslate nohighlight">\(1 \leq p &lt; \infty\)</span> we define the spaces of integrable functions
-$<span class="math notranslate nohighlight">\(L^p(\Omega) = \{f : \Omega \mapsto \mathbb{R} : \|f\|_p = \left( \int_{\Omega} |f(x)|^p d\mu \right)^{1/p} &lt; \infty \}\)</span>$</p>
+<span class="math notranslate nohighlight">\(L^p(\Omega) = \{f : \Omega \mapsto \mathbb{R} : \|f\|_p = \left( \int_{\Omega} |f(x)|^p d\mu \right)^{1/p} &lt; \infty \}\)</span></p>
 </section>
 </div><div class="proof theorem admonition" id="thm-mollifiers">
 <p class="admonition-title"><span class="caption-number">Theorem 2 </span> (Mollifiers Theorem)</p>
 <section class="theorem-content" id="proof-content">
 <p>Given <span class="math notranslate nohighlight">\(f \in \mathcal{C}^0_c(\Omega)\)</span>, for each <span class="math notranslate nohighlight">\(\varepsilon &gt; 0\)</span> <span class="math notranslate nohighlight">\(\exists \phi \in \mathcal{C}^\infty_c(\Omega)\)</span> such that
-$<span class="math notranslate nohighlight">\(\|f - \phi\|_{\infty} &lt; \varepsilon\)</span>$</p>
+<span class="math notranslate nohighlight">\(\|f - \phi\|_{\infty} &lt; \varepsilon\)</span></p>
 </section>
 </div><div class="proof theorem admonition" id="thm-c0-dense-lp">
 <p class="admonition-title"><span class="caption-number">Theorem 3 </span> (Density of C^0 in L^p)</p>
 <section class="theorem-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(\Omega\)</span> be bounded, then <span class="math notranslate nohighlight">\(\mathcal{C}^0(\Omega)\)</span> is dense in <span class="math notranslate nohighlight">\(L^p(\Omega)\)</span> i.e.
-$<span class="math notranslate nohighlight">\(L^p(\Omega) = \overline{\mathcal{C}^0_c(\Omega)}\)</span>$</p>
+<span class="math notranslate nohighlight">\(L^p(\Omega) = \overline{\mathcal{C}^0_c(\Omega)}\)</span></p>
 <p>where the closure is wrt. to the p-norm, and <span class="math notranslate nohighlight">\(L^p\)</span> is separable.</p>
 </section>
 </div><div class="proof admonition" id="proof">
 <p>Proof. The key to the proof is to recall that any measurable function can be approximated using simple functions. Recall that we say a function is simple if
-$<span class="math notranslate nohighlight">\(s_n = \sum_{i = 1}^{n} c_j \chi_{I_j}(x)\)</span>$</p>
+<span class="math notranslate nohighlight">\(s_n = \sum_{i = 1}^{n} c_j \chi_{I_j}(x)\)</span></p>
 <p>where <span class="math notranslate nohighlight">\(\chi_{I_j}\)</span> is the indicator function of a set, recall that from the construction of the Lebesque integral these sets can be complicated (i.e. contain several disjointed pieces). Then given any measurable function <span class="math notranslate nohighlight">\(f(x)\)</span> we can find a sequence of increasing simple functions (i.e. <span class="math notranslate nohighlight">\(s_1(x) \leq s_2(x) \leq \dots \leq f(x)\)</span>) such that <span class="math notranslate nohighlight">\(s_n(x) \to f(x)\)</span> pointwise for almost every <span class="math notranslate nohighlight">\(x\)</span> i.e. <span class="math notranslate nohighlight">\(|s_n - f| &lt; \varepsilon\)</span>.</p>
 <p>We have that <span class="math notranslate nohighlight">\(|s_n - f|^p \leq 2|f|^p \in L^1\)</span> and the Lebesgue dominated convergence theorem implies that
-$<span class="math notranslate nohighlight">\(\lim_{n\to\infty} \int |s_n - f|^p d\mu = \int \lim_{n\to\infty} |s_n - f|^p d\mu \leq C \varepsilon\)</span>$</p>
+<span class="math notranslate nohighlight">\(\lim_{n\to\infty} \int |s_n - f|^p d\mu = \int \lim_{n\to\infty} |s_n - f|^p d\mu \leq C \varepsilon\)</span></p>
 <p>Thus we have that <span class="math notranslate nohighlight">\(\|s_n - f\|_p \to 0\)</span>.
 Finally note that each simple function is continuous and we can pick the weights to be rational, and for the final step mollify each of the characteristic functions.</p>
 </div>
@@ -530,21 +529,21 @@ Finally note that each simple function is continuous and we can pick the weights
 </div><div class="proof admonition" id="proof">
 <p>Proof. We must show that every Cauchy sequence in <span class="math notranslate nohighlight">\(L^p\)</span> converges. Let <span class="math notranslate nohighlight">\(\{f_n\}\)</span> be a Cauchy sequence in <span class="math notranslate nohighlight">\(L^p\)</span> i.e. <span class="math notranslate nohighlight">\(\forall \varepsilon &gt; 0\)</span> <span class="math notranslate nohighlight">\(\exists N :\)</span> <span class="math notranslate nohighlight">\(\|f_n - f_m\| &lt; \varepsilon\)</span> <span class="math notranslate nohighlight">\(\forall n,m &gt; N\)</span>.</p>
 <p>Recall that we can extract a subsequence from a Cauchy sequence (I believe this is often called a diagonal Cantor argument?) by selecting an increasing sequence <span class="math notranslate nohighlight">\(n_j\)</span> such that
-$<span class="math notranslate nohighlight">\(\|f_{n_{k+1}} - f_{n_k}\| &lt; 2^{-k},\ k = 1, 2, \dots\)</span>$</p>
+<span class="math notranslate nohighlight">\(\|f_{n_{k+1}} - f_{n_k}\| &lt; 2^{-k},\ k = 1, 2, \dots\)</span></p>
 <p>Define
-$<span class="math notranslate nohighlight">\(G_k := \sum_{k=1}^{K} |f_{n_{k+1}} - f_{n_k}|\)</span>$</p>
+<span class="math notranslate nohighlight">\(G_k := \sum_{k=1}^{K} |f_{n_{k+1}} - f_{n_k}|\)</span></p>
 <p>and <span class="math notranslate nohighlight">\(G = \lim_k G_k\)</span>. By Minkowski’s inequality we have
-$<span class="math notranslate nohighlight">\(\|G_k\|_p \leq \sum_{k=1}^{K} \|f_{n_{k+1}} - f_{n_k}\| \leq 1\)</span>$</p>
+<span class="math notranslate nohighlight">\(\|G_k\|_p \leq \sum_{k=1}^{K} \|f_{n_{k+1}} - f_{n_k}\| \leq 1\)</span></p>
 <p>for all <span class="math notranslate nohighlight">\(k\)</span>. Since <span class="math notranslate nohighlight">\(G_k\)</span> is an increasing sequence we apply the Monotone convergence theorem
-$<span class="math notranslate nohighlight">\(\int G^p d\mu = \int \lim_k G_k^p d\mu = \lim_k \int G_k^p d\mu \leq 1\)</span>$</p>
+<span class="math notranslate nohighlight">\(\int G^p d\mu = \int \lim_k G_k^p d\mu = \lim_k \int G_k^p d\mu \leq 1\)</span></p>
 <p>This implies that <span class="math notranslate nohighlight">\(G \in L^p\)</span> and thus <span class="math notranslate nohighlight">\(G(x) &lt; \infty\)</span> almost everywhere.
 Define
-$<span class="math notranslate nohighlight">\(f(x) = f_{n_1} + \sum_{k=1}^{\infty} f_{n_{k+1}} - f_{n_k}\)</span>$</p>
+<span class="math notranslate nohighlight">\(f(x) = f_{n_1} + \sum_{k=1}^{\infty} f_{n_{k+1}} - f_{n_k}\)</span></p>
 <p>Note that this is a telescoping sum so we have that <span class="math notranslate nohighlight">\(f_{n_k} \to f(x)\)</span> almost everywhere. We also have
-$<span class="math notranslate nohighlight">\(\|f\|_p \leq \|f_{n_1}\|_p + \|G\|_p &lt; \infty\)</span>$</p>
+<span class="math notranslate nohighlight">\(\|f\|_p \leq \|f_{n_1}\|_p + \|G\|_p &lt; \infty\)</span></p>
 <p>Thus <span class="math notranslate nohighlight">\(f \in L^p\)</span>.
 Finally, we apply Fatou’s lemma (to show that <span class="math notranslate nohighlight">\(f_n \to f\)</span> in <span class="math notranslate nohighlight">\(L^p\)</span>)
-$<span class="math notranslate nohighlight">\(\int \|f - f_n\|^p d\mu = \int \lim_{k \to \infty} \|f_{n_k} - f_n\|^p d \mu \leq \liminf_{k \to \infty} \int \|f_{n_k} - f_n\|^p d \mu \leq \varepsilon^p\)</span>$</p>
+<span class="math notranslate nohighlight">\(\int \|f - f_n\|^p d\mu = \int \lim_{k \to \infty} \|f_{n_k} - f_n\|^p d \mu \leq \liminf_{k \to \infty} \int \|f_{n_k} - f_n\|^p d \mu \leq \varepsilon^p\)</span></p>
 <p>when <span class="math notranslate nohighlight">\(n_k &gt; N\)</span>. Thus we have that <span class="math notranslate nohighlight">\(\|f - f_n\| \to 0\)</span>.</p>
 </div>
 <hr class="docutils" />
