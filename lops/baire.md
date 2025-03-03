@@ -1,22 +1,13 @@
-# Linear Operators between Banach spaces
-
-
-```{prf:learning-objectives}
-Introduce the Baire category theorem a fundamental tool in the study of linear bounded operators.
-
-1. The Baire category theorem.
-2. The Uniform boundedness principle (Banach-Steinhaus).
-3. The Open Mapping theorem.
-```
-
----
-
-## The Baire category theorem
+# The Baire Category Theorem
 
 In this section we introduce the Baire category theorem. Ultimately the
 Baire category theorem is used to answer the question when is a subset $E \subset X$
-in a topological space small. This section and in particular the qualiatative and
+in a topological space small, which turns out to be a fundamental tools in the study
+of linear bounded operators.
+This section and in particular the qualiatative and
 quantitative discussion is inspired by T. Tao {cite}`tao2009`.
+
+## Small sets in a Measure Space
 
 In a measure theory setting i.e. $X = (X, \mathcal{F}, \mu)$ the "small"
 sets are the nullsets i.e. $E \subset X$ such that $\mu(E) = 0$ or subsets
@@ -35,15 +26,13 @@ the next proposition shows that sets of positive measure can't be "thinly spread
 space, instead they must be concentrated somewhere in mathematical terms there must be a
 ball where the set takes up most of the space.
 
-```{prf:proposition}
+````{prf:proposition}
 Let $E$ be a measurable subset of $\mathbb{R}^d$. Then the following are equivalent
 1. $\mu(E) > 0$
 2. $\forall \varepsilon > 0$ there exists a ball $B$ such that
    $\mu(E \cap B) \geq (1 - \varepsilon)\mu(B)$
-```
 
-```{prf:proof}
-:class: dropdown
+```{dropdown} **Proof:**
 
 - $(1) \implies (2)$. We proceed by contradiction. Suppose that
   $\mu(E) > 0$ but there exists $\varepsilon_0 > 0$ such that every ball
@@ -67,7 +56,9 @@ Let $E$ be a measurable subset of $\mathbb{R}^d$. Then the following are equival
 
   Since we have $\mu(B) > 0$ we have $\mu(E \cap B) > 0$, and we have that
   $\mu(E) \geq \mu(E \cap B) > 0.$
+
 ```
+````
 
 The contrapositive of this statement would be that if a set $E$ never
 occupies a large portion of any ball, then $E$ must have measure zero.
@@ -98,32 +89,37 @@ at least one of the $E_n$ is dense in a sub-ball $B'$ of $B$
 the countable union of nowhere dense sets cannot contain a ball.
 ```
 
-_Why do we care?_ The consequence of this theorem is that
+
+````{prf:example} **Why do we care?**
+:class: dropdown
+
+The consequence of this theorem is that
 $\mathbb{R}^d$ or $\mathbb{C}^d$ cannot be covered by a countable union of
 proper subspaces.
 
-```{prf:definition}
+```{prf:definition} Proper subspaces
+:class: dropdown
+
 $W \subset V$ is a proper subspace of $V$ such that
 1. A subset $V$ i.e. $W \subset V$.
 2. Strictly smaller than $V$.
 3. Still a vector space.
 ```
 
-```{prf:example}
 In $\mathbb{R}^3$ examples of proper subspaces are:
 1. The $xy$-plane.
 2. A line through the origin.
-3. The origin $\{ (0, 0, 0) \}$.
 
 Baire says that we can't write $\mathbb{R}^3$ as a countable union of these
 nowhere dense proper subspaces.
-```
 
 ```{figure} /_static/img/r2_subspaces.svg
 :width: 500px
 :name: r2-subspaces-fig
 
 $\mathbb{R}^2$ cannot be covered by a countable union of proper subspaces (lines through the origin).
+```
+````
 
 ```{prf:remark}
 Note that of course we could also prove these results using measure theory
@@ -132,7 +128,8 @@ The _advantage_ of Baire's theorem is that it easily extends
 to infinite dimensional vectorspaces.
 ```
 
-### Consequences of the Baire Category theorem
+
+## Consequences of the Baire Category theorem
 
 The Baire category theorem leads to three fundamental equivalences between the
 qualitative theory of continuous linear operators on Banach spaces e.g.
@@ -154,7 +151,9 @@ $A$ by simply establishing that it is bounded (which usually is easier).
    of a (weakly continuous) operator $T$ with the quantitative regularity of
    the operator.
 
+
 ```{prf:remark}
+
 Note that these results are not used much in practice, because one usually
 works in the reverse direction i.e. first prove bounds, and then derive
 the operator's qualitative properties. But crucially these results
@@ -166,9 +165,7 @@ Next we will explore the uniform boundedness principle, and the open
 mapping theorem while we leave the closed graph theorem for later.
 
 
-## The uniform boundedness principle (Banach-Steinhaus)
 
 
-## The Open Mapping Theorem
 
 

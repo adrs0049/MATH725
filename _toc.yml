@@ -4,10 +4,13 @@ parts:
   - caption: Introduction
     chapters:
     - file: notes/week1.md
-  - caption: Basic Functional Analysis
-    chapters:
     - file: notes/week2.md
-    - file: notes/week3.md
+  - caption: Linear Operators
+    chapters:
+      - file: lops/lops.md
+      - file: lops/baire.md
+      - file: lops/banach-steinhaus.md
+      - file: lops/open-map.md
   - caption: Jupyter Notebooks
     chapters:
     - file: notebooks/01_fourier_series.ipynb

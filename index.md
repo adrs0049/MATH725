@@ -1,4 +1,4 @@
-# MATH 725 Introduction to Functional Analysis
+# MATH 725 Applied Functional Analysis
 
 ## Description
 
