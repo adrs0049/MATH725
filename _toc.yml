@@ -7,6 +7,7 @@ parts:
   - caption: Basic Functional Analysis
     chapters:
     - file: notes/week2.md
+    - file: notes/week3.md
   - caption: Jupyter Notebooks
     chapters:
     - file: notebooks/01_linear_systems.ipynb

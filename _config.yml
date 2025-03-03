@@ -16,6 +16,9 @@ sphinx:
       - deflist
       - dollarmath
       - html_image
+    proof_learning_objectives_template: "proof-learning-objectives"
+    proof_titles:
+      learning-objectives: "Learning Objectives"
 only_build_toc_files: true
 execute:
     execute_notebooks: cache
@@ -23,6 +26,8 @@ html:
   home_page_in_navbar: true
   use_repository_button: true
   google_analytics_id:
+  extra_css:
+    - _static/custom.css
 launch_buttons:
   colab_url: "https://colab.research.google.com"
 repository:

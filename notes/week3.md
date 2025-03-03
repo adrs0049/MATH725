@@ -119,7 +119,7 @@ Baire says that we can't write $\mathbb{R}^3$ as a countable union of these
 nowhere dense proper subspaces.
 ```
 
-```{figure} img/r2_subspaces.svg
+```{figure} /_static/img/r2_subspaces.svg
 :width: 500px
 :name: r2-subspaces-fig
 
@@ -136,7 +136,7 @@ to infinite dimensional vectorspaces.
 
 The Baire category theorem leads to three fundamental equivalences between the
 qualitative theory of continuous linear operators on Banach spaces e.g.
-finiteness, subjectivity to the quantitative theory e.g. estimates {cite}`tai2009`.
+finiteness, subjectivity to the quantitative theory e.g. estimates {cite}`tao2009`.
 We have already seen the first of these relationships.
 Recall that for a linear operator $A : X \mapsto Y$ we have that
 $A\ \mathrm{is\ continuous} \iff\ A\ \mathrm{is\ bounded}.$
