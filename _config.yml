@@ -8,6 +8,7 @@ use_issues_button : true
 sphinx:
   extra_extensions:
     - sphinx_proof
+    - sprinx_togglebutton
   config:
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     myst_enable_extensions:
