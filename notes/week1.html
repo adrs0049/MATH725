@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Modern Applied Mathematics &#8212; Applied Linear Algebra</title>
+    <title>Introduction &#8212; Applied Linear Algebra</title>
   
   
   
@@ -65,7 +65,7 @@
     <script src="../_static/main.js?v=53e03820"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="The Basics" href="week2.html" />
+    <link rel="next" title="Basic Functional Analysis" href="week2.html" />
     <link rel="prev" title="MATH 725 Introduction to Functional Analysis" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -178,10 +178,13 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes by Week</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modern Applied Mathematics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week2.html">The Basics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Functional Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="week2.html">Basic Functional Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
 <ul class="nav bd-sidenav">
@@ -192,6 +195,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../appendix/multiplication.html">Matrix Multiplication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/solving_special_matrices.html">Solving special matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/gaussian_elimination_process.html">Gaussian Elimination</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
 </ul>
 
     </div>
@@ -345,7 +352,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Modern Applied Mathematics</h1>
+    <h1>Introduction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -355,7 +362,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-applied-mathematics">Modern Applied Mathematics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-equations">Differential equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-diffusion-equation">The Diffusion Equation</a></li>
 </ul>
             </nav>
         </div>
@@ -367,16 +376,19 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="modern-applied-mathematics">
-<h1>Modern Applied Mathematics<a class="headerlink" href="#modern-applied-mathematics" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<p>This section serves as a motivation for what we will discuss subsequently.</p>
+<section id="modern-applied-mathematics">
+<h2>Modern Applied Mathematics<a class="headerlink" href="#modern-applied-mathematics" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Development of new mathematical models (modeling).</p></li>
 <li><p><strong>Theoretical analysis of mathematical models.</strong></p></li>
 <li><p>Numerical solutions of these models.</p></li>
 <li><p>Data inferences and statistical learning.</p></li>
 </ul>
-<p>Here we will focus on the second point.</p>
-<hr class="docutils" />
+<p>This course focuses on the second point.</p>
+</section>
 <section id="differential-equations">
 <h2>Differential equations<a class="headerlink" href="#differential-equations" title="Link to this heading">#</a></h2>
 <p>We motivate the need for the development of functional analysis through the ubiquitous nature of differential equations. Similar functional analytical techniques are useful when studying stochastic differential equations, and many other applications.</p>
@@ -422,7 +434,9 @@ document.write(`
 <p>Thus the phase-space for a PDE is a function space, and the PDE becomes an operator between function spaces. Whether we can invert these operators we will discuss in our chapter on operator theory.</p>
 </li>
 </ul>
-<hr class="docutils" />
+</section>
+<section id="the-diffusion-equation">
+<h2>The Diffusion Equation<a class="headerlink" href="#the-diffusion-equation" title="Link to this heading">#</a></h2>
 <p>Let’s discuss the heat / diffusion equation example in a bit more detail. Suppose we have the heat equation on the interval <span class="math notranslate nohighlight">\([0, L]\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{cases}
@@ -491,7 +505,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Basics</p>
+        <p class="prev-next-title">Basic Functional Analysis</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -511,7 +525,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-applied-mathematics">Modern Applied Mathematics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-equations">Differential equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-diffusion-equation">The Diffusion Equation</a></li>
 </ul>
   </nav></div>
 

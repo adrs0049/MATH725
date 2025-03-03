@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>The Basics &#8212; Applied Linear Algebra</title>
+    <title>Basic Functional Analysis &#8212; Applied Linear Algebra</title>
   
   
   
@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Linear Systems of Equations" href="../notebooks/01_linear_systems.html" />
-    <link rel="prev" title="Modern Applied Mathematics" href="week1.html" />
+    <link rel="prev" title="Introduction" href="week1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -178,10 +178,13 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes by Week</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="week1.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Functional Analysis</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="week1.html">Modern Applied Mathematics</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Basics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Basic Functional Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
 <ul class="nav bd-sidenav">
@@ -192,6 +195,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../appendix/multiplication.html">Matrix Multiplication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/solving_special_matrices.html">Solving special matrices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/gaussian_elimination_process.html">Gaussian Elimination</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
 </ul>
 
     </div>
@@ -345,7 +352,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>The Basics</h1>
+    <h1>Basic Functional Analysis</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -356,8 +363,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-thursday">Lesson: Thursday</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#banach-spaces">Banach Spaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spaces-of-integrable-continuous-and-differentiable-functions">Spaces of integrable, continuous and differentiable functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-of-integrable-functions-via-smooth-functions">Approximation of integrable functions via smooth functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rainbow-of-function-spaces">The Rainbow of Function Spaces</a></li>
 </ul>
 </li>
 </ul>
@@ -371,10 +380,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="the-basics">
-<h1>The Basics<a class="headerlink" href="#the-basics" title="Link to this heading">#</a></h1>
-<p><em>February 3, 2024</em>
-<em>Weekly Course Outline</em></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="basic-functional-analysis">
+<h1>Basic Functional Analysis<a class="headerlink" href="#basic-functional-analysis" title="Link to this heading">#</a></h1>
 <section id="learning-goals">
 <h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <p>The goals of these few lectures is to review a few core ideas, and set the stage of classic function spaces we will use to develop the theory.</p>
@@ -382,8 +389,12 @@ document.write(`
 <li><p>The Basics of Functional Analysis.</p></li>
 <li><p>What is a Banach Space?</p></li>
 <li><p>Density, separability and compactness.</p></li>
+<li><p>The spaces of continuous, differentiable and integral functions.</p></li>
+<li><p>The Rainbow of function spaces.</p></li>
 </ol>
-<hr class="docutils" />
+</section>
+<section id="banach-spaces">
+<h2>Banach Spaces<a class="headerlink" href="#banach-spaces" title="Link to this heading">#</a></h2>
 <div class="proof definition admonition" id="def-banach">
 <p class="admonition-title"><span class="caption-number">Definition 1 </span> (Banach Space)</p>
 <section class="definition-content" id="proof-content">
@@ -395,8 +406,7 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> is a Banach space with any p-norm i.e.
 <span class="math notranslate nohighlight">\(\|x\|_p = \left( \sum_{i=1}^{n}|x_i|^p \right)^{1/p}\)</span></p>
 </section>
-</div><hr class="docutils" />
-<p>We need the following basic topological notions.</p>
+</div><p>We need the following basic topological notions.</p>
 <div class="proof definition admonition" id="def-dense">
 <p class="admonition-title"><span class="caption-number">Definition 2 </span> (Dense Subset)</p>
 <section class="definition-content" id="proof-content">
@@ -480,26 +490,19 @@ document.write(`
 <p>Proof. This is merely a sketch of a proof. They key idea is that in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> all the unit balls can be scaled so that they fit into each other. Allowing us to show that the open sets in <span class="math notranslate nohighlight">\((\mathbb{R}^n, \|x\|_p)\)</span> are the same as in <span class="math notranslate nohighlight">\((\mathbb{R}^n, \|x\|_q)\)</span>.</p>
 </div>
 </section>
-<section id="lesson-thursday">
-<h2>Lesson: Thursday<a class="headerlink" href="#lesson-thursday" title="Link to this heading">#</a></h2>
-<section id="id1">
-<h3>Learning Goals<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Define some typical function spaces that are central to the theory.</p>
-<ol class="arabic simple">
-<li><p>The spaces of continuous, differentiable and integral functions.</p></li>
-<li><p>Density, Separability in <span class="math notranslate nohighlight">\(L^p\)</span> spaces e.g. approximation of functions by simple functions.</p></li>
-<li><p>The Rainbow of function spaces.</p></li>
-</ol>
-<hr class="docutils" />
-<p>For the definitions of the spaces of continuous, continuously differentiable and Hoelder continuous functions see the class textbook.</p>
-<hr class="docutils" />
+<section id="spaces-of-integrable-continuous-and-differentiable-functions">
+<h2>Spaces of integrable, continuous and differentiable functions<a class="headerlink" href="#spaces-of-integrable-continuous-and-differentiable-functions" title="Link to this heading">#</a></h2>
+<p>Define some typical function spaces that are central to the theory.
+For the definitions of the spaces of continuous, continuously differentiable and Hoelder continuous functions see the class textbook.</p>
 <div class="proof definition admonition" id="def-lp-spaces">
 <p class="admonition-title"><span class="caption-number">Definition 6 </span> (L^p Spaces)</p>
 <section class="definition-content" id="proof-content">
 <p>For <span class="math notranslate nohighlight">\(1 \leq p &lt; \infty\)</span> we define the spaces of integrable functions
 <span class="math notranslate nohighlight">\(L^p(\Omega) = \{f : \Omega \mapsto \mathbb{R} : \|f\|_p = \left( \int_{\Omega} |f(x)|^p d\mu \right)^{1/p} &lt; \infty \}\)</span></p>
 </section>
-</div><div class="proof theorem admonition" id="thm-mollifiers">
+</div><section id="approximation-of-integrable-functions-via-smooth-functions">
+<h3>Approximation of integrable functions via smooth functions<a class="headerlink" href="#approximation-of-integrable-functions-via-smooth-functions" title="Link to this heading">#</a></h3>
+<div class="proof theorem admonition" id="thm-mollifiers">
 <p class="admonition-title"><span class="caption-number">Theorem 2 </span> (Mollifiers Theorem)</p>
 <section class="theorem-content" id="proof-content">
 <p>Given <span class="math notranslate nohighlight">\(f \in \mathcal{C}^0_c(\Omega)\)</span>, for each <span class="math notranslate nohighlight">\(\varepsilon &gt; 0\)</span> <span class="math notranslate nohighlight">\(\exists \phi \in \mathcal{C}^\infty_c(\Omega)\)</span> such that
@@ -546,7 +549,9 @@ Finally, we apply Fatou’s lemma (to show that <span class="math notranslate no
 <span class="math notranslate nohighlight">\(\int \|f - f_n\|^p d\mu = \int \lim_{k \to \infty} \|f_{n_k} - f_n\|^p d \mu \leq \liminf_{k \to \infty} \int \|f_{n_k} - f_n\|^p d \mu \leq \varepsilon^p\)</span></p>
 <p>when <span class="math notranslate nohighlight">\(n_k &gt; N\)</span>. Thus we have that <span class="math notranslate nohighlight">\(\|f - f_n\| \to 0\)</span>.</p>
 </div>
-<hr class="docutils" />
+</section>
+<section id="the-rainbow-of-function-spaces">
+<h3>The Rainbow of Function Spaces<a class="headerlink" href="#the-rainbow-of-function-spaces" title="Link to this heading">#</a></h3>
 <div class="proof remark admonition" id="rem-rainbow">
 <p class="admonition-title"><span class="caption-number">Remark 2 </span> (The Rainbow of Function Spaces)</p>
 <section class="remark-content" id="proof-content">
@@ -593,7 +598,7 @@ Finally, we apply Fatou’s lemma (to show that <span class="math notranslate no
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Modern Applied Mathematics</p>
+        <p class="prev-next-title">Introduction</p>
       </div>
     </a>
     <a class="right-next"
@@ -622,8 +627,10 @@ Finally, we apply Fatou’s lemma (to show that <span class="math notranslate no
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesson-thursday">Lesson: Thursday</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#banach-spaces">Banach Spaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spaces-of-integrable-continuous-and-differentiable-functions">Spaces of integrable, continuous and differentiable functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-of-integrable-functions-via-smooth-functions">Approximation of integrable functions via smooth functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rainbow-of-function-spaces">The Rainbow of Function Spaces</a></li>
 </ul>
 </li>
 </ul>
