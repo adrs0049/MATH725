@@ -2,14 +2,15 @@ title: Applied Linear Algebra
 author: Andreas Buttenschoen.
 logo: img/nn.png
 copyright : "2025"
+use_issues_button : true
 bibtex_bibfiles:
   - references.bib
-use_issues_button : true
 sphinx:
   extra_extensions:
     - sphinx_proof
-    - sprinx_togglebutton
+    - sphinx_togglebutton
   config:
+    bibtex_reference_style: author_year
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     myst_enable_extensions:
       - amsmath
