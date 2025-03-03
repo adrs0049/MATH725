@@ -5,3 +5,6 @@ sphinxcontrib-bibtex
 myst-nb
 myst-parser
 sphinx-book-theme
+numpy
+matplotlib
+scipy
