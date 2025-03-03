@@ -70,7 +70,7 @@ dense. The previous discussion gives a "cute" analogy between small sets in a me
 space (i.e. sets that don't occupy a large portion of a ball) and the topological
 nowhere dense sets (i.e. not dense in any open ball).
 
-## Baire Category
+## Small Sets in Topological Spaces
 
 In this section we want to formalize what it means to be small in a topological space
 and start by proving a similar result to the lemma in the previous section.
