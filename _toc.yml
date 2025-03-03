@@ -14,3 +14,6 @@ parts:
     - file: appendix/multiplication.md
     - file: appendix/solving_special_matrices.md
     - file: appendix/gaussian_elimination_process.md
+  - caption: References
+    chapters:
+    - file: bibliography

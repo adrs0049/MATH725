@@ -16,7 +16,7 @@ Introduce the Baire category theorem a fundamental tool in the study of linear b
 In this section we introduce the Baire category theorem. Ultimately the
 Baire category theorem is used to answer the question when is a subset $E \subset X$
 in a topological space small. This section and in particular the qualiatative and
-quantitative discussion is inspired by T. Tao.
+quantitative discussion is inspired by T. Tao {cite}`tao2009`.
 
 In a measure theory setting i.e. $X = (X, \mathcal{F}, \mu)$ the "small"
 sets are the nullsets i.e. $E \subset X$ such that $\mu(E) = 0$ or subsets
@@ -136,7 +136,7 @@ to infinite dimensional vectorspaces.
 
 The Baire category theorem leads to three fundamental equivalences between the
 qualitative theory of continuous linear operators on Banach spaces e.g.
-finiteness, subjectivity to the quantitative theory e.g. estimates.
+finiteness, subjectivity to the quantitative theory e.g. estimates {cite}`tai2009`.
 We have already seen the first of these relationships.
 Recall that for a linear operator $A : X \mapsto Y$ we have that
 $A\ \mathrm{is\ continuous} \iff\ A\ \mathrm{is\ bounded}.$

@@ -2,6 +2,8 @@ title: Applied Linear Algebra
 author: Andreas Buttenschoen.
 logo: img/nn.png
 copyright : "2025"
+bibtex_bibfiles:
+  - references.bib
 use_issues_button : true
 sphinx:
   extra_extensions:
