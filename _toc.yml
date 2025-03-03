@@ -10,7 +10,7 @@ parts:
     - file: notes/week3.md
   - caption: Jupyter Notebooks
     chapters:
-    - file: notebooks/01_linear_systems.ipynb
+    - file: notebooks/01_fourier_series.ipynb
   - caption: Appendix
     chapters:
     - file: appendix/multiplication.md
