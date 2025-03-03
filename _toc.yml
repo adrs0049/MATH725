@@ -2,6 +2,7 @@ format: jb-book
 root: index
 parts:
   - caption: Introduction
+    chapters:
     - file: notes/week1.md
   - caption: Basic Functional Analysis
     chapters:
