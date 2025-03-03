@@ -93,7 +93,7 @@ A subset $E \subset X$ is compact if either:
 2. each sequence $\{x_n\} \subset E$ contains a convergent subsequence.
 ```
 
-```{prf:example} Compactness of Unit Ball in R^n
+```{prf:example} Compactness of Unit Ball in $\mathbb{R}^n$
 :label: ex-unit-ball-compact
 
 The closed unit ball
@@ -117,7 +117,7 @@ $a \|x\|^1 \leq \|x\|^2 \leq b \|x\|^1\quad \forall x \in X$
 
 Note that the previous definition calls two norms equivalent when they induce the same underlying topology on $X$. In other words, they generate the same open sets or intuitively induce the same notion of two elements being close.
 
-```{prf:theorem} Equivalence of Norms in R^n
+```{prf:theorem} Equivalence of Norms in $\mathbb{R}^n$
 :label: thm-rn-norms-equiv
 
 In $\mathbb{R}^n$ all norms are equivalent.
@@ -134,7 +134,7 @@ This is merely a sketch of a proof. They key idea is that in $\mathbb{R}^n$ all 
 Define some typical function spaces that are central to the theory.
 For the definitions of the spaces of continuous, continuously differentiable and Hoelder continuous functions see the class textbook.
 
-```{prf:definition} L^p Spaces
+```{prf:definition} $L^p$ Spaces
 :label: def-lp-spaces
 
 For $1 \leq p < \infty$ we define the spaces of integrable functions
@@ -150,16 +150,15 @@ Given $f \in \mathcal{C}^0_c(\Omega)$, for each $\varepsilon > 0$ $\exists \phi 
 $\|f - \phi\|_{\infty} < \varepsilon$
 ```
 
-```{prf:theorem} Density of C^0 in L^p
+````{prf:theorem} Density of $\mathcal{C}^0$ in $L^p$
 :label: thm-c0-dense-lp
 
 Let $\Omega$ be bounded, then $\mathcal{C}^0(\Omega)$ is dense in $L^p(\Omega)$ i.e.
 $L^p(\Omega) = \overline{\mathcal{C}^0_c(\Omega)}$
 
 where the closure is wrt. to the p-norm, and $L^p$ is separable.
-```
 
-```{prf:proof}
+```{dropdown} **Proof:**
 
 The key to the proof is to recall that any measurable function can be approximated using simple functions. Recall that we say a function is simple if
 $s_n = \sum_{i = 1}^{n} c_j \chi_{I_j}(x)$
@@ -172,14 +171,14 @@ $\lim_{n\to\infty} \int |s_n - f|^p d\mu = \int \lim_{n\to\infty} |s_n - f|^p d\
 Thus we have that $\|s_n - f\|_p \to 0$.
 Finally note that each simple function is continuous and we can pick the weights to be rational, and for the final step mollify each of the characteristic functions.
 ```
+````
 
-```{prf:theorem} L^p is a Banach Space
+````{prf:theorem} $L^p$ is a Banach Space
 :label: thm-lp-banach
 
 $L^p$ is a Banach space.
-```
 
-```{prf:proof}
+```{dropdown} **Proof:**
 
 We must show that every Cauchy sequence in $L^p$ converges. Let $\{f_n\}$ be a Cauchy sequence in $L^p$ i.e. $\forall \varepsilon > 0$ $\exists N :$ $\|f_n - f_m\| < \varepsilon$ $\forall n,m > N$.
 
@@ -208,6 +207,8 @@ $\int \|f - f_n\|^p d\mu = \int \lim_{k \to \infty} \|f_{n_k} - f_n\|^p d \mu \l
 
 when $n_k > N$. Thus we have that $\|f - f_n\| \to 0$.
 ```
+
+````
 
 ### The Rainbow of Function Spaces
 

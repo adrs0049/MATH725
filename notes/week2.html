@@ -67,8 +67,8 @@
     <script src="../_static/main.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Linear Operators between Banach spaces" href="week3.html" />
-    <link rel="prev" title="Introduction" href="week1.html" />
+    <link rel="next" title="Linear Operators on Banach spaces" href="../lops/lops.html" />
+    <link rel="prev" title="Modern Applied Mathematics" href="week1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -176,18 +176,21 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    MATH 725 Introduction to Functional Analysis
+                    MATH 725 Applied Functional Analysis
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="week1.html">Introduction</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Functional Analysis</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="week1.html">Modern Applied Mathematics</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Basic Functional Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="week3.html">Linear Operators between Banach spaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Operators</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lops/lops.html">Linear Operators on Banach spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lops/baire.html">The Baire Category Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lops/banach-steinhaus.html">The uniform boundedness principle (Banach-Steinhaus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lops/open-map.html">The Open Mapping Theorem</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
 <ul class="nav bd-sidenav">
@@ -466,7 +469,7 @@ document.write(`
 </ol>
 </section>
 </div><div class="proof example admonition" id="ex-unit-ball-compact">
-<p class="admonition-title"><span class="caption-number">Example 8 </span> (Compactness of Unit Ball in R^n)</p>
+<p class="admonition-title"><span class="caption-number">Example 8 </span> (Compactness of Unit Ball in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>)</p>
 <section class="example-content" id="proof-content">
 <p>The closed unit ball
 <span class="math notranslate nohighlight">\(B_1(0) = \{x \in \mathbb{R}^n : \|x\|_p \leq 1\}\)</span></p>
@@ -485,7 +488,7 @@ document.write(`
 </section>
 </div><p>Note that the previous definition calls two norms equivalent when they induce the same underlying topology on <span class="math notranslate nohighlight">\(X\)</span>. In other words, they generate the same open sets or intuitively induce the same notion of two elements being close.</p>
 <div class="proof theorem admonition" id="thm-rn-norms-equiv">
-<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (Equivalence of Norms in R^n)</p>
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (Equivalence of Norms in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>)</p>
 <section class="theorem-content" id="proof-content">
 <p>In <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> all norms are equivalent.</p>
 </section>
@@ -498,7 +501,7 @@ document.write(`
 <p>Define some typical function spaces that are central to the theory.
 For the definitions of the spaces of continuous, continuously differentiable and Hoelder continuous functions see the class textbook.</p>
 <div class="proof definition admonition" id="def-lp-spaces">
-<p class="admonition-title"><span class="caption-number">Definition 6 </span> (L^p Spaces)</p>
+<p class="admonition-title"><span class="caption-number">Definition 6 </span> (<span class="math notranslate nohighlight">\(L^p\)</span> Spaces)</p>
 <section class="definition-content" id="proof-content">
 <p>For <span class="math notranslate nohighlight">\(1 \leq p &lt; \infty\)</span> we define the spaces of integrable functions
 <span class="math notranslate nohighlight">\(L^p(\Omega) = \{f : \Omega \mapsto \mathbb{R} : \|f\|_p = \left( \int_{\Omega} |f(x)|^p d\mu \right)^{1/p} &lt; \infty \}\)</span></p>
@@ -512,47 +515,51 @@ For the definitions of the spaces of continuous, continuously differentiable and
 <span class="math notranslate nohighlight">\(\|f - \phi\|_{\infty} &lt; \varepsilon\)</span></p>
 </section>
 </div><div class="proof theorem admonition" id="thm-c0-dense-lp">
-<p class="admonition-title"><span class="caption-number">Theorem 3 </span> (Density of C^0 in L^p)</p>
+<p class="admonition-title"><span class="caption-number">Theorem 3 </span> (Density of <span class="math notranslate nohighlight">\(\mathcal{C}^0\)</span> in <span class="math notranslate nohighlight">\(L^p\)</span>)</p>
 <section class="theorem-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(\Omega\)</span> be bounded, then <span class="math notranslate nohighlight">\(\mathcal{C}^0(\Omega)\)</span> is dense in <span class="math notranslate nohighlight">\(L^p(\Omega)\)</span> i.e.
 <span class="math notranslate nohighlight">\(L^p(\Omega) = \overline{\mathcal{C}^0_c(\Omega)}\)</span></p>
 <p>where the closure is wrt. to the p-norm, and <span class="math notranslate nohighlight">\(L^p\)</span> is separable.</p>
-</section>
-</div><div class="proof admonition" id="proof">
-<p>Proof. The key to the proof is to recall that any measurable function can be approximated using simple functions. Recall that we say a function is simple if
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text"><strong>Proof:</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The key to the proof is to recall that any measurable function can be approximated using simple functions. Recall that we say a function is simple if
 <span class="math notranslate nohighlight">\(s_n = \sum_{i = 1}^{n} c_j \chi_{I_j}(x)\)</span></p>
-<p>where <span class="math notranslate nohighlight">\(\chi_{I_j}\)</span> is the indicator function of a set, recall that from the construction of the Lebesque integral these sets can be complicated (i.e. contain several disjointed pieces). Then given any measurable function <span class="math notranslate nohighlight">\(f(x)\)</span> we can find a sequence of increasing simple functions (i.e. <span class="math notranslate nohighlight">\(s_1(x) \leq s_2(x) \leq \dots \leq f(x)\)</span>) such that <span class="math notranslate nohighlight">\(s_n(x) \to f(x)\)</span> pointwise for almost every <span class="math notranslate nohighlight">\(x\)</span> i.e. <span class="math notranslate nohighlight">\(|s_n - f| &lt; \varepsilon\)</span>.</p>
-<p>We have that <span class="math notranslate nohighlight">\(|s_n - f|^p \leq 2|f|^p \in L^1\)</span> and the Lebesgue dominated convergence theorem implies that
+<p class="sd-card-text">where <span class="math notranslate nohighlight">\(\chi_{I_j}\)</span> is the indicator function of a set, recall that from the construction of the Lebesque integral these sets can be complicated (i.e. contain several disjointed pieces). Then given any measurable function <span class="math notranslate nohighlight">\(f(x)\)</span> we can find a sequence of increasing simple functions (i.e. <span class="math notranslate nohighlight">\(s_1(x) \leq s_2(x) \leq \dots \leq f(x)\)</span>) such that <span class="math notranslate nohighlight">\(s_n(x) \to f(x)\)</span> pointwise for almost every <span class="math notranslate nohighlight">\(x\)</span> i.e. <span class="math notranslate nohighlight">\(|s_n - f| &lt; \varepsilon\)</span>.</p>
+<p class="sd-card-text">We have that <span class="math notranslate nohighlight">\(|s_n - f|^p \leq 2|f|^p \in L^1\)</span> and the Lebesgue dominated convergence theorem implies that
 <span class="math notranslate nohighlight">\(\lim_{n\to\infty} \int |s_n - f|^p d\mu = \int \lim_{n\to\infty} |s_n - f|^p d\mu \leq C \varepsilon\)</span></p>
-<p>Thus we have that <span class="math notranslate nohighlight">\(\|s_n - f\|_p \to 0\)</span>.
+<p class="sd-card-text">Thus we have that <span class="math notranslate nohighlight">\(\|s_n - f\|_p \to 0\)</span>.
 Finally note that each simple function is continuous and we can pick the weights to be rational, and for the final step mollify each of the characteristic functions.</p>
 </div>
-<div class="proof theorem admonition" id="thm-lp-banach">
-<p class="admonition-title"><span class="caption-number">Theorem 4 </span> (L^p is a Banach Space)</p>
+</details></section>
+</div><div class="proof theorem admonition" id="thm-lp-banach">
+<p class="admonition-title"><span class="caption-number">Theorem 4 </span> (<span class="math notranslate nohighlight">\(L^p\)</span> is a Banach Space)</p>
 <section class="theorem-content" id="proof-content">
 <p><span class="math notranslate nohighlight">\(L^p\)</span> is a Banach space.</p>
-</section>
-</div><div class="proof admonition" id="proof">
-<p>Proof. We must show that every Cauchy sequence in <span class="math notranslate nohighlight">\(L^p\)</span> converges. Let <span class="math notranslate nohighlight">\(\{f_n\}\)</span> be a Cauchy sequence in <span class="math notranslate nohighlight">\(L^p\)</span> i.e. <span class="math notranslate nohighlight">\(\forall \varepsilon &gt; 0\)</span> <span class="math notranslate nohighlight">\(\exists N :\)</span> <span class="math notranslate nohighlight">\(\|f_n - f_m\| &lt; \varepsilon\)</span> <span class="math notranslate nohighlight">\(\forall n,m &gt; N\)</span>.</p>
-<p>Recall that we can extract a subsequence from a Cauchy sequence (I believe this is often called a diagonal Cantor argument?) by selecting an increasing sequence <span class="math notranslate nohighlight">\(n_j\)</span> such that
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text"><strong>Proof:</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">We must show that every Cauchy sequence in <span class="math notranslate nohighlight">\(L^p\)</span> converges. Let <span class="math notranslate nohighlight">\(\{f_n\}\)</span> be a Cauchy sequence in <span class="math notranslate nohighlight">\(L^p\)</span> i.e. <span class="math notranslate nohighlight">\(\forall \varepsilon &gt; 0\)</span> <span class="math notranslate nohighlight">\(\exists N :\)</span> <span class="math notranslate nohighlight">\(\|f_n - f_m\| &lt; \varepsilon\)</span> <span class="math notranslate nohighlight">\(\forall n,m &gt; N\)</span>.</p>
+<p class="sd-card-text">Recall that we can extract a subsequence from a Cauchy sequence (I believe this is often called a diagonal Cantor argument?) by selecting an increasing sequence <span class="math notranslate nohighlight">\(n_j\)</span> such that
 <span class="math notranslate nohighlight">\(\|f_{n_{k+1}} - f_{n_k}\| &lt; 2^{-k},\ k = 1, 2, \dots\)</span></p>
-<p>Define
+<p class="sd-card-text">Define
 <span class="math notranslate nohighlight">\(G_k := \sum_{k=1}^{K} |f_{n_{k+1}} - f_{n_k}|\)</span></p>
-<p>and <span class="math notranslate nohighlight">\(G = \lim_k G_k\)</span>. By Minkowski’s inequality we have
+<p class="sd-card-text">and <span class="math notranslate nohighlight">\(G = \lim_k G_k\)</span>. By Minkowski’s inequality we have
 <span class="math notranslate nohighlight">\(\|G_k\|_p \leq \sum_{k=1}^{K} \|f_{n_{k+1}} - f_{n_k}\| \leq 1\)</span></p>
-<p>for all <span class="math notranslate nohighlight">\(k\)</span>. Since <span class="math notranslate nohighlight">\(G_k\)</span> is an increasing sequence we apply the Monotone convergence theorem
+<p class="sd-card-text">for all <span class="math notranslate nohighlight">\(k\)</span>. Since <span class="math notranslate nohighlight">\(G_k\)</span> is an increasing sequence we apply the Monotone convergence theorem
 <span class="math notranslate nohighlight">\(\int G^p d\mu = \int \lim_k G_k^p d\mu = \lim_k \int G_k^p d\mu \leq 1\)</span></p>
-<p>This implies that <span class="math notranslate nohighlight">\(G \in L^p\)</span> and thus <span class="math notranslate nohighlight">\(G(x) &lt; \infty\)</span> almost everywhere.
+<p class="sd-card-text">This implies that <span class="math notranslate nohighlight">\(G \in L^p\)</span> and thus <span class="math notranslate nohighlight">\(G(x) &lt; \infty\)</span> almost everywhere.
 Define
 <span class="math notranslate nohighlight">\(f(x) = f_{n_1} + \sum_{k=1}^{\infty} f_{n_{k+1}} - f_{n_k}\)</span></p>
-<p>Note that this is a telescoping sum so we have that <span class="math notranslate nohighlight">\(f_{n_k} \to f(x)\)</span> almost everywhere. We also have
+<p class="sd-card-text">Note that this is a telescoping sum so we have that <span class="math notranslate nohighlight">\(f_{n_k} \to f(x)\)</span> almost everywhere. We also have
 <span class="math notranslate nohighlight">\(\|f\|_p \leq \|f_{n_1}\|_p + \|G\|_p &lt; \infty\)</span></p>
-<p>Thus <span class="math notranslate nohighlight">\(f \in L^p\)</span>.
+<p class="sd-card-text">Thus <span class="math notranslate nohighlight">\(f \in L^p\)</span>.
 Finally, we apply Fatou’s lemma (to show that <span class="math notranslate nohighlight">\(f_n \to f\)</span> in <span class="math notranslate nohighlight">\(L^p\)</span>)
 <span class="math notranslate nohighlight">\(\int \|f - f_n\|^p d\mu = \int \lim_{k \to \infty} \|f_{n_k} - f_n\|^p d \mu \leq \liminf_{k \to \infty} \int \|f_{n_k} - f_n\|^p d \mu \leq \varepsilon^p\)</span></p>
-<p>when <span class="math notranslate nohighlight">\(n_k &gt; N\)</span>. Thus we have that <span class="math notranslate nohighlight">\(\|f - f_n\| \to 0\)</span>.</p>
+<p class="sd-card-text">when <span class="math notranslate nohighlight">\(n_k &gt; N\)</span>. Thus we have that <span class="math notranslate nohighlight">\(\|f - f_n\| \to 0\)</span>.</p>
 </div>
-</section>
+</details></section>
+</div></section>
 <section id="the-rainbow-of-function-spaces">
 <h3>The Rainbow of Function Spaces<a class="headerlink" href="#the-rainbow-of-function-spaces" title="Permalink to this heading">#</a></h3>
 <div class="proof remark admonition" id="rem-rainbow">
@@ -601,15 +608,15 @@ Finally, we apply Fatou’s lemma (to show that <span class="math notranslate no
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction</p>
+        <p class="prev-next-title">Modern Applied Mathematics</p>
       </div>
     </a>
     <a class="right-next"
-       href="week3.html"
+       href="../lops/lops.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Linear Operators between Banach spaces</p>
+        <p class="prev-next-title">Linear Operators on Banach spaces</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

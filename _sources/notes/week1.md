@@ -1,8 +1,4 @@
-# Introduction
-
-This section serves as a motivation for what we will discuss subsequently.
-
-## Modern Applied Mathematics
+# Modern Applied Mathematics
 
 - Development of new mathematical models (modeling).
 - **Theoretical analysis of mathematical models.**

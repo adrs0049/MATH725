@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Linear Operators between Banach spaces &#8212; Applied Functional Analysis</title>
+    <title>The Baire Category Theorem &#8212; Applied Functional Analysis</title>
   
   
   
@@ -63,12 +63,12 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/week3';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lops/baire';</script>
     <script src="../_static/main.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Fourier Series for continuous functions" href="../notebooks/01_fourier_series.html" />
-    <link rel="prev" title="Basic Functional Analysis" href="week2.html" />
+    <link rel="next" title="The uniform boundedness principle (Banach-Steinhaus)" href="banach-steinhaus.html" />
+    <link rel="prev" title="Linear Operators on Banach spaces" href="lops.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -176,18 +176,21 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    MATH 725 Introduction to Functional Analysis
+                    MATH 725 Applied Functional Analysis
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="week1.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/week1.html">Modern Applied Mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notes/week2.html">Basic Functional Analysis</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Functional Analysis</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Operators</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="week2.html">Basic Functional Analysis</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear Operators between Banach spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lops.html">Linear Operators on Banach spaces</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Baire Category Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="banach-steinhaus.html">The uniform boundedness principle (Banach-Steinhaus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-map.html">The Open Mapping Theorem</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
 <ul class="nav bd-sidenav">
@@ -271,7 +274,7 @@
       
       
       
-      <li><a href="../_sources/notes/week3.md" target="_blank"
+      <li><a href="../_sources/lops/baire.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -355,7 +358,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Linear Operators between Banach spaces</h1>
+    <h1>The Baire Category Theorem</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -365,13 +368,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-baire-category-theorem">The Baire category theorem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baire-category">Baire Category</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences-of-the-baire-category-theorem">Consequences of the Baire Category theorem</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-uniform-boundedness-principle-banach-steinhaus">The uniform boundedness principle (Banach-Steinhaus)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-open-mapping-theorem">The Open Mapping Theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#small-sets-in-a-measure-space">Small sets in a Measure Space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baire-category">Baire Category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences-of-the-baire-category-theorem">Consequences of the Baire Category theorem</a></li>
 </ul>
             </nav>
         </div>
@@ -383,15 +382,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="linear-operators-between-banach-spaces">
-<h1>Linear Operators between Banach spaces<a class="headerlink" href="#linear-operators-between-banach-spaces" title="Permalink to this heading">#</a></h1>
-<hr class="docutils" />
-<section id="the-baire-category-theorem">
-<h2>The Baire category theorem<a class="headerlink" href="#the-baire-category-theorem" title="Permalink to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="the-baire-category-theorem">
+<h1>The Baire Category Theorem<a class="headerlink" href="#the-baire-category-theorem" title="Permalink to this heading">#</a></h1>
 <p>In this section we introduce the Baire category theorem. Ultimately the
 Baire category theorem is used to answer the question when is a subset <span class="math notranslate nohighlight">\(E \subset X\)</span>
-in a topological space small. This section and in particular the qualiatative and
+in a topological space small, which turns out to be a fundamental tools in the study
+of linear bounded operators.
+This section and in particular the qualiatative and
 quantitative discussion is inspired by T. Tao <span id="id1">[<a class="reference internal" href="../bibliography.html#id2" title="Terence Tao. 245b, notes 9: the Baire category theorem and its Banach space consequences. 2 2009. URL: https://terrytao.wordpress.com/2009/02/01/245b-notes-9-the-baire-category-theorem-and-its-banach-space-consequences/ (visited on 2025-03-03).">Tao, 2009</a>]</span>.</p>
+<section id="small-sets-in-a-measure-space">
+<h2>Small sets in a Measure Space<a class="headerlink" href="#small-sets-in-a-measure-space" title="Permalink to this heading">#</a></h2>
 <p>In a measure theory setting i.e. <span class="math notranslate nohighlight">\(X = (X, \mathcal{F}, \mu)\)</span> the “small”
 sets are the nullsets i.e. <span class="math notranslate nohighlight">\(E \subset X\)</span> such that <span class="math notranslate nohighlight">\(\mu(E) = 0\)</span> or subsets
 of nullsets. Countable additivity implies that countable unions of nullsets
@@ -417,30 +417,33 @@ ball where the set takes up most of the space.</p>
 <li><p><span class="math notranslate nohighlight">\(\forall \varepsilon &gt; 0\)</span> there exists a ball <span class="math notranslate nohighlight">\(B\)</span> such that
 <span class="math notranslate nohighlight">\(\mu(E \cap B) \geq (1 - \varepsilon)\mu(B)\)</span></p></li>
 </ol>
-</section>
-</div><div class="proof dropdown admonition" id="proof">
-<p>Proof. - <span class="math notranslate nohighlight">\((1) \implies (2)\)</span>. We proceed by contradiction. Suppose that
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text"><strong>Proof:</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul>
+<li><p class="sd-card-text"><span class="math notranslate nohighlight">\((1) \implies (2)\)</span>. We proceed by contradiction. Suppose that
 <span class="math notranslate nohighlight">\(\mu(E) &gt; 0\)</span> but there exists <span class="math notranslate nohighlight">\(\varepsilon_0 &gt; 0\)</span> such that every ball
 satisfies
 <span class="math notranslate nohighlight">\(\mu(E \cap B) &lt; (1 - \varepsilon_0) \mu(B)\)</span></p>
-<p>The Lebesgue differentiation theorem implies that for almost every <span class="math notranslate nohighlight">\(x\in E\)</span>
+<p class="sd-card-text">The Lebesgue differentiation theorem implies that for almost every <span class="math notranslate nohighlight">\(x\in E\)</span>
 we have that
 <span class="math notranslate nohighlight">\(\lim_{r \to 0} \frac{\mu(E \cap B(x, r))}{\mu(B(x, r))} = 1\)</span></p>
-<p>Since <span class="math notranslate nohighlight">\(E\)</span> has positive measure there must be at least one point where
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(E\)</span> has positive measure there must be at least one point where
 the Lebesgue differentiation theorem applies. For this we can find a sufficiently
 small <span class="math notranslate nohighlight">\(r\)</span> so that
 <span class="math notranslate nohighlight">\(\frac{\mu(E \cap B(x, r))}{\mu(B(x, r))} &gt; 1 - \varepsilon_0.\)</span></p>
-<p>A contradiction.</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\((2) \implies (1)\)</span>. Let <span class="math notranslate nohighlight">\(\varepsilon = 1/2\)</span>, then there exists a ball <span class="math notranslate nohighlight">\(B\)</span>
+<p class="sd-card-text">A contradiction.</p>
+</li>
+<li><p class="sd-card-text"><span class="math notranslate nohighlight">\((2) \implies (1)\)</span>. Let <span class="math notranslate nohighlight">\(\varepsilon = 1/2\)</span>, then there exists a ball <span class="math notranslate nohighlight">\(B\)</span>
 such that
 <span class="math notranslate nohighlight">\(\mu(E \cap B) \geq \frac{1}{2}\mu(B)\)</span></p>
-<p>Since we have <span class="math notranslate nohighlight">\(\mu(B) &gt; 0\)</span> we have <span class="math notranslate nohighlight">\(\mu(E \cap B) &gt; 0\)</span>, and we have that
+<p class="sd-card-text">Since we have <span class="math notranslate nohighlight">\(\mu(B) &gt; 0\)</span> we have <span class="math notranslate nohighlight">\(\mu(E \cap B) &gt; 0\)</span>, and we have that
 <span class="math notranslate nohighlight">\(\mu(E) \geq \mu(E \cap B) &gt; 0.\)</span></p>
 </li>
 </ul>
 </div>
-<p>The contrapositive of this statement would be that if a set <span class="math notranslate nohighlight">\(E\)</span> never
+</details></section>
+</div><p>The contrapositive of this statement would be that if a set <span class="math notranslate nohighlight">\(E\)</span> never
 occupies a large portion of any ball, then <span class="math notranslate nohighlight">\(E\)</span> must have measure zero.
 In other words, sets of measure zero are nowhere concentrated.</p>
 <p>In conclusion, in the measure theoretic perspective the small sets are the nullsets,
@@ -469,11 +472,14 @@ at least one of the <span class="math notranslate nohighlight">\(E_n\)</span> is
 (and in particular not nowhere dense). To put it in the contrapositive:
 the countable union of nowhere dense sets cannot contain a ball.</p>
 </section>
-</div><p><em>Why do we care?</em> The consequence of this theorem is that
+</div><div class="proof example dropdown admonition" id="example-4">
+<p class="admonition-title"><span class="caption-number">Example 9 </span> (<strong>Why do we care?</strong>)</p>
+<section class="example-content" id="proof-content">
+<p>The consequence of this theorem is that
 <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span> or <span class="math notranslate nohighlight">\(\mathbb{C}^d\)</span> cannot be covered by a countable union of
 proper subspaces.</p>
-<div class="proof definition admonition" id="definition-4">
-<p class="admonition-title"><span class="caption-number">Definition 8 </span></p>
+<div class="proof definition dropdown admonition" id="definition-5">
+<p class="admonition-title"><span class="caption-number">Definition 8 </span> (Proper subspaces)</p>
 <section class="definition-content" id="proof-content">
 <p><span class="math notranslate nohighlight">\(W \subset V\)</span> is a proper subspace of <span class="math notranslate nohighlight">\(V\)</span> such that</p>
 <ol class="arabic simple">
@@ -482,24 +488,21 @@ proper subspaces.</p>
 <li><p>Still a vector space.</p></li>
 </ol>
 </section>
-</div><div class="proof example admonition" id="example-5">
-<p class="admonition-title"><span class="caption-number">Example 9 </span></p>
-<section class="example-content" id="proof-content">
-<p>In <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> examples of proper subspaces are:</p>
+</div><p>In <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> examples of proper subspaces are:</p>
 <ol class="arabic simple">
 <li><p>The <span class="math notranslate nohighlight">\(xy\)</span>-plane.</p></li>
 <li><p>A line through the origin.</p></li>
-<li><p>The origin <span class="math notranslate nohighlight">\(\{ (0, 0, 0) \}\)</span>.</p></li>
 </ol>
 <p>Baire says that we can’t write <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> as a countable union of these
 nowhere dense proper subspaces.</p>
-</section>
-</div><figure class="align-default" id="r2-subspaces-fig">
+<figure class="align-default" id="r2-subspaces-fig">
 <a class="reference internal image-reference" href="../_images/r2_subspaces.svg"><img alt="../_images/r2_subspaces.svg" src="../_images/r2_subspaces.svg" width="500px" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 1 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> cannot be covered by a countable union of proper subspaces (lines through the origin).</span><a class="headerlink" href="#r2-subspaces-fig" title="Permalink to this image">#</a></p>
-<div class="legend">
-<div class="proof remark admonition" id="remark-6">
+</figcaption>
+</figure>
+</section>
+</div><div class="proof remark admonition" id="remark-6">
 <p class="admonition-title"><span class="caption-number">Remark 3 </span></p>
 <section class="remark-content" id="proof-content">
 <p>Note that of course we could also prove these results using measure theory
@@ -507,11 +510,9 @@ in finite dimensional spaces by using countable additivity of countable unions.
 The <em>advantage</em> of Baire’s theorem is that it easily extends
 to infinite dimensional vectorspaces.</p>
 </section>
-</div></div>
-</figcaption>
-</figure>
+</div></section>
 <section id="consequences-of-the-baire-category-theorem">
-<h3>Consequences of the Baire Category theorem<a class="headerlink" href="#consequences-of-the-baire-category-theorem" title="Permalink to this heading">#</a></h3>
+<h2>Consequences of the Baire Category theorem<a class="headerlink" href="#consequences-of-the-baire-category-theorem" title="Permalink to this heading">#</a></h2>
 <p>The Baire category theorem leads to three fundamental equivalences between the
 qualitative theory of continuous linear operators on Banach spaces e.g.
 finiteness, subjectivity to the quantitative theory e.g. estimates <span id="id2">[<a class="reference internal" href="../bibliography.html#id2" title="Terence Tao. 245b, notes 9: the Baire category theorem and its Banach space consequences. 2 2009. URL: https://terrytao.wordpress.com/2009/02/01/245b-notes-9-the-baire-category-theorem-and-its-banach-space-consequences/ (visited on 2025-03-03).">Tao, 2009</a>]</span>.
@@ -542,13 +543,6 @@ problems in functional analysis via their quantitative counter parts.</p>
 mapping theorem while we leave the closed graph theorem for later.</p>
 </section>
 </section>
-<section id="the-uniform-boundedness-principle-banach-steinhaus">
-<h2>The uniform boundedness principle (Banach-Steinhaus)<a class="headerlink" href="#the-uniform-boundedness-principle-banach-steinhaus" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="the-open-mapping-theorem">
-<h2>The Open Mapping Theorem<a class="headerlink" href="#the-open-mapping-theorem" title="Permalink to this heading">#</a></h2>
-</section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -563,7 +557,7 @@ mapping theorem while we leave the closed graph theorem for later.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./notes"
+            path: "./lops"
         },
         predefinedOutput: true
     }
@@ -581,20 +575,20 @@ mapping theorem while we leave the closed graph theorem for later.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="week2.html"
+       href="lops.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Basic Functional Analysis</p>
+        <p class="prev-next-title">Linear Operators on Banach spaces</p>
       </div>
     </a>
     <a class="right-next"
-       href="../notebooks/01_fourier_series.html"
+       href="banach-steinhaus.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Fourier Series for continuous functions</p>
+        <p class="prev-next-title">The uniform boundedness principle (Banach-Steinhaus)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -614,13 +608,9 @@ mapping theorem while we leave the closed graph theorem for later.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-baire-category-theorem">The Baire category theorem</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baire-category">Baire Category</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences-of-the-baire-category-theorem">Consequences of the Baire Category theorem</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-uniform-boundedness-principle-banach-steinhaus">The uniform boundedness principle (Banach-Steinhaus)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-open-mapping-theorem">The Open Mapping Theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#small-sets-in-a-measure-space">Small sets in a Measure Space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baire-category">Baire Category</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consequences-of-the-baire-category-theorem">Consequences of the Baire Category theorem</a></li>
 </ul>
   </nav></div>
 

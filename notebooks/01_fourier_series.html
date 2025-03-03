@@ -68,7 +68,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Matrix Multiplication" href="../appendix/multiplication.html" />
-    <link rel="prev" title="Linear Operators between Banach spaces" href="../notes/week3.html" />
+    <link rel="prev" title="The Open Mapping Theorem" href="../lops/open-map.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -176,18 +176,21 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    MATH 725 Introduction to Functional Analysis
+                    MATH 725 Applied Functional Analysis
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../notes/week1.html">Introduction</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Functional Analysis</span></p>
-<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notes/week1.html">Modern Applied Mathematics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../notes/week2.html">Basic Functional Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notes/week3.html">Linear Operators between Banach spaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Operators</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lops/lops.html">Linear Operators on Banach spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lops/baire.html">The Baire Category Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lops/banach-steinhaus.html">The uniform boundedness principle (Banach-Steinhaus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lops/open-map.html">The Open Mapping Theorem</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
 <ul class="current nav bd-sidenav">
@@ -686,16 +689,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/cbook.py:1719: ComplexWarning: Casting complex values to real discards the imaginary part
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/lib/python3.12/site-packages/matplotlib/cbook.py:1762: ComplexWarning: Casting complex values to real discards the imaginary part
   return math.isfinite(val)
-/opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/collections.py:200: ComplexWarning: Casting complex values to real discards the imaginary part
+/usr/lib/python3.12/site-packages/matplotlib/collections.py:197: ComplexWarning: Casting complex values to real discards the imaginary part
   offsets = np.asanyarray(offsets, float)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f72a6f9db80&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f543b12be30&gt;]
 </pre></div>
 </div>
-<img alt="../_images/659badd335bb554701b1c1a4aee5db48fff10873c1fd40b6d8ed8d0d7270ff3f.png" src="../_images/659badd335bb554701b1c1a4aee5db48fff10873c1fd40b6d8ed8d0d7270ff3f.png" />
+<img alt="../_images/90ecd4584d817e36a35df52c98296accc498ea70b5e4a4240d99aad0e2b2488d.png" src="../_images/90ecd4584d817e36a35df52c98296accc498ea70b5e4a4240d99aad0e2b2488d.png" />
 </div>
 </div>
 </section>
@@ -731,13 +734,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/cbook.py:1719: ComplexWarning: Casting complex values to real discards the imaginary part
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/lib/python3.12/site-packages/matplotlib/cbook.py:1762: ComplexWarning: Casting complex values to real discards the imaginary part
   return math.isfinite(val)
-/opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/collections.py:200: ComplexWarning: Casting complex values to real discards the imaginary part
+/usr/lib/python3.12/site-packages/matplotlib/collections.py:197: ComplexWarning: Casting complex values to real discards the imaginary part
   offsets = np.asanyarray(offsets, float)
 </pre></div>
 </div>
-<img alt="../_images/c996ca68284fec64aaac55aa0fcfd5369d18baf2064f816df1f316c6d2cec666.png" src="../_images/c996ca68284fec64aaac55aa0fcfd5369d18baf2064f816df1f316c6d2cec666.png" />
+<img alt="../_images/961dc7065a112f145ab7bf1e26d1c9edd091c81143cd6607dc66d4cf376baae9.png" src="../_images/961dc7065a112f145ab7bf1e26d1c9edd091c81143cd6607dc66d4cf376baae9.png" />
 </div>
 </div>
 </section>
@@ -778,7 +781,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c8125ef09803d40782d1850874320d315ec0262f8dc424c8b8b53ad6a28f492a.png" src="../_images/c8125ef09803d40782d1850874320d315ec0262f8dc424c8b8b53ad6a28f492a.png" />
+<img alt="../_images/2d7af21611f2c8c3f815ffe8718dd34d4046de19d2327c778844109bfd08fdb5.png" src="../_images/2d7af21611f2c8c3f815ffe8718dd34d4046de19d2327c778844109bfd08fdb5.png" />
 </div>
 </div>
 </section>
@@ -818,7 +821,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/de64beea292adc1acfa24fd4015b18177f5298a85b4907210fda2d46b6590941.png" src="../_images/de64beea292adc1acfa24fd4015b18177f5298a85b4907210fda2d46b6590941.png" />
+<img alt="../_images/72ebd4a926019bd7df48e16fd706c91aacb39026f8cbfe9a3cef5350a6be5dbd.png" src="../_images/72ebd4a926019bd7df48e16fd706c91aacb39026f8cbfe9a3cef5350a6be5dbd.png" />
 </div>
 </div>
 </section>
@@ -897,166 +900,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">67</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">term_counts</span><span class="p">,</span> <span class="n">running_max</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Running max (s*(f,x))&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">65</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">67</span> <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/figure.py:3640,</span> in <span class="ni">Figure.tight_layout</span><span class="nt">(self, pad, h_pad, w_pad, rect)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3638</span> <span class="n">previous_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_layout_engine</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">3639</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_layout_engine</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">3640</span> <span class="n">engine</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3641</span> <span class="k">if</span> <span class="n">previous_engine</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">3642</span>     <span class="n">previous_engine</span><span class="p">,</span> <span class="p">(</span><span class="n">TightLayoutEngine</span><span class="p">,</span> <span class="n">PlaceHolderLayoutEngine</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3643</span> <span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">3644</span>     <span class="n">_api</span><span class="o">.</span><span class="n">warn_external</span><span class="p">(</span><span class="s1">&#39;The figure layout has changed to tight&#39;</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/layout_engine.py:183,</span> in <span class="ni">TightLayoutEngine.execute</span><span class="nt">(self, fig)</span>
-<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="n">renderer</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">_get_renderer</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">with</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">renderer</span><span class="p">,</span> <span class="s2">&quot;_draw_disabled&quot;</span><span class="p">,</span> <span class="n">nullcontext</span><span class="p">)():</span>
-<span class="ne">--&gt; </span><span class="mi">183</span>     <span class="n">kwargs</span> <span class="o">=</span> <span class="n">get_tight_layout_figure</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">184</span>         <span class="n">fig</span><span class="p">,</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">,</span> <span class="n">get_subplotspec_list</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">),</span> <span class="n">renderer</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">185</span>         <span class="n">pad</span><span class="o">=</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;pad&#39;</span><span class="p">],</span> <span class="n">h_pad</span><span class="o">=</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;h_pad&#39;</span><span class="p">],</span> <span class="n">w_pad</span><span class="o">=</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;w_pad&#39;</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">186</span>         <span class="n">rect</span><span class="o">=</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;rect&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">187</span> <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">188</span>     <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/_tight_layout.py:266,</span> in <span class="ni">get_tight_layout_figure</span><span class="nt">(fig, axes_list, subplotspec_list, renderer, pad, h_pad, w_pad, rect)</span>
-<span class="g g-Whitespace">    </span><span class="mi">261</span>         <span class="k">return</span> <span class="p">{}</span>
-<span class="g g-Whitespace">    </span><span class="mi">262</span>     <span class="n">span_pairs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span>
-<span class="g g-Whitespace">    </span><span class="mi">263</span>         <span class="nb">slice</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">rowspan</span><span class="o">.</span><span class="n">start</span> <span class="o">*</span> <span class="n">div_row</span><span class="p">,</span> <span class="n">ss</span><span class="o">.</span><span class="n">rowspan</span><span class="o">.</span><span class="n">stop</span> <span class="o">*</span> <span class="n">div_row</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">264</span>         <span class="nb">slice</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">colspan</span><span class="o">.</span><span class="n">start</span> <span class="o">*</span> <span class="n">div_col</span><span class="p">,</span> <span class="n">ss</span><span class="o">.</span><span class="n">colspan</span><span class="o">.</span><span class="n">stop</span> <span class="o">*</span> <span class="n">div_col</span><span class="p">)))</span>
-<span class="ne">--&gt; </span><span class="mi">266</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">_auto_adjust_subplotpars</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">renderer</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">267</span>                                   <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">max_nrows</span><span class="p">,</span> <span class="n">max_ncols</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">268</span>                                   <span class="n">span_pairs</span><span class="o">=</span><span class="n">span_pairs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">269</span>                                   <span class="n">subplot_list</span><span class="o">=</span><span class="n">subplot_list</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">270</span>                                   <span class="n">ax_bbox_list</span><span class="o">=</span><span class="n">ax_bbox_list</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">271</span>                                   <span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">h_pad</span><span class="o">=</span><span class="n">h_pad</span><span class="p">,</span> <span class="n">w_pad</span><span class="o">=</span><span class="n">w_pad</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">273</span> <span class="c1"># kwargs can be none if tight_layout fails...</span>
-<span class="g g-Whitespace">    </span><span class="mi">274</span> <span class="k">if</span> <span class="n">rect</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">kwargs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">275</span>     <span class="c1"># if rect is given, the whole subplots area (including</span>
-<span class="g g-Whitespace">    </span><span class="mi">276</span>     <span class="c1"># labels) will fit into the rect instead of the</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">280</span>     <span class="c1"># auto_adjust_subplotpars twice, where the second run</span>
-<span class="g g-Whitespace">    </span><span class="mi">281</span>     <span class="c1"># with adjusted rect parameters.</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/_tight_layout.py:82,</span> in <span class="ni">_auto_adjust_subplotpars</span><span class="nt">(fig, renderer, shape, span_pairs, subplot_list, ax_bbox_list, pad, h_pad, w_pad, rect)</span>
-<span class="g g-Whitespace">     </span><span class="mi">80</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">subplots</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">81</span>     <span class="k">if</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_visible</span><span class="p">():</span>
-<span class="ne">---&gt; </span><span class="mi">82</span>         <span class="n">bb</span> <span class="o">+=</span> <span class="p">[</span><span class="n">martist</span><span class="o">.</span><span class="n">_get_tightbbox_for_layout_only</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)]</span>
-<span class="g g-Whitespace">     </span><span class="mi">84</span> <span class="n">tight_bbox_raw</span> <span class="o">=</span> <span class="n">Bbox</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">bb</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">85</span> <span class="n">tight_bbox</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">transFigure</span><span class="o">.</span><span class="n">inverted</span><span class="p">()</span><span class="o">.</span><span class="n">transform_bbox</span><span class="p">(</span><span class="n">tight_bbox_raw</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/artist.py:1402,</span> in <span class="ni">_get_tightbbox_for_layout_only</span><span class="nt">(obj, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1396</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1397</span><span class="sd"> Matplotlib&#39;s `.Axes.get_tightbbox` and `.Axis.get_tightbbox` support a</span>
-<span class="g g-Whitespace">   </span><span class="mi">1398</span><span class="sd"> *for_layout_only* kwarg; this helper tries to use the kwarg but skips it</span>
-<span class="g g-Whitespace">   </span><span class="mi">1399</span><span class="sd"> when encountering third-party subclasses that do not support it.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1400</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1401</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1402</span>     <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">get_tightbbox</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;for_layout_only&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
-<span class="g g-Whitespace">   </span><span class="mi">1403</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1404</span>     <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">get_tightbbox</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/axes/_base.py:4571,</span> in <span class="ni">_AxesBase.get_tightbbox</span><span class="nt">(self, renderer, call_axes_locator, bbox_extra_artists, for_layout_only)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4568</span>     <span class="n">bbox_artists</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_default_bbox_extra_artists</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">4570</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">bbox_artists</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">4571</span>     <span class="n">bbox</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">get_tightbbox</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4572</span>     <span class="k">if</span> <span class="p">(</span><span class="n">bbox</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">4573</span>             <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">bbox</span><span class="o">.</span><span class="n">width</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
-<span class="g g-Whitespace">   </span><span class="mi">4574</span>             <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">bbox</span><span class="o">.</span><span class="n">height</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">4575</span>         <span class="n">bb</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bbox</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/legend.py:1059,</span> in <span class="ni">Legend.get_tightbbox</span><span class="nt">(self, renderer)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1057</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_tightbbox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1058</span>     <span class="c1"># docstring inherited</span>
-<span class="ne">-&gt; </span><span class="mi">1059</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_legend_box</span><span class="o">.</span><span class="n">get_window_extent</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/offsetbox.py:369,</span> in <span class="ni">OffsetBox.get_window_extent</span><span class="nt">(self, renderer)</span>
-<span class="g g-Whitespace">    </span><span class="mi">367</span> <span class="n">bbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_bbox</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">368</span> <span class="k">try</span><span class="p">:</span>  <span class="c1"># Some subclasses redefine get_offset to take no args.</span>
-<span class="ne">--&gt; </span><span class="mi">369</span>     <span class="n">px</span><span class="p">,</span> <span class="n">py</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_offset</span><span class="p">(</span><span class="n">bbox</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">370</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">371</span>     <span class="n">px</span><span class="p">,</span> <span class="n">py</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_offset</span><span class="p">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/offsetbox.py:60,</span> in <span class="ni">_compat_get_offset.&lt;locals&gt;.get_offset</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="n">params</span> <span class="o">=</span> <span class="n">_api</span><span class="o">.</span><span class="n">select_matching_signature</span><span class="p">(</span><span class="n">sigs</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="n">bbox</span> <span class="o">=</span> <span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;bbox&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;bbox&quot;</span> <span class="ow">in</span> <span class="n">params</span> <span class="k">else</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="n">Bbox</span><span class="o">.</span><span class="n">from_bounds</span><span class="p">(</span><span class="o">-</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;xdescent&quot;</span><span class="p">],</span> <span class="o">-</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;ydescent&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span>                          <span class="n">params</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;height&quot;</span><span class="p">]))</span>
-<span class="ne">---&gt; </span><span class="mi">60</span> <span class="k">return</span> <span class="n">meth</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;self&quot;</span><span class="p">],</span> <span class="n">bbox</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;renderer&quot;</span><span class="p">])</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/offsetbox.py:306,</span> in <span class="ni">OffsetBox.get_offset</span><span class="nt">(self, bbox, renderer)</span>
-<span class="g g-Whitespace">    </span><span class="mi">291</span> <span class="nd">@_compat_get_offset</span>
-<span class="g g-Whitespace">    </span><span class="mi">292</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bbox</span><span class="p">,</span> <span class="n">renderer</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">293</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">294</span><span class="sd">     Return the offset as a tuple (x, y).</span>
-<span class="g g-Whitespace">    </span><span class="mi">295</span><span class="sd"> </span>
-<span class="sd">   (...)    303     renderer : `.RendererBase` subclass</span>
-<span class="g g-Whitespace">    </span><span class="mi">304</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">305</span>     <span class="k">return</span> <span class="p">(</span>
-<span class="ne">--&gt; </span><span class="mi">306</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_offset</span><span class="p">(</span><span class="n">bbox</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">bbox</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="o">-</span><span class="n">bbox</span><span class="o">.</span><span class="n">x0</span><span class="p">,</span> <span class="o">-</span><span class="n">bbox</span><span class="o">.</span><span class="n">y0</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_offset</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">308</span>         <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_offset</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/legend.py:721,</span> in <span class="ni">Legend._findoffset</span><span class="nt">(self, width, height, xdescent, ydescent, renderer)</span>
-<span class="g g-Whitespace">    </span><span class="mi">718</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Helper function to locate the legend.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">720</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loc</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># &quot;best&quot;.</span>
-<span class="ne">--&gt; </span><span class="mi">721</span>     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_best_position</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">722</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loc</span> <span class="ow">in</span> <span class="n">Legend</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>  <span class="c1"># Fixed location.</span>
-<span class="g g-Whitespace">    </span><span class="mi">723</span>     <span class="n">bbox</span> <span class="o">=</span> <span class="n">Bbox</span><span class="o">.</span><span class="n">from_bounds</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/legend.py:1159,</span> in <span class="ni">Legend._find_best_position</span><span class="nt">(self, width, height, renderer)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1157</span> <span class="n">candidates</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1158</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">codes</span><span class="p">)):</span>
-<span class="ne">-&gt; </span><span class="mi">1159</span>     <span class="n">l</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_anchored_bbox</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">bbox</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1160</span>                                    <span class="bp">self</span><span class="o">.</span><span class="n">get_bbox_to_anchor</span><span class="p">(),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1161</span>                                    <span class="n">renderer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1162</span>     <span class="n">legendBox</span> <span class="o">=</span> <span class="n">Bbox</span><span class="o">.</span><span class="n">from_bounds</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1163</span>     <span class="c1"># XXX TODO: If markers are present, it would be good to take them</span>
-<span class="g g-Whitespace">   </span><span class="mi">1164</span>     <span class="c1"># into account when checking vertex overlaps in the next line.</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/legend.py:1143,</span> in <span class="ni">Legend._get_anchored_bbox</span><span class="nt">(self, loc, bbox, parentbbox, renderer)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1128</span> <span class="k">def</span><span class="w"> </span><span class="nf">_get_anchored_bbox</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">bbox</span><span class="p">,</span> <span class="n">parentbbox</span><span class="p">,</span> <span class="n">renderer</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1129</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1130</span><span class="sd">     Place the *bbox* inside the *parentbbox* according to a given</span>
-<span class="g g-Whitespace">   </span><span class="mi">1131</span><span class="sd">     location code. Return the (x, y) coordinate of the bbox.</span>
-<span class="sd">   (...)   1141         A parent box which will contain the bbox, in display coordinates.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1142</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1143</span>     <span class="k">return</span> <span class="n">offsetbox</span><span class="o">.</span><span class="n">_get_anchored_bbox</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1144</span>         <span class="n">loc</span><span class="p">,</span> <span class="n">bbox</span><span class="p">,</span> <span class="n">parentbbox</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1145</span>         <span class="bp">self</span><span class="o">.</span><span class="n">borderaxespad</span> <span class="o">*</span> <span class="n">renderer</span><span class="o">.</span><span class="n">points_to_pixels</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fontsize</span><span class="p">))</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/offsetbox.py:1097,</span> in <span class="ni">_get_anchored_bbox</span><span class="nt">(loc, bbox, parentbbox, borderpad)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1095</span> <span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;NE&quot;</span><span class="p">,</span> <span class="s2">&quot;NW&quot;</span><span class="p">,</span> <span class="s2">&quot;SW&quot;</span><span class="p">,</span> <span class="s2">&quot;SE&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">][</span><span class="n">loc</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1096</span> <span class="n">container</span> <span class="o">=</span> <span class="n">parentbbox</span><span class="o">.</span><span class="n">padded</span><span class="p">(</span><span class="o">-</span><span class="n">borderpad</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1097</span> <span class="k">return</span> <span class="n">bbox</span><span class="o">.</span><span class="n">anchored</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">container</span><span class="o">=</span><span class="n">container</span><span class="p">)</span><span class="o">.</span><span class="n">p0</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/transforms.py:499,</span> in <span class="ni">BboxBase.anchored</span><span class="nt">(self, c, container)</span>
-<span class="g g-Whitespace">    </span><span class="mi">497</span> <span class="n">L</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span>
-<span class="g g-Whitespace">    </span><span class="mi">498</span> <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coefs</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">c</span>
-<span class="ne">--&gt; </span><span class="mi">499</span> <span class="k">return</span> <span class="n">Bbox</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_points</span> <span class="o">+</span>
-<span class="g g-Whitespace">    </span><span class="mi">500</span>             <span class="p">[(</span><span class="n">l</span> <span class="o">+</span> <span class="n">cx</span> <span class="o">*</span> <span class="p">(</span><span class="n">w</span> <span class="o">-</span> <span class="n">W</span><span class="p">))</span> <span class="o">-</span> <span class="n">L</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">501</span>              <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="n">cy</span> <span class="o">*</span> <span class="p">(</span><span class="n">h</span> <span class="o">-</span> <span class="n">H</span><span class="p">))</span> <span class="o">-</span> <span class="n">B</span><span class="p">])</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.9/x64/lib/python3.12/site-packages/matplotlib/transforms.py:757,</span> in <span class="ni">Bbox.__init__</span><span class="nt">(self, points, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">750</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">751</span><span class="sd"> Parameters</span>
-<span class="g g-Whitespace">    </span><span class="mi">752</span><span class="sd"> ----------</span>
-<span class="g g-Whitespace">    </span><span class="mi">753</span><span class="sd"> points : `~numpy.ndarray`</span>
-<span class="g g-Whitespace">    </span><span class="mi">754</span><span class="sd">     A (2, 2) array of the form ``[[x0, y0], [x1, y1]]``.</span>
-<span class="g g-Whitespace">    </span><span class="mi">755</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">756</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">757</span> <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">758</span> <span class="k">if</span> <span class="n">points</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">759</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Bbox points must be of the form &#39;</span>
-<span class="g g-Whitespace">    </span><span class="mi">760</span>                      <span class="s1">&#39;&quot;[[x0, y0], [x1, y1]]&quot;.&#39;</span><span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-<img alt="../_images/81e4c7325e613e8133f29feaeb5f4e1217969e67f10d551d8634bbca4819854b.png" src="../_images/81e4c7325e613e8133f29feaeb5f4e1217969e67f10d551d8634bbca4819854b.png" />
+<img alt="../_images/00e1a38b54953dbf485f92f5ef200b0e6be0ede015f5c89829bd0dfb63c7ce26.png" src="../_images/00e1a38b54953dbf485f92f5ef200b0e6be0ede015f5c89829bd0dfb63c7ce26.png" />
 </div>
 </div>
 <section id="can-we-make-this-worst">
@@ -1144,6 +988,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/f45d3d6d359a77cf4262025112f5dd8e6a8a000ac57553c49b3d41cd819090e3.png" src="../_images/f45d3d6d359a77cf4262025112f5dd8e6a8a000ac57553c49b3d41cd819090e3.png" />
+</div>
 </div>
 </section>
 </section>
@@ -1209,6 +1056,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/74f4469d7edaf44afab5db0c759b98913d92693d57ae537ac5c9a864693a59a4.png" src="../_images/74f4469d7edaf44afab5db0c759b98913d92693d57ae537ac5c9a864693a59a4.png" />
+</div>
 </div>
 </section>
 </section>
@@ -1244,12 +1094,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../notes/week3.html"
+       href="../lops/open-map.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Linear Operators between Banach spaces</p>
+        <p class="prev-next-title">The Open Mapping Theorem</p>
       </div>
     </a>
     <a class="right-next"
