@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Gaussian Elimination &#8212; Applied Linear Algebra</title>
   
@@ -28,42 +29,43 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=4ba7c12d" />
-    <link rel="stylesheet" type="text/css" href="../_static/main.css?v=fba13057" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.5ea377869091fd0449014c60fc090103.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/main.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'appendix/gaussian_elimination_process';</script>
-    <script src="../_static/main.js?v=53e03820"></script>
+    <script src="../_static/main.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Bibliography" href="../bibliography.html" />
@@ -380,7 +382,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="gaussian-elimination">
-<h1>Gaussian Elimination<a class="headerlink" href="#gaussian-elimination" title="Link to this heading">#</a></h1>
+<h1>Gaussian Elimination<a class="headerlink" href="#gaussian-elimination" title="Permalink to this heading">#</a></h1>
 <p>Given a <span class="math notranslate nohighlight">\(n\times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> and vector <span class="math notranslate nohighlight">\(b\)</span> we assemble its augmented matrix
 and proceed through the following sequence, until the final augmented
 matrix is upper triangular.</p>
@@ -405,7 +407,7 @@ matrix is upper triangular.</p>
 each step of this process we eliminate the elements in column
 <span class="math notranslate nohighlight">\(i\)</span> below the diagonal.</p>
 <section id="step-1-eliminate-the-first-column">
-<h2>Step 1: Eliminate the first column<a class="headerlink" href="#step-1-eliminate-the-first-column" title="Link to this heading">#</a></h2>
+<h2>Step 1: Eliminate the first column<a class="headerlink" href="#step-1-eliminate-the-first-column" title="Permalink to this heading">#</a></h2>
 <p>The process begins with the matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -453,7 +455,7 @@ Subtracting <span class="math notranslate nohighlight">\(\frac{a_{31}}{a_{11}}\)
 \end{split}\]</div>
 </section>
 <section id="step-2-eliminate-the-second-column">
-<h2>Step 2: Eliminate the second column<a class="headerlink" href="#step-2-eliminate-the-second-column" title="Link to this heading">#</a></h2>
+<h2>Step 2: Eliminate the second column<a class="headerlink" href="#step-2-eliminate-the-second-column" title="Permalink to this heading">#</a></h2>
 <p>Next consider the <span class="math notranslate nohighlight">\((n-1)\times n\)</span> sub-matrix found by ignoring the first row and column of the matrix above. Then repeat the process of eliminating the first column of this sub-matrix.
 This gives us</p>
 <div class="math notranslate nohighlight">
@@ -472,7 +474,7 @@ This gives us</p>
 <p><strong>Repeat the previous steps until …</strong></p>
 </section>
 <section id="step-n-1-eliminate-the-second-to-last-column">
-<h2>Step n-1: Eliminate the second to last column<a class="headerlink" href="#step-n-1-eliminate-the-second-to-last-column" title="Link to this heading">#</a></h2>
+<h2>Step n-1: Eliminate the second to last column<a class="headerlink" href="#step-n-1-eliminate-the-second-to-last-column" title="Permalink to this heading">#</a></h2>
 <p>We repeat this process <span class="math notranslate nohighlight">\((n-1)\)</span>-times until we find</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -489,7 +491,7 @@ This gives us</p>
 \end{split}\]</div>
 </section>
 <section id="algorithm-cost">
-<h2>Algorithm cost<a class="headerlink" href="#algorithm-cost" title="Link to this heading">#</a></h2>
+<h2>Algorithm cost<a class="headerlink" href="#algorithm-cost" title="Permalink to this heading">#</a></h2>
 <p>What is the cost of Gaussian Elimination? The matrix
 <span class="math notranslate nohighlight">\(\left(\begin{array}{&#64;{}*{1}{c}|c&#64;{}} A &amp; b \end{array}\right)\)</span> has size <span class="math notranslate nohighlight">\(n \times ( n + 1 )\)</span>.
 The first step is the  most expensive. We need to eliminate <span class="math notranslate nohighlight">\(n-1\)</span>
