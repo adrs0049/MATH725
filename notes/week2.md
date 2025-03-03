@@ -1,6 +1,4 @@
-# The Basics
-*February 3, 2024*
-*Weekly Course Outline*
+# Basic Functional Analysis
 
 ## Learning Goals
 
@@ -9,8 +7,11 @@ The goals of these few lectures is to review a few core ideas, and set the stage
 1. The Basics of Functional Analysis.
 2. What is a Banach Space?
 3. Density, separability and compactness.
+4. The spaces of continuous, differentiable and integral functions.
+5. The Rainbow of function spaces.
 
----
+
+## Banach Spaces
 
 ````{prf:definition} Banach Space
 :label: def-banach
@@ -24,8 +25,6 @@ A Banach space $(X, \|\cdot\|_X)$ is a complete normed vector space.
 $\mathbb{R}^n$ is a Banach space with any p-norm i.e.
 $\|x\|_p = \left( \sum_{i=1}^{n}|x_i|^p \right)^{1/p}$
 ```
-
----
 
 We need the following basic topological notions.
 
@@ -129,21 +128,11 @@ In $\mathbb{R}^n$ all norms are equivalent.
 This is merely a sketch of a proof. They key idea is that in $\mathbb{R}^n$ all the unit balls can be scaled so that they fit into each other. Allowing us to show that the open sets in $(\mathbb{R}^n, \|x\|_p)$ are the same as in $(\mathbb{R}^n, \|x\|_q)$.
 ```
 
-## Lesson: Thursday
 
-### Learning Goals
+## Spaces of integrable, continuous and differentiable functions
 
 Define some typical function spaces that are central to the theory.
-
-1. The spaces of continuous, differentiable and integral functions.
-2. Density, Separability in $L^p$ spaces e.g. approximation of functions by simple functions.
-3. The Rainbow of function spaces.
-
----
-
 For the definitions of the spaces of continuous, continuously differentiable and Hoelder continuous functions see the class textbook.
-
----
 
 ```{prf:definition} L^p Spaces
 :label: def-lp-spaces
@@ -151,6 +140,8 @@ For the definitions of the spaces of continuous, continuously differentiable and
 For $1 \leq p < \infty$ we define the spaces of integrable functions
 $L^p(\Omega) = \{f : \Omega \mapsto \mathbb{R} : \|f\|_p = \left( \int_{\Omega} |f(x)|^p d\mu \right)^{1/p} < \infty \}$
 ```
+
+### Approximation of integrable functions via smooth functions
 
 ```{prf:theorem} Mollifiers Theorem
 :label: thm-mollifiers
@@ -218,7 +209,7 @@ $\int \|f - f_n\|^p d\mu = \int \lim_{k \to \infty} \|f_{n_k} - f_n\|^p d \mu \l
 when $n_k > N$. Thus we have that $\|f - f_n\| \to 0$.
 ```
 
----
+### The Rainbow of Function Spaces
 
 ```{prf:remark} The Rainbow of Function Spaces
 :label: rem-rainbow
