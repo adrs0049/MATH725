@@ -1,13 +1,15 @@
-# Modern Applied Mathematics
+# Introduction
+
+This section serves as a motivation for what we will discuss subsequently.
+
+## Modern Applied Mathematics
 
 - Development of new mathematical models (modeling).
 - **Theoretical analysis of mathematical models.**
 - Numerical solutions of these models.
 - Data inferences and statistical learning.
 
-Here we will focus on the second point.
-
----
+This course focuses on the second point.
 
 ## Differential equations
 
@@ -61,7 +63,8 @@ We motivate the need for the development of functional analysis through the ubiq
 
   Thus the phase-space for a PDE is a function space, and the PDE becomes an operator between function spaces. Whether we can invert these operators we will discuss in our chapter on operator theory.
 
----
+
+## The Diffusion Equation
 
 Let's discuss the heat / diffusion equation example in a bit more detail. Suppose we have the heat equation on the interval $[0, L]$.
 

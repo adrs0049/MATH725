@@ -1,9 +1,10 @@
 format: jb-book
 root: index
 parts:
-  - caption: Notes by Week
-    chapters:
+  - caption: Introduction
     - file: notes/week1.md
+  - caption: Basic Functional Analysis
+    chapters:
     - file: notes/week2.md
   - caption: Jupyter Notebooks
     chapters:
