@@ -15,22 +15,19 @@ By the linearity of $L$ we see that this theorem says that $L$ maps open sets to
 open mapping, and that for every $||y|| < \delta$ there corresponds on $x$ such that $||x|| < 1$ so that
 $Lx = y$.
 
-````{prf:corollary} Banach's Bounded Inverse Theorem
-
+```{prf:corollary} Banach's Bounded Inverse Theorem
 Let $L$ be a linear operator between two Banach spaces $X$ and $Y$, that is **onto** and one-to-one, then
 $L^{-1}$ is a bounded linear operator.
+```
 
-```{dropdown} **Proof:**
-
+```{dropdown} **Proof** of Banach's Bounded Inverse Theorem:
 If $||Lx|| < \delta$ then the open mapping theorem says that $Lx \in L(U)$ thus there
 exists a $u \in U$ such that $Lu = Lx$. The **key** is that since $L$ is injective we have $x = u$,
 so that we conclude that $||x|| < 1$. If $||x|| \geq 1$ then $||Lx||\geq \delta$. Now let
 $y := \frac{x}{||x||}$ then $||Ly|| \geq \delta$ so that we have $||Lx|| \geq \delta ||x||$.
 Now define $L^{-1}$ via $L^{-1} y= x$ if $Lx = y$. We then show that $L^{-1}$ is indeed linear,
 and bounded $||L^{-1}|| \leq 1/\delta$.
-
 ```
-````
 
 ```{prf:remark}
 The previous statement is remarkable in the sense that it lifts our intuition about linear opeartors
@@ -40,7 +37,7 @@ case.
 
 Now to the version of the open-mapping theorem by T. Tao.
 
-````{prf:theorem}
+```{prf:theorem} Quantitative and Qualitative version of the Open Mapping Theorem
 Let $L : X \mapsto Y$ be a bounded linear operator between two Banach spaces, then the following
 are equivalent:
 
@@ -52,11 +49,9 @@ $x \in X$ to the equation $Lx = y$.
 $|| x || \leq C || y ||$.
 5. (Quantitative solvability for dense subsets). There exists a $C > 0$ such that for a dense set of $y$ in $Y$
 there exists solutions $x \in X$ to $Lx = y$ which obeys $||x|| \leq C || y ||$.
-
+```
 
 ```{dropdown} **Proof:**
 Todo. Finish.
-
 ```
-````
 

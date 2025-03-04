@@ -19,19 +19,23 @@ This space is equipped with a norm
 $$ || A ||_{\mathrm{op}} := \sup_{x \neq 0} \frac{||Ax||_Y}{||x||_X} = \sup_{||x||=1} || Ax ||_Y $$
 ```
 
-````{prf:proposition} $\mathcal{L}(X, Y)$ is a Banach Space
-
-```{dropdown} **Proof:**
-
-Insert proof.
-
+```{prf:proposition}
+$\mathcal{L}(X, Y)$ is a Banach Space
 ```
-````
-
-````{prf:proposition} Qualitative vs Quantitative properties
-Let $A : X \mapsto Y$ be linear, then $A$ is bounded if and only if $A$ is continuous.
 
 ```{dropdown} **Proof:**
+Insert proof.
+```
+
+```{prf:proposition} Qualitative vs Quantitative properties
+:label: prop-bounded-lin-op
+
+Let $A : X \mapsto Y$ be linear, then $A$ is bounded if and only if $A$ is continuous.
+```
+
+```{dropdown} **Proof:**
+
+We prove {prf:ref}`prop-bounded-lin-op` in two steps.
 
 1. If $A$ is bounded, then let $x_n \to x$ in $X$ then
 
@@ -41,13 +45,12 @@ Now let $x_n \to x$ and $A$ must be continuous.
 
 2. If $A$ is continuous, and $A$ is not bounded. Then there exists a sequence $y_n$ in $X$ such that
 
-$$ ||Ay_n||_Y \geq n^2 ||y_n|| \quad\mathrm{and define}\quad x_n := \frac{y_n}{n || y_n ||} \to 0 $$
+$$ ||Ay_n||_Y \geq n^2 ||y_n|| \quad\mathrm{and\ define}\quad x_n := \frac{y_n}{n || y_n ||} \to 0 $$
 
 But $||Ay_n|| \geq n \to \infty$ means that $A$ is not continuous, we found a contradiction that $A$
 is not continuous at zero.
 
 ```
-````
 
 ```{prf:remark}
 
