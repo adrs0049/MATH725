@@ -5,28 +5,29 @@ it equates qualitative properties solvability of a linear problem $Lx = y$ with 
 We will begin by stating the qualitative version and explore its consequences on the solvability of
 linear operators, followed by the quantitative version.
 
-````{prf:theorem} Open Mapping Theorem
-    Let $U, V$ be the open units balls of the Banach spaces $X, Y$ respectively. To every bounded linear
-    operator $L$ of $X$ **onto** $Y$ there corresponds $\delta > 0$ so that
-    $$ L(U) \subset \delta V = \{ y \in Y : ||y|| < \delta \}.$$
-````
+```{prf:theorem} Open Mapping Theorem
+Let $U, V$ be the open units balls of the Banach spaces $X, Y$ respectively. To every bounded linear
+operator $L$ of $X$ **onto** $Y$ there corresponds $\delta > 0$ so that
+$L(U) \subset \delta V = \{ y \in Y : ||y|| < \delta \}.$
+```
 
 By the linearity of $L$ we see that this theorem says that $L$ maps open sets to open sets i.e. is an
 open mapping, and that for every $||y|| < \delta$ there corresponds on $x$ such that $||x|| < 1$ so that
 $Lx = y$.
 
 ````{prf:corollary} Banach's Bounded Inverse Theorem
-    Let $L$ be a linear operator between two Banach spaces $X$ and $Y$, that is **onto** and one-to-one, then
-    $L^{-1}$ is a bounded linear operator.
+
+Let $L$ be a linear operator between two Banach spaces $X$ and $Y$, that is **onto** and one-to-one, then
+$L^{-1}$ is a bounded linear operator.
 
 ```{dropdown} **Proof:**
 
-    If $||Lx|| < \delta$ then the open mapping theorem says that $Lx \in L(U)$ thus there
-    exists a $u \in U$ such that $Lu = Lx$. The **key** is that since $L$ is injective we have $x = u$,
-    so that we conclude that $||x|| < 1$. If $||x|| \geq 1$ then $||Lx||\geq \delta$. Now let
-    $y := \frac{x}{||x||}$ then $||Ly|| \geq \delta$ so that we have $||Lx|| \geq \delta ||x||$.
-    Now define $L^{-1}$ via $L^{-1} y= x$ if $Lx = y$. We then show that $L^{-1}$ is indeed linear,
-    and bounded $||L^{-1}|| \leq 1/\delta$.
+If $||Lx|| < \delta$ then the open mapping theorem says that $Lx \in L(U)$ thus there
+exists a $u \in U$ such that $Lu = Lx$. The **key** is that since $L$ is injective we have $x = u$,
+so that we conclude that $||x|| < 1$. If $||x|| \geq 1$ then $||Lx||\geq \delta$. Now let
+$y := \frac{x}{||x||}$ then $||Ly|| \geq \delta$ so that we have $||Lx|| \geq \delta ||x||$.
+Now define $L^{-1}$ via $L^{-1} y= x$ if $Lx = y$. We then show that $L^{-1}$ is indeed linear,
+and bounded $||L^{-1}|| \leq 1/\delta$.
 
 ```
 ````
@@ -54,7 +55,8 @@ there exists solutions $x \in X$ to $Lx = y$ which obeys $||x|| \leq C || y ||$.
 
 
 ```{dropdown} **Proof:**
-    Todo. Finish.
+Todo. Finish.
+
 ```
 ````
 

@@ -12,7 +12,7 @@ Let $(X, ||\cdot||_X)$ and $(Y, ||\cdot||_Y)$ be two Banach spaces, and let $A :
 2. $A$ is bounded if $||Ax||_Y \leq M ||x||_X$ $\forall x \in X$, $M > 0$.
 3. We denote the set of all bounded operators by
 
-$$\mathcal{L}(X, Y) = \{ A : X \mapsto Y,\ A\ \mathrm{linear and bounded} \}$$
+$$\mathcal{L}(X, Y) = \{ A : X \mapsto Y,\ A\ \mathrm{linear\ and\ bounded} \}$$
 
 This space is equipped with a norm
 
@@ -22,12 +22,14 @@ $$ || A ||_{\mathrm{op}} := \sup_{x \neq 0} \frac{||Ax||_Y}{||x||_X} = \sup_{||x
 ````{prf:proposition} $\mathcal{L}(X, Y)$ is a Banach Space
 
 ```{dropdown} **Proof:**
-    Insert proof.
+
+Insert proof.
+
 ```
 ````
 
 ````{prf:proposition} Qualitative vs Quantitative properties
-    Let $A : X \mapsto Y$ be linear, then $A$ is bounded if and only if $A$ is continuous.
+Let $A : X \mapsto Y$ be linear, then $A$ is bounded if and only if $A$ is continuous.
 
 ```{dropdown} **Proof:**
 
@@ -48,28 +50,30 @@ is not continuous at zero.
 ````
 
 ```{prf:remark}
+
 This is the first result of the qualitative vs. quantitative theme we encounter in functional analysis.
 With qualitative we here mean that $A$ is continuous i.e. well behaved, and that this is related to a
 quantitative bound on the operator which quantifies how well behaved the operator is. In terms of
 continuity it tells us how much the output can vary as we change the input.
+
 ```
 
 
 ```{prf:example}
-    Insert example of integral operator.
+
+Insert example of integral operator.
+
 ```
 
 ```{prf:example}
-    Insert example of second order differential operator.
+
+Insert example of second order differential operator.
+
 ```
 
 ```{prf:definition}
-    Let $A : X \mapsto Y$ we define
-    1. The **range** of the operator as
-    $$ R[A] = \{ g \in Y : g = A[f],\ f \in D(A) \} $$
-
-    2. The **nullspace** or **kernel** of $A$ is
-    $$ N[A] = \{ f \in D(A) : A[f] = 0 \} $$.
-
+Let $A : X \mapsto Y$ we define
+1. The **range** of the operator as $R[A] = \{ g \in Y : g = A[f],\ f \in D(A) \}$
+2. The **nullspace** or **kernel** of $A$ is $N[A] = \{ f \in D(A) : A[f] = 0 \}$.
 ```
 
