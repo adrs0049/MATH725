@@ -61,6 +61,8 @@
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lops/open-map';</script>
     <script src="../_static/main.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -370,7 +372,74 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-open-mapping-theorem">
 <h1>The Open Mapping Theorem<a class="headerlink" href="#the-open-mapping-theorem" title="Permalink to this heading">#</a></h1>
+<p>The open-mapping theorem is another of the big theorems of functional analysis. Its signifiance is that
+it equates qualitative properties solvability of a linear problem <span class="math notranslate nohighlight">\(Lx = y\)</span> with quantitative solvability.
+We will begin by stating the qualitative version and explore its consequences on the solvability of
+linear operators, followed by the quantitative version.</p>
+<div class="proof theorem admonition" id="theorem-0">
+<p class="admonition-title"><span class="caption-number">Theorem 7 </span> (Open Mapping Theorem)</p>
+<section class="theorem-content" id="proof-content">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Let $U, V$ be the open units balls of the Banach spaces $X, Y$ respectively. To every bounded linear
+operator $L$ of $X$ **onto** $Y$ there corresponds $\delta &gt; 0$ so that
+$$ L(U) \subset \delta V = \{ y \in Y : ||y|| &lt; \delta \}.$$
+</pre></div>
+</div>
 </section>
+</div><p>By the linearity of <span class="math notranslate nohighlight">\(L\)</span> we see that this theorem says that <span class="math notranslate nohighlight">\(L\)</span> maps open sets to open sets i.e. is an
+open mapping, and that for every <span class="math notranslate nohighlight">\(||y|| &lt; \delta\)</span> there corresponds on <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(||x|| &lt; 1\)</span> so that
+<span class="math notranslate nohighlight">\(Lx = y\)</span>.</p>
+<div class="proof corollary admonition" id="corollary-1">
+<p class="admonition-title"><span class="caption-number">Corollary 2 </span> (Banach’s Bounded Inverse Theorem)</p>
+<section class="corollary-content" id="proof-content">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Let $L$ be a linear operator between two Banach spaces $X$ and $Y$, that is **onto** and one-to-one, then
+$L^{-1}$ is a bounded linear operator.
+</pre></div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text"><strong>Proof:</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>If $||Lx|| &lt; \delta$ then the open mapping theorem says that $Lx \in L(U)$ thus there
+exists a $u \in U$ such that $Lu = Lx$. The **key** is that since $L$ is injective we have $x = u$,
+so that we conclude that $||x|| &lt; 1$. If $||x|| \geq 1$ then $||Lx||\geq \delta$. Now let
+$y := \frac{x}{||x||}$ then $||Ly|| \geq \delta$ so that we have $||Lx|| \geq \delta ||x||$.
+Now define $L^{-1}$ via $L^{-1} y= x$ if $Lx = y$. We then show that $L^{-1}$ is indeed linear,
+and bounded $||L^{-1}|| \leq 1/\delta$.
+</pre></div>
+</div>
+</div>
+</details></section>
+</div><div class="proof remark admonition" id="remark-2">
+<p class="admonition-title"><span class="caption-number">Remark 7 </span></p>
+<section class="remark-content" id="proof-content">
+<p>The previous statement is remarkable in the sense that it lifts our intuition about linear opeartors
+in finite dimensions (i.e. that bijectiveness is equivalent to invertibility) to the infinite dimensional
+case.</p>
+</section>
+</div><p>Now to the version of the open-mapping theorem by T. Tao.</p>
+<div class="proof theorem admonition" id="theorem-3">
+<p class="admonition-title"><span class="caption-number">Theorem 8 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(L : X \mapsto Y\)</span> be a bounded linear operator between two Banach spaces, then the following
+are equivalent:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(L\)</span> is onto.</p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span> is open.</p></li>
+<li><p>(Qualitative solvability). For every <span class="math notranslate nohighlight">\(y \in Y\)</span> there exists (<em>not necessarily unique</em>) a solution
+<span class="math notranslate nohighlight">\(x \in X\)</span> to the equation <span class="math notranslate nohighlight">\(Lx = y\)</span>.</p></li>
+<li><p>(Quantitative solvability). <span class="math notranslate nohighlight">\(\exists C &gt; 0 : \forall y \in Y,\ \exists x \in X\)</span> to <span class="math notranslate nohighlight">\(Lx = y\)</span> such that
+<span class="math notranslate nohighlight">\(|| x || \leq C || y ||\)</span>.</p></li>
+<li><p>(Quantitative solvability for dense subsets). There exists a <span class="math notranslate nohighlight">\(C &gt; 0\)</span> such that for a dense set of <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\(Y\)</span>
+there exists solutions <span class="math notranslate nohighlight">\(x \in X\)</span> to <span class="math notranslate nohighlight">\(Lx = y\)</span> which obeys <span class="math notranslate nohighlight">\(||x|| \leq C || y ||\)</span>.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text"><strong>Proof:</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Todo. Finish.
+</pre></div>
+</div>
+</div>
+</details></section>
+</div></section>
 
     <script type="text/x-thebe-config">
     {

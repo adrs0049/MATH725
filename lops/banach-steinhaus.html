@@ -61,6 +61,8 @@
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lops/banach-steinhaus';</script>
     <script src="../_static/main.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -370,7 +372,91 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-uniform-boundedness-principle-banach-steinhaus">
 <h1>The uniform boundedness principle (Banach-Steinhaus)<a class="headerlink" href="#the-uniform-boundedness-principle-banach-steinhaus" title="Permalink to this heading">#</a></h1>
+<div class="proof theorem admonition" id="theorem-0">
+<p class="admonition-title"><span class="caption-number">Theorem 6 </span> (Banach-Steinhaus)</p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a Banach space, and <span class="math notranslate nohighlight">\(Y\)</span> be a normed space and let <span class="math notranslate nohighlight">\((T_\alpha)_{\alpha \in A}\)</span> be a family
+of bounded linear operators <span class="math notranslate nohighlight">\(T_\alpha : X \mapsto Y\)</span>. Then the following are equivalent:</p>
+<ol class="arabic simple">
+<li><p>(Pointwise boundedness) <span class="math notranslate nohighlight">\(\forall x \in X\)</span> the set <span class="math notranslate nohighlight">\(\{ T_\alpha x : \alpha \in A \}\)</span> is bounded.</p></li>
+<li><p>(Uniformed boundedness) The operator norms <span class="math notranslate nohighlight">\(\{ || T_\alpha ||_{\mathrm{op}} \} \)</span> are bounded.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text"><strong>Proof:</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The hard direction is (1) <span class="math notranslate nohighlight">\(\implies (2). The key strategy of the proof is to invoke the Baire category
+theorem {prf:baire}. We invoke the theorem by constructing a covering for the complete space \)</span>X<span class="math notranslate nohighlight">\(.
+In detail, define the following subsets of \)</span>X$:</p>
+<div class="math notranslate nohighlight">
+\[ E_j = \{ x \in X : || T_{\alpha} x ||_Y \leq j\ \forall \alpha \in A \} \]</div>
+<p class="sd-card-text">Since by assumption we have that<span class="math notranslate nohighlight">\(\sup_{\alpha \in A} || T_\alpha x || &lt; \infty\)</span> this implies that
+the <span class="math notranslate nohighlight">\(E_j\)</span> indeed cover <span class="math notranslate nohighlight">\(X\)</span> i.e.</p>
+<div class="math notranslate nohighlight">
+\[ \Bigcup_{j=1}^{\infty} E_j = X \]</div>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(X\)</span> is complete, {prf:baire} says that at least one of the <span class="math notranslate nohighlight">\(E_j\)</span> is not nowhere dense i.e.
+has non-empty interior. Let’s denote that set by <span class="math notranslate nohighlight">\(E_n\)</span>. Then there exists
+<span class="math notranslate nohighlight">\(B_r(y) \subset E_n\)</span>. Let <span class="math notranslate nohighlight">\(z \in B_r(y)\)</span>, then <span class="math notranslate nohighlight">\(z \in E_n\)</span> and <span class="math notranslate nohighlight">\(||y - z|| &lt; r\)</span> and we can write
+<span class="math notranslate nohighlight">\(z = y + x = y + (z - y)\)</span> then we have <span class="math notranslate nohighlight">\(||x|| &lt; r\)</span>, and <span class="math notranslate nohighlight">\(y + x \in E_n\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[ || T_{\alpha} x || = || T_{\alpha}(x + y) - T_{\alpha} y || \leq n + || T_{\alpha} y || \leq R \]</div>
+<p class="sd-card-text">for some <span class="math notranslate nohighlight">\(R &gt; 0\)</span>. In particular, for <span class="math notranslate nohighlight">\(||x|| = r\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[ ||T_{\alpha} x|| \leq R \frac{||x||}{r},\ \forall \alpha \in A \]</div>
+<p class="sd-card-text">Since for arbitrary <span class="math notranslate nohighlight">\(x \in X\)</span> we can consider <span class="math notranslate nohighlight">\(\tilde{x} = r \frac{x}{||x||}\)</span> with <span class="math notranslate nohighlight">\(||\tilde{x}|| = r\)</span>
+and we have</p>
+<div class="math notranslate nohighlight">
+\[
+    || T_{\alpha} x || = || (T_{\alpha} \tilde{x})(\frac{||x||}{r}) ||
+                       = \frac{||x||}{r} || T_{\alpha} \tilde{x} ||
+                    \leq \frac{||x||}{r} \frac{R}{r} ||\tilde{x} || = \frac{R}{r} || x ||
+\]</div>
+<p class="sd-card-text">All that remains now is to compute the operator norm from its definition, to find that</p>
+<div class="math notranslate nohighlight">
+\[ || T_{\alpha} ||_{\mathrm{op}} := \sup_{x \neq 0} \frac{|| T_{\alpha} x ||}{||x||} \leq \frac{R}{r}. \]</div>
+</div>
+</details></section>
+</div><div class="proof remark admonition" id="remark-1">
+<p class="admonition-title"><span class="caption-number">Remark 6 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Why is this theorem so signifiancant?</p>
+<ol class="arabic simple">
+<li><p>Note that the condition that <span class="math notranslate nohighlight">\(\{ || T_\alpha || : \alpha in A \}\)</span> is equivalent to the family
+<span class="math notranslate nohighlight">\(\{ T_\alpha \}\)</span> to be equicontinuous.</p></li>
+<li><p>The signifiance of this theorem is that it shows that pointwise control implies uniform control.</p></li>
+<li><p>From the perspective of qualitative vs. quantitative we have the qualitative statement
+that the family of operators is somehow well-behaved, and the quantitative perspective which puts a
+particular number on the behaviour of the operator.</p></li>
+<li><p>A version of this theorem with specific rates allows us to establish and control the convergence
+of sequences of approximation operators e.g. quadratures approximations to integrals, or finite
+difference approximations to derivatives. As soon as I have time I will add some more details on this
+via some worked out examples.</p></li>
+<li><p>From a metamathematical view it explains why sequential arguments often work in functional analysis.
+In other words, if the uniform limit didn’t exist we could construct sequences that behave pathological.
+For more details, see the subsequent corollary.</p></li>
+</ol>
 </section>
+</div><p>A common application is to converging sequences of bounded linear operators.</p>
+<div class="proof corollary admonition" id="corollary-2">
+<p class="admonition-title"><span class="caption-number">Corollary 1 </span> (Limits of sequences of bounded linear operators)</p>
+<section class="corollary-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X, Y\)</span> be Banach spaces, and let <span class="math notranslate nohighlight">\(( T_n )_{n=1}^{\infty}\)</span> be a family of
+bounded linear operators <span class="math notranslate nohighlight">\(T_n : X \mapsto Y\)</span>. Then the following are equivalent:</p>
+<ol class="arabic simple">
+<li><p>(Pointwise convergence). <span class="math notranslate nohighlight">\(\forall x \in X\)</span>, <span class="math notranslate nohighlight">\(T_n x \to y\)</span> in <span class="math notranslate nohighlight">\(Y\)</span>.</p></li>
+<li><p>(Pointwise convergence to a continuous limit). There exists a bounded linear opreator <span class="math notranslate nohighlight">\(T : X \mapsto Y\)</span>
+such that <span class="math notranslate nohighlight">\(\forall x \in X\)</span>, <span class="math notranslate nohighlight">\(T_n x \to Tx\)</span> in <span class="math notranslate nohighlight">\(Y\)</span>.</p></li>
+<li><p>(Uniform boundedness + Dense subclass convergence). The operator norms <span class="math notranslate nohighlight">\(\{ ||T_n|| : n = 1, 2, \dots \}\)</span>
+are bounded, and for a dense subset of <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(T_n x\)</span> converges in <span class="math notranslate nohighlight">\(Y\)</span>.</p></li>
+</ol>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text"><strong>Proof:</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Homework.
+</pre></div>
+</div>
+</div>
+</details></section>
+</div></section>
 
     <script type="text/x-thebe-config">
     {

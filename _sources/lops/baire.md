@@ -82,6 +82,8 @@ closure has empty interior is called "meager".
 ```
 
 ```{prf:theorem}
+:label: baire
+
 Let $E_1, E_2, \dots$ be an at most countable sequence of subsets of a
 complete metric space $X$. If $\bigcup_n E_n$ contains a ball, then
 at least one of the $E_n$ is dense in a sub-ball $B'$ of $B$
