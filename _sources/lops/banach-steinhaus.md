@@ -2,7 +2,8 @@
 
 
 
-````{prf:theorem} Banach-Steinhaus
+```{prf:theorem} Banach-Steinhaus
+:label: banach-steinhaus
 
 Let $X$ be a Banach space, and $Y$ be a normed space and let $(T_\alpha)_{\alpha \in A}$ be a family
 of bounded linear operators $T_\alpha : X \mapsto Y$. Then the following are equivalent:
@@ -10,10 +11,12 @@ of bounded linear operators $T_\alpha : X \mapsto Y$. Then the following are equ
 1. (Pointwise boundedness) $\forall x \in X$ the set $\{ T_\alpha x : \alpha \in A \}$ is bounded.
 2. (Uniformed boundedness) The operator norms $\{ || T_\alpha ||_{\mathrm{op}} \} $ are bounded.
 
-```{dropdown} **Proof:**
+```
+
+```{dropdown} **Proof** of Banach-Steinhaus:
 
 The hard direction is (1) $\implies$ (2). The key strategy of the proof is to invoke the Baire category
-theorem {prf:baire}. We invoke the theorem by constructing a covering for the complete space $X$.
+theorem {prf:ref}`baire`. We invoke the theorem by constructing a covering for the complete space $X$.
 In detail, define the following subsets of $X$:
 
 $$ E_j = \{ x \in X : || T_{\alpha} x ||_Y \leq j\ \forall \alpha \in A \} $$
@@ -48,7 +51,6 @@ All that remains now is to compute the operator norm from its definition, to fin
 $$ || T_{\alpha} ||_{\mathrm{op}} := \sup_{x \neq 0} \frac{|| T_{\alpha} x ||}{||x||} \leq \frac{R}{r}. $$
 
 ```
-````
 
 ```{prf:remark}
 Why is this theorem so signifiancant?

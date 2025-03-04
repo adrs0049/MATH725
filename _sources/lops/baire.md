@@ -26,39 +26,39 @@ the next proposition shows that sets of positive measure can't be "thinly spread
 space, instead they must be concentrated somewhere in mathematical terms there must be a
 ball where the set takes up most of the space.
 
-````{prf:proposition}
+```{prf:proposition}
+:label: thm-measure-topo
+
 Let $E$ be a measurable subset of $\mathbb{R}^d$. Then the following are equivalent
 1. $\mu(E) > 0$
 2. $\forall \varepsilon > 0$ there exists a ball $B$ such that
    $\mu(E \cap B) \geq (1 - \varepsilon)\mu(B)$
+```
 
 ```{dropdown} **Proof:**
-
+We prove {prf:ref}`thm-measure-topo` in two steps.
 - $(1) \implies (2)$. We proceed by contradiction. Suppose that
-  $\mu(E) > 0$ but there exists $\varepsilon_0 > 0$ such that every ball
-  satisfies
-  $\mu(E \cap B) < (1 - \varepsilon_0) \mu(B)$
+    $\mu(E) > 0$ but there exists $\varepsilon_0 > 0$ such that every ball
+    satisfies
+    $\mu(E \cap B) < (1 - \varepsilon_0) \mu(B)$
 
-  The Lebesgue differentiation theorem implies that for almost every $x\in E$
-  we have that
-  $\lim_{r \to 0} \frac{\mu(E \cap B(x, r))}{\mu(B(x, r))} = 1$
+    The Lebesgue differentiation theorem implies that for almost every $x\in E$
+    we have that
+    $\lim_{r \to 0} \frac{\mu(E \cap B(x, r))}{\mu(B(x, r))} = 1$
 
-  Since $E$ has positive measure there must be at least one point where
-  the Lebesgue differentiation theorem applies. For this we can find a sufficiently
-  small $r$ so that
-  $\frac{\mu(E \cap B(x, r))}{\mu(B(x, r))} > 1 - \varepsilon_0.$
+    Since $E$ has positive measure there must be at least one point where
+    the Lebesgue differentiation theorem applies. For this we can find a sufficiently
+    small $r$ so that
+    $\frac{\mu(E \cap B(x, r))}{\mu(B(x, r))} > 1 - \varepsilon_0.$
 
-  A contradiction.
+    A contradiction.
 
 - $(2) \implies (1)$. Let $\varepsilon = 1/2$, then there exists a ball $B$
-  such that
-  $\mu(E \cap B) \geq \frac{1}{2}\mu(B)$
+    such that $\mu(E \cap B) \geq \frac{1}{2}\mu(B)$
 
-  Since we have $\mu(B) > 0$ we have $\mu(E \cap B) > 0$, and we have that
-  $\mu(E) \geq \mu(E \cap B) > 0.$
-
+    Since we have $\mu(B) > 0$ we have $\mu(E \cap B) > 0$, and we have that
+    $\mu(E) \geq \mu(E \cap B) > 0.$
 ```
-````
 
 The contrapositive of this statement would be that if a set $E$ never
 occupies a large portion of any ball, then $E$ must have measure zero.
