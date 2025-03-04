@@ -379,11 +379,9 @@ linear operators, followed by the quantitative version.</p>
 <div class="proof theorem admonition" id="theorem-0">
 <p class="admonition-title"><span class="caption-number">Theorem 7 </span> (Open Mapping Theorem)</p>
 <section class="theorem-content" id="proof-content">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Let $U, V$ be the open units balls of the Banach spaces $X, Y$ respectively. To every bounded linear
-operator $L$ of $X$ **onto** $Y$ there corresponds $\delta &gt; 0$ so that
-$$ L(U) \subset \delta V = \{ y \in Y : ||y|| &lt; \delta \}.$$
-</pre></div>
-</div>
+<p>Let <span class="math notranslate nohighlight">\(U, V\)</span> be the open units balls of the Banach spaces <span class="math notranslate nohighlight">\(X, Y\)</span> respectively. To every bounded linear
+operator <span class="math notranslate nohighlight">\(L\)</span> of <span class="math notranslate nohighlight">\(X\)</span> <strong>onto</strong> <span class="math notranslate nohighlight">\(Y\)</span> there corresponds <span class="math notranslate nohighlight">\(\delta &gt; 0\)</span> so that
+<span class="math notranslate nohighlight">\(L(U) \subset \delta V = \{ y \in Y : ||y|| &lt; \delta \}.\)</span></p>
 </section>
 </div><p>By the linearity of <span class="math notranslate nohighlight">\(L\)</span> we see that this theorem says that <span class="math notranslate nohighlight">\(L\)</span> maps open sets to open sets i.e. is an
 open mapping, and that for every <span class="math notranslate nohighlight">\(||y|| &lt; \delta\)</span> there corresponds on <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(||x|| &lt; 1\)</span> so that
@@ -391,21 +389,17 @@ open mapping, and that for every <span class="math notranslate nohighlight">\(||
 <div class="proof corollary admonition" id="corollary-1">
 <p class="admonition-title"><span class="caption-number">Corollary 2 </span> (Banach’s Bounded Inverse Theorem)</p>
 <section class="corollary-content" id="proof-content">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Let $L$ be a linear operator between two Banach spaces $X$ and $Y$, that is **onto** and one-to-one, then
-$L^{-1}$ is a bounded linear operator.
-</pre></div>
-</div>
+<p>Let <span class="math notranslate nohighlight">\(L\)</span> be a linear operator between two Banach spaces <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, that is <strong>onto</strong> and one-to-one, then
+<span class="math notranslate nohighlight">\(L^{-1}\)</span> is a bounded linear operator.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text"><strong>Proof:</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>If $||Lx|| &lt; \delta$ then the open mapping theorem says that $Lx \in L(U)$ thus there
-exists a $u \in U$ such that $Lu = Lx$. The **key** is that since $L$ is injective we have $x = u$,
-so that we conclude that $||x|| &lt; 1$. If $||x|| \geq 1$ then $||Lx||\geq \delta$. Now let
-$y := \frac{x}{||x||}$ then $||Ly|| \geq \delta$ so that we have $||Lx|| \geq \delta ||x||$.
-Now define $L^{-1}$ via $L^{-1} y= x$ if $Lx = y$. We then show that $L^{-1}$ is indeed linear,
-and bounded $||L^{-1}|| \leq 1/\delta$.
-</pre></div>
-</div>
+<p class="sd-card-text">If <span class="math notranslate nohighlight">\(||Lx|| &lt; \delta\)</span> then the open mapping theorem says that <span class="math notranslate nohighlight">\(Lx \in L(U)\)</span> thus there
+exists a <span class="math notranslate nohighlight">\(u \in U\)</span> such that <span class="math notranslate nohighlight">\(Lu = Lx\)</span>. The <strong>key</strong> is that since <span class="math notranslate nohighlight">\(L\)</span> is injective we have <span class="math notranslate nohighlight">\(x = u\)</span>,
+so that we conclude that <span class="math notranslate nohighlight">\(||x|| &lt; 1\)</span>. If <span class="math notranslate nohighlight">\(||x|| \geq 1\)</span> then <span class="math notranslate nohighlight">\(||Lx||\geq \delta\)</span>. Now let
+<span class="math notranslate nohighlight">\(y := \frac{x}{||x||}\)</span> then <span class="math notranslate nohighlight">\(||Ly|| \geq \delta\)</span> so that we have <span class="math notranslate nohighlight">\(||Lx|| \geq \delta ||x||\)</span>.
+Now define <span class="math notranslate nohighlight">\(L^{-1}\)</span> via <span class="math notranslate nohighlight">\(L^{-1} y= x\)</span> if <span class="math notranslate nohighlight">\(Lx = y\)</span>. We then show that <span class="math notranslate nohighlight">\(L^{-1}\)</span> is indeed linear,
+and bounded <span class="math notranslate nohighlight">\(||L^{-1}|| \leq 1/\delta\)</span>.</p>
 </div>
 </details></section>
 </div><div class="proof remark admonition" id="remark-2">
@@ -434,9 +428,7 @@ there exists solutions <span class="math notranslate nohighlight">\(x \in X\)</s
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text"><strong>Proof:</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Todo. Finish.
-</pre></div>
-</div>
+<p class="sd-card-text">Todo. Finish.</p>
 </div>
 </details></section>
 </div></section>

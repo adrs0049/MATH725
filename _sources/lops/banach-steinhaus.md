@@ -12,7 +12,7 @@ of bounded linear operators $T_\alpha : X \mapsto Y$. Then the following are equ
 
 ```{dropdown} **Proof:**
 
-The hard direction is (1) $\implies (2). The key strategy of the proof is to invoke the Baire category
+The hard direction is (1) $\implies$ (2). The key strategy of the proof is to invoke the Baire category
 theorem {prf:baire}. We invoke the theorem by constructing a covering for the complete space $X$.
 In detail, define the following subsets of $X$:
 
@@ -21,7 +21,7 @@ $$ E_j = \{ x \in X : || T_{\alpha} x ||_Y \leq j\ \forall \alpha \in A \} $$
 Since by assumption we have that$\sup_{\alpha \in A} || T_\alpha x || < \infty$ this implies that
 the $E_j$ indeed cover $X$ i.e.
 
-$$ \Bigcup_{j=1}^{\infty} E_j = X $$
+$$ \bigcup_{j=1}^{\infty} E_j = X $$
 
 Since $X$ is complete, {prf:baire} says that at least one of the $E_j$ is not nowhere dense i.e.
 has non-empty interior. Let's denote that set by $E_n$. Then there exists
@@ -53,7 +53,7 @@ $$ || T_{\alpha} ||_{\mathrm{op}} := \sup_{x \neq 0} \frac{|| T_{\alpha} x ||}{|
 ```{prf:remark}
 Why is this theorem so signifiancant?
 
-1. Note that the condition that $\{ || T_\alpha || : \alpha in A \}$ is equivalent to the family
+1. Note that the condition that $\{ || T_\alpha || : \alpha \in A \}$ is equivalent to the family
 $\{ T_\alpha \}$ to be equicontinuous.
 
 2. The signifiance of this theorem is that it shows that pointwise control implies uniform control.
@@ -86,8 +86,6 @@ such that $\forall x \in X$, $T_n x \to Tx$ in $Y$.
 are bounded, and for a dense subset of $X$, $T_n x$ converges in $Y$.
 
 ```{dropdown} **Proof:**
-    Homework.
+Homework.
 ```
-
-
 ````
