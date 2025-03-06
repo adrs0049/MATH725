@@ -386,7 +386,7 @@ operator <span class="math notranslate nohighlight">\(L\)</span> of <span class=
 </div><p>By the linearity of <span class="math notranslate nohighlight">\(L\)</span> we see that this theorem says that <span class="math notranslate nohighlight">\(L\)</span> maps open sets to open sets i.e. is an
 open mapping, and that for every <span class="math notranslate nohighlight">\(||y|| &lt; \delta\)</span> there corresponds on <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(||x|| &lt; 1\)</span> so that
 <span class="math notranslate nohighlight">\(Lx = y\)</span>.</p>
-<div class="proof corollary admonition" id="corollary-1">
+<div class="proof corollary admonition" id="banach-inverse">
 <p class="admonition-title"><span class="caption-number">Corollary 2 </span> (Banach’s Bounded Inverse Theorem)</p>
 <section class="corollary-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(L\)</span> be a linear operator between two Banach spaces <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, that is <strong>onto</strong> and one-to-one, then
@@ -409,7 +409,7 @@ and bounded <span class="math notranslate nohighlight">\(||L^{-1}|| \leq 1/\delt
 in finite dimensions (i.e. that bijectiveness is equivalent to invertibility) to the infinite dimensional
 case.</p>
 </section>
-</div><p>Now to the version of the open-mapping theorem by T. Tao.</p>
+</div><p>Now to the version of the open-mapping theorem by T. Tao <span id="id1">[<a class="reference internal" href="../bibliography.html#id2" title="Terence Tao. 245b, notes 9: the Baire category theorem and its Banach space consequences. 2 2009. URL: https://terrytao.wordpress.com/2009/02/01/245b-notes-9-the-baire-category-theorem-and-its-banach-space-consequences/ (visited on 2025-03-03).">Tao, 2009</a>]</span>.</p>
 <div class="proof theorem admonition" id="theorem-3">
 <p class="admonition-title"><span class="caption-number">Theorem 8 </span> (Quantitative and Qualitative version of the Open Mapping Theorem)</p>
 <section class="theorem-content" id="proof-content">
@@ -429,9 +429,115 @@ there exists solutions <span class="math notranslate nohighlight">\(x \in X\)</s
 </div><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text"><strong>Proof:</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Todo. Finish.</p>
+<p class="sd-card-text"><strong>(1) <span class="math notranslate nohighlight">\(\iff\)</span> (3):</strong> by the definition of surjectiveness.</p>
+<p class="sd-card-text"><strong>(2) <span class="math notranslate nohighlight">\(\implies\)</span> (1):</strong> If <span class="math notranslate nohighlight">\(L\)</span> is open, then <span class="math notranslate nohighlight">\(L(B_X(0, 1))\)</span> is an open set in <span class="math notranslate nohighlight">\(Y\)</span> containing <span class="math notranslate nohighlight">\(L(0) = 0\)</span>. Thus
+there exists <span class="math notranslate nohighlight">\(r &gt; 0\)</span> such that <span class="math notranslate nohighlight">\(B_Y(0, r) \subset L(B_X(0, 1))\)</span>. Now pick any <span class="math notranslate nohighlight">\(y \in Y\)</span> and any scalar <span class="math notranslate nohighlight">\(t &gt; 0\)</span>,
+we can use the <strong>linearity</strong> of <span class="math notranslate nohighlight">\(L\)</span> in the following way, <span class="math notranslate nohighlight">\(L(B_X(0, t)) = L(t B_X(0, 1)) = t L(B_X(0, 1))\)</span>.</p>
+<p class="sd-card-text">Now since <span class="math notranslate nohighlight">\(B_Y(0, r) \subset L(B_X(0, 1))\)</span> we also have that <span class="math notranslate nohighlight">\(B_Y(0, tr) = t B_Y(0, r) \subset L(B_X(0, t))\)</span>.
+Now set <span class="math notranslate nohighlight">\(t = 2 ||y|| / r\)</span> then <span class="math notranslate nohighlight">\(y \in B_Y(0, 2 ||y||) \subset L(B_X(0, 2 ||y||/r))\)</span>, which means that
+there exists an <span class="math notranslate nohighlight">\(x \in B_X(0, 2||y||/r)\)</span> such that <span class="math notranslate nohighlight">\(Lx = y\)</span>, further note that we have <span class="math notranslate nohighlight">\(||x|| &lt; 2||y|| / r\)</span>.</p>
+<p class="sd-card-text"><strong>(2) <span class="math notranslate nohighlight">\(\implies\)</span> (4):</strong> If <span class="math notranslate nohighlight">\(L\)</span> is open, then <span class="math notranslate nohighlight">\(B_Y(0, r) \subset L(B_X(0, 1))\)</span> for some <span class="math notranslate nohighlight">\(r &gt; 0\)</span>. Pick <span class="math notranslate nohighlight">\(y \in Y\)</span>
+then <span class="math notranslate nohighlight">\(\tilde{y} := \frac{y}{||y||}\frac{r}{2} \in B_Y(0, r)\)</span>, so there exists <span class="math notranslate nohighlight">\(z \in B_X(0, 1)\)</span> such that
+<span class="math notranslate nohighlight">\(Lz = \tilde{y}\)</span>. Define <span class="math notranslate nohighlight">\(x = \frac{2||y||}{r} z\)</span>, which by <strong>linearity</strong> gives us <span class="math notranslate nohighlight">\(Lx = y\)</span>. Now since
+<span class="math notranslate nohighlight">\(||z|| &lt; 1\)</span> we have <span class="math notranslate nohighlight">\(||x|| &lt; \frac{2||y||}{r}\)</span>. Now define <span class="math notranslate nohighlight">\(C := \frac{2}{r}\)</span> and we have <span class="math notranslate nohighlight">\(||x|| \leq C ||y||\)</span>
+for any <span class="math notranslate nohighlight">\(y \in Y\)</span>.</p>
+<p class="sd-card-text"><strong>(4) <span class="math notranslate nohighlight">\(\implies\)</span> (2):</strong> Assume that for every <span class="math notranslate nohighlight">\(y\in Y\)</span> there exists <span class="math notranslate nohighlight">\(x \in X\)</span> such that <span class="math notranslate nohighlight">\(Lx = y\)</span> and <span class="math notranslate nohighlight">\(||u||\leq C||y||\)</span>.
+We begin by showing that <span class="math notranslate nohighlight">\(L\)</span> maps the unit ball to an open set. Let <span class="math notranslate nohighlight">\(y \in Y\)</span> with <span class="math notranslate nohighlight">\(||y|| &lt; \frac{1}{C}\)</span>,
+then there exists <span class="math notranslate nohighlight">\(x \in X\)</span> such that <span class="math notranslate nohighlight">\(Lx = y\)</span> and <span class="math notranslate nohighlight">\(||x|| &lt; C ||y|| &lt; 1\)</span>. This means that <span class="math notranslate nohighlight">\(y \in L(B_X(0,1))\)</span>.
+Thus we have shown that <span class="math notranslate nohighlight">\(B_Y(0, \frac{1}{C})\subset L(B_X(0, 1))\)</span>, making <span class="math notranslate nohighlight">\(L(B_X(0, 1))\)</span> an open set.
+By <strong>linearity</strong> of <span class="math notranslate nohighlight">\(L\)</span> this means that <span class="math notranslate nohighlight">\(L\)</span> maps all open sets to open sets, therefore <span class="math notranslate nohighlight">\(L\)</span> is open.</p>
+<p class="sd-card-text"><strong>(4) <span class="math notranslate nohighlight">\(\implies\)</span> (5):</strong> If it holds everywhere it will hold for a dense set.</p>
+<p class="sd-card-text"><strong>(5) <span class="math notranslate nohighlight">\(\implies\)</span> (4):</strong> Let <span class="math notranslate nohighlight">\(E \subset Y\)</span> be the dense set, and let <span class="math notranslate nohighlight">\(y \in Y\)</span> then want to approximate
+<span class="math notranslate nohighlight">\(y\)</span> using elements in <span class="math notranslate nohighlight">\(E\)</span>.</p>
+<ul class="simple">
+<li><p class="sd-card-text"><strong>Step 1:</strong> Set the initial <strong>residual</strong> <span class="math notranslate nohighlight">\(r_0 = y\)</span>, then find <span class="math notranslate nohighlight">\(y_1 \in E\)</span> so that
+<span class="math notranslate nohighlight">\(||y_1 - r_0|| &lt; \varepsilon = \frac{1}{2} ||y||\)</span>.</p></li>
+<li><p class="sd-card-text"><strong>Step 2:</strong> Set the second <strong>residual</strong> <span class="math notranslate nohighlight">\(r_1 = r_0 - y_1 = y - y_1\)</span>, and find <span class="math notranslate nohighlight">\(y_2 \in E\)</span> so that</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+    ||y_2 - r_1|| &lt; \frac{1}{2}||r_1|| &lt; \frac{1}{4}||y||
+\]</div>
+<ul class="simple">
+<li><p class="sd-card-text"><strong>Step 3:</strong> At the <span class="math notranslate nohighlight">\(j\)</span>-the step we define <span class="math notranslate nohighlight">\(r_j = r_{j-1} - y_j\)</span> where <span class="math notranslate nohighlight">\(y_j \in E\)</span> with</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+    ||y_j - r_{j-1}|| &lt; \frac{1}{2} ||r_{j-1}|| &lt; 2^{-j} ||y||
+\]</div>
+<p class="sd-card-text">Note that the sequence of residuals has <span class="math notranslate nohighlight">\(||r_j|| \to 0\)</span> and thus <span class="math notranslate nohighlight">\(r_j \to 0\)</span>, and note that
+<span class="math notranslate nohighlight">\(y_j = r_{j-1} - r_j\)</span> so if we sum the <span class="math notranslate nohighlight">\(y_j\)</span>s we find a telescoping series i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_{j=1}^{\infty} y_j = \lim_{N \to \infty} \sum_{j=1}^{N} r_{j-1} - r_j = r_0 - \lim_{N\to\infty} r_N = y.
+\]</div>
+<p class="sd-card-text">Finally we show that we can life the inequality from the dense set to everywhere. Since <span class="math notranslate nohighlight">\(y_j \in E\)</span> we have
+there exists <span class="math notranslate nohighlight">\(x_j : Lx_j = y_j\)</span> with <span class="math notranslate nohighlight">\(||x_j|| \leq C ||y_j||\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+    ||y_j|| = ||y_j + r_{j-1} - r_{j-1}|| \leq 2^{-j} ||y|| + 2^{-(i-1)} ||y|| \leq 4 \cdot 2^{-i} ||y||.
+\]</div>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(y_j\in E\)</span> we have that</p>
+<div class="math notranslate nohighlight">
+\[
+    ||x_j|| \leq C ||y_j|| \leq 4C \cdot 2^{-j} ||y|| \quad\implies\quad \sum_{j=1}^{\infty} ||x_j|| &lt; 4C||y||.
+\]</div>
+<p class="sd-card-text">Hence we can define <span class="math notranslate nohighlight">\(x:= \sum_{j=1}^{\infty} x_j\)</span>. Finally</p>
+<div class="math notranslate nohighlight">
+\[
+    Lx = L[\sum_{j=1}^{\infty} x_j] = \sum_{j=1}^{\infty} Lx_j = \sum_{j=1}^{\infty} y_j = y.
+\]</div>
+<p class="sd-card-text">Thus we have that <span class="math notranslate nohighlight">\(Lx = y\)</span> and similarly find that <span class="math notranslate nohighlight">\(||x|| \leq 4C ||y||\)</span>.</p>
+<p class="sd-card-text"><strong>(3) <span class="math notranslate nohighlight">\(\implies\)</span> (4):</strong> The strategy is to apply the <a class="reference internal" href="baire.html#baire">Theorem 5</a>. Since by assumption <span class="math notranslate nohighlight">\(\forall y \in Y\)</span>
+there exists <span class="math notranslate nohighlight">\(x \in X\)</span> such that <span class="math notranslate nohighlight">\(Lx = y\)</span> the following <span class="math notranslate nohighlight">\(E_n\)</span> form a cover of <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+    E_n = \{ y \in Y : ||x|| \leq n ||y||\ \mathrm{such\ that}\ Lx = y \}\ \mathrm{and}\ \bigcup_n E_n = Y.
+\]</div>
+<p class="sd-card-text">Since <span class="math notranslate nohighlight">\(Y\)</span> is complete, Baire’s theorem implies that at least one of the <span class="math notranslate nohighlight">\(E_n\)</span>’s is not nowhere dense.
+Say <span class="math notranslate nohighlight">\(E_m\)</span> is the not nowhere dense set, meaning <span class="math notranslate nohighlight">\(E_m\)</span> is dense in some ball <span class="math notranslate nohighlight">\(B(y_0, r)\)</span> i.e.
+<span class="math notranslate nohighlight">\(\overline{E_m \cap B(y_0, r)} = B(y_0, r)\)</span>. We take advantage of this twice to find solution
+approximations in <span class="math notranslate nohighlight">\(E_m\)</span>.</p>
+<p class="sd-card-text"><strong>Construct approximate solution:</strong>
+Let <span class="math notranslate nohighlight">\(\varepsilon &gt; 0\)</span> then for any <span class="math notranslate nohighlight">\(y\in B(y_0, r)\)</span> there exists <span class="math notranslate nohighlight">\(\hat{y} \in E_m\)</span> such that
+<span class="math notranslate nohighlight">\(||y - \hat{y}|| &lt; \varepsilon\)</span>, and there exists <span class="math notranslate nohighlight">\(\hat{x}\)</span> such that <span class="math notranslate nohighlight">\(L\hat{x} = \hat{y}\)</span>
+with <span class="math notranslate nohighlight">\(||\hat{x}|| \leq m ||\hat{y}||\)</span> and <span class="math notranslate nohighlight">\(||y - L\hat{x}|| &lt; \varepsilon\)</span> (in other words <span class="math notranslate nohighlight">\(\hat{x}\)</span> is
+solution approximation of <span class="math notranslate nohighlight">\(Lx = y\)</span>), and we have</p>
+<div class="math notranslate nohighlight">
+\[
+    ||\hat{x}|| \leq m ||\hat{y}|| \leq m (\varepsilon + r + ||y_0||).
+\]</div>
+<p class="sd-card-text"><strong>Map ball of right hand sides to the origin.</strong>
+Pick another <span class="math notranslate nohighlight">\(y' \in B(y_0, r)\)</span> then we can find another solution approximation <span class="math notranslate nohighlight">\(\tilde{x}\)</span>
+with the same properties above. Then note that <span class="math notranslate nohighlight">\(y - y' \in B(0, 2r)\)</span> and that <span class="math notranslate nohighlight">\(x = \hat{x} - \tilde{x}\)</span>
+is a solution approximation with <span class="math notranslate nohighlight">\(||Lx - (y - y')|| &lt; 2\varepsilon\)</span> and <span class="math notranslate nohighlight">\(||x|| \leq 2n(||y_0| + r + \varepsilon)\)</span>.</p>
+<p class="sd-card-text"><strong>Scaling argument.</strong>
+Next pick any nonzero <span class="math notranslate nohighlight">\(y \in Y\)</span>, define <span class="math notranslate nohighlight">\(\lambda = \frac{r}{||y||}\)</span> then <span class="math notranslate nohighlight">\(\lambda y \in B(0, 2r)\)</span> and there is
+an approximate solution <span class="math notranslate nohighlight">\(u' \in X\)</span>. Define <span class="math notranslate nohighlight">\(u = \lambda u'\)</span> and pick <span class="math notranslate nohighlight">\(\varepsilon = r / 4\)</span>, then <span class="math notranslate nohighlight">\(u\)</span> satisfies
+<span class="math notranslate nohighlight">\(||Lu - y|| &lt; \frac{1}{2} ||y||\)</span> and <span class="math notranslate nohighlight">\(||u|| &lt; K ||y||\)</span> where <span class="math notranslate nohighlight">\(K:= 2n(5r/4 + ||y_0||) / r\)</span> a constant.</p>
+<p class="sd-card-text"><strong>Iterate.</strong>
+Pick <span class="math notranslate nohighlight">\(y_0 \in Y\)</span>, find <span class="math notranslate nohighlight">\(u_1 \in X\)</span> by the previous step, then iterate by defining the residual <span class="math notranslate nohighlight">\(y_1 = y_0 - Lu_1\)</span>,
+and solve for <span class="math notranslate nohighlight">\(u_2 \in X\)</span> such that <span class="math notranslate nohighlight">\(||Lu_2 - y_1|| &lt; \frac{1}{2}||y_1||\)</span>.
+We again obtain a convergent series, and we can check similarly to before that its limit
+satisfies the required properties.</p>
 </div>
-</details></section>
+</details><div class="proof remark admonition" id="remark-4">
+<p class="admonition-title"><span class="caption-number">Remark 8 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Make sure to take a close look at the proof of the open-mapping theorem. There are three key techniques on display:
+(1) <strong>linearity</strong>, (2) <strong>series approximations</strong>, and (3) the <strong>Baire category theorem</strong>.</p>
+<ol class="arabic simple">
+<li><p>The frequent dilations and translations in the above are allowed by linearity.</p></li>
+<li><p>The series approximation technique has profound signifiance beyond proving results in functional analysis. Take
+a look at numerical methods such as gradient descent, conjugate gradient, or even Newton’s method. These are all
+examples of method that construct solution approximations by constructing approximating series.</p></li>
+<li><p>Finally the completeness of the space <span class="math notranslate nohighlight">\(Y\)</span> allows an application of Baire’s category theorem, and ensures that
+all surjective linear mappings are open, thus we can control the norm of the solution by the norm of the input.</p></li>
+<li><p>There are several important consequence of this theorem. One the <a class="reference internal" href="#banach-inverse">Corollary 2</a> is discussed above,
+and the closed-graph theorem will be discussed later.</p></li>
+</ol>
+</section>
+</div></section>
 
     <script type="text/x-thebe-config">
     {
