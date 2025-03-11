@@ -88,7 +88,7 @@ Let $A : X \mapsto Y$ we define
 Let $X$ be a Banach space and $A : X \mapsto Y$ a bounded linear map. Show that
 
 - The null-space is closed.
-- If there exists $K > 0$ such that $\norm{x} \leq K \norm{Ax}$ then the range is closed.
+- If there exists $K > 0$ such that $||x|| \leq K ||Ax||$ then the range is closed.
 
 ```
 
