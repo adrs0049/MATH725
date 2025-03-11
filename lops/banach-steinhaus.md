@@ -97,7 +97,7 @@ Homework.
 
 ```{div} exercise
 
-Prove the above corollary. For (3) $\implies (2) pick a dense set $D \subset X$ and define $T(x) = \lim_{n} T_n(x)$
+Prove the above corollary. For (3) $\implies$ (2) pick a dense set $D \subset X$ and define $T(x) = \lim_{n} T_n(x)$
 for $x\in D$. Then show that $T_n(x) \to T(x)$ for all $x \in X$.
 
 
@@ -106,7 +106,7 @@ for $x\in D$. Then show that $T_n(x) \to T(x)$ for all $x \in X$.
 ```{div} exercise
 
 Let $S \subset \mathcal{L}(X, Y)$ be a family of linear operators
-such that $\sup_{T \in S} \norm{T} < \infty$. Show that this means that $S$ is equi-continuous.
+such that $\sup_{T \in S} ||T|| < \infty$. Show that this means that $S$ is equi-continuous.
 
 ```
 
