@@ -80,3 +80,16 @@ Let $A : X \mapsto Y$ we define
 2. The **nullspace** or **kernel** of $A$ is $N[A] = \{ f \in D(A) : A[f] = 0 \}$.
 ```
 
+
+## Exercises
+
+```{div} exercise
+
+Let $X$ be a Banach space and $A : X \mapsto Y$ a bounded linear map. Show that
+
+- The null-space is closed.
+- If there exists $K > 0$ such that $\norm{x} \leq K \norm{Ax}$ then the range is closed.
+
+```
+
+

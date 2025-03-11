@@ -185,3 +185,15 @@ and the closed-graph theorem will be discussed later.
 
 ```
 
+
+## Exercises
+
+```{div} exercise
+Show that all linear transformations from a finite-dimensional space to a
+normed vector space are continuous. Conclude that all norms on a finite-dimensional
+space are equivalent.
+
+*Hint:* You can use either the open-mapping theorem or Banach-Steinhaus to prove this by considering
+the identity map.
+
+```

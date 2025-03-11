@@ -345,7 +345,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -361,6 +363,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -454,7 +464,18 @@ are bounded, and for a dense subset of <span class="math notranslate nohighlight
 <p class="sd-card-text">Homework.</p>
 </div>
 </details></section>
-</div></section>
+</div><section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="exercise docutils">
+<p>Prove the above corollary. For (3) <span class="math notranslate nohighlight">\(\implies (2) pick a dense set \)</span>D \subset X<span class="math notranslate nohighlight">\( and define \)</span>T(x) = \lim_{n} T_n(x)<span class="math notranslate nohighlight">\(
+for \)</span>x\in D<span class="math notranslate nohighlight">\(. Then show that \)</span>T_n(x) \to T(x)<span class="math notranslate nohighlight">\( for all \)</span>x \in X$.</p>
+</div>
+<div class="exercise docutils">
+<p>Let <span class="math notranslate nohighlight">\(S \subset \mathcal{L}(X, Y)\)</span> be a family of linear operators
+such that <span class="math notranslate nohighlight">\(\sup_{T \in S} \norm{T} &lt; \infty\)</span>. Show that this means that <span class="math notranslate nohighlight">\(S\)</span> is equi-continuous.</p>
+</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -510,6 +531,21 @@ are bounded, and for a dense subset of <span class="math notranslate nohighlight
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

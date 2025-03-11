@@ -345,7 +345,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -361,6 +363,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -537,7 +547,17 @@ all surjective linear mappings are open, thus we can control the norm of the sol
 and the closed-graph theorem will be discussed later.</p></li>
 </ol>
 </section>
-</div></section>
+</div><section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="exercise docutils">
+<p>Show that all linear transformations from a finite-dimensional space to a
+normed vector space are continuous. Conclude that all norms on a finite-dimensional
+space are equivalent.</p>
+<p><em>Hint:</em> You can use either the open-mapping theorem or Banach-Steinhaus to prove this by considering
+the identity map.</p>
+</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -593,6 +613,21 @@ and the closed-graph theorem will be discussed later.</p></li>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
