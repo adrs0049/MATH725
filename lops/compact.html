@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Linear Operators on Banach spaces &#8212; Applied Functional Analysis</title>
+    <title>Compact Operators &#8212; Applied Functional Analysis</title>
   
   
   
@@ -61,14 +61,12 @@
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'lops/lops';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lops/compact';</script>
     <script src="../_static/main.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="The Baire Category Theorem" href="baire.html" />
-    <link rel="prev" title="Basic Functional Analysis" href="../notes/week2.html" />
+    <link rel="next" title="Duality" href="../duality/duality.html" />
+    <link rel="prev" title="The Open Mapping Theorem" href="open-map.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,11 +185,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Operators</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear Operators on Banach spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lops.html">Linear Operators on Banach spaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="baire.html">The Baire Category Theorem</a></li>
 <li class="toctree-l1"><a class="reference internal" href="banach-steinhaus.html">The uniform boundedness principle (Banach-Steinhaus)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="open-map.html">The Open Mapping Theorem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="compact.html">Compact Operators</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Compact Operators</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Duality</span></p>
 <ul class="nav bd-sidenav">
@@ -280,7 +278,7 @@
       
       
       
-      <li><a href="../_sources/lops/lops.md" target="_blank"
+      <li><a href="../_sources/lops/compact.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,9 +349,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -364,19 +360,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Linear Operators on Banach spaces</h1>
+    <h1>Compact Operators</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -386,96 +374,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="linear-operators-on-banach-spaces">
-<h1>Linear Operators on Banach spaces<a class="headerlink" href="#linear-operators-on-banach-spaces" title="Permalink to this heading">#</a></h1>
-<p>Linear operators between Banach spaces are key in functional analysis. They connect function spaces
-with each other, describe physical systems, cost functions, solve PDEs, and tell us when Banach spaces
-are isomorphic.</p>
-<div class="proof definition admonition" id="definition-0">
-<p class="admonition-title"><span class="caption-number">Definition 7 </span> (Linear operator)</p>
-<section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\((X, ||\cdot||_X)\)</span> and <span class="math notranslate nohighlight">\((Y, ||\cdot||_Y)\)</span> be two Banach spaces, and let <span class="math notranslate nohighlight">\(A : X \mapsto Y\)</span> be a map:</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(A\)</span> is linear if <span class="math notranslate nohighlight">\(A(\alpha x_1 + \beta x_2) = \alpha Ax_1 + \beta Ax_2\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(A\)</span> is bounded if <span class="math notranslate nohighlight">\(||Ax||_Y \leq M ||x||_X\)</span> <span class="math notranslate nohighlight">\(\forall x \in X\)</span>, <span class="math notranslate nohighlight">\(M &gt; 0\)</span>.</p></li>
-<li><p>We denote the set of all bounded operators by</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[\mathcal{L}(X, Y) = \{ A : X \mapsto Y,\ A\ \mathrm{linear\ and\ bounded} \}\]</div>
-<p>This space is equipped with a norm</p>
-<div class="math notranslate nohighlight">
-\[ || A ||_{\mathrm{op}} := \sup_{x \neq 0} \frac{||Ax||_Y}{||x||_X} = \sup_{||x||=1} || Ax ||_Y \]</div>
-</section>
-</div><div class="proof proposition admonition" id="proposition-1">
-<p class="admonition-title"><span class="caption-number">Proposition 1 </span></p>
-<section class="proposition-content" id="proof-content">
-<p><span class="math notranslate nohighlight">\(\mathcal{L}(X, Y)\)</span> is a Banach Space</p>
-</section>
-</div><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text"><strong>Proof:</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Insert proof.</p>
-</div>
-</details><div class="proof proposition admonition" id="prop-bounded-lin-op">
-<p class="admonition-title"><span class="caption-number">Proposition 2 </span> (Qualitative vs Quantitative properties)</p>
-<section class="proposition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(A : X \mapsto Y\)</span> be linear, then <span class="math notranslate nohighlight">\(A\)</span> is bounded if and only if <span class="math notranslate nohighlight">\(A\)</span> is continuous.</p>
-</section>
-</div><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text"><strong>Proof:</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">We prove <a class="reference internal" href="#prop-bounded-lin-op">Proposition 2</a> in two steps.</p>
-<ol class="arabic simple">
-<li><p class="sd-card-text">If <span class="math notranslate nohighlight">\(A\)</span> is bounded, then let <span class="math notranslate nohighlight">\(x_n \to x\)</span> in <span class="math notranslate nohighlight">\(X\)</span> then</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[ || Ax_n - Ax || = || A(x_n - x) || \leq ||A||_{\mathrm{op}} || x_n - x || \]</div>
-<p class="sd-card-text">Now let <span class="math notranslate nohighlight">\(x_n \to x\)</span> and <span class="math notranslate nohighlight">\(A\)</span> must be continuous.</p>
-<ol class="arabic simple" start="2">
-<li><p class="sd-card-text">If <span class="math notranslate nohighlight">\(A\)</span> is continuous, and <span class="math notranslate nohighlight">\(A\)</span> is not bounded. Then there exists a sequence <span class="math notranslate nohighlight">\(y_n\)</span> in <span class="math notranslate nohighlight">\(X\)</span> such that</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[ ||Ay_n||_Y \geq n^2 ||y_n|| \quad\mathrm{and\ define}\quad x_n := \frac{y_n}{n || y_n ||} \to 0 \]</div>
-<p class="sd-card-text">But <span class="math notranslate nohighlight">\(||Ay_n|| \geq n \to \infty\)</span> means that <span class="math notranslate nohighlight">\(A\)</span> is not continuous, we found a contradiction that <span class="math notranslate nohighlight">\(A\)</span>
-is not continuous at zero.</p>
-</div>
-</details><div class="proof remark admonition" id="remark-3">
-<p class="admonition-title"><span class="caption-number">Remark 3 </span></p>
-<section class="remark-content" id="proof-content">
-<p>This is the first result of the qualitative vs. quantitative theme we encounter in functional analysis.
-With qualitative we here mean that <span class="math notranslate nohighlight">\(A\)</span> is continuous i.e. well behaved, and that this is related to a
-quantitative bound on the operator which quantifies how well behaved the operator is. In terms of
-continuity it tells us how much the output can vary as we change the input.</p>
-</section>
-</div><div class="proof example admonition" id="example-4">
-<p class="admonition-title"><span class="caption-number">Example 9 </span></p>
-<section class="example-content" id="proof-content">
-<p>Insert example of integral operator.</p>
-</section>
-</div><div class="proof example admonition" id="example-5">
-<p class="admonition-title"><span class="caption-number">Example 10 </span></p>
-<section class="example-content" id="proof-content">
-<p>Insert example of second order differential operator.</p>
-</section>
-</div><div class="proof definition admonition" id="definition-6">
-<p class="admonition-title"><span class="caption-number">Definition 8 </span></p>
-<section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(A : X \mapsto Y\)</span> we define</p>
-<ol class="arabic simple">
-<li><p>The <strong>range</strong> of the operator as <span class="math notranslate nohighlight">\(R[A] = \{ g \in Y : g = A[f],\ f \in D(A) \}\)</span></p></li>
-<li><p>The <strong>nullspace</strong> or <strong>kernel</strong> of <span class="math notranslate nohighlight">\(A\)</span> is <span class="math notranslate nohighlight">\(N[A] = \{ f \in D(A) : A[f] = 0 \}\)</span>.</p></li>
-</ol>
-</section>
-</div><section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
-<div class="exercise docutils">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a Banach space and <span class="math notranslate nohighlight">\(A : X \mapsto Y\)</span> a bounded linear map. Show that</p>
-<ul class="simple">
-<li><p>The null-space is closed.</p></li>
-<li><p>If there exists <span class="math notranslate nohighlight">\(K &gt; 0\)</span> such that <span class="math notranslate nohighlight">\(||x|| \leq K ||Ax||\)</span> then the range is closed.</p></li>
-</ul>
-</div>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="compact-operators">
+<h1>Compact Operators<a class="headerlink" href="#compact-operators" title="Permalink to this heading">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -509,20 +409,20 @@ continuity it tells us how much the output can vary as we change the input.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../notes/week2.html"
+       href="open-map.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Basic Functional Analysis</p>
+        <p class="prev-next-title">The Open Mapping Theorem</p>
       </div>
     </a>
     <a class="right-next"
-       href="baire.html"
+       href="../duality/duality.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Baire Category Theorem</p>
+        <p class="prev-next-title">Duality</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -532,21 +432,6 @@ continuity it tells us how much the output can vary as we change the input.</p>
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
