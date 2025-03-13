@@ -15,6 +15,7 @@ parts:
   - caption: Duality
     chapters:
     - file: duality/duality.md
+    - file: duality/adjoint.md
   - caption: Jupyter Notebooks
     chapters:
     - file: notebooks/01_fourier_series.ipynb

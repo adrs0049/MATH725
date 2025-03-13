@@ -1,4 +1,4 @@
-# Duality
+# The Dual-Space
 
 There are two methods to studying mathematical structures.
 
