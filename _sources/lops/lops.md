@@ -1,4 +1,4 @@
-# Linear Operators on Banach spaces
+# Bounded Operators
 
 Linear operators between Banach spaces are key in functional analysis. They connect function spaces
 with each other, describe physical systems, cost functions, solve PDEs, and tell us when Banach spaces

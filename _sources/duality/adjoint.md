@@ -1,0 +1,1 @@
+# The transpose (adjoint) operator
