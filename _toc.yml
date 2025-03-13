@@ -7,13 +7,14 @@ parts:
     - file: notes/week2.md
   - caption: Linear Operators
     chapters:
-      - file: lops/lops.md
-      - file: lops/baire.md
-      - file: lops/banach-steinhaus.md
-      - file: lops/open-map.md
-      - file: lops/compact.md
+    - file: lops/lops.md
+    - file: lops/baire.md
+    - file: lops/banach-steinhaus.md
+    - file: lops/open-map.md
+    - file: lops/compact.md
   - caption: Duality
-      - file: duality/duality.md
+    chapters:
+    - file: duality/duality.md
   - caption: Jupyter Notebooks
     chapters:
     - file: notebooks/01_fourier_series.ipynb
