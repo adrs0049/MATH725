@@ -2,7 +2,7 @@
 
 ## Instructor
 
-This is a course given by [Andreas Buttenschoen](www.buttenschoen.ca) at the University of Massachusetts Amherst.
+This is a course given by [Andreas Buttenschoen](https://www.buttenschoen.ca) at the University of Massachusetts Amherst.
 
 ## Description
 
