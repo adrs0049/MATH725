@@ -1,5 +1,9 @@
 # MATH 725 Applied Functional Analysis
 
+## Instructor
+
+This is a course given by [Andreas Buttenschoen](www.buttenschoen.ca) at the University of Massachusetts Amherst.
+
 ## Description
 
 This is a one-semester introduction to Functional Analysis: I plan to cover most of the chapters in Hillen (as time permits), as well as some uses for functional analysis in Neural Networks, and numerical tools to explore functional analysis.
