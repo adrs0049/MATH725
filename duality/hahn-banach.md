@@ -6,7 +6,7 @@
 Let $X$ be a normed space, let $Y \subset X$ be a subspace. Then any continuous linear functional
 $\lambda \in Y^*$ on $Y$ can be extended to a continuous linear functional $\hat{\lambda} \in X^*$
 on $X$ with the same operator norm, thus $\hat{\lambda}$ agrees with $\lambda$ on $Y$
-and $\norm{\hat{\lambda}}_{X^*} = \norm{\lambda}_{Y^*}$.
+and $|| \hat{\lambda}||_{X^*} = ||\lambda||_{Y^*}$.
 **Note** that $\hat{\lambda}$ is not necessarily unique.
 
 ```
