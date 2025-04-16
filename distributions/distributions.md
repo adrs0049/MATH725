@@ -39,16 +39,17 @@ The elements of $\left( \mathcal{C}_c^\infty(\mathbb{R}^d) \right)^*$ are called
 Given a distribution $\lambda$ we define an *evaluation map* as
 
 $$
-    \Phi_f(\lambda) := \lamnda(f) = $\langle f, \lambda \rangle$.
+    \Phi_f(\lambda) := \lamda(f) = $\langle f, \lambda \rangle$.
 $$
 
 This evaluation map takes a distribution $\lambda$ and outputs a real number i.e. is a linear functional
-on the space of distributions i.e. $\Phi_f : \left(\mathcal{C}_c^{\infty}(\mathbb{R}^d) \right)^* \mapsto \mathbb{R}$.
+on the space of distributions i.e.
+$\Phi_f : \left(\mathcal{C}_c^{\infty}(\mathbb{R}^d) \right)^* \mapsto \mathbb{R}$.
 We can use the evaluation map to define a topology on the space of distributions. This is
 exactly the **weak-star topology** from earlier. Further, note that the evaluation functionals
 are exactly the images of test functions under the canonical embedding
-$J : \mathcal{C}_c^{\infty) \mapsto \left( \mathcal{C}_c^{\infty} \right)^{**}$ with
-$J(f) = \Phi_f$.
+$J : \mathcal{C}_c^{\infty) \mapsto \left( \mathcal{C}_c^{\infty} \right)^{**}$
+with $J(f) = \Phi_f$.
 
 We can now clearly state when a sequence of distributions
 $\left\{ \lambda_n \right\}$ converges to $\lambda$ in the weak-star topology if:
@@ -112,7 +113,9 @@ $$
 
 This generalizes the case of regular distributions, as $T_f = T_{\mu_f}$ where
 $\mu_f = f(x) \mathrm{d}x$. Futher, the class of Radon measures includes singular
-measures thus $\mu = \mu_{\mathrm{ac}} + \mu_{\mathrm{sing}}$.
+measures thus $\mu = \mu_{\mathrm{ac}} + \mu_{\mathrm{sing}}$. Note that the singular
+measures include point masses, but also more complicated singular measures such as the
+Cantor measure.
 
 ### The Dirac Delta and Point Distributions
 
