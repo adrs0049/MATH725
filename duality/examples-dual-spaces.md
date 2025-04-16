@@ -7,7 +7,7 @@ The geometric view is that each functional corresponds directly to an element in
 
 ```{prf:example}
 
-In $\mathbb{R}^n$ each functional arises via the inner product, thus $(\mathbb{R}^n)^* = \mathbb{R}^n).
+In $\mathbb{R}^n$ each functional arises via the inner product, thus $(\mathbb{R}^n)^* = \mathbb{R}^n)$.
 Similarly, for $\mathbb{C}^n$.
 
 ```
@@ -16,7 +16,7 @@ Similarly, for $\mathbb{C}^n$.
 
 In $L^2(\Omega)$ every functional is given by
 
-$$ f[x] = \int x(t) g(t) \mathrm{d}t,\quad\mbox{for\ some}\ g \in L^2(\Omega). $$
+$$ f[x] = \int x(t) g(t) \mathrm{d}t,\quad\mbox{for some}\ g \in L^2(\Omega). $$
 
 ```
 
@@ -26,7 +26,7 @@ $$ f[x] = \int x(t) g(t) \mathrm{d}t,\quad\mbox{for\ some}\ g \in L^2(\Omega). $
 ```{prf:example}
 
 The spaces $L^p(\Omega)$ for $1 < p < \infty$ are reflexive with
-$(L^p)^* = L^q$ where $1/p + 1/q 1$.
+$(L^p)^* = L^q$ where $\frac{1}{p} + \frac{1}{q} = 1$.
 
 ```
 
