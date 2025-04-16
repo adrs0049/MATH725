@@ -21,7 +21,10 @@ parts:
     - file: duality/transpose.md
   - caption: Distributions
     chapters:
+    - file: distributions/introduction.md
+    - file: distributions/test-functions.md
     - file: distributions/distributions.md
+    - file: distributions/averaging.md
   - caption: Jupyter Notebooks
     chapters:
     - file: notebooks/01_fourier_series.ipynb
