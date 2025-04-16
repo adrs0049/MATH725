@@ -39,7 +39,7 @@ The elements of $\left( \mathcal{C}_c^\infty(\mathbb{R}^d) \right)^*$ are called
 Given a distribution $\lambda$ we define an *evaluation map* as
 
 $$
-    \Phi_f(\lambda) := \lamda(f) = $\langle f, \lambda \rangle$.
+    \Phi_f(\lambda) := \lambda(f) = \langle f, \lambda \rangle.
 $$
 
 This evaluation map takes a distribution $\lambda$ and outputs a real number i.e. is a linear functional
