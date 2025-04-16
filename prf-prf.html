@@ -201,6 +201,18 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="duality/duality.html">The Dual-Space</a></li>
 <li class="toctree-l1"><a class="reference internal" href="duality/adjoint.html">The transpose (adjoint) operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duality/examples-dual-spaces.html">Examples of dual-spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duality/hahn-banach.html">The Hahn-Banach Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duality/transpose.html">The adjoint (transpose) operator</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Distributions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="distributions/introduction.html">Introduction to Distribution Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributions/test-functions.html">The Space of Test Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributions/distributions.html">Distributions as Continuous Linear Functionals</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="distributions/averaging.html">Distributions as Averaging Operators</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
 <ul class="nav bd-sidenav">
@@ -340,7 +352,9 @@ document.write(`
    <a href="#cap-baire"><strong>baire</strong></a> | 
    <a href="#cap-banach-inverse"><strong>banach-inverse</strong></a> | 
    <a href="#cap-banach-steinhaus"><strong>banach-steinhaus</strong></a> | 
+   <a href="#cap-corollary-1"><strong>corollary-1</strong></a> | 
    <a href="#cap-corollary-2"><strong>corollary-2</strong></a> | 
+   <a href="#cap-corollary-3"><strong>corollary-3</strong></a> | 
    <a href="#cap-def-banach"><strong>def-banach</strong></a> | 
    <a href="#cap-def-compact"><strong>def-compact</strong></a> | 
    <a href="#cap-def-dense"><strong>def-dense</strong></a> | 
@@ -359,6 +373,10 @@ document.write(`
    <a href="#cap-ex-rn-banach"><strong>ex-rn-banach</strong></a> | 
    <a href="#cap-ex-unit-ball-compact"><strong>ex-unit-ball-compact</strong></a> | 
    <a href="#cap-ex-weierstrass"><strong>ex-weierstrass</strong></a> | 
+   <a href="#cap-example-0"><strong>example-0</strong></a> | 
+   <a href="#cap-example-1"><strong>example-1</strong></a> | 
+   <a href="#cap-example-2"><strong>example-2</strong></a> | 
+   <a href="#cap-example-3"><strong>example-3</strong></a> | 
    <a href="#cap-example-4"><strong>example-4</strong></a> | 
    <a href="#cap-example-5"><strong>example-5</strong></a> | 
    <a href="#cap-lemma-0"><strong>lemma-0</strong></a> | 
@@ -366,6 +384,7 @@ document.write(`
    <a href="#cap-proposition-1"><strong>proposition-1</strong></a> | 
    <a href="#cap-rem-compact-infinite"><strong>rem-compact-infinite</strong></a> | 
    <a href="#cap-rem-rainbow"><strong>rem-rainbow</strong></a> | 
+   <a href="#cap-remark-0"><strong>remark-0</strong></a> | 
    <a href="#cap-remark-1"><strong>remark-1</strong></a> | 
    <a href="#cap-remark-2"><strong>remark-2</strong></a> | 
    <a href="#cap-remark-3"><strong>remark-3</strong></a> | 
@@ -407,12 +426,28 @@ document.write(`
        <a href="lops/banach-steinhaus.html#banach-steinhaus"><code class="xref">banach-steinhaus</code></a> <em>(lops/banach-steinhaus)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-corollary-1"><td></td><td>
+       <strong>corollary-1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="duality/hahn-banach.html#corollary-1"><code class="xref">corollary-1</code></a> <em>(duality/hahn-banach)</em></td><td>
+       <em>corollary</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-corollary-2"><td></td><td>
        <strong>corollary-2</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
        <a href="lops/banach-steinhaus.html#corollary-2"><code class="xref">corollary-2</code></a> <em>(lops/banach-steinhaus)</em></td><td>
+       <em>corollary</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-corollary-3"><td></td><td>
+       <strong>corollary-3</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="duality/hahn-banach.html#corollary-3"><code class="xref">corollary-3</code></a> <em>(duality/hahn-banach)</em></td><td>
        <em>corollary</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def-banach"><td></td><td>
@@ -559,6 +594,38 @@ document.write(`
        <a href="notes/week2.html#ex-weierstrass"><code class="xref">ex-weierstrass</code></a> <em>(notes/week2)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-0"><td></td><td>
+       <strong>example-0</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="duality/examples-dual-spaces.html#example-0"><code class="xref">example-0</code></a> <em>(duality/examples-dual-spaces)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-1"><td></td><td>
+       <strong>example-1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="duality/examples-dual-spaces.html#example-1"><code class="xref">example-1</code></a> <em>(duality/examples-dual-spaces)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-2"><td></td><td>
+       <strong>example-2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="duality/examples-dual-spaces.html#example-2"><code class="xref">example-2</code></a> <em>(duality/examples-dual-spaces)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-3"><td></td><td>
+       <strong>example-3</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="duality/examples-dual-spaces.html#example-3"><code class="xref">example-3</code></a> <em>(duality/examples-dual-spaces)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-4"><td></td><td>
        <strong>example-4</strong></td><td></td></tr>
      <tr>
@@ -613,6 +680,14 @@ document.write(`
        <td></td>
        <td>
        <a href="notes/week2.html#rem-rainbow"><code class="xref">rem-rainbow</code></a> <em>(notes/week2)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-0"><td></td><td>
+       <strong>remark-0</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="distributions/distributions.html#remark-0"><code class="xref">remark-0</code></a> <em>(distributions/distributions)</em></td><td>
        <em>remark</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-remark-1"><td></td><td>

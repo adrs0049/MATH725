@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Matrix Multiplication &#8212; Applied Functional Analysis</title>
+    <title>Introduction to Distribution Theory &#8212; Applied Functional Analysis</title>
   
   
   
@@ -63,12 +63,12 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'appendix/multiplication';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'distributions/introduction';</script>
     <script src="../_static/main.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Solving special matrices" href="solving_special_matrices.html" />
-    <link rel="prev" title="Deblurring Images" href="../notebooks/02_deblurring_images.html" />
+    <link rel="next" title="The Space of Test Functions" href="test-functions.html" />
+    <link rel="prev" title="The adjoint (transpose) operator" href="../duality/transpose.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -202,13 +202,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../duality/transpose.html">The adjoint (transpose) operator</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Distributions</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../distributions/introduction.html">Introduction to Distribution Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../distributions/test-functions.html">The Space of Test Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../distributions/distributions.html">Distributions as Continuous Linear Functionals</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Distribution Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-functions.html">The Space of Test Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributions.html">Distributions as Continuous Linear Functionals</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="../distributions/averaging.html">Distributions as Averaging Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="averaging.html">Distributions as Averaging Operators</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
 <ul class="nav bd-sidenav">
@@ -216,10 +216,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/02_deblurring_images.html">Deblurring Images</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Matrix Multiplication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="solving_special_matrices.html">Solving special matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gaussian_elimination_process.html">Gaussian Elimination</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix/multiplication.html">Matrix Multiplication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/solving_special_matrices.html">Solving special matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/gaussian_elimination_process.html">Gaussian Elimination</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -293,7 +293,7 @@
       
       
       
-      <li><a href="../_sources/appendix/multiplication.md" target="_blank"
+      <li><a href="../_sources/distributions/introduction.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -364,7 +364,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -375,11 +377,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Matrix Multiplication</h1>
+    <h1>Introduction to Distribution Theory</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-and-overview">Motivation and Overview</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -389,34 +399,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="matrix-multiplication">
-<h1>Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this heading">#</a></h1>
-<div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be <span class="math notranslate nohighlight">\(m \times n\)</span> matrices. If <span class="math notranslate nohighlight">\(A \boldsymbol{x} = B \boldsymbol{x}\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span>, then <span class="math notranslate nohighlight">\(A = B\)</span>.</p>
-<hr class="docutils" />
-<p><em>Proof.</em> The standard basis of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\boldsymbol{e}_1 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}
-\ \ , \ \
-\boldsymbol{e}_2 = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
-\ \ , \ \ \dots \ \ , \ \
-\boldsymbol{e}_n = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}
-\end{split}\]</div>
-<p>In other words, <span class="math notranslate nohighlight">\(\boldsymbol{e}_k\)</span> is the vector with 1 at index <span class="math notranslate nohighlight">\(k\)</span> and 0 everywhere else. Then <span class="math notranslate nohighlight">\(A \boldsymbol{e}_k\)</span> is equal to the <span class="math notranslate nohighlight">\(k\)</span>th column of <span class="math notranslate nohighlight">\(A\)</span>. Since <span class="math notranslate nohighlight">\(A \boldsymbol{e}_k = B \boldsymbol{e}_k\)</span> for each <span class="math notranslate nohighlight">\(k=1,\dots,n\)</span> we see that the columns of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are equal therefore <span class="math notranslate nohighlight">\(A = B\)</span>.</p>
-</div>
-<div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(p \times m\)</span> matrix, let <span class="math notranslate nohighlight">\(B\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrices and let <span class="math notranslate nohighlight">\(\boldsymbol{b}_1,\dots,\boldsymbol{b}_n\)</span> be the columns of <span class="math notranslate nohighlight">\(B\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-B = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{b}_1 &amp; \cdots &amp; \boldsymbol{b}_n \\ &amp; &amp; \end{bmatrix}
-\end{split}\]</div>
-<p>Then the <span class="math notranslate nohighlight">\(k\)</span>th column of <span class="math notranslate nohighlight">\(AB\)</span> is <span class="math notranslate nohighlight">\(A \boldsymbol{b}_k\)</span>. In other words, matrix multiplication <span class="math notranslate nohighlight">\(AB\)</span> can be written as</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-AB = \begin{bmatrix} &amp; &amp; \\ A \boldsymbol{b}_1 &amp; \cdots &amp; A \boldsymbol{b}_n \\ &amp; &amp; \end{bmatrix}
-\end{split}\]</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-distribution-theory">
+<h1>Introduction to Distribution Theory<a class="headerlink" href="#introduction-to-distribution-theory" title="Permalink to this heading">#</a></h1>
+<section id="motivation-and-overview">
+<h2>Motivation and Overview<a class="headerlink" href="#motivation-and-overview" title="Permalink to this heading">#</a></h2>
+<p>In classical analysis, we work with functions that assign specific values to points
+in their domain. However, many physical phenomena and mathematical problems require more
+general objects that can handle singularities, discontinuities, and other irregular
+behaviors. Distribution theory provides this framework by generalizing the concept
+of a function.</p>
+<p>Distribution (or generalized functions) allow us to:</p>
+<ol class="arabic simple">
+<li><p>Rigorously define operations like differentiation on functions that are not classically
+differentiable.</p></li>
+<li><p>Assign meaning to objects like the Dirac delta ``function’’ <span class="math notranslate nohighlight">\(\delta(x)\)</span>.</p></li>
+<li><p>Provide a unified framework for solving partial differential equations.</p></li>
+<li><p>Handle limiting processes more naturally.</p></li>
+</ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -432,7 +432,7 @@ AB = \begin{bmatrix} &amp; &amp; \\ A \boldsymbol{b}_1 &amp; \cdots &amp; A \bol
         },
         kernelOptions: {
             name: "python3",
-            path: "./appendix"
+            path: "./distributions"
         },
         predefinedOutput: true
     }
@@ -450,20 +450,20 @@ AB = \begin{bmatrix} &amp; &amp; \\ A \boldsymbol{b}_1 &amp; \cdots &amp; A \bol
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../notebooks/02_deblurring_images.html"
+       href="../duality/transpose.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Deblurring Images</p>
+        <p class="prev-next-title">The adjoint (transpose) operator</p>
       </div>
     </a>
     <a class="right-next"
-       href="solving_special_matrices.html"
+       href="test-functions.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Solving special matrices</p>
+        <p class="prev-next-title">The Space of Test Functions</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -473,6 +473,21 @@ AB = \begin{bmatrix} &amp; &amp; \\ A \boldsymbol{b}_1 &amp; \cdots &amp; A \bol
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-and-overview">Motivation and Overview</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Matrix Multiplication &#8212; Applied Functional Analysis</title>
+    <title>The Space of Test Functions &#8212; Applied Functional Analysis</title>
   
   
   
@@ -63,12 +63,12 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'appendix/multiplication';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'distributions/test-functions';</script>
     <script src="../_static/main.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Solving special matrices" href="solving_special_matrices.html" />
-    <link rel="prev" title="Deblurring Images" href="../notebooks/02_deblurring_images.html" />
+    <link rel="next" title="Distributions as Continuous Linear Functionals" href="distributions.html" />
+    <link rel="prev" title="Introduction to Distribution Theory" href="introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -202,13 +202,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../duality/transpose.html">The adjoint (transpose) operator</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Distributions</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../distributions/introduction.html">Introduction to Distribution Theory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../distributions/test-functions.html">The Space of Test Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../distributions/distributions.html">Distributions as Continuous Linear Functionals</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction to Distribution Theory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Space of Test Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributions.html">Distributions as Continuous Linear Functionals</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="../distributions/averaging.html">Distributions as Averaging Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="averaging.html">Distributions as Averaging Operators</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
 <ul class="nav bd-sidenav">
@@ -216,10 +216,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/02_deblurring_images.html">Deblurring Images</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Matrix Multiplication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="solving_special_matrices.html">Solving special matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gaussian_elimination_process.html">Gaussian Elimination</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix/multiplication.html">Matrix Multiplication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/solving_special_matrices.html">Solving special matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/gaussian_elimination_process.html">Gaussian Elimination</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -293,7 +293,7 @@
       
       
       
-      <li><a href="../_sources/appendix/multiplication.md" target="_blank"
+      <li><a href="../_sources/distributions/test-functions.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -364,7 +364,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -375,11 +377,21 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Matrix Multiplication</h1>
+    <h1>The Space of Test Functions</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-and-topology">Definition and Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence-in-the-space-of-test-functions">Convergence in the Space of Test Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-test-functions">Properties of test functions</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -389,34 +401,50 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="matrix-multiplication">
-<h1>Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this heading">#</a></h1>
-<div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be <span class="math notranslate nohighlight">\(m \times n\)</span> matrices. If <span class="math notranslate nohighlight">\(A \boldsymbol{x} = B \boldsymbol{x}\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span>, then <span class="math notranslate nohighlight">\(A = B\)</span>.</p>
-<hr class="docutils" />
-<p><em>Proof.</em> The standard basis of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\boldsymbol{e}_1 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}
-\ \ , \ \
-\boldsymbol{e}_2 = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
-\ \ , \ \ \dots \ \ , \ \
-\boldsymbol{e}_n = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}
-\end{split}\]</div>
-<p>In other words, <span class="math notranslate nohighlight">\(\boldsymbol{e}_k\)</span> is the vector with 1 at index <span class="math notranslate nohighlight">\(k\)</span> and 0 everywhere else. Then <span class="math notranslate nohighlight">\(A \boldsymbol{e}_k\)</span> is equal to the <span class="math notranslate nohighlight">\(k\)</span>th column of <span class="math notranslate nohighlight">\(A\)</span>. Since <span class="math notranslate nohighlight">\(A \boldsymbol{e}_k = B \boldsymbol{e}_k\)</span> for each <span class="math notranslate nohighlight">\(k=1,\dots,n\)</span> we see that the columns of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are equal therefore <span class="math notranslate nohighlight">\(A = B\)</span>.</p>
-</div>
-<div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(p \times m\)</span> matrix, let <span class="math notranslate nohighlight">\(B\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrices and let <span class="math notranslate nohighlight">\(\boldsymbol{b}_1,\dots,\boldsymbol{b}_n\)</span> be the columns of <span class="math notranslate nohighlight">\(B\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-B = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{b}_1 &amp; \cdots &amp; \boldsymbol{b}_n \\ &amp; &amp; \end{bmatrix}
-\end{split}\]</div>
-<p>Then the <span class="math notranslate nohighlight">\(k\)</span>th column of <span class="math notranslate nohighlight">\(AB\)</span> is <span class="math notranslate nohighlight">\(A \boldsymbol{b}_k\)</span>. In other words, matrix multiplication <span class="math notranslate nohighlight">\(AB\)</span> can be written as</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-AB = \begin{bmatrix} &amp; &amp; \\ A \boldsymbol{b}_1 &amp; \cdots &amp; A \boldsymbol{b}_n \\ &amp; &amp; \end{bmatrix}
-\end{split}\]</div>
-</div>
+  <section id="the-space-of-test-functions">
+<h1>The Space of Test Functions<a class="headerlink" href="#the-space-of-test-functions" title="Permalink to this heading">#</a></h1>
+<p>We begin by constructing a suitable space of ``test functions’’ against which distributions
+will be evaluated.</p>
+<section id="definition-and-topology">
+<h2>Definition and Topology<a class="headerlink" href="#definition-and-topology" title="Permalink to this heading">#</a></h2>
+<p>The space <span class="math notranslate nohighlight">\(\mathcal{C}_c^\infty(\mathbb{R}^d)\)</span> consists of all infinitely
+differentiable functions with compact support on <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span>.</p>
+<p>To define the topology on <span class="math notranslate nohighlight">\(\mathcal{C}_c^\infty(\mathbb{R}^d)\)</span>:</p>
+<ol class="arabic simple">
+<li><p>View <span class="math notranslate nohighlight">\(\mathcal{C}_c^\infty(\mathbb{R}^d)\)</span> as the union of spaces <span class="math notranslate nohighlight">\(\mathcal{C}_c^\infty(K)\)</span>
+where <span class="math notranslate nohighlight">\(K \subset \mathbb{R}^d\)</span> is compact.</p></li>
+<li><p>We equip each <span class="math notranslate nohighlight">\(\mathcal{C}_c^\infty(K)\)</span> with the smooth topology generated by the norm <span class="math notranslate nohighlight">\(||f||_{\mathcal{C}^k\)</span>.</p></li>
+<li><p>Define seminorms as good when they are continuous on each <span class="math notranslate nohighlight">\(\mathcal{C}_c^\infty(K)\)</span>.</p></li>
+<li><p>Using these good seminorms we generate the topology on <span class="math notranslate nohighlight">\(\mathcal{C}_c^\infty(\mathbb{R}^d)\)</span>.</p></li>
+</ol>
+<p>This gives <span class="math notranslate nohighlight">\(\mathcal{C}_c^\infty(\mathbb{R}^d)\)</span> the structure of a locally convex
+topological vector space.</p>
+</section>
+<section id="convergence-in-the-space-of-test-functions">
+<h2>Convergence in the Space of Test Functions<a class="headerlink" href="#convergence-in-the-space-of-test-functions" title="Permalink to this heading">#</a></h2>
+<p>A sequence <span class="math notranslate nohighlight">\(\left\{ f_n \right\}\)</span> in <span class="math notranslate nohighlight">\(\mathcal{C}_c^\infty(\mathbb{R}^d)\)</span> converges to
+<span class="math notranslate nohighlight">\(f\)</span> if and only if:</p>
+<ol class="arabic simple">
+<li><p>There exists a compact set <span class="math notranslate nohighlight">\(K\)</span> such that all <span class="math notranslate nohighlight">\(f_n\)</span> and <span class="math notranslate nohighlight">\(f\)</span> are supported in <span class="math notranslate nohighlight">\(K\)</span>.</p></li>
+<li><p>For every multi-index <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(\partial^\alpha f_n\)</span> converges uniformly to
+<span class="math notranslate nohighlight">\(\partial^\alpha f\)</span>.</p></li>
+</ol>
+<p>This is a very <strong>strong</strong> notion of convergence, requiring uniform convergence of all
+derivatives and eventual containment of supports in a fixed compact set.</p>
+</section>
+<section id="properties-of-test-functions">
+<h2>Properties of test functions<a class="headerlink" href="#properties-of-test-functions" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Density:</strong> <span class="math notranslate nohighlight">\(\mathcal{C}_c^\infty(\mathbb{R}^d)\)</span> is dense in many function spaces
+including <span class="math notranslate nohighlight">\(L^p\)</span> for <span class="math notranslate nohighlight">\(1 \leq p &lt; \infty\)</span> and <span class="math notranslate nohighlight">\(\mathcal{C}_0\)</span>.</p></li>
+<li><p><strong>Partitions of Unity:</strong> For any open cover of a compact set <span class="math notranslate nohighlight">\(K\)</span>, there exists a
+partition of unity consiting of test functions.</p></li>
+<li><p><strong>Convolution:</strong> If <span class="math notranslate nohighlight">\(f \in \mathcal{C}_c^\infty(\mathbb{R}^d)\)</span> and <span class="math notranslate nohighlight">\(g\)</span> locally integrable
+and compactly supported, then <span class="math notranslate nohighlight">\(f * g \in \mathcal{C}_c^\infty(\mathbb{R}^d)\)</span>.</p></li>
+<li><p><strong>Approximation to Identity:</strong> There exist sequences of test functions that converge
+to the Dirac delta distribution.</p></li>
+</ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -432,7 +460,7 @@ AB = \begin{bmatrix} &amp; &amp; \\ A \boldsymbol{b}_1 &amp; \cdots &amp; A \bol
         },
         kernelOptions: {
             name: "python3",
-            path: "./appendix"
+            path: "./distributions"
         },
         predefinedOutput: true
     }
@@ -450,20 +478,20 @@ AB = \begin{bmatrix} &amp; &amp; \\ A \boldsymbol{b}_1 &amp; \cdots &amp; A \bol
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../notebooks/02_deblurring_images.html"
+       href="introduction.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Deblurring Images</p>
+        <p class="prev-next-title">Introduction to Distribution Theory</p>
       </div>
     </a>
     <a class="right-next"
-       href="solving_special_matrices.html"
+       href="distributions.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Solving special matrices</p>
+        <p class="prev-next-title">Distributions as Continuous Linear Functionals</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -473,6 +501,23 @@ AB = \begin{bmatrix} &amp; &amp; \\ A \boldsymbol{b}_1 &amp; \cdots &amp; A \bol
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-and-topology">Definition and Topology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence-in-the-space-of-test-functions">Convergence in the Space of Test Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-test-functions">Properties of test functions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

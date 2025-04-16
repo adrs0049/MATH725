@@ -197,6 +197,18 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">The Dual-Space</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adjoint.html">The transpose (adjoint) operator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples-dual-spaces.html">Examples of dual-spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hahn-banach.html">The Hahn-Banach Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transpose.html">The adjoint (transpose) operator</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Distributions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../distributions/introduction.html">Introduction to Distribution Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distributions/test-functions.html">The Space of Test Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../distributions/distributions.html">Distributions as Continuous Linear Functionals</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../distributions/averaging.html">Distributions as Averaging Operators</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
 <ul class="nav bd-sidenav">
@@ -352,7 +364,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -368,6 +382,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isomorphisms-and-isometries">Isomorphisms and Isometries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intuition-building-in-mathbb-r-2">Intuition Building in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>.</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -384,9 +408,37 @@ document.write(`
 <li><p>By looking at the objects <strong>in</strong> the space.</p></li>
 <li><p>By looking at functions <strong>on</strong> the space.</p></li>
 </ol>
+<p>Let’s see how the second setting looks like in our Banach space setting.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>In the Banach space setting the natural mappings to consider are the linear continuous functions between two Banach spaces
 <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>. Now consider <span class="math notranslate nohighlight">\(\mathcal{L}(X, \mathbb{R})\)</span> the space of bounded linear continuous functionals on <span class="math notranslate nohighlight">\(X\)</span>.
 This is a Banach space, and we will call it the <strong>dual</strong> of <span class="math notranslate nohighlight">\(X\)</span> denotes by <span class="math notranslate nohighlight">\(X^*\)</span>.</p>
+<p>The intuitive view is that <strong>functionals</strong> are measurements of an object in the space <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<div class="proof example admonition" id="example-0">
+<p class="admonition-title"><span class="caption-number">Example 12 </span></p>
+<section class="example-content" id="proof-content">
+<p>We encounter many functionals in daily life.</p>
+<ol class="arabic simple">
+<li><p>A scale measures the weight of objects i.e. it assigns a real number to each object.</p></li>
+<li><p>A rules measures length.</p></li>
+<li><p>CT-scanners measure line integrals of an unknown tissue density.</p></li>
+<li><p>MRI-scanners measure proton densities along lines.</p></li>
+</ol>
+</section>
+</div></section>
+<section id="isomorphisms-and-isometries">
+<h2>Isomorphisms and Isometries<a class="headerlink" href="#isomorphisms-and-isometries" title="Permalink to this heading">#</a></h2>
+<p>First let’s explore how we show that two Banach spaces have the same structure. In normed vectorspaces
+the <strong>natual map</strong> is <span class="math notranslate nohighlight">\(T : X \mapsto Y\)</span>. <span class="math notranslate nohighlight">\(X, Y\)</span> are equivalent if there exists an invertible continuous
+linear map <span class="math notranslate nohighlight">\(T : X \mapsto Y\)</span> i.e.</p>
+<div class="math notranslate nohighlight">
+\[ c \norm{x}_X \leq \norm{Tx}_Y \leq C \norm{x}_X \]</div>
+<p>Is such a map <span class="math notranslate nohighlight">\(T\)</span> exists we say that <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are isomorphic. If <span class="math notranslate nohighlight">\(c = C = 1\)</span> <span class="math notranslate nohighlight">\(T\)</span> is an an <strong>isometry</strong>.</p>
+</section>
+<section id="intuition-building-in-mathbb-r-2">
+<h2>Intuition Building in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>.<a class="headerlink" href="#intuition-building-in-mathbb-r-2" title="Permalink to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -443,6 +495,23 @@ This is a Banach space, and we will call it the <strong>dual</strong> of <span c
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isomorphisms-and-isometries">Isomorphisms and Isometries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intuition-building-in-mathbb-r-2">Intuition Building in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>.</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

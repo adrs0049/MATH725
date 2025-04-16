@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Matrix Multiplication &#8212; Applied Functional Analysis</title>
+    <title>Examples of dual-spaces &#8212; Applied Functional Analysis</title>
   
   
   
@@ -63,12 +63,12 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'appendix/multiplication';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'duality/examples-dual-spaces';</script>
     <script src="../_static/main.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Solving special matrices" href="solving_special_matrices.html" />
-    <link rel="prev" title="Deblurring Images" href="../notebooks/02_deblurring_images.html" />
+    <link rel="next" title="The Hahn-Banach Theorem" href="hahn-banach.html" />
+    <link rel="prev" title="The transpose (adjoint) operator" href="adjoint.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -194,12 +194,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../lops/compact.html">Compact Operators</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Duality</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../duality/duality.html">The Dual-Space</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../duality/adjoint.html">The transpose (adjoint) operator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../duality/examples-dual-spaces.html">Examples of dual-spaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../duality/hahn-banach.html">The Hahn-Banach Theorem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../duality/transpose.html">The adjoint (transpose) operator</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="duality.html">The Dual-Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adjoint.html">The transpose (adjoint) operator</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Examples of dual-spaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hahn-banach.html">The Hahn-Banach Theorem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transpose.html">The adjoint (transpose) operator</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Distributions</span></p>
 <ul class="nav bd-sidenav">
@@ -216,10 +216,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../notebooks/02_deblurring_images.html">Deblurring Images</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Matrix Multiplication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="solving_special_matrices.html">Solving special matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gaussian_elimination_process.html">Gaussian Elimination</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix/multiplication.html">Matrix Multiplication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/solving_special_matrices.html">Solving special matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/gaussian_elimination_process.html">Gaussian Elimination</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -293,7 +293,7 @@
       
       
       
-      <li><a href="../_sources/appendix/multiplication.md" target="_blank"
+      <li><a href="../_sources/duality/examples-dual-spaces.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -375,7 +375,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Matrix Multiplication</h1>
+    <h1>Examples of dual-spaces</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -389,35 +389,49 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="matrix-multiplication">
-<h1>Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this heading">#</a></h1>
-<div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be <span class="math notranslate nohighlight">\(m \times n\)</span> matrices. If <span class="math notranslate nohighlight">\(A \boldsymbol{x} = B \boldsymbol{x}\)</span> for all <span class="math notranslate nohighlight">\(\boldsymbol{x} \in \mathbb{R}^n\)</span>, then <span class="math notranslate nohighlight">\(A = B\)</span>.</p>
-<hr class="docutils" />
-<p><em>Proof.</em> The standard basis of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\boldsymbol{e}_1 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}
-\ \ , \ \
-\boldsymbol{e}_2 = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
-\ \ , \ \ \dots \ \ , \ \
-\boldsymbol{e}_n = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}
-\end{split}\]</div>
-<p>In other words, <span class="math notranslate nohighlight">\(\boldsymbol{e}_k\)</span> is the vector with 1 at index <span class="math notranslate nohighlight">\(k\)</span> and 0 everywhere else. Then <span class="math notranslate nohighlight">\(A \boldsymbol{e}_k\)</span> is equal to the <span class="math notranslate nohighlight">\(k\)</span>th column of <span class="math notranslate nohighlight">\(A\)</span>. Since <span class="math notranslate nohighlight">\(A \boldsymbol{e}_k = B \boldsymbol{e}_k\)</span> for each <span class="math notranslate nohighlight">\(k=1,\dots,n\)</span> we see that the columns of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are equal therefore <span class="math notranslate nohighlight">\(A = B\)</span>.</p>
-</div>
-<div class="theorem docutils">
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be a <span class="math notranslate nohighlight">\(p \times m\)</span> matrix, let <span class="math notranslate nohighlight">\(B\)</span> be a <span class="math notranslate nohighlight">\(m \times n\)</span> matrices and let <span class="math notranslate nohighlight">\(\boldsymbol{b}_1,\dots,\boldsymbol{b}_n\)</span> be the columns of <span class="math notranslate nohighlight">\(B\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-B = \begin{bmatrix} &amp; &amp; \\ \boldsymbol{b}_1 &amp; \cdots &amp; \boldsymbol{b}_n \\ &amp; &amp; \end{bmatrix}
-\end{split}\]</div>
-<p>Then the <span class="math notranslate nohighlight">\(k\)</span>th column of <span class="math notranslate nohighlight">\(AB\)</span> is <span class="math notranslate nohighlight">\(A \boldsymbol{b}_k\)</span>. In other words, matrix multiplication <span class="math notranslate nohighlight">\(AB\)</span> can be written as</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-AB = \begin{bmatrix} &amp; &amp; \\ A \boldsymbol{b}_1 &amp; \cdots &amp; A \boldsymbol{b}_n \\ &amp; &amp; \end{bmatrix}
-\end{split}\]</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="examples-of-dual-spaces">
+<h1>Examples of dual-spaces<a class="headerlink" href="#examples-of-dual-spaces" title="Permalink to this heading">#</a></h1>
+<p>There are three <strong>main</strong> classes of duality.</p>
+<ol class="arabic simple">
+<li><p>Hilbert spaces are <strong>self-dual</strong> i.e. <span class="math notranslate nohighlight">\(X = X^*\)</span>.
+The geometric view is that each functional corresponds directly to an element in <span class="math notranslate nohighlight">\(X\)</span></p></li>
+</ol>
+<div class="proof example admonition" id="example-0">
+<p class="admonition-title"><span class="caption-number">Example 13 </span></p>
+<section class="example-content" id="proof-content">
+<p>In <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> each functional arises via the inner product, thus <span class="math notranslate nohighlight">\((\mathbb{R}^n)^* = \mathbb{R}^n).
+Similarly, for \)</span>\mathbb{C}^n$.</p>
 </section>
+</div><div class="proof example admonition" id="example-1">
+<p class="admonition-title"><span class="caption-number">Example 14 </span></p>
+<section class="example-content" id="proof-content">
+<p>In <span class="math notranslate nohighlight">\(L^2(\Omega)\)</span> every functional is given by</p>
+<div class="math notranslate nohighlight">
+\[ f[x] = \int x(t) g(t) \mathrm{d}t,\quad\mbox{for\ some}\ g \in L^2(\Omega). \]</div>
+</section>
+</div><ol class="arabic simple" start="2">
+<li><p>Reflexive spaces are those for which <span class="math notranslate nohighlight">\(X^{**} = X\)</span>.</p></li>
+</ol>
+<div class="proof example admonition" id="example-2">
+<p class="admonition-title"><span class="caption-number">Example 15 </span></p>
+<section class="example-content" id="proof-content">
+<p>The spaces <span class="math notranslate nohighlight">\(L^p(\Omega)\)</span> for <span class="math notranslate nohighlight">\(1 &lt; p &lt; \infty\)</span> are reflexive with
+<span class="math notranslate nohighlight">\((L^p)^* = L^q\)</span> where <span class="math notranslate nohighlight">\(1/p + 1/q 1\)</span>.</p>
+</section>
+</div><ol class="arabic simple" start="3">
+<li><p>Non-reflexive spaces are those where <span class="math notranslate nohighlight">\(X \subset X^{**}\)</span>.</p></li>
+</ol>
+<div class="proof example admonition" id="example-3">
+<p class="admonition-title"><span class="caption-number">Example 16 </span></p>
+<section class="example-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(L^\infty(\Omega)\)</span> is not separable i.e. it has too many independent directions.
+From the previous result we would guess that <span class="math notranslate nohighlight">\((L^\infty)^* = L^1\)</span> however we know
+that functions in <span class="math notranslate nohighlight">\(L^1\)</span> correspond to regular measures on <span class="math notranslate nohighlight">\(\Omega\)</span>. But this won’t
+let us distinguish / measure functions in <span class="math notranslate nohighlight">\(L^\infty\)</span>, recall that the topology i.e.
+norm on <span class="math notranslate nohighlight">\(L^\infty\)</span> is very discrening. Thus we need singular measure function properties
+on sets of measure zero.</p>
+</section>
+</div></section>
 
     <script type="text/x-thebe-config">
     {
@@ -432,7 +446,7 @@ AB = \begin{bmatrix} &amp; &amp; \\ A \boldsymbol{b}_1 &amp; \cdots &amp; A \bol
         },
         kernelOptions: {
             name: "python3",
-            path: "./appendix"
+            path: "./duality"
         },
         predefinedOutput: true
     }
@@ -450,20 +464,20 @@ AB = \begin{bmatrix} &amp; &amp; \\ A \boldsymbol{b}_1 &amp; \cdots &amp; A \bol
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../notebooks/02_deblurring_images.html"
+       href="adjoint.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Deblurring Images</p>
+        <p class="prev-next-title">The transpose (adjoint) operator</p>
       </div>
     </a>
     <a class="right-next"
-       href="solving_special_matrices.html"
+       href="hahn-banach.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Solving special matrices</p>
+        <p class="prev-next-title">The Hahn-Banach Theorem</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
