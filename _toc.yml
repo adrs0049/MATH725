@@ -3,8 +3,8 @@ root: index
 parts:
   - caption: Introduction
     chapters:
-    - file: notes/week1.md
-    - file: notes/week2.md
+    - file: introduction/intro.md
+    - file: introduction/function-spaces.md
   - caption: Linear Operators
     chapters:
     - file: lops/lops.md
