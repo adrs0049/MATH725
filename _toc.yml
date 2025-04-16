@@ -16,6 +16,12 @@ parts:
     chapters:
     - file: duality/duality.md
     - file: duality/adjoint.md
+    - file: duality/examples-dual-spaces.md
+    - file: duality/hahn-banach.md
+    - file: duality/transpose.md
+  - caption: Distributions
+    chapters:
+    - file: distributions/distributions.md
   - caption: Jupyter Notebooks
     chapters:
     - file: notebooks/01_fourier_series.ipynb
