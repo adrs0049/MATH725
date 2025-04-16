@@ -48,10 +48,8 @@ kinetic energy over a small volume.
 - Position measurements in quantum mechanics are fundamentally limited by wave-like properties.
 
 Distributions capture this reality mathematically. When we evaluate
-
-$$ \langle T, \phi \rangle$$
-
-where $\phi$ is a test function, we can interpret this as measuring the distribution
+$ \langle T, \phi \rangle$ where $\phi$ is a test function, we can interpret this
+as measuring the distribution
 $T$ with an apparatus whose sensitivity profile is described by $\phi$.
 
 
