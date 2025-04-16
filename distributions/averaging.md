@@ -1,7 +1,7 @@
 ## Distributions as Averaging Operators
 
-One of the most intuitive ways to understand distributions is to view them as ``averaging
-operators'' that extract information through local averaging. This perspective has deep
+One of the most intuitive ways to understand distributions is to view them as "averaging
+operators" that extract information through local averaging. This perspective has deep
 connections to physical measurements and provides insights into the behaviour of distributions
 of different orders.
 
@@ -14,18 +14,18 @@ framework that naturally accomodates this reality.
 #### Physical Interpretation of Test Functions
 
 When we evaluate a distribution $T$ against a test function $\phi$ to get
-$\langle T, \phi \rangle$, we can interpret $\phi$ as the ``response profile''
-or ``sensitivity function'' of a measurement device.
+$\langle T, \phi \rangle$, we can interpret $\phi$ as the "response profile"
+or "sensitivity function" of a measurement device.
 
 1. The support of $\phi$ represents the spatial region over which the measurement
-occurs (the ``detection volume'' or ``sampling area'').
+occurs (the "detection volume" or "sampling area").
 
 2. The shape of $\phi$ encodes how sensitive the detection is at different positions
 within that region.
 
 3. The normalization ($\int \phi = 1$) matains consistent units and scales.
 
-4. The smoothness of $\phi$ reflets the ``gentleness'' of the measurement process.
+4. The smoothness of $\phi$ reflets the "gentleness" of the measurement process.
 
 For different physical quantities, the test function has different interpretations.
 
@@ -57,7 +57,7 @@ $T$ with an apparatus whose sensitivity profile is described by $\phi$.
 
 ### Behavior with Concentrating Test Functions
 
-Consider a sequence of ``bump functions'' $\{ \phi_n \}$ that concentrate around a point $x_0$.
+Consider a sequence of "bump functions" $\{ \phi_n \}$ that concentrate around a point $x_0$.
 
 - $\phi_n(x) = n^d \phi(n(x-x_0))$ where $\phi$ is a fixed test function with $\int \phi = 1$.
 - As $n\to\infty$, $\phi_n$ concentrates at $x_0$ while maintaining $\int\phi_n = 1$.
