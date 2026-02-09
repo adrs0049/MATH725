@@ -32,7 +32,7 @@ First let's explore how we show that two Banach spaces have the same structure. 
 the **natual map** is $T : X \mapsto Y$. $X, Y$ are equivalent if there exists an invertible continuous
 linear map $T : X \mapsto Y$ i.e.
 
-$$ c \norm{x}_X \leq \norm{Tx}_Y \leq C \norm{x}_X $$
+$$ c \|x\|_X \leq \|Tx\|_Y \leq C \|x\|_X $$
 
 Is such a map $T$ exists we say that $X$ and $Y$ are isomorphic. If $c = C = 1$ $T$ is an an **isometry**.
 

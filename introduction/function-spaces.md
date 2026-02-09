@@ -1,14 +1,11 @@
-# Basic Functional Analysis
+# Function Spaces and Their Norms
 
 ## Learning Goals
 
-The goals of these few lectures is to review a few core ideas, and set the stage of classic function spaces we will use to develop the theory.
-
-1. The Basics of Functional Analysis.
-2. What is a Banach Space?
-3. Density, separability and compactness.
-4. The spaces of continuous, differentiable and integral functions.
-5. The Rainbow of function spaces.
+1. What is a Banach space?
+2. The spaces of continuous, differentiable and integrable functions.
+3. What do $L^p$ norms measure? Intuition via bump functions.
+4. The Rainbow of function spaces.
 
 
 ## Banach Spaces
@@ -26,152 +23,60 @@ $\mathbb{R}^n$ is a Banach space with any p-norm i.e.
 $\|x\|_p = \left( \sum_{i=1}^{n}|x_i|^p \right)^{1/p}$
 ```
 
-We need the following basic topological notions.
 
-```{prf:definition} Dense Subset
-:label: def-dense
+## Spaces of Continuous, Differentiable and Integrable Functions
 
-A subset $Y\subset X$ is dense in $X$ if $\bar{Y} = X$. Equivalently, given $x\in X$ $\forall \varepsilon > 0$ $\exists y \in Y$ such that $\|x - y\| < \varepsilon$.
-```
-
-```{prf:example} Rationals in Reals
-:label: ex-q-dense-r
-
-$\bar{\mathbb{Q}} = \mathbb{R}$. Let $r \in \mathbb{R}$ and $\varepsilon > 0$ then there is $n$ such that $\frac{1}{n} < \varepsilon$. Define $q_n = \frac{\lfloor nr\rfloor}{n}$ which implies that
-$\|r - \frac{nr}{n}\| < \frac{1}{n} < \varepsilon$
-
-In other words we can approximate any real number $r$ arbitrarily well by elements in the rationals e.g. the rationals are dense in the reals. This property of the rationals is crucially important for finite arithmetic approximations of the reals on computers.
-```
-
-```{prf:example} Weierstrass Theorem
-:label: ex-weierstrass
-
-Let $f \in \mathcal{C}^0([-1, 1])$ and let $\varepsilon > 0$ then there exists a polynomial $p$ such that $\|f - p\|_{\infty} < \varepsilon$.
-```
-
-```{prf:definition} Separable Space
-:label: def-separable
-
-A Banach space which contains a dense **countable** subset is called separable.
-```
-
-```{prf:example} Separability of Real Numbers
-:label: ex-r-separable
-
-Since the rationals are countable and dense in $\mathbb{R}$, thus $\mathbb{R}$ is separable.
-```
-
-```{prf:example} Separability of Continuous Functions
-:label: ex-c0-separable
-
-$\mathcal{C}^0([-1, 1])$ define the basis set
-$\{ ax^n : a \in \mathbb{Q},\ n \in \mathbb{N} \cup \{ 0 \} \}$
-
-this set is countable and dense in $\mathcal{C}^0([-1, 1])$ in other words we can approximate any continuous function using a polynomial having rational coefficients. Thus we have a countable Banach space.
-```
-
-```{prf:example} Separability of Square Integrable Functions
-:label: ex-l2-separable
-
-The space of square integrable functions $L^2([-1, 1])$ has basis set
-$\{ 1,\ \cos(nx),\ \sin(nx)\}$
-
-which is countable and hence it is a separable space.
-```
-
-```{prf:example} Non-separability of L-infinity
-:label: ex-linf-not-separable
-
-$L^\infty([-1, 1])$ is not separable (see homework).
-```
-
-```{prf:definition} Compact Set
-:label: def-compact
-
-A subset $E \subset X$ is compact if either:
-1. each open cover contains a finite subcover.
-2. each sequence $\{x_n\} \subset E$ contains a convergent subsequence.
-```
-
-```{prf:example} Compactness of Unit Ball in $\mathbb{R}^n$
-:label: ex-unit-ball-compact
-
-The closed unit ball
-$B_1(0) = \{x \in \mathbb{R}^n : \|x\|_p \leq 1\}$
-
-is compact by Heine-Borel. Equivalently, we can take any sequence $\{x_n\} \subset B_1(0)$. Since that sequence is bounded Bolzano-Weierstrass implies that it has a convergence subsequence.
-```
-
-```{prf:remark} Compactness in Infinite Dimensions
-:label: rem-compact-infinite
-
-While any closed and bounded subset of $\mathbb{R}^n$ is compact, this dramatically changes in infinite dimensions where the closed unit ball is not compact (we see this at the end of this week). For this reason, compactness results play a crucial role in functional analysis.
-```
-
-```{prf:definition} Equivalent Norms
-:label: def-equiv-norms
-
-Two norms $\|x\|^1$ and $\|x\|^2$ are equivalent if there exists $a, b > 0$ such that
-$a \|x\|^1 \leq \|x\|^2 \leq b \|x\|^1\quad \forall x \in X$
-```
-
-Note that the previous definition calls two norms equivalent when they induce the same underlying topology on $X$. In other words, they generate the same open sets or intuitively induce the same notion of two elements being close.
-
-```{prf:theorem} Equivalence of Norms in $\mathbb{R}^n$
-:label: thm-rn-norms-equiv
-
-In $\mathbb{R}^n$ all norms are equivalent.
-```
-
-```{prf:proof}
-
-This is merely a sketch of a proof. They key idea is that in $\mathbb{R}^n$ all the unit balls can be scaled so that they fit into each other. Allowing us to show that the open sets in $(\mathbb{R}^n, \|x\|_p)$ are the same as in $(\mathbb{R}^n, \|x\|_q)$.
-```
-
-
-## Spaces of integrable, continuous and differentiable functions
-
-Define some typical function spaces that are central to the theory.
-For the definitions of the spaces of continuous, continuously differentiable and Hoelder continuous functions see the class textbook.
+For the definitions of the spaces $\mathcal{C}^k(\Omega)$ of continuous and continuously differentiable functions, and $\mathcal{C}^{0,\alpha}(\Omega)$ of Hölder continuous functions, see the class textbook.
 
 ```{prf:definition} $L^p$ Spaces
 :label: def-lp-spaces
 
 For $1 \leq p < \infty$ we define the spaces of integrable functions
-$L^p(\Omega) = \{f : \Omega \mapsto \mathbb{R} : \|f\|_p = \left( \int_{\Omega} |f(x)|^p d\mu \right)^{1/p} < \infty \}$
+
+$$L^p(\Omega) = \left\{f : \Omega \to \mathbb{R} : \|f\|_p = \left( \int_{\Omega} |f(x)|^p \, d\mu \right)^{1/p} < \infty \right\}$$
+
+For $p = \infty$ we define
+
+$$L^\infty(\Omega) = \left\{f : \Omega \to \mathbb{R} : \|f\|_\infty = \operatorname{ess\,sup}_{x \in \Omega} |f(x)| < \infty \right\}$$
 ```
 
-### Approximation of integrable functions via smooth functions
 
-```{prf:theorem} Mollifiers Theorem
-:label: thm-mollifiers
+## What Do $L^p$ Norms Measure?
 
-Given $f \in \mathcal{C}^0_c(\Omega)$, for each $\varepsilon > 0$ $\exists \phi \in \mathcal{C}^\infty_c(\Omega)$ such that
-$\|f - \phi\|_{\infty} < \varepsilon$
+Different norms capture different features of a function. To build intuition, consider a smooth bump function $\phi \in \mathcal{C}^\infty_c(\mathbb{R})$ with $\phi \geq 0$, $\operatorname{supp}(\phi) \subset [-1, 1]$, and $\|\phi\|_\infty = 1$.
+
+We construct two families of functions that independently control **height** and **width**.
+
+**Scaling the height.** Define $f_A(x) = A\,\phi(x)$ for $A > 0$. This rescales the amplitude without changing the support. Then:
+
+$$\|f_A\|_\infty = A, \qquad \|f_A\|_1 = A\|\phi\|_1, \qquad \|f_A\|_p = A\|\phi\|_p.$$
+
+All norms see the height equally — no surprise, since we are simply rescaling the function values.
+
+**Scaling the width.** Define $g_R(x) = \phi(x/R)$ for $R > 0$. This stretches the support to $[-R, R]$ without changing the peak value. Then:
+
+$$\|g_R\|_\infty = \|\phi\|_\infty = 1$$
+
+is **independent of $R$** — the $L^\infty$ norm is completely insensitive to how wide the function is. On the other hand, by a change of variables $y = x/R$:
+
+$$\|g_R\|_p^p = \int |g_R(x)|^p \, dx = R \int |\phi(y)|^p \, dy = R\,\|\phi\|_p^p$$
+
+so that $\|g_R\|_p = R^{1/p}\|\phi\|_p$, which **grows** as we widen the support.
+
+```{prf:remark} Interpretation of $L^p$ Norms
+:label: rem-lp-interpretation
+
+This analysis reveals a fundamental distinction:
+
+- **$L^\infty$** measures only the **height** (peak value) of a function. It is completely insensitive to the width of the support.
+- **$L^1$** measures the **total mass** — it averages the function over the domain, so both height and width contribute equally.
+- **$L^p$** for $1 < p < \infty$ **interpolates** between these extremes: larger $p$ gives more weight to peak values and less to the spread.
+
+This is why $L^\infty$ convergence (uniform convergence) is a much stronger requirement than $L^1$ convergence: a sequence of tall, narrow spikes can have $L^1$ norm tending to zero while the $L^\infty$ norm remains constant.
 ```
 
-````{prf:theorem} Density of $\mathcal{C}^0$ in $L^p$
-:label: thm-c0-dense-lp
 
-Let $\Omega$ be bounded, then $\mathcal{C}^0(\Omega)$ is dense in $L^p(\Omega)$ i.e.
-$L^p(\Omega) = \overline{\mathcal{C}^0_c(\Omega)}$
-
-where the closure is wrt. to the p-norm, and $L^p$ is separable.
-
-```{dropdown} **Proof:**
-
-The key to the proof is to recall that any measurable function can be approximated using simple functions. Recall that we say a function is simple if
-$s_n = \sum_{i = 1}^{n} c_j \chi_{I_j}(x)$
-
-where $\chi_{I_j}$ is the indicator function of a set, recall that from the construction of the Lebesque integral these sets can be complicated (i.e. contain several disjointed pieces). Then given any measurable function $f(x)$ we can find a sequence of increasing simple functions (i.e. $s_1(x) \leq s_2(x) \leq \dots \leq f(x)$) such that $s_n(x) \to f(x)$ pointwise for almost every $x$ i.e. $|s_n - f| < \varepsilon$.
-
-We have that $|s_n - f|^p \leq 2|f|^p \in L^1$ and the Lebesgue dominated convergence theorem implies that
-$\lim_{n\to\infty} \int |s_n - f|^p d\mu = \int \lim_{n\to\infty} |s_n - f|^p d\mu \leq C \varepsilon$
-
-Thus we have that $\|s_n - f\|_p \to 0$.
-Finally note that each simple function is continuous and we can pick the weights to be rational, and for the final step mollify each of the characteristic functions.
-```
-````
+## $L^p$ is a Banach Space
 
 ````{prf:theorem} $L^p$ is a Banach Space
 :label: thm-lp-banach
@@ -210,13 +115,13 @@ when $n_k > N$. Thus we have that $\|f - f_n\| \to 0$.
 
 ````
 
-### The Rainbow of Function Spaces
+
+## The Rainbow of Function Spaces
 
 ```{prf:remark} The Rainbow of Function Spaces
 :label: rem-rainbow
 
-A key result from this lecture is the "rainbow" of function spaces. The spaces of continuous and differentiable functions naturally are nested. Similarly, the spaces of integrable functions are nested by Hoelder's inequality for bounded domains.
+A key result from this lecture is the "rainbow" of function spaces. The spaces of continuous and differentiable functions naturally are nested. Similarly, the spaces of integrable functions are nested by Hölder's inequality for bounded domains.
 
 In particular, spaces of integrable functions are only nestable when the measure of the domain is finite or the counting measure (in this case the role of $p$ and $q$ reverse). Thus crucially spaces of integrable functions with unbounded domains are **not** nested.
 ```
-

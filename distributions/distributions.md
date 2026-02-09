@@ -12,7 +12,7 @@ Specifically, $T \in \left( \mathcal{C}_c^\infty(\mathbb{R}^d) \right)^*$ if and
 2. $T$ is continuous: For every compact $K \subset \mathbb{R}^d$, there exists $k \geq 0$
 and $C > 0$ such that
 
-$$ |T(\phi)| \leq C || \phi||_{\mathcal{C}^k} $$
+$$ |T(\phi)| \leq C \| \phi\|_{\mathcal{C}^k} $$
 
 for all $\phi \in \mathcal{C}_c^\infty(K)$. The smallest such integer $k$ that works
 for all compact subsets is called the **order** of the distribution.
@@ -48,7 +48,7 @@ $\Phi_f : \left(\mathcal{C}_c^{\infty}(\mathbb{R}^d) \right)^* \mapsto \mathbb{R
 We can use the evaluation map to define a topology on the space of distributions. This is
 exactly the **weak-star topology** from earlier. Further, note that the evaluation functionals
 are exactly the images of test functions under the canonical embedding
-$J : \mathcal{C}_c^{\infty) \mapsto \left( \mathcal{C}_c^{\infty} \right)^{**}$
+$J : \mathcal{C}_c^{\infty} \mapsto \left( \mathcal{C}_c^{\infty} \right)^{**}$
 with $J(f) = \Phi_f$.
 
 We can now clearly state when a sequence of distributions

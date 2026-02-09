@@ -180,9 +180,89 @@ examples of method that construct solution approximations by constructing approx
 3. Finally the completeness of the space $Y$ allows an application of Baire's category theorem, and ensures that
 all surjective linear mappings are open, thus we can control the norm of the solution by the norm of the input.
 
-4. There are several important consequence of this theorem. One the {prf:ref}`banach-inverse` is discussed above,
-and the closed-graph theorem will be discussed later.
+```
 
+## The Closed Graph Theorem
+
+The Closed Graph Theorem is equivalent to the Open Mapping Theorem for Banach spaces. It provides an alternative (often easier) way to verify that a linear operator is bounded.
+
+```{prf:definition} Closed Graph
+:label: def-closed-graph
+
+Let $T : X \to Y$ be a linear operator between normed spaces. The **graph** of $T$ is
+$$
+\text{Graph}(T) = \{(x, Tx) : x \in X\} \subset X \times Y
+$$
+
+We say $T$ has a **closed graph** if $\text{Graph}(T)$ is closed in $X \times Y$ with the product topology (equivalently, the norm $\|(x, y)\| = \|x\|_X + \|y\|_Y$).
+```
+
+```{prf:remark} Closed Graph Condition
+:label: rem-closed-graph-condition
+
+$T$ has a closed graph if and only if:
+
+$$
+x_n \to x \text{ in } X \text{ and } Tx_n \to y \text{ in } Y \implies y = Tx
+$$
+
+This is weaker than continuity! For continuous $T$: $x_n \to x$ implies $Tx_n \to Tx$. For closed graph: we only require that *if* $Tx_n$ converges to *something*, that something must be $Tx$.
+```
+
+```{prf:theorem} Closed Graph Theorem
+:label: thm-closed-graph
+
+Let $X$ and $Y$ be Banach spaces, and let $T : X \to Y$ be a linear operator. Then:
+
+$$
+T \text{ is bounded} \iff T \text{ has a closed graph}
+$$
+```
+
+```{prf:proof}
+**($\Rightarrow$)** If $T$ is bounded (continuous), then $x_n \to x$ implies $Tx_n \to Tx$. So if $Tx_n \to y$, we must have $y = Tx$. Thus $T$ has closed graph.
+
+**($\Leftarrow$)** Assume $T$ has closed graph. Then $\text{Graph}(T)$ is a closed subspace of the Banach space $X \times Y$, hence itself a Banach space.
+
+Consider the projection $\pi_1 : \text{Graph}(T) \to X$ defined by $\pi_1(x, Tx) = x$.
+
+- $\pi_1$ is linear and bounded: $\|\pi_1(x, Tx)\| = \|x\| \leq \|x\| + \|Tx\| = \|(x, Tx)\|$
+- $\pi_1$ is bijective (it has inverse $x \mapsto (x, Tx)$)
+
+By {prf:ref}`banach-inverse`, $\pi_1^{-1} : X \to \text{Graph}(T)$ is bounded.
+
+Now $T = \pi_2 \circ \pi_1^{-1}$ where $\pi_2(x, Tx) = Tx$ is bounded. Hence $T$ is bounded.
+```
+
+```{prf:remark} The Triangle of Equivalences
+:label: rem-triangle-equivalences
+
+For Banach spaces, we have the equivalences:
+
+$$
+\boxed{\text{Open Mapping} \iff \text{Bounded Inverse} \iff \text{Closed Graph}}
+$$
+
+- **Open Mapping → Bounded Inverse**: If bijective $T$ is open, then $T^{-1}$ is continuous.
+- **Bounded Inverse → Closed Graph**: The proof above uses bounded inverse for $\pi_1$.
+- **Closed Graph → Open Mapping**: If $T$ is surjective with closed graph, it's bounded, and one can show it's open.
+
+All three rely on completeness (Baire category) and fail for general normed spaces.
+```
+
+```{prf:example} Automatic Continuity
+:label: ex-automatic-continuity
+
+**Differentiation is closed but unbounded on wrong space.**
+
+Let $X = (C^1[0,1], \|\cdot\|_\infty)$ and $Y = (C[0,1], \|\cdot\|_\infty)$.
+
+Define $D : X \to Y$ by $Df = f'$.
+
+- $D$ has closed graph: if $f_n \to f$ uniformly and $f_n' \to g$ uniformly, then $g = f'$ (fundamental theorem of calculus).
+- But $D$ is **not bounded**: $\|x^n\|_\infty = 1$ but $\|nx^{n-1}\|_\infty = n$.
+
+**Resolution**: $X$ with sup-norm is not complete! In the correct topology ($\|f\|_{C^1} = \|f\|_\infty + \|f'\|_\infty$), $X$ is Banach and $D$ is bounded.
 ```
 
 

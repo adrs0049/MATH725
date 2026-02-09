@@ -1,0 +1,52 @@
+version: 1
+project:
+  title: Applied Functional Analysis
+  authors:
+    - name: Andreas Buttenschoen.
+  copyright: '2025'
+  github: adrs0049/MATH725
+  bibliography:
+    - references.bib
+  toc:
+    - file: index.md
+    - file: schedule.md
+      title: Course Schedule
+    - title: Introduction
+      children:
+        - file: introduction/intro.md
+        - file: introduction/function-spaces.md
+        - file: introduction/approximation.md
+        - file: introduction/basic-properties-of-spaces.md
+    - title: Linear Operators
+      children:
+        - file: lops/lops.md
+        - file: lops/baire.md
+        - file: lops/banach-steinhaus.md
+        - file: lops/open-map.md
+        - file: lops/compact.md
+    - title: Duality
+      children:
+        - file: duality/duality.md
+        - file: duality/adjoint.md
+        - file: duality/examples-dual-spaces.md
+        - file: duality/hahn-banach.md
+        - file: duality/transpose.md
+    - title: Distributions
+      children:
+        - file: distributions/introduction.md
+        - file: distributions/test-functions.md
+        - file: distributions/distributions.md
+        - file: distributions/averaging.md
+    - title: Jupyter Notebooks
+      children:
+        - file: notebooks/01_fourier_series.ipynb
+        - file: notebooks/02_deblurring_images.ipynb
+    - title: References
+      children:
+        - file: bibliography.md
+site:
+  options:
+    # logo: img/nn.png  # TODO: add logo image
+    folders: true
+    logo_text: MATH 725
+  template: book-theme
