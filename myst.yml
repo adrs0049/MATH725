@@ -11,27 +11,31 @@ project:
     - file: index.md
     - file: schedule.md
       title: Course Schedule
-    - title: Introduction
+    - file: introduction/index.md
+      title: Introduction
       children:
         - file: introduction/intro.md
         - file: introduction/function-spaces.md
         - file: introduction/approximation.md
         - file: introduction/basic-properties-of-spaces.md
-    - title: Linear Operators
+    - file: lops/index.md
+      title: Linear Operators
       children:
         - file: lops/lops.md
         - file: lops/baire.md
         - file: lops/banach-steinhaus.md
         - file: lops/open-map.md
         - file: lops/compact.md
-    - title: Duality
+    - file: duality/index.md
+      title: Duality
       children:
         - file: duality/duality.md
         - file: duality/adjoint.md
         - file: duality/examples-dual-spaces.md
         - file: duality/hahn-banach.md
         - file: duality/transpose.md
-    - title: Distributions
+    - file: distributions/index.md
+      title: Distributions
       children:
         - file: distributions/introduction.md
         - file: distributions/test-functions.md
