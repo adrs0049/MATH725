@@ -1,41 +1,125 @@
 # The Open Mapping Theorem
 
-The open-mapping theorem is another of the big theorems of functional analysis. Its signifiance is that
-it equates qualitative properties solvability of a linear problem $Lx = y$ with quantitative solvability.
+The open-mapping theorem is another of the big theorems of functional analysis. Its significance is that
+it equates qualitative solvability of a linear problem $Lx = y$ with quantitative solvability.
 We will begin by stating the qualitative version and explore its consequences on the solvability of
 linear operators, followed by the quantitative version.
 
-```{prf:theorem} Open Mapping Theorem
-Let $U, V$ be the open units balls of the Banach spaces $X, Y$ respectively. To every bounded linear
-operator $L$ of $X$ **onto** $Y$ there corresponds $\delta > 0$ so that
-$L(U) \subset \delta V = \{ y \in Y : ||y|| < \delta \}.$
+```{prf:definition} Open map
+:label: def-open-map
+
+A map $f : X \to Y$ between topological spaces is called **open** if it maps open sets to open sets, i.e. $f(U)$ is open in $Y$ whenever $U$ is open in $X$.
 ```
 
-By the linearity of $L$ we see that this theorem says that $L$ maps open sets to open sets i.e. is an
-open mapping, and that for every $||y|| < \delta$ there corresponds on $x$ such that $||x|| < 1$ so that
-$Lx = y$.
+Geometrically, openness means **the image of every ball contains a ball**: sets with interior keep their interior, nothing gets crushed to zero volume. A map that is not open flattens the unit ball into something with empty interior, and any attempt to invert such a map is necessarily discontinuous since small perturbations in $Y$ can jump to distant points in $X$.
 
-```{prf:corollary} Banach's Bounded Inverse Theorem
+```{prf:theorem} Open Mapping Theorem
+Let $U, V$ be the open unit balls of the Banach spaces $X, Y$ respectively. To every bounded linear
+operator $L$ of $X$ **onto** $Y$ there corresponds $\delta > 0$ so that
+$L(U) \supset \delta V = \{ y \in Y : ||y|| < \delta \}.$
+```
+
+The quantitative content is that there is a *uniform* lower bound $B_\delta(0) \subset L(B_1(0))$ on how much volume survives. In the bijective case, $\delta = 1/\|L^{-1}\|_{\mathrm{op}}$. By the linearity of $L$ this extends to all open sets: $L$ maps every open set to an open set, i.e. $L$ is an open mapping.
+
+````{prf:corollary} Banach's Bounded Inverse Theorem
 :label: banach-inverse
 
 Let $L$ be a linear operator between two Banach spaces $X$ and $Y$, that is **onto** and one-to-one, then
 $L^{-1}$ is a bounded linear operator.
-```
 
-```{dropdown} **Proof** of Banach's Bounded Inverse Theorem:
-If $||Lx|| < \delta$ then the open mapping theorem says that $Lx \in L(U)$ thus there
-exists a $u \in U$ such that $Lu = Lx$. The **key** is that since $L$ is injective we have $x = u$,
-so that we conclude that $||x|| < 1$. If $||x|| \geq 1$ then $||Lx||\geq \delta$. Now let
-$y := \frac{x}{||x||}$ then $||Ly|| \geq \delta$ so that we have $||Lx|| \geq \delta ||x||$.
-Now define $L^{-1}$ via $L^{-1} y= x$ if $Lx = y$. We then show that $L^{-1}$ is indeed linear,
-and bounded $||L^{-1}|| \leq 1/\delta$.
-```
+```{dropdown} **Proof:**
+By the Open Mapping Theorem, $L$ is an open map. Recall that a map $f : Y \to X$ is continuous if and only if the preimage of every open set is open. The preimage of an open set $U \subseteq X$ under $L^{-1}$ is
 
-```{prf:remark}
-The previous statement is remarkable in the sense that it lifts our intuition about linear opeartors
+$$(L^{-1})^{-1}(U) = L(U),$$
+
+since $L^{-1}(y) \in U \iff y \in L(U)$. The Open Mapping Theorem says $L(U)$ is open for every open $U$, so $(L^{-1})^{-1}(U)$ is open for every open $U$, which is precisely the definition of $L^{-1}$ being continuous. A continuous linear map is bounded, so $L^{-1}$ is bounded.
+```
+````
+
+The previous statement is remarkable in the sense that it lifts our intuition about linear operators
 in finite dimensions (i.e. that bijectiveness is equivalent to invertibility) to the infinite dimensional
 case.
+
+````{prf:corollary} Equivalence of norms
+:label: cor-equiv-norms
+
+If $\|\cdot\|_1$ and $\|\cdot\|_2$ are two norms on a vector space $X$, both making it a Banach space, and $\|x\|_2 \leq C\|x\|_1$ for all $x$, then the norms are equivalent: there exists $C' > 0$ such that $\|x\|_1 \leq C'\|x\|_2$ for all $x$.
+
+```{dropdown} **Proof:**
+The identity map $\mathrm{id} : (X, \|\cdot\|_1) \to (X, \|\cdot\|_2)$ is bounded (by assumption), linear, and bijective. Both spaces are Banach. By {prf:ref}`banach-inverse`, $\mathrm{id}^{-1} : (X, \|\cdot\|_2) \to (X, \|\cdot\|_1)$ is bounded, giving the reverse inequality.
 ```
+````
+
+```{prf:remark}
+:class: dropdown
+
+Normally, proving norm equivalence requires two inequalities. This corollary says that if both norms make the space complete, one inequality gives you the other for free. In particular, you cannot have two genuinely different Banach space topologies on the same space where one is strictly finer than the other: if a stronger norm and a weaker norm both give completeness, they must be equivalent.
+```
+
+## Why Does the Open Mapping Theorem Need Completeness?
+
+In finite dimensions the Open Mapping Theorem is almost trivial: compactness of the unit ball does all
+the work. In infinite dimensions compactness fails, and completeness must substitute via Baire's
+category theorem. The details below make this precise.
+
+::::{dropdown} **The Finite-Dimensional Story**
+
+Every continuous linear surjection $T : \mathbb{R}^n \to \mathbb{R}^m$ is automatically an open map.
+The argument is almost purely geometric:
+
+1. **Surjectivity gives absorbing.** The image $T(B)$ of the open unit ball is convex, balanced
+   (symmetric about $0$), and *absorbing*: for every $y \in \mathbb{R}^m$, some scalar multiple
+   $\lambda y$ lies in $T(B)$. This follows immediately from surjectivity: given $y$, pick $x$ with
+   $Tx = y$, then $y/\|x\| = T(x/\|x\|) \in T(B)$.
+
+2. **Absorbing + convex + balanced $\implies$ nonempty interior (in finite dimensions).** Pick a basis
+   $e_1, \dots, e_m$ of $\mathbb{R}^m$. Since $T(B)$ is absorbing, for each $i$ there exists
+   $\lambda_i > 0$ with $\lambda_i e_i \in T(B)$. By convexity and symmetry, $T(B)$ contains the
+   convex hull of $\{\pm \lambda_1 e_1, \dots, \pm \lambda_m e_m\}$. This is a cross-polytope (a
+   "diamond"), a solid body in $\mathbb{R}^m$ with nonempty interior.
+
+3. **Nonempty interior at the origin $\implies$ openness.** Once $T(B)$ contains an open ball around
+   $0$, linearity propagates this to all open sets: $T$ maps every open set to an open set.
+
+The deeper reason this works is **compactness of the unit ball** (Heine–Borel). Compact $\to$
+continuous images are compact $\to$ compact convex sets with the right spanning properties have
+interior. Everything closes cleanly because there are only finitely many directions to account for.
+
+::::
+
+::::{dropdown} **What Breaks in Infinite Dimensions**
+
+By Riesz's lemma, the closed unit ball in an infinite-dimensional Banach space is never compact, destroying the finite-dimensional argument at its root. In finite dimensions, compressing finitely many coordinate directions by positive factors always leaves a solid body with nonempty interior; in infinite dimensions, compressions $\lambda_n \to 0$ can crush the image to a set with empty interior, even though every finite-dimensional projection still looks fine.
+
+### A concrete example
+
+Let $c_{00}$ be the space of real sequences with only finitely many nonzero
+terms, equipped with the sup-norm $\|x\|_\infty = \sup_k |x_k|$. As we saw in
+the Banach-Steinhaus discussion, $c_{00}$ is **not complete**.
+
+Define $T : c_{00} \to c_{00}$ by
+
+$$
+T\left(\{x_n\}\right) = \left\{\frac{x_n}{n}\right\}.
+$$
+
+This is bounded ($\|Tx\|_\infty \leq \|x\|_\infty$). It compresses each coordinate direction by a different factor: the $n$-th direction is scaled by $\lambda_n = 1/n$, so the compressions tend to zero as $n \to \infty$.
+
+**Bijective on $c_{00}$:** Injectivity is immediate: if $Tx = 0$ then $x_n/n = 0$ for all $n$, so $x = 0$. For surjectivity, given $y \in c_{00}$, set $x_n = ny_n$. Since $y$ has finite support, so does $x$, hence $x \in c_{00}$ and $Tx = y$.
+
+**Not open:** For any $\varepsilon > 0$, the vector $\frac{\varepsilon}{2} e_k$ lies in $B_\varepsilon(0)$. Its unique preimage under $T$ is $\frac{k\varepsilon}{2} e_k$, which has norm $k\varepsilon/2 \to \infty$ as $k \to \infty$. So no matter how small $\varepsilon$ is, $B_\varepsilon(0)$ contains points whose preimages escape any fixed ball. Equivalently, $T(B)$ is the set $\{y \in c_{00} : |y_k| < 1/k\}$, an "infinite-dimensional box" that gets narrower in each successive direction. No sup-norm ball fits inside it.
+
+**What happens on the completion?** On $c_0$, the map $T$ is no longer surjective: $y = \{1/n\} \in c_0$ requires $x_n = 1$ for all $n$, but the constant sequence $\{1, 1, 1, \ldots\} \notin c_0$. So surjectivity fails on the completion, and the OMT hypothesis is no longer met.
+
+::::
+
+## Quantitative Formulation
+
+Surjectivity alone is qualitative: "solutions exist." Openness adds quantitative content: "solutions exist *with controlled norm*," i.e. there is a constant $C$ such that every $y$ has a preimage $x$ with $\|x\| \leq C\|y\|$. The Bounded Inverse Theorem sharpens this further when $L$ is also injective: the preimage is unique and $\|x\| \leq \|L^{-1}\|_{\mathrm{op}} \|y\|$.
+
+In finite dimensions, a bijective linear map is automatically invertible with a bounded inverse. In infinite dimensions this fails: the $c_{00}$ counterexample above is a bounded bijection whose inverse is unbounded. "Invertible" should really mean *stably* invertible, i.e. $L^{-1}$ is also bounded. The Open Mapping Theorem is the bridge: for Banach spaces, surjectivity + boundedness automatically yields openness, and openness + injectivity gives a bounded inverse. So the algebraic notion of invertibility (bijection) coincides with the analytic notion (bounded inverse), but only in the Banach space setting.
+
+This is why the Open Mapping Theorem matters so much for PDEs: it is not enough to know $Lu = f$ has a solution. You need to know $\|u\| \leq C\|f\|$, that the solution depends continuously on the data. Open Mapping says surjectivity *automatically* gives you this stability, as long as you are working in Banach spaces.
 
 Now to the version of the open-mapping theorem by T. Tao {cite}`tao2009`.
 
@@ -167,113 +251,26 @@ satisfies the required properties.
 
 
 ```{prf:remark}
+:class: dropdown
 
 Make sure to take a close look at the proof of the open-mapping theorem. There are three key techniques on display:
 (1) **linearity**, (2) **series approximations**, and (3) the **Baire category theorem**.
 
 1. The frequent dilations and translations in the above are allowed by linearity.
 
-2. The series approximation technique has profound signifiance beyond proving results in functional analysis. Take
+2. The series approximation technique has profound significance beyond proving results in functional analysis. Take
 a look at numerical methods such as gradient descent, conjugate gradient, or even Newton's method. These are all
-examples of method that construct solution approximations by constructing approximating series.
+examples of methods that construct solution approximations by constructing approximating series.
 
-3. Finally the completeness of the space $Y$ allows an application of Baire's category theorem, and ensures that
-all surjective linear mappings are open, thus we can control the norm of the solution by the norm of the input.
-
-```
-
-## The Closed Graph Theorem
-
-The Closed Graph Theorem is equivalent to the Open Mapping Theorem for Banach spaces. It provides an alternative (often easier) way to verify that a linear operator is bounded.
-
-```{prf:definition} Closed Graph
-:label: def-closed-graph
-
-Let $T : X \to Y$ be a linear operator between normed spaces. The **graph** of $T$ is
-$$
-\text{Graph}(T) = \{(x, Tx) : x \in X\} \subset X \times Y
-$$
-
-We say $T$ has a **closed graph** if $\text{Graph}(T)$ is closed in $X \times Y$ with the product topology (equivalently, the norm $\|(x, y)\| = \|x\|_X + \|y\|_Y$).
-```
-
-```{prf:remark} Closed Graph Condition
-:label: rem-closed-graph-condition
-
-$T$ has a closed graph if and only if:
-
-$$
-x_n \to x \text{ in } X \text{ and } Tx_n \to y \text{ in } Y \implies y = Tx
-$$
-
-This is weaker than continuity! For continuous $T$: $x_n \to x$ implies $Tx_n \to Tx$. For closed graph: we only require that *if* $Tx_n$ converges to *something*, that something must be $Tx$.
-```
-
-```{prf:theorem} Closed Graph Theorem
-:label: thm-closed-graph
-
-Let $X$ and $Y$ be Banach spaces, and let $T : X \to Y$ be a linear operator. Then:
-
-$$
-T \text{ is bounded} \iff T \text{ has a closed graph}
-$$
-```
-
-```{prf:proof}
-**($\Rightarrow$)** If $T$ is bounded (continuous), then $x_n \to x$ implies $Tx_n \to Tx$. So if $Tx_n \to y$, we must have $y = Tx$. Thus $T$ has closed graph.
-
-**($\Leftarrow$)** Assume $T$ has closed graph. Then $\text{Graph}(T)$ is a closed subspace of the Banach space $X \times Y$, hence itself a Banach space.
-
-Consider the projection $\pi_1 : \text{Graph}(T) \to X$ defined by $\pi_1(x, Tx) = x$.
-
-- $\pi_1$ is linear and bounded: $\|\pi_1(x, Tx)\| = \|x\| \leq \|x\| + \|Tx\| = \|(x, Tx)\|$
-- $\pi_1$ is bijective (it has inverse $x \mapsto (x, Tx)$)
-
-By {prf:ref}`banach-inverse`, $\pi_1^{-1} : X \to \text{Graph}(T)$ is bounded.
-
-Now $T = \pi_2 \circ \pi_1^{-1}$ where $\pi_2(x, Tx) = Tx$ is bounded. Hence $T$ is bounded.
-```
-
-```{prf:remark} The Triangle of Equivalences
-:label: rem-triangle-equivalences
-
-For Banach spaces, we have the equivalences:
-
-$$
-\boxed{\text{Open Mapping} \iff \text{Bounded Inverse} \iff \text{Closed Graph}}
-$$
-
-- **Open Mapping → Bounded Inverse**: If bijective $T$ is open, then $T^{-1}$ is continuous.
-- **Bounded Inverse → Closed Graph**: The proof above uses bounded inverse for $\pi_1$.
-- **Closed Graph → Open Mapping**: If $T$ is surjective with closed graph, it's bounded, and one can show it's open.
-
-All three rely on completeness (Baire category) and fail for general normed spaces.
-```
-
-```{prf:example} Automatic Continuity
-:label: ex-automatic-continuity
-
-**Differentiation is closed but unbounded on wrong space.**
-
-Let $X = (C^1[0,1], \|\cdot\|_\infty)$ and $Y = (C[0,1], \|\cdot\|_\infty)$.
-
-Define $D : X \to Y$ by $Df = f'$.
-
-- $D$ has closed graph: if $f_n \to f$ uniformly and $f_n' \to g$ uniformly, then $g = f'$ (fundamental theorem of calculus).
-- But $D$ is **not bounded**: $\|x^n\|_\infty = 1$ but $\|nx^{n-1}\|_\infty = n$.
-
-**Resolution**: $X$ with sup-norm is not complete! In the correct topology ($\|f\|_{C^1} = \|f\|_\infty + \|f'\|_\infty$), $X$ is Banach and $D$ is bounded.
-```
-
-
-## Exercises
-
-```{div} exercise
-Show that all linear transformations from a finite-dimensional space to a
-normed vector space are continuous. Conclude that all norms on a finite-dimensional
-space are equivalent.
-
-*Hint:* You can use either the open-mapping theorem or Banach-Steinhaus to prove this by considering
-the identity map.
+3. Completeness enters twice. **Completeness of $Y$** feeds Baire's theorem: surjectivity gives $Y = \bigcup_n \overline{T(nB_X)}$, and Baire forces at least one of these closed sets to have nonempty interior, so $\overline{T(B_X)}$ contains a ball. **Completeness of $X$** then promotes from the closure to the set itself: approximate preimages are assembled into a geometrically decreasing series whose partial sums are Cauchy, and completeness guarantees convergence to an exact preimage with controlled norm. In the $c_{00}$ counterexample, each $\overline{T(nB)} = \{y : |y_k| \leq n/k\}$ is nowhere dense (perturb the $k$-th coordinate for large $k$ to escape), so $c_{00}$ is covered by nowhere dense sets. Baire forbids this in a complete space, but $c_{00}$ is incomplete, so the argument has no traction.
 
 ```
+
+```{prf:remark} Condition numbers
+:class: dropdown
+
+In numerical linear algebra, the central quantity controlling stability of solving $Lx = y$ is the **condition number** $\kappa(L) = \|L\| \cdot \|L^{-1}\|$. If the right-hand side $y$ is perturbed by relative error $\varepsilon$, the solution can be perturbed by up to $\kappa(L) \cdot \varepsilon$. For finite-dimensional invertible matrices, $\kappa(A) < \infty$ automatically, and the whole game is about *how large* $\kappa$ is. In infinite dimensions, the Bounded Inverse Theorem is what guarantees $\|L^{-1}\|_{\mathrm{op}} < \infty$ (and hence $\kappa(L) < \infty$) *at all*. The Open Mapping Theorem is the qualitative floor beneath condition numbers: it says the problem is well-conditioned before you even start worrying about how well-conditioned it is.
+
+This has far-reaching consequences for numerical methods. When we discretize $Lu = f$ by a sequence of finite-rank operators $L_n$ and solve $L_n u_n = f_n$, the Open Mapping Theorem guarantees well-posedness of the continuous problem, Banach-Steinhaus guarantees stability of convergent schemes (this is the content of the **Lax equivalence theorem**: convergence $\iff$ stability), and the Neumann series controls condition numbers of the discrete problems. We will return to these connections in the applications.
+```
+

@@ -21,19 +21,19 @@ $\mu\left( \bigcup_n E_n \right) > 0$
 then at least one of the $E_n$ has positive measure.
 ```
 
-The next proposition starts to bridge between measure theory and topology. Intuitively
-the next proposition shows that sets of positive measure can't be "thinly spread" throughout
-space, instead they must be concentrated somewhere in mathematical terms there must be a
-ball where the set takes up most of the space.
+The next proposition bridges between measure theory and topology. To motivate it, recall that the Lebesgue differentiation theorem tells us that for almost every point $x \in E$, the *density* of $E$ at $x$,
 
-```{prf:proposition}
+$$\lim_{r \to 0} \frac{\mu(E \cap B(x,r))}{\mu(B(x,r))} = 1,$$
+
+equals one. Such points are called *density points* of $E$ — points where $E$ fills up nearly all of every sufficiently small ball. One can think of density points as measure-theoretic interior points: an interior point of $E$ is one where $E$ contains an entire ball, while a density point is one where $E$ nearly fills every small ball, even if it doesn't contain one outright. The next proposition globalizes this local statement: if $E$ has positive measure, then $E$ must be *dense in some ball* in the measure-theoretic sense that it occupies an arbitrarily large fraction of that ball's volume.
+
+````{prf:proposition}
 :label: thm-measure-topo
 
 Let $E$ be a measurable subset of $\mathbb{R}^d$. Then the following are equivalent
 1. $\mu(E) > 0$
 2. $\forall \varepsilon > 0$ there exists a ball $B$ such that
    $\mu(E \cap B) \geq (1 - \varepsilon)\mu(B)$
-```
 
 ```{dropdown} **Proof:**
 We prove {prf:ref}`thm-measure-topo` in two steps.
@@ -59,38 +59,62 @@ We prove {prf:ref}`thm-measure-topo` in two steps.
     Since we have $\mu(B) > 0$ we have $\mu(E \cap B) > 0$, and we have that
     $\mu(E) \geq \mu(E \cap B) > 0.$
 ```
+````
 
-The contrapositive of this statement would be that if a set $E$ never
-occupies a large portion of any ball, then $E$ must have measure zero.
-In other words, sets of measure zero are nowhere concentrated.
+Reading the equivalence from both sides:
 
-In conclusion, in the measure theoretic perspective the small sets are the nullsets,
-and from the topological perspective the small sets are those that are nowhere
-dense. The previous discussion gives a "cute" analogy between small sets in a measure
-space (i.e. sets that don't occupy a large portion of a ball) and the topological
-nowhere dense sets (i.e. not dense in any open ball).
+- **(Forward):** If $\mu(E) > 0$, then $E$ is measure-theoretically dense in some ball — it nearly fills that ball.
+- **(Reverse):** If $E$ is not measure-theoretically dense in any ball — that is, in every ball, $E$ always fails to fill a definite fraction — then $\mu(E) = 0$.
+
+A set of measure zero is therefore *nowhere dense in the measure-theoretic sense*: it is never concentrated in any ball. This suggests that to formalize "smallness" in a purely topological setting, we should look for the topological analogue of this property.
 
 ## Small Sets in Topological Spaces
 
-In this section we want to formalize what it means to be small in a topological space
-and start by proving a similar result to the lemma in the previous section.
-We begin by giving the small sets a name.
+To make the analogy with the measure-theoretic setting precise, we first recall what *dense* means in a topological space.
 
-```{prf:definition}
-A set $E$ which is not dense in any ball or equivalently a set whose
-closure has empty interior is called "meager".
+```{prf:definition} Dense in an open set
+:label: def-dense-open-set
+
+A set $E$ in a topological space is *dense in an open set $U$* if every nonempty open subset of $U$ intersects $E$, or equivalently, if the closure of $E$ contains $U$.
 ```
 
-```{prf:theorem}
+```{prf:remark}
+:class: dropdown
+
+Compare this with the measure-theoretic notion from the previous section: there, $E$ is "dense in $B$" if $\mu(E \cap B) \approx \mu(B)$, i.e. $E$ fills almost all the volume of $B$. Here, $E$ is dense in $B$ if $E$ meets every open subset of $B$, i.e. $E$ is topologically everywhere in $B$. Volume has been replaced by topology, but the intuition is the same: $E$ is thoroughly present throughout $B$, with no region where $E$ is absent.
+```
+
+```{prf:definition} Nowhere dense
+:label: def-nowhere-dense
+
+A set $E$ is *nowhere dense* if it is not dense in any ball, or equivalently, if its closure has empty interior.
+```
+
+This is the topological counterpart of a measure-zero set: just as a null set is never measure-theoretically dense in any ball (it never fills a large fraction of any ball), a nowhere dense set is never topologically dense in any ball (its closure contains no open set).
+
+```{prf:theorem} Baire Category Theorem
 :label: baire
 
 Let $E_1, E_2, \dots$ be an at most countable sequence of subsets of a
-complete metric space $X$. If $\bigcup_n E_n$ contains a ball, then
-at least one of the $E_n$ is dense in a sub-ball $B'$ of $B$
+complete metric space $X$. If $\bigcup_n E_n$ contains a ball $B$, then
+at least one of the $E_n$ is dense in a sub-ball $B' \subset B$
 (and in particular not nowhere dense). To put it in the contrapositive:
 the countable union of nowhere dense sets cannot contain a ball.
 ```
 
+Note that completeness is essential: on an incomplete metric space, the Baire property can fail, and the space itself may be a countable union of nowhere dense sets. This is why completeness is such an important hypothesis throughout the theory of bounded operators. For a proof, see {cite}`hillen2023`.
+
+```{prf:corollary} A complete metric space is not meagre
+:label: baire-corollary
+
+Let $X$ be a complete metric space and $\{F_j\}$ a countable collection of nowhere dense sets. Then $\bigcup_{j} F_j \neq X$. Equivalently, a complete metric space is not meagre (i.e. not a countable union of nowhere dense sets).
+```
+
+```{prf:example} The rationals are meagre
+:label: ex-rationals-meagre
+
+On $X = \mathbb{R}$ (which is complete), the rationals $\mathbb{Q} = \bigcup_{q \in \mathbb{Q}} \{q\}$ are a countable union of nowhere dense sets, hence meagre. {prf:ref}`baire-corollary` tells us $\mathbb{Q} \neq \mathbb{R}$, which we know. More importantly: the irrationals $\mathbb{R} \setminus \mathbb{Q}$ are a dense $G_\delta$ set (a countable intersection of open dense sets), and $\mathbb{Q}$ cannot be $G_\delta$.
+```
 
 ````{prf:example} **Why do we care?**
 :class: dropdown
@@ -131,11 +155,22 @@ to infinite dimensional vectorspaces.
 ```
 
 
-## Consequences of the Baire Category theorem
+```{prf:remark}
+:class: dropdown
 
-The Baire category theorem leads to three fundamental equivalences between the
+The Baire Category Theorem holds in two important classes of topological spaces:
+
+1. **Complete metric spaces** (and hence Banach spaces, Hilbert spaces, etc.).
+2. **Locally compact Hausdorff spaces** (and hence $\mathbb{R}^d$, $\mathbb{C}^d$, and all finite-dimensional normed spaces).
+
+In finite dimensions these overlap: $\mathbb{R}^d$ is both complete and locally compact. In infinite dimensions, however, a Banach space is *never* locally compact (the closed unit ball is not compact), so completeness is the only route to the Baire property.
+```
+
+## Consequences of the Baire Category Theorem
+
+The Baire Category Theorem leads to three fundamental equivalences between the
 qualitative theory of continuous linear operators on Banach spaces e.g.
-finiteness, subjectivity to the quantitative theory e.g. estimates {cite}`tao2009`.
+finiteness, surjectivity to the quantitative theory e.g. estimates {cite}`tao2009`.
 We have already seen the first of these relationships.
 Recall that for a linear operator $A : X \mapsto Y$ we have that
 $A\ \mathrm{is\ continuous} \iff\ A\ \mathrm{is\ bounded}.$
