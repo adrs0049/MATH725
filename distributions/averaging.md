@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/averaging.pdf
+    id: distributions-averaging-pdf
+downloads:
+  - id: distributions-averaging-pdf
+    title: Download PDF
+---
+
 ## Distributions as Averaging Operators
 
 One of the most intuitive ways to understand distributions is to view them as "averaging
@@ -63,43 +74,43 @@ Consider a sequence of "bump functions" $\{ \phi_n \}$ that concentrate around a
 The behavior of $\langle T, \phi_n \rangle$ as $n\to\infty$ reveals the local structure
 of the distribution $T$:
 
-1. **Continuous Functions:** If $T = T_f$ for a continous function $f$, then:
+1. **Continuous Functions:** If $T = T_f$ for a continuous function $f$, then:
 
-$$
-    \lim_{n\to\infty} \langle T_f, \phi_n \rangle = f(x_0)
-$$
+   $$
+   \lim_{n\to\infty} \langle T_f, \phi_n \rangle = f(x_0)
+   $$
 
-The averaging process converges to the point value.
+   The averaging process converges to the point value.
 
 2. **Locally Integrable Function:** If $T= T_f$ for $f \in L^1_{\mathrm{loc}}$, then:
 
-$$
-    \lim_{n\to\infty} \langle T_f, \phi_n \rangle = f(x_0)
-$$
+   $$
+   \lim_{n\to\infty} \langle T_f, \phi_n \rangle = f(x_0)
+   $$
 
-This holds at almost every point $x_0$ (Lebesgue points of $f$).
+   This holds at almost every point $x_0$ (Lebesgue points of $f$).
 
 3. **Radon Measures:** If $T = T_{\mu}$ for a Radon measure
-$\mu = c \delta_{x_0} + \nu$, where $\nu(\{ x_0 \}) = 0$, then:
+   $\mu = c \delta_{x_0} + \nu$, where $\nu(\{ x_0 \}) = 0$, then:
 
-- If $\mu$ has a point mass at $x_0$:
+   - If $\mu$ has a point mass at $x_0$:
 
-$$
-    \lim_{n\to\infty} \langle T_\mu, \phi_n \rangle = \lim_{n\to\infty} c \phi_n(x_0) \sim \mathcal{O}(n^d)
-$$
+     $$
+     \lim_{n\to\infty} \langle T_\mu, \phi_n \rangle = \lim_{n\to\infty} c \phi_n(x_0) \sim \mathcal{O}(n^d)
+     $$
 
-- If $\mu$ is absolutely continuous with density $f$, same behaviour as for the locally integrable functions.
+   - If $\mu$ is absolutely continuous with density $f$, same behaviour as for the locally integrable functions.
 
 4. **Higher-Order distributions:** For a distribution of order $m$:
 
-$$
-    \langle T, \phi_n \rangle \sim \mathcal{O}(n^m) \ \mbox{as}\ n\to\infty.
-$$
+   $$
+   \langle T, \phi_n \rangle \sim \mathcal{O}(n^m) \ \mbox{as}\ n\to\infty.
+   $$
 
-for example $\langle \delta', \phi_n \rangle = -\phi_n'(0) \sim \mathcal{O}(n^{d+1})$
+   For example $\langle \delta', \phi_n \rangle = -\phi_n'(0) \sim \mathcal{O}(n^{d+1})$.
 
-This behaviour reveals why distributions of higher order aren't representable by measures,
-their growth rate under concentration is too rapid.
+   This behaviour reveals why distributions of higher order aren't representable by measures,
+   their growth rate under concentration is too rapid.
 
 
 

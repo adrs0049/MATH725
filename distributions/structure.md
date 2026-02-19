@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/structure.pdf
+    id: distributions-structure-pdf
+downloads:
+  - id: distributions-structure-pdf
+    title: Download PDF
+---
+
 ## Support and Locality
 
 ### Support of a Distribution

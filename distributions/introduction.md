@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/introduction.pdf
+    id: distributions-introduction-pdf
+downloads:
+  - id: distributions-introduction-pdf
+    title: Download PDF
+---
+
 # Introduction to Distribution Theory
 
 ## Motivation and Overview

@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/intro.pdf
+    id: introduction-intro-pdf
+downloads:
+  - id: introduction-intro-pdf
+    title: Download PDF
+---
+
 # Modern Applied Mathematics
 
 - Development of new mathematical models (modeling).

@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/distributions.pdf
+    id: distributions-distributions-pdf
+downloads:
+  - id: distributions-distributions-pdf
+    title: Download PDF
+---
+
 ## Distributions as Continuous Linear Functionals
 
 ### Definition of Distributions

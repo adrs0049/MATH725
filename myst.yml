@@ -7,6 +7,71 @@ project:
   github: adrs0049/MATH725
   bibliography:
     - references.bib
+  exports:
+    - format: pdf
+      template: ./_templates/lecture
+      output: exports/MATH725-full.pdf
+      id: full-book-pdf
+      articles:
+        # 1. Function Spaces and Foundations
+        - file: introduction/index.md
+          level: 1
+        - file: introduction/intro.md
+          level: 2
+        - file: introduction/function-spaces.md
+          level: 2
+        - file: introduction/approximation.md
+          level: 2
+        - file: introduction/basic-properties-of-spaces.md
+          level: 2
+        # 2. Linear Operators
+        - file: lops/index.md
+          level: 1
+        - file: lops/lops.md
+          level: 2
+        - file: lops/baire.md
+          level: 2
+        - file: lops/banach-steinhaus.md
+          level: 2
+        - file: lops/open-map.md
+          level: 2
+        - file: lops/compact.md
+          level: 2
+        - file: lops/exercises.md
+          level: 2
+        # 3. Duality
+        - file: duality/index.md
+          level: 1
+        - file: duality/duality.md
+          level: 2
+        - file: duality/adjoint.md
+          level: 2
+        - file: duality/examples-dual-spaces.md
+          level: 2
+        - file: duality/hahn-banach.md
+          level: 2
+        - file: duality/transpose.md
+          level: 2
+        # 4. Distributions and Sobolev Spaces
+        - file: distributions/index.md
+          level: 1
+        - file: distributions/introduction.md
+          level: 2
+        - file: distributions/test-functions.md
+          level: 2
+        - file: distributions/distributions.md
+          level: 2
+        - file: distributions/operations.md
+          level: 2
+        - file: distributions/structure.md
+          level: 2
+        - file: distributions/averaging.md
+          level: 2
+        - file: distributions/applications.md
+          level: 2
+  downloads:
+    - id: full-book-pdf
+      title: Download Full Book (PDF)
   toc:
     - file: index.md
     - file: schedule.md
@@ -26,6 +91,7 @@ project:
         - file: lops/banach-steinhaus.md
         - file: lops/open-map.md
         - file: lops/compact.md
+        - file: lops/exercises.md
     - file: duality/index.md
       title: Duality
       children:
@@ -40,7 +106,10 @@ project:
         - file: distributions/introduction.md
         - file: distributions/test-functions.md
         - file: distributions/distributions.md
+        - file: distributions/operations.md
+        - file: distributions/structure.md
         - file: distributions/averaging.md
+        - file: distributions/applications.md
     - title: Jupyter Notebooks
       children:
         - file: notebooks/01_fourier_series.ipynb

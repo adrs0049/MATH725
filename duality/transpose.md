@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/transpose.pdf
+    id: duality-transpose-pdf
+downloads:
+  - id: duality-transpose-pdf
+    title: Download PDF
+---
+
 # The adjoint (transpose) operator
 
 

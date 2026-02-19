@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/open-map.pdf
+    id: lops-open-map-pdf
+downloads:
+  - id: lops-open-map-pdf
+    title: Download PDF
+---
+
 # The Open Mapping Theorem
 
 The open-mapping theorem is another of the big theorems of functional analysis. Its significance is that

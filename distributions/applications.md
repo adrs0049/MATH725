@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/applications.pdf
+    id: distributions-applications-pdf
+downloads:
+  - id: distributions-applications-pdf
+    title: Download PDF
+---
+
 ## Applications to Differential Equations
 
 ### Fundamental Solutions

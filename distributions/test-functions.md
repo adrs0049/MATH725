@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/test-functions.pdf
+    id: distributions-test-functions-pdf
+downloads:
+  - id: distributions-test-functions-pdf
+    title: Download PDF
+---
+
 ## The Space of Test Functions
 
 We begin by constructing a suitable space of ``test functions'' against which distributions

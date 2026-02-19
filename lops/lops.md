@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/lops.pdf
+    id: lops-lops-pdf
+downloads:
+  - id: lops-lops-pdf
+    title: Download PDF
+---
+
 # Bounded Operators
 
 Linear operators between Banach spaces are key in functional analysis. They connect function spaces

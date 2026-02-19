@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/approximation.pdf
+    id: introduction-approximation-pdf
+downloads:
+  - id: introduction-approximation-pdf
+    title: Download PDF
+---
+
 # Density and Approximation
 
 A central theme in functional analysis is **approximation**: given a function in some large space, can we approximate it arbitrarily well by functions from a nicer, more structured class? This question is formalized through the notions of density and separability.

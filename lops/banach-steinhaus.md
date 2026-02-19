@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/banach-steinhaus.pdf
+    id: lops-banach-steinhaus-pdf
+downloads:
+  - id: lops-banach-steinhaus-pdf
+    title: Download PDF
+---
+
 # The uniform boundedness principle (Banach-Steinhaus)
 
 

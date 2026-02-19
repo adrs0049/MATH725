@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/hahn-banach.pdf
+    id: duality-hahn-banach-pdf
+downloads:
+  - id: duality-hahn-banach-pdf
+    title: Download PDF
+---
+
 # The Hahn-Banach Theorem
 
 

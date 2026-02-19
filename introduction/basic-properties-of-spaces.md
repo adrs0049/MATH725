@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/basic-properties-of-spaces.pdf
+    id: introduction-basic-properties-of-spaces-pdf
+downloads:
+  - id: introduction-basic-properties-of-spaces-pdf
+    title: Download PDF
+---
+
 # Compactness and Topological Equivalence
 
 We now turn to two fundamental topological properties of Banach spaces that distinguish finite-dimensional spaces from infinite-dimensional ones: compactness of bounded sets and equivalence of norms.

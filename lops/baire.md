@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/baire.pdf
+    id: lops-baire-pdf
+downloads:
+  - id: lops-baire-pdf
+    title: Download PDF
+---
+
 # The Baire Category Theorem
 
 In this section we introduce the Baire category theorem. Ultimately the
@@ -104,16 +115,32 @@ the countable union of nowhere dense sets cannot contain a ball.
 
 Note that completeness is essential: on an incomplete metric space, the Baire property can fail, and the space itself may be a countable union of nowhere dense sets. This is why completeness is such an important hypothesis throughout the theory of bounded operators. For a proof, see {cite}`hillen2023`.
 
+```{prf:definition} Meagre (First Category)
+:label: def-meagre
+
+A set $E$ in a topological space is *meagre* (or *of the first category*) if it can be written as a countable union of nowhere dense sets. A set that is not meagre is called *non-meagre* (or *of the second category*).
+```
+
+```{prf:remark}
+A meagre set need not be nowhere dense itself. For example, $\mathbb{Q} \subset \mathbb{R}$ is meagre — it is the countable union $\bigcup_{q \in \mathbb{Q}} \{q\}$ of nowhere dense singletons — but $\mathbb{Q}$ is *not* nowhere dense, since $\overline{\mathbb{Q}} = \mathbb{R}$ has nonempty interior. Thus "meagre" is a strictly weaker notion than "nowhere dense": every nowhere dense set is meagre (a union of one nowhere dense set), but not conversely.
+```
+
 ```{prf:corollary} A complete metric space is not meagre
 :label: baire-corollary
 
 Let $X$ be a complete metric space and $\{F_j\}$ a countable collection of nowhere dense sets. Then $\bigcup_{j} F_j \neq X$. Equivalently, a complete metric space is not meagre (i.e. not a countable union of nowhere dense sets).
 ```
 
-```{prf:example} The rationals are meagre
+```{prf:example} The rationals are meagre but not nowhere dense
 :label: ex-rationals-meagre
 
-On $X = \mathbb{R}$ (which is complete), the rationals $\mathbb{Q} = \bigcup_{q \in \mathbb{Q}} \{q\}$ are a countable union of nowhere dense sets, hence meagre. {prf:ref}`baire-corollary` tells us $\mathbb{Q} \neq \mathbb{R}$, which we know. More importantly: the irrationals $\mathbb{R} \setminus \mathbb{Q}$ are a dense $G_\delta$ set (a countable intersection of open dense sets), and $\mathbb{Q}$ cannot be $G_\delta$.
+On $X = \mathbb{R}$ (which is complete), the rationals $\mathbb{Q} = \bigcup_{q \in \mathbb{Q}} \{q\}$ are a countable union of nowhere dense sets, hence meagre. But $\mathbb{Q}$ is *not* nowhere dense: $\overline{\mathbb{Q}} = \mathbb{R}$, which has nonempty interior. {prf:ref}`baire-corollary` tells us $\mathbb{Q} \neq \mathbb{R}$, which we know. More importantly: the irrationals $\mathbb{R} \setminus \mathbb{Q}$ are a dense $G_\delta$ set (a countable intersection of open dense sets), and $\mathbb{Q}$ cannot be $G_\delta$.
+```
+
+```{prf:example} The Cantor set is meagre and nowhere dense
+:label: ex-cantor-meagre
+
+The middle-thirds Cantor set $C \subset [0,1]$ is closed and has empty interior (it contains no interval), so it is nowhere dense. Since every nowhere dense set is trivially meagre (a "union" of one nowhere dense set), $C$ is also meagre. Yet $C$ is uncountable — so a set can be topologically small (nowhere dense, meagre) while being large in cardinality. Contrast this with $\mathbb{Q}$, which is meagre but *not* nowhere dense.
 ```
 
 ````{prf:example} **Why do we care?**

@@ -41,6 +41,17 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
+
+    - name: Install LaTeX
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra texlive-science texlive-xetex latexmk
+
+    # Build PDFs first so HTML can bundle them as downloads
+    - name: Build PDFs
+      run: |
+        jupyter-book build --pdf
+
     # Build the book
     - name: Build the book
       run: |

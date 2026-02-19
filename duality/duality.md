@@ -1,3 +1,14 @@
+---
+exports:
+  - format: pdf
+    template: plain_latex
+    output: exports/duality.pdf
+    id: duality-duality-pdf
+downloads:
+  - id: duality-duality-pdf
+    title: Download PDF
+---
+
 # The Dual-Space
 
 There are two methods to studying mathematical structures.
