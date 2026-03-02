@@ -1,7 +1,7 @@
 ---
 exports:
   - format: pdf
-    template: plain_latex
+    template: ./_templates/plain_narrow
     output: exports/test-functions.pdf
     id: distributions-test-functions-pdf
 downloads:

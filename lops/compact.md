@@ -1,7 +1,7 @@
 ---
 exports:
   - format: pdf
-    template: plain_latex
+    template: ./_templates/plain_narrow
     output: exports/compact.pdf
     id: lops-compact-pdf
 downloads:
@@ -11,56 +11,74 @@ downloads:
 
 # Compact Operators
 
-In finite dimensions, every linear operator maps bounded sets to bounded sets, and since
-closed bounded sets are compact (Heine-Borel), bounded sequences always have convergent
-subsequences. This is the engine behind most of finite-dimensional linear algebra: eigenvalue
-decompositions, the SVD, and the Fredholm alternative all rely on extracting convergent subsequences.
+Almost every existence argument in analysis follows the same three-step template:
+
+1. **Construct an approximate sequence** of "almost-solutions" (minimizing sequences, Galerkin
+   approximations, Euler polygonal approximations, maximizers of a Rayleigh quotient, etc.).
+2. **Extract a convergent subsequence.** This is where compactness enters.
+3. **Pass to the limit.** Show the limit actually solves the original problem.
+
+In finite dimensions step 2 is free: Bolzano-Weierstrass guarantees that every bounded sequence in
+$\mathbb{R}^n$ has a convergent subsequence. This is why eigenvalue decompositions, the SVD, the
+direct method of the calculus of variations, and Peano's ODE existence theorem all "just work" in
+$\mathbb{R}^n$. Each reduces to building an approximate sequence on a compact set and extracting a
+convergent subsequence.
 
 In infinite dimensions, closed bounded sets are **no longer compact**
-({prf:ref}`ex-unit-ball-l2-not-compact`), and this machinery breaks down for general bounded
-operators. Compact operators are precisely the class of operators for which it **does not break
-down**—they are the infinite-dimensional operators that still behave like matrices.
+({prf:ref}`ex-unit-ball-l2-not-compact`), and step 2 fails for general bounded operators. Compact
+operators are precisely the class of operators for which it **does not break down**: they restore
+step 2 as a property of the *operator* rather than the space.
 
-::::{dropdown} **Why is extracting convergent subsequences the engine behind finite-dimensional linear algebra?**
+```{prf:definition} Compact, precompact, and totally bounded sets
+:label: def-compact-precompact
 
-The eigenvalue decomposition and the SVD both reduce to finding a vector that **achieves an
-extremum**. The method is always:
+Let $(M, d)$ be a metric space and $A \subset M$.
 
-1. Take a sequence approaching the supremum/infimum.
-2. **Extract a convergent subsequence** (compactness of the unit ball).
-3. The limit achieves the optimum (continuity).
+1. $A$ is **compact** if every open cover of $A$ has a finite subcover, or equivalently, if every
+   sequence in $A$ has a subsequence converging to a point in $A$.
+2. $A$ is **precompact** (or **relatively compact**) if its closure $\overline{A}$ is compact, or
+   equivalently, if every sequence in $A$ has a subsequence that is Cauchy.
+3. $A$ is **totally bounded** if for every $\varepsilon > 0$, $A$ can be covered by finitely many
+   balls of radius $\varepsilon$.
+```
 
-**Eigenvalues** of a symmetric matrix are found by maximizing the Rayleigh quotient
-$R(x) = \langle Ax, x \rangle / \|x\|^2$ over the unit sphere. In $\mathbb{R}^n$ the unit sphere
-is compact, so a maximizing sequence has a convergent subsequence whose limit is an eigenvector.
-Restrict to its orthogonal complement and repeat—the full eigenvalue decomposition follows by
-induction. Each eigenvalue $\lambda_i$ yields a projection $P_i = \langle \cdot, \psi_i \rangle
-\psi_i$ onto the corresponding eigenspace, and the spectral decomposition $A = \sum \lambda_i P_i$
-says the operator is a sum of scaled orthogonal projections.
+The key equivalence is:
 
-**The SVD** of a general (non-symmetric) matrix follows the same pattern by reducing to the
-symmetric case: form $K^*K$ (which is self-adjoint and positive), apply the Rayleigh quotient
-argument to find its eigenvalues $\sigma_i^2$ and eigenvectors $v_i$, then set
-$u_i = Kv_i / \sigma_i$. The result is $K = \sum \sigma_i \langle \cdot, v_i \rangle \, u_i$.
-Each step requires extracting a convergent subsequence from a maximizing sequence on the unit sphere.
+> **$A$ is compact $\iff$ $A$ is complete and totally bounded.**
 
-:::{admonition} What breaks in infinite dimensions
-:class: warning
+In a complete metric space (such as a Banach space), precompactness and total boundedness coincide:
+$A$ is precompact if and only if it is totally bounded.
 
-The unit ball in an infinite-dimensional Banach space is not compact
-({prf:ref}`ex-unit-ball-l2-not-compact`), so step 2 fails. This is why general bounded operators
-need not have eigenvalues (e.g. the right shift on $\ell^2$), and why the spectrum can have
-continuous and residual parts with no finite-dimensional analogue.
-:::
+**Why both conditions are needed.**
+- *Total boundedness without completeness fails.* The open interval $(0,1)$ is totally bounded in
+  $\mathbb{R}$, but the sequence $1/n$ converges to $0 \notin (0,1)$. The limit escapes through a
+  "hole."
+- *Completeness without total boundedness fails.* The unit ball of $\ell^2$ is complete, but the
+  orthonormal sequence $(e_n)$ has all elements distance $\sqrt{2}$ apart, so no finite
+  $\varepsilon$-cover works for $\varepsilon < \sqrt{2}/2$. There are "too many directions."
 
-A compact operator maps bounded sequences to sequences with convergent subsequences—**by
-definition**. This is step 2, transplanted from a property of the space to a property of the
-operator. For the Hilbert-Schmidt spectral theorem, you maximize the Rayleigh quotient on the unit
-sphere. You cannot extract a convergent subsequence from the maximizing sequence $(x_n)$ directly,
-but since $A$ is compact, $(Ax_n)$ has a convergent subsequence, which suffices to show $(x_n)$
-converges to an eigenvector. Compactness of the operator substitutes for compactness of the ball.
+Total boundedness is the condition that makes a set **approximately finite-dimensional**: at every
+resolution $\varepsilon$, the set is indistinguishable from a finite set. Completeness then ensures
+that Cauchy subsequences (built by the pigeonhole principle at finer and finer scales) actually
+converge.
 
-::::
+```{prf:remark} Compact sets in infinite dimensions
+:label: rem-compact-sets-inf-dim
+
+Boundedness alone is not enough. The unit ball of $\ell^2$ is closed and bounded, yet the
+orthonormal sequence $(e_n)$ has every pair distance $\sqrt{2}$ apart, so no subsequence can be
+Cauchy. You need a constraint that suppresses this "too many directions" problem, i.e. you need
+total boundedness ({prf:ref}`def-compact-precompact`).
+
+A concrete and important example: the unit ball of $H^1(\Omega)$, viewed inside $L^2(\Omega)$, is
+precompact (Rellich-Kondrachov). The reason is visible in Fourier space. An $H^1$ bound forces
+$|\hat{u}(k)|^2 \leq C/(1 + |k|^2)$, so high-frequency modes are uniformly suppressed. For any
+$\varepsilon > 0$, all the $L^2$ energy beyond a sufficiently large frequency $N$ is less than
+$\varepsilon$, uniformly over the entire $H^1$ ball. The remaining low-frequency part lives in a
+finite-dimensional space. This is total boundedness: the derivative bound kills oscillations that
+would otherwise prevent clustering, and the bounded domain prevents mass from escaping to spatial
+infinity.
+```
 
 ## Definition and Basic Properties
 
@@ -84,7 +102,8 @@ bounded sequence in, bounded sequence out.
 Every compact operator is bounded.
 ```
 
-```{dropdown} **Proof:**
+```{prf:proof}
+:class: dropdown
 The unit ball $B_1(0) \subset X$ is bounded, so by compactness of the operator, $\overline{K(B_1(0))}$
 is compact and hence bounded in $Y$. Thus
 
@@ -126,7 +145,8 @@ Let $X$ be a normed space and $Y$ a Banach space. If $(K_n)$ is a sequence of co
 in $\mathcal{L}(X, Y)$ with $K_n \to K$ in the operator norm, then $K$ is compact.
 ```
 
-````{dropdown} **Proof:**
+````{prf:proof}
+:class: dropdown
 Let $(x_j)$ be a bounded sequence in $X$. We use a **diagonal argument**.
 
 Since $K_1$ is compact, $(K_1 x_j)$ has a convergent subsequence $K_1 x_{j}^{(1)}$.
@@ -175,48 +195,97 @@ finite-dimensional. We write $\mathrm{rank}(A) = \dim R(A)$.
 Every bounded operator with finite-dimensional range is compact.
 ```
 
-```{dropdown} **Proof:**
+```{prf:proof}
+:class: dropdown
 Let $(x_n)$ be a bounded sequence in $X$. Then $(Ax_n)$ is a bounded sequence in the
 finite-dimensional space $R(A)$. By Bolzano-Weierstrass, it has a convergent subsequence.
 ```
 
-This is the precise sense in which compact operators generalize matrices. A matrix
-$A \in \mathbb{R}^{m \times n}$ defines an operator of rank at most $\min(m, n)$—always finite.
-The key theorem ({prf:ref}`thm-compact-limit`) now tells us:
+Finite-rank operators are literally matrices: a matrix $A \in \mathbb{R}^{m \times n}$ has rank at
+most $\min(m, n)$. On Hilbert spaces, compact operators turn out to be exactly the norm limits of
+such operators:
 
-> **Compact operators are precisely the operators that can be approximated by "matrices"
-> (finite-rank operators) in the operator norm.**
+```{prf:proposition} Compact operators on Hilbert spaces are limits of finite-rank operators
+:label: prop-compact-finite-rank-approx
 
-In Hilbert spaces this is exact: every compact operator is the operator-norm limit of
-finite-rank operators. In general Banach spaces, this is the **approximation property** (which
-most natural spaces satisfy, though Enflo showed it can fail).
+Let $H$ be a Hilbert space and $K : H \to H$ a compact operator. Then there exists a sequence
+of finite-rank operators $(K_n)$ such that $\|K_n - K\| \to 0$.
+```
+
+````{prf:proof}
+:class: dropdown
+Let $\{e_j\}_{j=1}^{\infty}$ be an orthonormal basis for $H$, and let
+$P_n : H \to H$ denote the orthogonal projection onto $V_n := \operatorname{span}\{e_1, \ldots, e_n\}$,
+so that
+
+$$
+P_n x = \sum_{j=1}^{n} \langle x, e_j \rangle \, e_j.
+$$
+
+Define $K_n := P_n K$. Since $R(K_n) \subseteq V_n$, each $K_n$ has rank at most $n$ and is
+therefore compact by {prf:ref}`prop-finite-rank-compact`.
+
+We claim $\|K_n - K\| \to 0$. Suppose for contradiction that this fails. Then there exists
+$\varepsilon > 0$ and a subsequence (still denoted $n$) such that $\|K_n - K\| > \varepsilon$ for
+all $n$. By definition of the operator norm, for each $n$ there exists $x_n \in H$ with
+$\|x_n\| \leq 1$ and
+
+$$
+\|(K - P_n K) x_n\| = \|(I - P_n) K x_n\| > \varepsilon.
+$$
+
+Since $K$ is compact and $(x_n)$ is bounded, there exists a subsequence $(x_{n_k})$ such that
+$K x_{n_k} \to y$ for some $y \in H$. Now estimate:
+
+$$
+\|(I - P_{n_k}) K x_{n_k}\| \leq \|(I - P_{n_k})(K x_{n_k} - y)\| + \|(I - P_{n_k}) y\|.
+$$
+
+The first term satisfies $\|(I - P_{n_k})(K x_{n_k} - y)\| \leq \|K x_{n_k} - y\| \to 0$ since
+$\|I - P_n\| \leq 1$. The second term satisfies $\|(I - P_{n_k}) y\| \to 0$ since partial sums of
+the Fourier expansion converge: $P_n y \to y$ for every $y \in H$. This gives
+$\|(I - P_{n_k}) K x_{n_k}\| \to 0$, contradicting the assumption that it stays above $\varepsilon$.
+````
+
+Combined with {prf:ref}`thm-compact-limit`, this tells us that on Hilbert spaces, **compact
+operators are precisely the norm limits of finite-rank operators**. They are the closest thing to
+matrices in infinite dimensions.
+
+```{prf:remark}
+:label: rem-approximation-property
+
+The result above extends beyond Hilbert spaces. A Banach space $Y$ is said to have the
+**approximation property** if for every compact set $C \subset Y$ and every $\varepsilon > 0$,
+there exists a finite-rank operator $F : Y \to Y$ with $\|Fx - x\| < \varepsilon$ for all
+$x \in C$. When $Y$ has the approximation property, every compact operator $K : X \to Y$ is the
+norm limit of finite-rank operators. All Hilbert spaces, $L^p$ spaces, and $C(K)$ spaces have the
+approximation property. However, Enflo (1973) constructed a Banach space that fails the
+approximation property, so the result does not hold in full generality.
+```
 
 ```{prf:remark}
 :label: rem-compact-matrix-analogy
 
-The analogy between compact operators and matrices is not just a slogan. Here is a dictionary:
+On a Hilbert space, the analogy between compact operators and matrices is precise:
 
-| Finite dimensions ($\mathbb{R}^n \to \mathbb{R}^m$) | Compact operators ($X \to Y$) |
+| Finite dimensions ($\mathbb{R}^n \to \mathbb{R}^m$) | Compact operators ($H \to H$) |
 |------|------|
-| Every operator has finite rank | Approximated by finite-rank operators |
+| Every operator has finite rank | Norm limit of finite-rank operators |
 | Spectrum = eigenvalues | Spectrum = eigenvalues $\cup\ \{0\}$ |
 | Each eigenvalue has finite multiplicity | Each nonzero eigenvalue has finite multiplicity |
 | SVD: $A = \sum_{i=1}^r \sigma_i u_i v_i^T$ | SVD: $K = \sum_{i=1}^\infty \sigma_i \langle \cdot, v_i \rangle \, u_i$ |
 | Symmetric: $A = Q\Lambda Q^T$ | Self-adjoint: $K = \sum_{i=1}^\infty \lambda_i \langle \cdot, \psi_i \rangle \, \psi_i$ |
 | Fredholm alternative holds | Fredholm alternative holds |
 
-The SVD holds for **every** compact operator between Hilbert spaces. The eigenvalue decomposition
+The SVD holds for every compact operator between Hilbert spaces. The eigenvalue decomposition
 into an orthonormal eigenbasis requires the additional assumption that the operator is
-**self-adjoint** (just as $A = Q\Lambda Q^T$ requires symmetry in finite dimensions). Without
-self-adjointness, a compact operator's eigenvectors need not form a basis.
-
-Everything that makes finite-dimensional linear algebra work carries over to compact operators.
-What fails for general bounded operators in infinite dimensions is exactly what compact operators
-restore.
+**normal** ($K^*K = KK^*$), which includes self-adjoint operators as a special case (just as
+$A = Q\Lambda Q^T$ requires symmetry in finite dimensions). Without normality, a compact
+operator's eigenvectors need not form a basis.
 ```
 
 
-## The Key Example: Integral Operators
+## The Canonical Example: Integral Operators
 
 Our main source of compact operators is integral operators with square-integrable kernels.
 
@@ -233,7 +302,8 @@ $$
 defines a compact operator $K : L^2(\Omega) \to L^2(\Omega)$.
 ```
 
-````{dropdown} **Proof:**
+````{prf:proof}
+:class: dropdown
 Choose an orthonormal basis $\{\varphi_j\}$ of $L^2(\Omega)$. Then
 $\{\varphi_i(x) \varphi_j(y)\}$ is an ONB of $L^2(\Omega \times \Omega)$, so
 
@@ -366,6 +436,24 @@ decomposition, which requires self-adjointness. The SVD
 $K = \sum \sigma_i \langle \cdot, v_i \rangle u_i$ is a separate factorization that works for all
 compact operators (see {prf:ref}`rem-compact-matrix-analogy`).
 
+```{prf:remark} Why eigenvalues accumulate at zero
+:label: rem-eigenvalues-accumulate-zero
+
+On a Hilbert space, compact operators are norm limits of finite-rank operators
+({prf:ref}`prop-compact-finite-rank-approx`). A finite-rank operator is a matrix: it has finitely
+many nonzero eigenvalues. As the finite-rank approximations $K_n \to K$, the eigenvalues of $K_n$
+converge to those of $K$, but each $K_n$ can only contribute finitely many. The only place
+infinitely many eigenvalues can pile up is at the shared limit $0$. Compactness forces the spectrum
+to be "almost finite" at every scale, and $0$ is the residue of that approximation.
+
+Contrast this with a general bounded operator that is not compact: multiplication by $x$ on
+$L^2([0,1])$, defined by $(Mf)(x) = xf(x)$, has $\|M\| = 1$ but no eigenvalues at all. If
+$Mf = \lambda f$, then $(x - \lambda)f(x) = 0$ a.e., forcing $f = 0$ a.e. The spectrum is the
+purely continuous set $[0,1]$. There is no eigenfunction expansion, no discrete decomposition.
+This operator preserves the full infinite-dimensional structure of $L^2$, which is exactly what
+compact operators suppress.
+```
+
 ```{prf:remark}
 :label: rem-fractional-powers
 
@@ -399,7 +487,9 @@ Au = \sum_{j=1}^{\infty} \lambda_j \langle u, w_j \rangle \, w_j.
 $$
 ```
 
-```{dropdown} **Connection to the Hilbert-Schmidt theorem:**
+```{prf:remark} Connection to the Hilbert-Schmidt theorem
+:label: rem-connection-hilbert-schmidt
+
 If $A^{-1}$ is compact and self-adjoint, then $A^{-1}$ satisfies the Hilbert-Schmidt theorem with
 eigenvalues $\mu_j \to 0$. The eigenvalues of $A$ are $\lambda_j = 1/\mu_j \to \infty$.
 
@@ -408,6 +498,11 @@ conditions is unbounded, but the solution operator $A^{-1}$ (given by a Green's 
 compact ({prf:ref}`ex-poisson-compact`). Hence $-\Delta$ has a discrete spectrum of eigenvalues
 tending to infinity, with eigenfunctions forming an ONB. This is why Fourier series work:
 the eigenfunctions of the Laplacian on $[0, 2\pi]$ are precisely $\{e^{inx}\}$.
+
+The bounded domain is essential. On $\mathbb{R}^n$ the "cage" preventing translation is lost: a
+fixed bump $\varphi(x - n)$ slides off to infinity, so the solution operator is no longer compact.
+The spectrum of $-\Delta$ on $\mathbb{R}^n$ is the continuous set $[0, \infty)$, and the clean
+eigenfunction expansion breaks down.
 ```
 
 ## Looking Ahead

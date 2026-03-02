@@ -1,7 +1,7 @@
 ---
 exports:
   - format: pdf
-    template: plain_latex
+    template: ./_templates/plain_narrow
     output: exports/introduction.pdf
     id: distributions-introduction-pdf
 downloads:

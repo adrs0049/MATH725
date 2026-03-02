@@ -1,7 +1,7 @@
 ---
 exports:
   - format: pdf
-    template: plain_latex
+    template: ./_templates/plain_narrow
     output: exports/structure.pdf
     id: distributions-structure-pdf
 downloads:

@@ -1,7 +1,7 @@
 ---
 exports:
   - format: pdf
-    template: plain_latex
+    template: ./_templates/plain_narrow
     output: exports/basic-properties-of-spaces.pdf
     id: introduction-basic-properties-of-spaces-pdf
 downloads:
