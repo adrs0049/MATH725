@@ -189,17 +189,18 @@ A bounded linear operator $A : X \to Y$ has **finite rank** if its range $R(A)$ 
 finite-dimensional. We write $\mathrm{rank}(A) = \dim R(A)$.
 ```
 
-```{prf:proposition} Finite-rank operators are compact
+````{prf:proposition} Finite-rank operators are compact
 :label: prop-finite-rank-compact
 
 Every bounded operator with finite-dimensional range is compact.
-```
 
 ```{prf:proof}
 :class: dropdown
 Let $(x_n)$ be a bounded sequence in $X$. Then $(Ax_n)$ is a bounded sequence in the
 finite-dimensional space $R(A)$. By Bolzano-Weierstrass, it has a convergent subsequence.
 ```
+
+````
 
 Finite-rank operators are literally matrices: a matrix $A \in \mathbb{R}^{m \times n}$ has rank at
 most $\min(m, n)$. On Hilbert spaces, compact operators turn out to be exactly the norm limits of
