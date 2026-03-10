@@ -50,12 +50,12 @@ jobs:
     # Build PDFs first so HTML can bundle them as downloads
     - name: Build PDFs
       run: |
-        jupyter-book build --pdf
+        jupyter-book build --pdf --execute
 
     # Build the book
     - name: Build the book
       run: |
-        jupyter-book build --html
+        jupyter-book build --html --execute
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
