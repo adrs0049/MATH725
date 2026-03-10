@@ -20,7 +20,7 @@ $\text{supp}(\phi) \cap K = \emptyset$.
 The support of $T$, denoted $\text{supp}(T)$, is the smallest set $K$ such that $T$ is supported
 in $K$.
 
-```{prf:exmaple}
+```{prf:example}
 
 - The support of the Dirac delta is $\text{supp}(\delta) = \{ 0 \} $.
 - If $f$ is a continuous function, $\text{supp}(T_f) = \overline{\{ x : f(x) \neq 0 \}}$.
