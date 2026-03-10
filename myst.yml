@@ -22,6 +22,8 @@ project:
           level: 2
         - file: introduction/approximation.md
           level: 2
+        #- file: introduction/hilbert-probability.md
+        #  level: 2
         - file: introduction/basic-properties-of-spaces.md
           level: 2
         # 2. Linear Operators
@@ -35,6 +37,8 @@ project:
           level: 2
         - file: lops/open-map.md
           level: 2
+        - file: lops/quotient-spaces.md
+          level: 2
         - file: lops/compact.md
           level: 2
         - file: lops/exercises.md
@@ -44,13 +48,17 @@ project:
           level: 1
         - file: duality/duality.md
           level: 2
-        - file: duality/adjoint.md
+        - file: duality/hyperplanes.md
           level: 2
+        #- file: duality/hahn-banach.md
+        #  level: 2
         - file: duality/examples-dual-spaces.md
           level: 2
-        - file: duality/hahn-banach.md
-          level: 2
-        - file: duality/transpose.md
+        #- file: duality/cybenko.md
+        #  level: 2
+        #- file: duality/weak-convergence.md
+        #  level: 2
+        - file: duality/adjoint.md
           level: 2
         # 4. Distributions and Sobolev Spaces
         - file: distributions/index.md
@@ -82,6 +90,7 @@ project:
         - file: introduction/intro.md
         - file: introduction/function-spaces.md
         - file: introduction/approximation.md
+        #- file: introduction/hilbert-probability.md
         - file: introduction/basic-properties-of-spaces.md
     - file: lops/index.md
       title: Linear Operators
@@ -90,16 +99,19 @@ project:
         - file: lops/baire.md
         - file: lops/banach-steinhaus.md
         - file: lops/open-map.md
+        - file: lops/quotient-spaces.md
         - file: lops/compact.md
         - file: lops/exercises.md
     - file: duality/index.md
       title: Duality
       children:
         - file: duality/duality.md
-        - file: duality/adjoint.md
+        - file: duality/hyperplanes.md
+        # - file: duality/hahn-banach.md
         - file: duality/examples-dual-spaces.md
-        - file: duality/hahn-banach.md
-        - file: duality/transpose.md
+        # - file: duality/cybenko.md
+        # - file: duality/weak-convergence.md
+        - file: duality/adjoint.md
     - file: distributions/index.md
       title: Distributions
       children:

@@ -25,6 +25,8 @@ A map $f : X \to Y$ between topological spaces is called **open** if it maps ope
 Geometrically, openness means **the image of every ball contains a ball**: sets with interior keep their interior, nothing gets crushed to zero volume. A map that is not open flattens the unit ball into something with empty interior, and any attempt to invert such a map is necessarily discontinuous since small perturbations in $Y$ can jump to distant points in $X$.
 
 ```{prf:theorem} Open Mapping Theorem
+:label: thm-open-mapping
+
 Let $U, V$ be the open unit balls of the Banach spaces $X, Y$ respectively. To every bounded linear
 operator $L$ of $X$ **onto** $Y$ there corresponds $\delta > 0$ so that
 $L(U) \supset \delta V = \{ y \in Y : ||y|| < \delta \}.$

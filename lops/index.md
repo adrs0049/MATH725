@@ -1,4 +1,4 @@
-# Linear Operators
+# Continuous Linear Operators
 
 :::{tip} Big Idea
 Linear operators are the morphisms of functional analysis—they connect spaces,
