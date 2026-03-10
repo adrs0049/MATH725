@@ -1,5 +1,8 @@
 version: 1
 project:
+  execute:
+    enabled: true
+    timeout: 120
   title: Applied Functional Analysis
   authors:
     - name: Andreas Buttenschoen.
