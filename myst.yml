@@ -53,12 +53,12 @@ project:
           level: 2
         - file: duality/hyperplanes.md
           level: 2
-        #- file: duality/hahn-banach.md
-        #  level: 2
+        - file: duality/hahn-banach.md
+          level: 2
         - file: duality/examples-dual-spaces.md
           level: 2
-        #- file: duality/cybenko.md
-        #  level: 2
+        - file: duality/cybenko.md
+          level: 2
         #- file: duality/weak-convergence.md
         #  level: 2
         - file: duality/adjoint.md
@@ -110,9 +110,9 @@ project:
       children:
         - file: duality/duality.md
         - file: duality/hyperplanes.md
-        # - file: duality/hahn-banach.md
+        - file: duality/hahn-banach.md
         - file: duality/examples-dual-spaces.md
-        # - file: duality/cybenko.md
+        - file: duality/cybenko.md
         # - file: duality/weak-convergence.md
         - file: duality/adjoint.md
     - file: distributions/index.md
