@@ -128,7 +128,6 @@ project:
     - title: Jupyter Notebooks
       children:
         - file: notebooks/01_fourier_series.ipynb
-        - file: notebooks/02_deblurring_images.ipynb
     - title: References
       children:
         - file: bibliography.md
