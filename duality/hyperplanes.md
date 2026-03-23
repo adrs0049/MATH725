@@ -173,6 +173,123 @@ $g^{-1}(1) = f^{-1}(1/2)$, which sits halfway between $f^{-1}(0)$ and
 $f^{-1}(1)$. Rescaling $f$ by $\lambda$ doesn't rotate the slices — it
 compresses or stretches the spacing between them.
 
+### Multiple functionals: adding vs. intersecting
+
+A common source of confusion is the distinction between *adding* two functionals
+(an operation in $X^*$) and *intersecting* their kernels (an operation on
+subspaces of $X$). These produce very different geometric objects.
+
+```{prf:example} Adding vs. intersecting functionals in $\mathbb{R}^3$
+:label: adding-vs-intersecting
+:class: dropdown
+
+Work in $\mathbb{R}^3$ with the three coordinate functionals:
+
+$$f_1(x,y,z) = x, \qquad f_2(x,y,z) = y.$$
+
+**One functional.** The kernel $\ker f_1 = \{x = 0\}$ is the $yz$-plane, a
+codimension-1 subspace. The decomposition gives $\mathbb{R}^3 = \ker f_1 \oplus
+\operatorname{span}\{e_1\}$: every vector is uniquely a point in the
+$yz$-plane plus a multiple of $e_1$.
+
+**Intersecting two kernels.** The intersection $\ker f_1 \cap \ker f_2 = \{x =
+0\} \cap \{y = 0\} = \{(0, 0, z) : z \in \mathbb{R}\}$ is the $z$-axis, a
+codimension-**2** subspace. Each independent functional removes one degree of
+freedom. The decomposition extends: $\mathbb{R}^3 = (\ker f_1 \cap \ker f_2)
+\oplus \operatorname{span}\{e_1, e_2\}$. Imposing $n$ independent constraints
+carves out a codimension-$n$ subspace.
+
+**Adding two functionals.** The sum $f_1 + f_2$ is the functional
+$(f_1 + f_2)(x,y,z) = x + y$. This is a *single* functional, so its kernel
+$\ker(f_1 + f_2) = \{x + y = 0\}$ is a plane: still codimension **1**. It is a
+*different* plane from either $\ker f_1$ or $\ker f_2$, tilted at $45°$
+between them. Adding functionals combines two measurements into one new
+measurement; it does not impose two constraints simultaneously.
+
+**Dependent functionals.** If $f_2 = 2 f_1$, then $\ker f_1 \cap \ker f_2 =
+\ker f_1$ — still the $yz$-plane, still codimension 1. The second functional
+measures the same direction as the first (just with a different scale), so it
+adds no new geometric information.
+
+**Cancellation.** If $f_2 = -f_1$, then $f_1 + f_2 = 0$, the zero functional.
+Its kernel is all of $\mathbb{R}^3$: the two measurements cancel perfectly, and
+the constraint vanishes.
+```
+
+```{code-cell} ipython3
+:tags: [hide-input]
+
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+
+fig = plt.figure(figsize=(16, 5))
+
+# --- Panel 1: ker f1 (yz-plane) ---
+ax = fig.add_subplot(131, projection='3d')
+yy, zz = np.meshgrid(np.linspace(-2, 2, 10), np.linspace(-2, 2, 10))
+xx = np.zeros_like(yy)
+ax.plot_surface(xx, yy, zz, alpha=0.25, color='C0')
+ax.quiver(0, 0, 0, 2, 0, 0, color='C3', arrow_length_ratio=0.15, lw=2)
+ax.text(2.2, 0, 0, r'$e_1$', fontsize=11, color='C3')
+ax.set_xlabel('$x$'); ax.set_ylabel('$y$'); ax.set_zlabel('$z$')
+ax.set_title(r'$\ker f_1 = \{x=0\}$' + '\ncodim 1', fontsize=11)
+ax.set_xlim(-2, 2); ax.set_ylim(-2, 2); ax.set_zlim(-2, 2)
+
+# --- Panel 2: ker f1 ∩ ker f2 (z-axis) ---
+ax = fig.add_subplot(132, projection='3d')
+# Show both planes faintly
+ax.plot_surface(xx, yy, zz, alpha=0.12, color='C0')
+xx2 = np.copy(yy); yy2 = np.zeros_like(zz)
+ax.plot_surface(xx2, yy2, zz, alpha=0.12, color='C1')
+# The z-axis
+z_line = np.linspace(-2, 2, 50)
+ax.plot(np.zeros_like(z_line), np.zeros_like(z_line), z_line, 'C4', lw=3)
+ax.set_xlabel('$x$'); ax.set_ylabel('$y$'); ax.set_zlabel('$z$')
+ax.set_title(r'$\ker f_1 \cap \ker f_2$' + '\ncodim 2 (the $z$-axis)',
+             fontsize=11)
+ax.set_xlim(-2, 2); ax.set_ylim(-2, 2); ax.set_zlim(-2, 2)
+
+# --- Panel 3: ker(f1 + f2) = {x + y = 0} ---
+ax = fig.add_subplot(133, projection='3d')
+# The plane x + y = 0, i.e., y = -x
+xx3 = np.linspace(-2, 2, 10)
+zz3 = np.linspace(-2, 2, 10)
+xx3, zz3 = np.meshgrid(xx3, zz3)
+yy3 = -xx3
+ax.plot_surface(xx3, yy3, zz3, alpha=0.25, color='C2')
+ax.set_xlabel('$x$'); ax.set_ylabel('$y$'); ax.set_zlabel('$z$')
+ax.set_title(r'$\ker(f_1 + f_2) = \{x+y=0\}$' + '\ncodim 1 (a different plane)',
+             fontsize=11)
+ax.set_xlim(-2, 2); ax.set_ylim(-2, 2); ax.set_zlim(-2, 2)
+
+plt.tight_layout()
+plt.show()
+```
+
+*Left: the kernel of a single functional $f_1(x,y,z) = x$ is the $yz$-plane
+(codimension 1), with the transverse direction $e_1$ shown in red. Center:
+intersecting the kernels of two independent functionals $f_1$ and $f_2$ gives
+the $z$-axis (codimension 2), shown as the thick purple line where the two
+faint planes meet. Right: the sum $f_1 + f_2$ is a single functional with kernel
+$\{x + y = 0\}$, a different plane (codimension 1, green). Adding functionals
+produces one new measurement; intersecting kernels imposes multiple constraints.*
+
+```{prf:remark} From intersecting kernels to weak neighborhoods
+:label: kernels-to-weak-remark
+:class: dropdown
+
+The intersection $\ker f_1 \cap \cdots \cap \ker f_n$ for $n$ linearly
+independent functionals is a subspace of codimension $n$. If we thicken each
+kernel into a slab $\{y : |f_i(y)| < \varepsilon\}$ and intersect, we get a
+**tube**: bounded cross-section in $n$ directions, unbounded in the remaining
+(codimension-$n$) directions. These tubes are exactly the basic neighborhoods of
+the weak topology (see {prf:ref}`weak-topology-def`). Each additional independent
+functional constrains one more direction but still leaves infinitely many
+unconstrained in infinite dimensions.
+```
+
+
 ## Functionals are determined by their kernels
 
 The decomposition immediately yields a powerful uniqueness result.

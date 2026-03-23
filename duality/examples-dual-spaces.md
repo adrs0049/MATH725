@@ -12,7 +12,7 @@ downloads:
     title: Download PDF
 ---
 
-# Examples of Dual Spaces
+# Dual Spaces: From Self-Dual to Non-Reflexive
 
 The behavior of the dual space $X^*$ varies dramatically across different Banach
 spaces. There are three main classes: self-dual (Hilbert), reflexive, and
@@ -37,13 +37,19 @@ and $\|f\| = \|x_f\|$. The map $f \mapsto x_f$ is an isometric (conjugate-linear
 :class: dropdown
 
 **Existence.** If $f = 0$, take $x_f = 0$. Otherwise $\ker(f)$ is a proper
-closed subspace of $H$. By the orthogonal decomposition $H = \ker(f) \oplus
-\ker(f)^\perp$, there exists a nonzero $z \in \ker(f)^\perp$. Set $x_f =
-\overline{f(z)} z / \|z\|^2$. For any $y \in H$, write $y = (y -
-\frac{f(y)}{f(z)} z) + \frac{f(y)}{f(z)} z$. The first term lies in $\ker(f)$,
-so:
+closed subspace of $H$. By the orthogonal decomposition, $H = \ker(f) \oplus
+\ker(f)^\perp$, and since $\ker(f) \neq H$, the orthogonal complement $\ker(f)^\perp$ is
+one-dimensional (because $\ker(f)$ has codimension 1). Let $z$ be the unit
+vector in $\ker(f)^\perp$, so $\|z\| = 1$.
 
-$$\langle x_f, y \rangle = \frac{f(y)}{f(z)} \langle x_f, z \rangle = \frac{f(y)}{f(z)} \cdot \frac{\overline{f(z)} \|z\|^2}{\|z\|^2} = f(y).$$
+Now decompose any $y \in H$ using this splitting: write $y = y_0 + \alpha z$
+where $y_0 \in \ker(f)$ and $\alpha \in \mathbb{R}$. Apply $f$ to both sides:
+$f(y) = f(y_0) + \alpha f(z) = \alpha f(z)$, so $\alpha = f(y) / f(z)$.
+
+Set $x_f = \overline{f(z)} \, z$. Then since $x_f \in \ker(f)^\perp$, we have
+$\langle x_f, y_0 \rangle = 0$, and:
+
+$$\langle x_f, y \rangle = \langle x_f, y_0 + \alpha z \rangle = \alpha \langle x_f, z \rangle = \frac{f(y)}{f(z)} \cdot \overline{f(z)} = f(y).$$
 
 **Uniqueness.** If $\langle x_1, y \rangle = \langle x_2, y \rangle$ for all
 $y$, then $\langle x_1 - x_2, y \rangle = 0$ for all $y$. Taking $y = x_1 - x_2$
@@ -185,15 +191,28 @@ extending a functional from a subspace amounts to orthogonal projection.
 
 A Banach space $X$ is **reflexive** if the canonical embedding $J : X \to X^{**}$ defined by
 
-$$J(x)(f) = f(x) \quad \text{for all } f \in X^*$$
+$$J[x](f) = f(x) \quad \text{for all } f \in X^*$$
 
 is surjective (and hence an isometric isomorphism onto $X^{**}$).
 `````
 
-The canonical embedding $J$ is always an isometry (by the {prf:ref}`sup formula
-<hb-sup-formula>`), so $X$ always embeds isometrically into $X^{**}$.
-Reflexivity asks: does every element of $X^{**}$ come from a point in $X$? That
-is, does $J$ miss anything?
+```{prf:lemma} The canonical embedding is an isometry
+:label: canonical-embedding-isometry
+
+For any normed space $X$, the canonical embedding $J : X \to X^{**}$ is an
+isometry: $\|J[x]\|_{X^{**}} = \|x\|_X$ for all $x \in X$.
+```
+
+````{prf:proof}
+:class: dropdown
+
+By definition, $\|J(x)\|_{X^{**}} = \sup_{\|f\| \leq 1} |J[x](f)| =
+\sup_{\|f\| \leq 1} |f(x)|$. The {prf:ref}`sup formula <hb-sup-formula>` gives
+$\sup_{\|f\| \leq 1} |f(x)| = \|x\|$.
+````
+
+So $X$ always embeds isometrically into $X^{**}$. Reflexivity asks: does every
+element of $X^{**}$ come from a point in $X$? That is, does $J$ miss anything?
 
 All Hilbert spaces are reflexive (since $H^* \cong H$ implies $H^{**} \cong H^*
 \cong H$). But reflexivity is strictly weaker than self-duality.
@@ -211,19 +230,43 @@ For $g \in L^q(\Omega)$, the functional
 
 $$L_g(f) = \int_\Omega f(x)\,g(x)\,dx$$
 
-satisfies $\|L_g\| = \|g\|_q$ by Holder's inequality (with equality attained at $f = |g|^{q-2}\bar{g} / \|g\|_q^{q/p}$). The map $g \mapsto L_g$ is an isometric isomorphism.
+satisfies $\|L_g\| = \|g\|_q$ by Hölder's inequality. The map $g \mapsto L_g$
+is an isometric isomorphism.
 
 ```{prf:proof}
 :class: dropdown
 
-**$\|L_g\| \leq \|g\|_q$** follows from Holder: $|L_g(f)| = |\int fg| \leq
-\|f\|_p \|g\|_q$.
+**Step 1: $L_g$ is bounded and $\|L_g\| \leq \|g\|_q$.** For any $f \in L^p$,
+Hölder's inequality gives
 
-**$\|L_g\| \geq \|g\|_q$:** set $f_0(x) = |g(x)|^{q-1} \mathrm{sgn}(g(x)) /
-\|g\|_q^{q/p}$. Then $\|f_0\|_p = 1$ and $L_g(f_0) = \|g\|_q$.
+$$|L_g(f)| = \left|\int_\Omega f\,g\right| \leq \|f\|_p \, \|g\|_q,$$
 
-**Surjectivity** (that every $\phi \in (L^p)^*$ equals $L_g$ for some $g$) is
-the deeper part, proved using the Radon-Nikodym theorem.
+so $L_g \in (L^p)^*$ with $\|L_g\| \leq \|g\|_q$.
+
+**Step 2: $\|L_g\| = \|g\|_q$ (the bound is sharp).** Assume $g \neq 0$ and
+define the test function
+
+$$f_0(x) = \frac{|g(x)|^{q-1} \operatorname{sgn}(g(x))}{\|g\|_q^{q/p}}.$$
+
+Then $|f_0|^p = |g|^{(q-1)p} / \|g\|_q^q = |g|^q / \|g\|_q^q$, so $\|f_0\|_p
+= 1$. Evaluating:
+
+$$L_g(f_0) = \int_\Omega f_0 \, g = \frac{1}{\|g\|_q^{q/p}} \int_\Omega |g|^q = \frac{\|g\|_q^q}{\|g\|_q^{q/p}} = \|g\|_q,$$
+
+where we used $(q-1) + 1 = q$ and $q - q/p = q(1 - 1/p) = 1$. So $\|L_g\|
+\geq \|g\|_q$, and combined with Step 1, $\|L_g\| = \|g\|_q$. In particular
+$g \mapsto L_g$ is an isometry.
+
+**Step 3: Surjectivity.** Let $\phi \in (L^p)^*$. Define a set function $\nu$
+on measurable sets by $\nu(E) = \phi(\mathbf{1}_E)$. Since $|\nu(E)| =
+|\phi(\mathbf{1}_E)| \leq \|\phi\| \, \|\mathbf{1}_E\|_p = \|\phi\| \,
+\mu(E)^{1/p}$, we have $\nu(E) \to 0$ whenever $\mu(E) \to 0$, so $\nu$ is
+absolutely continuous with respect to $\mu$. By the Radon-Nikodym theorem,
+there exists $g \in L^1(\Omega)$ with $\nu(E) = \int_E g \, d\mu$ for all
+measurable $E$. This gives $\phi(s) = \int_\Omega s \, g$ for all simple
+functions $s$. Since simple functions are dense in $L^p$ and $\phi$ is
+continuous, $\phi(f) = \int_\Omega f \, g$ for all $f \in L^p$, i.e., $\phi =
+L_g$. The isometry from Step 2 forces $g \in L^q$ with $\|g\|_q = \|\phi\|$.
 ```
 ````
 
@@ -370,23 +413,6 @@ $X^{**}$?), not about any single geometric property. Uniform convexity is one
 sufficient condition, but spaces can be reflexive for other reasons, for
 instance because their dual pairing closes the loop as with $(L^p)^* = L^q$ and
 $(L^q)^* = L^p$.
-
-
-### Why reflexivity matters
-
-Reflexive spaces are the natural setting for variational problems and PDE. The
-key consequence:
-
-```{prf:proposition} Weak compactness in reflexive spaces
-:label: reflexive-weak-compact
-
-A Banach space $X$ is reflexive if and only if its closed unit ball $B_X$ is weakly compact.
-```
-
-This means: in a reflexive space, every bounded sequence has a weakly convergent
-subsequence. This is the Eberlein-Smulian theorem combined with the
-characterization of reflexivity. It is the main tool for extracting weak limits
-in the calculus of variations and PDE.
 
 
 ## Non-Reflexive Spaces: $X \subsetneq X^{**}$
@@ -581,16 +607,6 @@ This duality is central to probability theory (measures as linear functionals on
 observables), PDE (weak solutions via integration against test functions), and
 optimization (dual problems over measures). It also provides the setting for the
 weak* convergence of measures discussed in the next section.
-
-
-### Why non-reflexivity matters
-
-In a non-reflexive space, bounded sequences need not have weakly convergent
-subsequences (in $X$ itself). You can still extract weak* convergent
-subsequences in $X^{**}$ via Banach-Alaoglu, but the limit may land outside $X$.
-This is a real obstacle in PDE: if your function space is $L^1$, a bounded
-sequence of approximate solutions may converge weak* to a *measure*, not to an
-$L^1$ function. Controlling this loss of regularity is a central challenge.
 
 
 ## Spaces with Trivial Dual
