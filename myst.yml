@@ -25,8 +25,8 @@ project:
           level: 2
         - file: introduction/approximation.md
           level: 2
-        - file: introduction/hilbert-probability.md
-          level: 2
+        #- file: introduction/hilbert-probability.md
+        #  level: 2
         - file: introduction/basic-properties-of-spaces.md
           level: 2
         # 2. Linear Operators
@@ -61,7 +61,9 @@ project:
           level: 2
         - file: duality/weak-topologies.md
           level: 2
-        - file: duality/weak-convergence.md
+        - file: duality/weak-star.md
+          level: 2
+        - file: duality/convergence-comparison.md
           level: 2
         - file: duality/adjoint.md
           level: 2
@@ -97,7 +99,7 @@ project:
         - file: introduction/intro.md
         - file: introduction/function-spaces.md
         - file: introduction/approximation.md
-        - file: introduction/hilbert-probability.md
+        #- file: introduction/hilbert-probability.md
         - file: introduction/basic-properties-of-spaces.md
     - file: lops/index.md
       title: Linear Operators
@@ -115,12 +117,13 @@ project:
         - file: duality/duality.md
         - file: duality/hyperplanes.md
         - file: duality/hahn-banach.md
-        - file: duality/examples-dual-spaces.md
         - file: duality/cybenko.md
-        - file: duality/weak-topologies.md
-        - file: duality/weak-convergence.md
+        - file: duality/examples-dual-spaces.md
         - file: duality/adjoint.md
         - file: duality/fredholm.md
+        - file: duality/weak-topologies.md
+        - file: duality/weak-star.md
+        - file: duality/convergence-comparison.md
     - file: distributions/index.md
       title: Distributions
       children:

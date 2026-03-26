@@ -14,6 +14,11 @@ downloads:
 
 # The Hahn–Banach Theorem
 
+We saw that $X^*$ could be trivial ($L^p$ for $0 < p < 1$), and asked whether
+the dual is always a complete measurement system for Banach spaces. The
+following theorem answers yes: every bounded linear functional on a subspace
+extends to the whole space with the same norm. This guarantees that $X^*$ is
+rich enough to separate points, recover the norm, and support the weak topology.
 
 `````{prf:theorem} Hahn–Banach theorem
 :label: hahn-banach
@@ -106,46 +111,81 @@ then they must be the same point.
 
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.patches import Polygon
 
-fig, ax = plt.subplots(figsize=(3.6, 3.3))
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 
-square_verts = np.array([[-1, -1], [1, -1], [1, 1], [-1, 1]])
-sq = Polygon(square_verts, fill=True, facecolor='C0', alpha=0.1, edgecolor='C0', lw=2)
-ax.add_patch(sq)
+x_pt = np.array([1.0, 0.8])
+y_pt = np.array([-0.5, 0.8])
 
-x_pt = np.array([1.5, 0.8])
-y_pt = np.array([-0.5, 1.3])
-ax.plot(*x_pt, 'C3o', ms=7, zorder=5)
-ax.plot(*y_pt, 'C2o', ms=7, zorder=5)
-ax.text(x_pt[0]+0.1, x_pt[1]+0.1, r'$x$', fontsize=10, color='C3')
-ax.text(y_pt[0]+0.1, y_pt[1]+0.1, r'$y$', fontsize=10, color='C2')
+# --- Left panel: f(u,v) = v (horizontal level sets) ---
+ax = axes[0]
 
-# Foliation by F(u,v) = u
-for level in np.arange(-2, 3, 0.5):
-    alpha = 0.6 if level == int(level) else 0.2
-    lw = 1.2 if level == int(level) else 0.5
-    ax.axvline(level, color='gray', alpha=alpha, lw=lw)
+# Foliation by f(u,v) = v (horizontal lines)
+for level in np.arange(-2, 2.5, 0.4):
+    alpha = 0.4 if abs(level - round(level)) < 0.01 else 0.12
+    lw = 0.8 if abs(level - round(level)) < 0.01 else 0.4
+    ax.axhline(level, color='C1', alpha=alpha, lw=lw)
 
-# Level sets through x and y
-ax.axvline(x_pt[0], color='C3', lw=1.5, alpha=0.6, ls='--', label=rf'$F(x) = {x_pt[0]}$')
-ax.axvline(y_pt[0], color='C2', lw=1.5, alpha=0.6, ls='--', label=rf'$F(y) = {y_pt[0]}$')
+# Level sets through x and y (same height!)
+ax.axhline(x_pt[1], color='C1', lw=2, alpha=0.7, ls='--')
 
-ax.set_xlim(-2.2, 2.6)
-ax.set_ylim(-2.2, 2.2)
+ax.plot(*x_pt, 'C3o', ms=9, zorder=5)
+ax.plot(*y_pt, 'C2o', ms=9, zorder=5)
+ax.text(x_pt[0] + 0.12, x_pt[1] + 0.15, r'$x$', fontsize=12, color='C3')
+ax.text(y_pt[0] - 0.25, y_pt[1] + 0.15, r'$y$', fontsize=12, color='C2')
+
+ax.text(0.25, 0.3, r'$f(x) = f(y) = 0.8$', fontsize=10, color='C1',
+        ha='center')
+
+ax.set_xlim(-2.2, 2.2)
+ax.set_ylim(-2.4, 2.2)
 ax.set_aspect('equal')
-ax.set_title(r'Separation of points: $F(u,v) = u$ gives $F(x) \neq F(y)$', fontsize=9)
-ax.set_xlabel(r'$u$', fontsize=9); ax.set_ylabel(r'$v$', fontsize=9)
-ax.tick_params(labelsize=8)
-ax.legend(fontsize=8, loc='upper right')
+ax.set_title(r'$f(u,v) = v$: same reading, no separation', fontsize=11)
+ax.set_xlabel(r'$u$', fontsize=10)
+ax.set_ylabel(r'$v$', fontsize=10)
+ax.tick_params(labelsize=9)
+
+# --- Right panel: g(u,v) = u (vertical level sets) ---
+ax = axes[1]
+
+# Foliation by g(u,v) = u (vertical lines)
+for level in np.arange(-2, 2.5, 0.4):
+    alpha = 0.4 if abs(level - round(level)) < 0.01 else 0.12
+    lw = 0.8 if abs(level - round(level)) < 0.01 else 0.4
+    ax.axvline(level, color='C4', alpha=alpha, lw=lw)
+
+# Level sets through x and y (different!)
+ax.axvline(x_pt[0], color='C3', lw=2, alpha=0.6, ls='--')
+ax.axvline(y_pt[0], color='C2', lw=2, alpha=0.6, ls='--')
+
+ax.plot(*x_pt, 'C3o', ms=9, zorder=5)
+ax.plot(*y_pt, 'C2o', ms=9, zorder=5)
+ax.text(x_pt[0] + 0.12, x_pt[1] + 0.15, r'$x$', fontsize=12, color='C3')
+ax.text(y_pt[0] - 0.25, y_pt[1] + 0.15, r'$y$', fontsize=12, color='C2')
+
+ax.text(x_pt[0] + 0.08, -1.7, rf'$g(x) = {x_pt[0]}$', fontsize=10,
+        color='C3', ha='left')
+ax.text(y_pt[0] - 0.08, -1.7, rf'$g(y) = {y_pt[0]}$', fontsize=10,
+        color='C2', ha='right')
+
+ax.set_xlim(-2.2, 2.2)
+ax.set_ylim(-2.4, 2.2)
+ax.set_aspect('equal')
+ax.set_title(r'$g(u,v) = u$: different readings, separation!', fontsize=11)
+ax.set_xlabel(r'$u$', fontsize=10)
+ax.set_ylabel(r'$v$', fontsize=10)
+ax.tick_params(labelsize=9)
 
 plt.tight_layout()
 plt.show()
 ```
 
-*The functional $F(u,v) = u$ assigns different heights to $x$ and $y$. A level
-set between these heights is the separating hyperplane. If two points agree on
-every foliation, they must be the same point.*
+*Left: the functional $f(u,v) = v$ gives the same reading for $x$ and $y$
+(they lie on the same horizontal level set), so $f$ alone cannot distinguish
+them. Right: the functional $g(u,v) = u$ gives different readings (different
+vertical level sets) and separates the two points. No single functional suffices;
+we need the entire dual $X^*$ to guarantee that distinct points are always
+distinguishable.*
 
 
 ````{prf:corollary} Norming property
@@ -169,45 +209,45 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon
 
-fig, ax = plt.subplots(figsize=(3.6, 3.3))
+fig, ax = plt.subplots(figsize=(5, 4))
 
+# Unit ball (ell^infty)
 square_verts = np.array([[-1, -1], [1, -1], [1, 1], [-1, 1]])
-sq = Polygon(square_verts, fill=True, facecolor='C0', alpha=0.1, edgecolor='C0', lw=2)
+sq = Polygon(square_verts, fill=True, facecolor='C0', alpha=0.12,
+             edgecolor='C0', lw=2)
 ax.add_patch(sq)
+ax.text(0, 0, r'$B_X$', fontsize=12, ha='center', va='center', color='C0')
 
+# The strip |f| <= 1 (same as unit ball width in f-direction)
+ax.axvspan(-1, 1, alpha=0.04, color='C1')
+ax.axvline(-1, color='C1', lw=1.5, ls=':', alpha=0.5)
+ax.axvline(1, color='C1', lw=1.5, ls=':', alpha=0.5)
+
+# The point x0
 x0 = np.array([1.8, 0.5])
-ax.plot(*x0, 'C3o', ms=7, zorder=5)
-ax.text(x0[0]+0.05, x0[1]+0.15, r'$x_0$', fontsize=10, color='C3')
-ax.annotate('', xy=x0, xytext=(0, 0),
-            arrowprops=dict(arrowstyle='->', color='C3', lw=1.2))
+ax.plot(*x0, 'C3o', ms=9, zorder=5)
+ax.text(x0[0] + 0.1, x0[1] + 0.15, r'$x_0$', fontsize=12, color='C3')
 
-# Foliation by F(u,v) = u; ||x0||_inf = 1.8
-for level in np.arange(-2, 3, 0.5):
-    alpha = 0.5 if level == int(level) else 0.2
-    lw = 1.2 if level == int(level) else 0.5
-    color = 'C1' if abs(level - 1) < 0.01 or abs(level + 1) < 0.01 else 'gray'
-    ax.axvline(level, color=color, alpha=alpha, lw=lw)
+# Level set through x0
+ax.axvline(x0[0], color='C3', lw=2, alpha=0.6, ls='--')
+ax.text(x0[0] - 0.08, -1.6, rf'$f(x_0) = {x0[0]} = \|x_0\|_\infty$',
+        fontsize=10, color='C3', ha='right')
 
-# Strip [-1, 1]
-ax.axvspan(-1, 1, alpha=0.08, color='C1')
-ax.axvline(x0[0], color='C3', lw=1.5, alpha=0.7, ls='--', label=rf'$F(x_0) = {x0[0]} = \|x_0\|_\infty$')
-ax.text(0, -2.0, r'$B_X$ fits in strip $|F| \leq 1$', fontsize=8, ha='center', color='C1')
-
-ax.set_xlim(-2.6, 2.6)
-ax.set_ylim(-2.6, 2.6)
+ax.set_xlim(-2.4, 2.8)
+ax.set_ylim(-2.2, 2.2)
 ax.set_aspect('equal')
-ax.set_title(r'Norm-attaining functional: $F(x_0) = \|x_0\|$, $\|F\| = 1$', fontsize=9)
-ax.set_xlabel(r'$u$', fontsize=9); ax.set_ylabel(r'$v$', fontsize=9)
-ax.tick_params(labelsize=8)
-ax.legend(fontsize=7, loc='upper right')
+ax.set_title(r'Norming functional: $f(u,v) = u$, $\|f\| = 1$', fontsize=11)
+ax.set_xlabel(r'$u$', fontsize=10)
+ax.set_ylabel(r'$v$', fontsize=10)
+ax.tick_params(labelsize=9)
 
 plt.tight_layout()
 plt.show()
 ```
 
-*The functional $F(u,v) = u$ achieves $F(x_0) = \|x_0\|_\infty = 1.8$. The unit
-ball fits inside the strip $|F| \leq 1$, and $x_0$ lies at exactly the right
-height. This is separation of a point from the unit ball.*
+*The functional $f(u,v) = u$ has $\|f\| = 1$ (the unit ball fits inside the
+strip $|f| \leq 1$) and achieves $f(x_0) = \|x_0\|_\infty = 1.8$. The reading
+equals the norm exactly.*
 
 
 ````{prf:corollary} The sup formula
@@ -225,8 +265,7 @@ In particular, the supremum is **attained**: there exists $f \in B_{X^*}$ with $
 The inequality $\leq$: for any $f$ with $\|f\| \leq 1$, we have $|f(x)| \leq
 \|f\|\|x\| \leq \|x\|$, so $\sup \leq \|x\|$.
 
-The inequality $\geq$ (and that it is a max): by the {prf:ref}`norming property
-<hb-norming>`, there exists $f \in X^*$ with $\|f\| = 1$ and $f(x) = \|x\|$.
+The inequality $\geq$ (and that it is a max): by the {prf:ref}`norming property <hb-norming>`, there exists $f \in X^*$ with $\|f\| = 1$ and $f(x) = \|x\|$.
 This $f$ attains the supremum.
 ```
 ````
@@ -238,58 +277,59 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon
 
-fig, ax = plt.subplots(figsize=(4.2, 3.3))
+fig, ax = plt.subplots(figsize=(5.5, 5))
 
+# Unit ball
 square_verts = np.array([[-1, -1], [1, -1], [1, 1], [-1, 1]])
-sq = Polygon(square_verts, fill=True, facecolor='C0', alpha=0.1, edgecolor='C0', lw=2)
+sq = Polygon(square_verts, fill=True, facecolor='C0', alpha=0.1,
+             edgecolor='C0', lw=2)
 ax.add_patch(sq)
+ax.text(0, 0, r'$B_X$', fontsize=11, ha='center', va='center', color='C0')
 
+# The point
 x0 = np.array([1.5, 1.0])
-ax.plot(*x0, 'C3o', ms=7, zorder=5)
-ax.text(x0[0]+0.05, x0[1]+0.15, r'$x_0$', fontsize=10, color='C3')
+ax.plot(*x0, 'C3o', ms=9, zorder=10)
+ax.text(x0[0] + 0.12, x0[1] + 0.12, r'$x_0$', fontsize=12, color='C3')
 
-# Multiple functionals with their readings
+# Three functionals: draw only the level set through x0 (full extent)
 functionals = [
-    ((1, 0), r'$f_1 = u$', 'C1'),
-    ((0, 1), r'$f_2 = v$', 'C2'),
-    ((0.5, 0.5), r'$f_3 = \frac{u+v}{2}$', 'C4'),
+    ((1, 0), 'C1', r'$f_1 = u$'),
+    ((0, 1), 'C2', r'$f_2 = v$'),
+    ((1/np.sqrt(2), 1/np.sqrt(2)), 'C4', r'$f_3 = \frac{u+v}{\sqrt{2}}$'),
 ]
 
-y_text = -1.5
-for (a, b), label, color in functionals:
+t = np.linspace(-3, 3, 300)
+for (a, b), color, label in functionals:
     reading = a * x0[0] + b * x0[1]
-    t = np.linspace(-2.5, 2.5, 200)
     if abs(b) > 0.01:
-        for lev in [0, reading]:
-            y_line = (lev - a * t) / b
-            mask = (y_line > -2.5) & (y_line < 2.5)
-            ls = '--' if abs(lev) < 0.01 else '-'
-            ax.plot(t[mask], y_line[mask], color=color, alpha=0.5, lw=1.2, ls=ls)
+        # Kernel (f = 0)
+        y_ker = (-a * t) / b
+        ax.plot(t, y_ker, color=color, alpha=0.35, lw=1.2, ls='--')
+        # Level set through x0 (f = reading)
+        y_line = (reading - a * t) / b
+        ax.plot(t, y_line, color=color, alpha=0.5, lw=1.5, label=label)
     else:
-        ax.axvline(0, color=color, alpha=0.5, lw=1.2, ls='--')
-        ax.axvline(reading, color=color, alpha=0.5, lw=1.2)
+        ax.axvline(0, color=color, alpha=0.35, lw=1.2, ls='--')
+        ax.axvline(reading, color=color, alpha=0.5, lw=1.5, label=label)
 
-    ax.text(1.8, y_text, f'{label}: {reading:.1f}', fontsize=7, color=color)
-    y_text -= 0.35
-
-ax.text(1.8, y_text - 0.1, r'$\|x_0\|_\infty = 1.5$', fontsize=8, fontweight='bold', color='C3')
-
-ax.set_xlim(-2.6, 3.6)
-ax.set_ylim(-2.6, 2.6)
+ax.set_xlim(-2.5, 2.5)
+ax.set_ylim(-2.5, 2.5)
 ax.set_aspect('equal')
-ax.set_title(r'The sup formula: $\|x_0\| = \max_{\|f\| \leq 1} |f(x_0)|$', fontsize=9)
-ax.set_xlabel(r'$u$', fontsize=9); ax.set_ylabel(r'$v$', fontsize=9)
-ax.tick_params(labelsize=8)
+ax.legend(fontsize=9, loc='lower left')
+ax.set_title(r'The sup formula: $\|x_0\| = \max_{\|f\| \leq 1} |f(x_0)|$',
+             fontsize=11)
+ax.set_xlabel(r'$u$', fontsize=10)
+ax.set_ylabel(r'$v$', fontsize=10)
+ax.tick_params(labelsize=9)
 
 plt.tight_layout()
 plt.show()
 ```
 
-*Three unit-norm functionals give different "readings" of $x_0$: $f_1$ reads
-$1.5$, $f_2$ reads $1.0$, $f_3$ reads $1.25$. The best reading equals
-$\|x_0\|_\infty = 1.5$, and the norming property guarantees such an optimal
-functional always exists. No information is lost: the dual is a complete
-measurement system.*
+*Three unit-norm functionals give different readings of $x_0 = (1.5, 1.0)$:
+$f_1(u,v) = u$ reads $1.5$, $f_2(u,v) = v$ reads $1.0$, and $f_3 =
+(u+v)/\sqrt{2}$ reads $\approx 1.25$. The best reading equals $\|x_0\|_\infty =
+1.5$. The norming property guarantees such an optimal functional always exists.*
 
 
 
@@ -316,87 +356,6 @@ Hahn-Banach extends $g$ to $f \in X^*$. By construction $f = 0$ on $M$ but $f(x_
 
 ```
 ````
-
-
-```{code-cell} ipython3
-:tags: [hide-input]
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-fig, axes = plt.subplots(1, 2, figsize=(14, 5.5))
-
-# --- Panel 1: x0 in closure(M) ---
-ax = axes[0]
-
-# M = the x-axis (a 1D subspace in R^2)
-ax.axhline(0, color='C0', lw=2.5, label=r'$M$ (subspace)')
-
-# x0 on M (in the closure)
-x0 = np.array([1.2, 0])
-ax.plot(*x0, 'C3o', ms=10, zorder=5)
-ax.text(x0[0]+0.1, x0[1]+0.15, r'$x_0 \in \overline{M}$', fontsize=13, color='C3')
-
-# Show several functionals vanishing on M: any f with f=0 on M means f(u,v)=bv
-# All have f(x0) = b * 0 = 0
-for b_val, color in [(0.5, 'C4'), (1.0, 'C1'), (-0.7, 'C2')]:
-    for c in [-1.5, -0.5, 0.5, 1.5]:
-        ax.axhline(c / b_val if abs(b_val) > 0.01 else 0, color=color, alpha=0.15, lw=0.8)
-    # The kernel (f=0 level set) is always the x-axis
-    ax.axhline(0, color=color, alpha=0.3, lw=1.5, ls='--')
-    label = rf'$f(u,v)={b_val}v$: $f(x_0)=0$'
-    ax.text(2.1, 0.5 * b_val, label, fontsize=10, color=color)
-
-ax.set_xlim(-2.5, 4.0)
-ax.set_ylim(-2.5, 2.5)
-ax.set_aspect('equal')
-ax.set_title(r'$x_0 \in \overline{M}$: every $f$ vanishing on $M$' + '\nalso vanishes at $x_0$', fontsize=12)
-ax.set_xlabel(r'$u$', fontsize=12); ax.set_ylabel(r'$v$', fontsize=12)
-ax.legend(fontsize=11, loc='upper right')
-
-# --- Panel 2: x0 not in closure(M) ---
-ax = axes[1]
-
-# M = the x-axis again
-ax.axhline(0, color='C0', lw=2.5, label=r'$M$ (subspace)')
-
-# x0 off M
-x0 = np.array([0.8, 1.5])
-ax.plot(*x0, 'C3o', ms=10, zorder=5)
-ax.text(x0[0]+0.1, x0[1]+0.15, r'$x_0 \notin \overline{M}$', fontsize=13, color='C3')
-
-# The separating functional: f(u,v) = v, which vanishes on M but f(x0) = 1.5
-# Draw level sets of f(u,v) = v
-for c in np.arange(-2, 2.5, 0.5):
-    alpha = 0.5 if abs(c - 0) < 0.01 or abs(c - 1.5) < 0.01 else 0.15
-    lw_val = 2.0 if abs(c - 0) < 0.01 or abs(c - 1.5) < 0.01 else 0.8
-    color = 'C1' if abs(c - 1.5) < 0.01 else ('C0' if abs(c - 0) < 0.01 else 'gray')
-    ax.axhline(c, color=color, alpha=alpha, lw=lw_val)
-
-# Highlight the level set through x0
-ax.axhline(x0[1], color='C1', lw=2, ls='--', alpha=0.7, label=rf'$f^{{-1}}({x0[1]})$: $f(x_0) = {x0[1]}$')
-
-# Arrow showing distance
-ax.annotate('', xy=(x0[0], 0), xytext=(x0[0], x0[1]),
-            arrowprops=dict(arrowstyle='<->', color='C3', lw=1.5))
-ax.text(x0[0]-0.5, x0[1]/2, r'$d > 0$', fontsize=12, color='C3')
-
-ax.set_xlim(-2.5, 4.0)
-ax.set_ylim(-2.5, 2.5)
-ax.set_aspect('equal')
-ax.set_title(r'$x_0 \notin \overline{M}$: Hahn-Banach finds $f$' + '\nwith $f|_M = 0$ but $f(x_0) \\neq 0$', fontsize=12)
-ax.set_xlabel(r'$u$', fontsize=12); ax.set_ylabel(r'$v$', fontsize=12)
-ax.legend(fontsize=11, loc='upper right')
-
-plt.tight_layout()
-plt.show()
-```
-
-*Left: $x_0$ lies in $\overline{M}$, so every functional that vanishes on $M$
-also vanishes at $x_0$. No foliation can see a difference. Right: $x_0$ is at
-positive distance from $M$, and Hahn-Banach produces a functional $f(u,v) = v$
-that is zero on $M$ but reads $f(x_0) = 1.5 \neq 0$. The separating foliation
-detects that $x_0$ is outside the closure.*
 
 
 ## Geometric Hahn–Banach: Separation of Convex Sets
