@@ -182,8 +182,9 @@ project:
       children:
         - file: bibliography.md
 site:
+  # Use local fork with accessibility fixes (submodule)
+  template: ./myst-theme/themes/book/template.yml
   options:
     # logo: img/nn.png  # TODO: add logo image
     folders: true
     logo_text: MATH 725
-  template: book-theme
