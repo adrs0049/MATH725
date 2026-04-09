@@ -27,13 +27,75 @@ $\mathbb{R}^m$ into four mutually orthogonal subspaces:
 
 $$\mathbb{R}^n = \ker(A) \oplus \text{Range}(A^T), \qquad \mathbb{R}^m = \ker(A^T) \oplus \text{Range}(A).$$
 
-```{figure} /_static/fundamental_subspace.png
-:name: four-subspaces-fig
-:width: 80%
-:align: center
+```{code-cell} ipython3
+:tags: [hide-input]
 
-The four fundamental subspaces of an $m \times n$ matrix $A$ of rank $r$. The domain $\mathbb{R}^n$ decomposes into the row space $R[A^T]$ (dimension $r$) and the nullspace $N[A]$ (dimension $n - r$), which are orthogonal complements. The codomain $\mathbb{R}^m$ decomposes into the column space $R[A]$ (dimension $r$) and the left nullspace $N[A^T]$ (dimension $m - r$), also orthogonal complements. The map $A$ sends $R[A^T]$ isomorphically onto $R[A]$, and kills $N[A]$.
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.patches import Polygon
+
+fig, ax = plt.subplots(figsize=(10, 5.5))
+
+s = 0.9   # half-diagonal of range/row space diamonds
+sn = 0.55  # half-diagonal of null space diamonds (smaller)
+
+def diamond(cx, cy, s):
+    """Vertices of a square rotated 45 degrees, centered at (cx, cy)."""
+    return np.array([[cx + s, cy], [cx, cy + s], [cx - s, cy], [cx, cy - s]])
+
+left_cx, right_cx = -2.5, 2.5
+
+# Left pair: R(A^T) above, N(A) below, meeting at the shared corner
+null_verts = diamond(left_cx, -sn, sn)
+ax.add_patch(Polygon(null_verts, facecolor='#d62728', alpha=0.15,
+                     edgecolor='#d62728', lw=2))
+ax.text(left_cx, -sn, r'$\mathrm{N}(A)$', ha='center', va='center',
+        fontsize=12, color='#d62728', fontweight='bold')
+ax.text(left_cx - sn - 0.1, -sn, 'dim $n{-}r$', ha='right', fontsize=9, color='#d62728')
+
+row_verts = diamond(left_cx, s, s)
+ax.add_patch(Polygon(row_verts, facecolor='#1f77b4', alpha=0.2,
+                     edgecolor='#1f77b4', lw=2))
+ax.text(left_cx, s, r'$\mathrm{R}(A^T)$', ha='center', va='center',
+        fontsize=13, color='#1f77b4', fontweight='bold')
+ax.text(left_cx - s - 0.1, s, 'dim $r$', ha='right', fontsize=10, color='#1f77b4')
+
+ax.text(left_cx, 2*s + 0.25, r'$\mathbb{R}^n$',
+        ha='center', fontsize=14, fontweight='bold')
+
+# Right pair: R(A) above, N(A^T) below, meeting at the shared corner
+coker_verts = diamond(right_cx, -sn, sn)
+ax.add_patch(Polygon(coker_verts, facecolor='#ff7f0e', alpha=0.15,
+                     edgecolor='#ff7f0e', lw=2))
+ax.text(right_cx, -sn, r'$\mathrm{N}(A^T)$', ha='center', va='center',
+        fontsize=12, color='#ff7f0e', fontweight='bold')
+ax.text(right_cx + sn + 0.1, -sn, 'dim $m{-}r$', ha='left', fontsize=9, color='#ff7f0e')
+
+range_verts = diamond(right_cx, s, s)
+ax.add_patch(Polygon(range_verts, facecolor='#2ca02c', alpha=0.2,
+                     edgecolor='#2ca02c', lw=2))
+ax.text(right_cx, s, r'$\mathrm{R}(A)$', ha='center', va='center',
+        fontsize=13, color='#2ca02c', fontweight='bold')
+ax.text(right_cx + s + 0.15, s, 'dim $r$', ha='left', fontsize=10, color='#2ca02c')
+
+ax.text(right_cx, 2*s + 0.25, r'$\mathbb{R}^m$',
+        ha='center', fontsize=14, fontweight='bold')
+
+# Arrow: A maps R(A^T) -> R(A)
+ax.annotate('', xy=(right_cx - s - 0.15, 2*s + 0.25),
+            xytext=(left_cx + s + 0.15, 2*s + 0.25),
+            arrowprops=dict(arrowstyle='->', lw=2.5, color='black'))
+ax.text(0, 2*s + 0.45, '$A$', ha='center', fontsize=15, fontweight='bold')
+
+ax.set_xlim(-4.5, 4.5)
+ax.set_ylim(-2.2, 2.8)
+ax.set_aspect('equal')
+ax.axis('off')
+plt.tight_layout()
+plt.show()
 ```
+
+*The four fundamental subspaces of an $m \times n$ matrix $A$ of rank $r$. The domain $\mathbb{R}^n$ decomposes into the row space $\mathrm{R}(A^T)$ (dimension $r$) and the nullspace $\mathrm{N}(A)$ (dimension $n - r$), which are orthogonal complements. The codomain $\mathbb{R}^m$ decomposes into the column space $\mathrm{R}(A)$ (dimension $r$) and the left nullspace $\mathrm{N}(A^T)$ (dimension $m - r$). The map $A$ sends $\mathrm{R}(A^T)$ isomorphically onto $\mathrm{R}(A)$, and kills $\mathrm{N}(A)$.*
 
 The four subspace picture says: $A$ and $A^T$ are perfectly coupled. The kernel
 of one is the orthogonal complement of the range of the other. This is the
@@ -279,70 +341,5 @@ for the possibility that ranges are not closed. Every vector in $H$ decomposes
 uniquely into a component killed by $T$ and a component in the closure of what
 $T^*$ produces.
 
-```{code-cell} ipython3
-:tags: [hide-input]
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-fig, ax = plt.subplots(figsize=(10, 5))
-
-# Draw domain box (H)
-ax.add_patch(plt.Rectangle((0.5, 0.5), 3, 4, fill=False, edgecolor='gray',
-                            lw=2, ls='--'))
-ax.text(2.0, 4.7, r'$H$', fontsize=16, ha='center', color='gray')
-
-# ker(T) horizontal band
-ax.fill_between([0.7, 3.3], 1.0, 2.3, color='C0', alpha=0.15)
-ax.text(2.0, 1.65, r'$\ker(T)$', fontsize=13, ha='center', color='C0')
-
-# Range(T*) vertical band
-ax.fill_between([0.7, 3.3], 2.7, 4.0, color='C1', alpha=0.15)
-ax.text(2.0, 3.35, r'$\overline{\mathrm{Range}(T^*)}$', fontsize=13,
-        ha='center', color='C1')
-
-# Orthogonality symbol
-ax.text(2.0, 2.5, r'$\perp$', fontsize=14, ha='center', color='black')
-
-# Arrow T
-ax.annotate('', xy=(6.5, 2.5), xytext=(4.0, 2.5),
-            arrowprops=dict(arrowstyle='->', color='black', lw=2.5))
-ax.text(5.25, 2.8, r'$T$', fontsize=16, ha='center')
-
-# Draw codomain box (K)
-ax.add_patch(plt.Rectangle((7.0, 0.5), 3, 4, fill=False, edgecolor='gray',
-                            lw=2, ls='--'))
-ax.text(8.5, 4.7, r'$K$', fontsize=16, ha='center', color='gray')
-
-# ker(T*) horizontal band
-ax.fill_between([7.2, 9.8], 1.0, 2.3, color='C2', alpha=0.15)
-ax.text(8.5, 1.65, r'$\ker(T^*)$', fontsize=13, ha='center', color='C2')
-
-# Range(T) vertical band
-ax.fill_between([7.2, 9.8], 2.7, 4.0, color='C3', alpha=0.15)
-ax.text(8.5, 3.35, r'$\overline{\mathrm{Range}(T)}$', fontsize=13,
-        ha='center', color='C3')
-
-ax.text(8.5, 2.5, r'$\perp$', fontsize=14, ha='center', color='black')
-
-# Arrow T*
-ax.annotate('', xy=(4.0, 1.5), xytext=(6.5, 1.5),
-            arrowprops=dict(arrowstyle='->', color='black', lw=2.5))
-ax.text(5.25, 1.1, r'$T^*$', fontsize=16, ha='center')
-
-ax.set_xlim(0, 11)
-ax.set_ylim(0, 5.2)
-ax.set_aspect('equal')
-ax.axis('off')
-ax.set_title('The four subspace picture in Hilbert space', fontsize=13)
-
-plt.tight_layout()
-plt.show()
-```
-
-*The four subspace decomposition. $T$ maps $\overline{\mathrm{Range}(T^*)}$ into
-$\overline{\mathrm{Range}(T)}$ and kills $\ker(T)$. $T^*$ maps
-$\overline{\mathrm{Range}(T)}$ into $\overline{\mathrm{Range}(T^*)}$ and kills
-$\ker(T^*)$. Each pair is an orthogonal complement in its ambient Hilbert
-space.*
+See the four subspace picture above, which now carries over with $A \mapsto T$, $\mathbb{R}^n \mapsto H$, and $\mathbb{R}^m \mapsto K$, and closures added to account for possibly non-closed ranges.
 
