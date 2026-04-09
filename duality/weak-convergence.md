@@ -397,6 +397,36 @@ $X^*$ is a Banach space, the Banach-Steinhaus theorem
 $\sup_n \|x_n\| < \infty$.
 ````
 
+The previous result applies to sequences, but the same argument generalizes to
+arbitrary subsets. A set $A \subseteq X$ is **weakly bounded** if $f(A)$ is a
+bounded subset of $\mathbb{R}$ (or $\mathbb{C}$) for every $f \in X^*$, i.e.,
+$\sup_{x \in A} |f(x)| < \infty$ for each $f$.
+
+```{prf:theorem} Weakly bounded sets are norm-bounded
+:label: weakly-bounded-norm-bounded
+
+Let $X$ be a Banach space and $A \subseteq X$. Then $A$ is weakly bounded if and
+only if $A$ is norm-bounded, i.e., $\sup_{x \in A} \|x\| < \infty$.
+```
+
+````{prf:proof}
+:class: dropdown
+
+**Norm-bounded $\Rightarrow$ weakly bounded.** If $\sup_{x \in A} \|x\| \leq M$,
+then for any $f \in X^*$,
+
+$$\sup_{x \in A} |f(x)| \leq \|f\| \sup_{x \in A} \|x\| \leq M \|f\| < \infty.$$
+
+**Weakly bounded $\Rightarrow$ norm-bounded.** Each $x \in A$ defines an element
+$J[x] \in X^{**}$ by $J[x](f) = f(x)$. The hypothesis says that for each $f \in
+X^*$, $\sup_{x \in A} |J[x](f)| = \sup_{x \in A} |f(x)| < \infty$, so the
+family $\{J[x]\}_{x \in A} \subseteq X^{**}$ is pointwise bounded on $X^*$.
+Since $X^*$ is a Banach space, the Banach-Steinhaus theorem
+({prf:ref}`banach-steinhaus`) gives $\sup_{x \in A} \|J[x]\|_{X^{**}} < \infty$.
+By {prf:ref}`canonical-embedding-isometry`, $\|J[x]\|_{X^{**}} = \|x\|$, so
+$\sup_{x \in A} \|x\| < \infty$.
+````
+
 ```{prf:proposition} Compact operators turn weak convergence into strong convergence
 :label: compact-weak-to-strong
 

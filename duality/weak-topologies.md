@@ -289,13 +289,13 @@ The weak topology has fewer open sets than the norm topology. Two consequences:
   sets, so **fewer open sets means fewer closed sets too**. A set that is "not
   open" in the weak topology does not become closed. Most sets are neither.
 
-  However, **convex** norm-closed sets remain weakly closed: this is Mazur's
-  theorem. The closed unit ball is weakly closed because it is convex, not
-  because of a general principle about coarser topologies. Non-convex
-  norm-closed sets can fail to be weakly closed. For example, the set of
-  standard basis vectors $\{e_n\}$ in $\ell^2$ is norm-closed (all pairwise
-  distances are $\sqrt{2}$), but $e_n \rightharpoonup 0$ weakly, so $0$ is in
-  its weak closure.
+  However, **convex** norm-closed sets remain weakly closed — this is
+  {prf:ref}`Mazur's theorem <mazur-theorem>`. The closed unit ball is weakly
+  closed because it is convex, not because of a general principle about coarser
+  topologies. Non-convex norm-closed sets can fail to be weakly closed. For
+  example, the set of standard basis vectors $\{e_n\}$ in $\ell^2$ is
+  norm-closed (all pairwise distances are $\sqrt{2}$), but $e_n \rightharpoonup
+  0$ weakly, so $0$ is in its weak closure.
 ```
 
 ```{prf:remark} The unit ball as an intersection of slabs
@@ -313,46 +313,6 @@ The unit ball is exactly the intersection of all dual slabs. This means $B_X$ is
 **weakly closed** (it is an intersection of weakly closed sets, since each $f$
 is weakly continuous).
 ```
-
-### Mazur's theorem
-
-The remark above noted that convex norm-closed sets remain weakly closed. This
-is a fundamental result that deserves a precise statement.
-
-```{prf:theorem} Mazur's theorem
-:label: mazur-theorem
-
-Let $X$ be a normed space and $C \subseteq X$ a convex set. Then $C$ is
-norm-closed if and only if it is weakly closed.
-```
-
-````{prf:proof}
-:class: dropdown
-
-Since the weak topology is coarser than the norm topology, every weakly closed
-set is norm-closed. The content is the converse: a norm-closed convex set is
-weakly closed.
-
-It suffices to show that if $x_0 \notin C$ and $C$ is norm-closed and convex,
-then $x_0$ is not in the weak closure of $C$, i.e., there is a weakly open set
-containing $x_0$ that misses $C$.
-
-Since $C$ is norm-closed and $x_0 \notin C$, there exists $\delta > 0$ with
-$B_\delta(x_0) \cap C = \emptyset$. By the geometric form of the Hahn-Banach
-theorem (strict separation of a point from a closed convex set), there exists $f
-\in X^*$ and $\alpha \in \mathbb{R}$ such that
-
-$$f(x_0) > \alpha \geq f(c) \quad \text{for all } c \in C.$$
-
-The set $\{x \in X : f(x) > \alpha\}$ is a weakly open slab containing $x_0$
-and disjoint from $C$. Therefore $x_0$ is not in the weak closure of $C$.
-````
-
-Mazur's theorem says that for convex sets, you cannot tell the difference
-between norm-closure and weak-closure. This is why the closed unit ball, closed
-convex hulls, and closed subspaces are all weakly closed. Non-convex sets do not
-enjoy this protection: the set $\{e_n\}$ in $\ell^2$ is norm-closed but not
-weakly closed.
 
 
 ## Strong and weak convergence
@@ -388,6 +348,25 @@ Each instrument $f$ foliates $X$ into level sets $\{x : f(x) = c\}$, the
 the readings $f(x_n)$ settle down to $f(x)$. The objects $x_n$ need not become
 close to $x$; they can keep bouncing around, as long as every instrument
 eventually reads the same value as it does on $x$.
+
+```{prf:proposition} Strong convergence implies weak convergence
+:label: strong-implies-weak
+
+Let $X$ be a normed space. If $x_n \to x$ strongly, then $x_n \rightharpoonup x$
+weakly.
+```
+
+````{prf:proof}
+:class: dropdown
+
+Let $f \in X^*$. Since $f$ is a bounded linear functional,
+
+$$|f(x_n) - f(x)| = |f(x_n - x)| \leq \|f\| \cdot \|x_n - x\| \to 0.$$
+
+Since $f$ was arbitrary, $x_n \rightharpoonup x$.
+````
+
+The converse is false in infinite dimensions:
 
 ```{prf:example} Weak but not strong convergence in $L^2$
 :label: weak-not-strong-L2
@@ -619,6 +598,41 @@ equivalent (finitely many instruments suffice to control the norm). The gap is
 an essentially infinite-dimensional phenomenon.
 :::
 
+### Weak limits can lose mass
+
+Strong convergence preserves the norm: $\|x_n - x\| \to 0$ implies $\|x_n\|
+\to \|x\|$. Weak convergence does not. The norm can *drop* in the limit, but it
+cannot increase.
+
+```{prf:proposition} Weak lower semicontinuity of the norm
+:label: norm-weak-lsc
+
+Let $X$ be a normed space. If $x_n \rightharpoonup x$ weakly, then
+
+$$\|x\| \leq \liminf_{n \to \infty} \|x_n\|.$$
+```
+
+````{prf:proof}
+:class: dropdown
+
+By the {prf:ref}`sup formula <hb-sup-formula>`, for any $f \in X^*$ with
+$\|f\| \leq 1$, we have $|f(x_n)| \leq \|f\| \cdot \|x_n\| \leq \|x_n\|$.
+Since $x_n \rightharpoonup x$, the left side converges: $|f(x_n)| \to |f(x)|$.
+The right side $\|x_n\|$ need not converge (the norms may oscillate), but
+$\liminf$ always exists. If $a_n \leq b_n$ and $\lim a_n$ exists, then $\lim
+a_n \leq \liminf b_n$. Therefore
+
+$$|f(x)| = \lim_{n \to \infty} |f(x_n)| \leq \liminf_{n \to \infty} \|x_n\|.$$
+
+Taking the supremum over all $f$ with $\|f\| \leq 1$:
+
+$$\|x\| = \sup_{\|f\| \leq 1} |f(x)| \leq \liminf_{n \to \infty} \|x_n\|.$$
+````
+
+This is the price of weak convergence: mass can escape to infinity. In the
+example $\sin(n\pi t) \rightharpoonup 0$, the norm stays at $1/\sqrt{2}$ while
+the weak limit has norm $0$. The inequality is sharp.
+
 
 ### Basic properties of weak convergence
 
@@ -686,65 +700,6 @@ $g(z) = g(Ax)$ for all $g \in Y^*$. By Hahn-Banach, $z = Ax$.
 Since every subsequence of $(Ax_n)$ has a further subsequence converging to
 $Ax$, the full sequence converges: $Ax_n \to Ax$.
 ````
-
-
-### Strong convergence implies weak convergence
-
-```{prf:proposition} Strong convergence implies weak convergence
-:label: strong-implies-weak
-
-Let $X$ be a normed space. If $x_n \to x$ strongly, then $x_n \rightharpoonup x$
-weakly.
-```
-
-````{prf:proof}
-:class: dropdown
-
-Let $f \in X^*$. Since $f$ is a bounded linear functional,
-
-$$|f(x_n) - f(x)| = |f(x_n - x)| \leq \|f\| \cdot \|x_n - x\| \to 0.$$
-
-Since $f$ was arbitrary, $x_n \rightharpoonup x$.
-````
-
-The converse is false in infinite dimensions: {prf:ref}`weak-not-strong-L2`
-gives a sequence in $L^2$ with $x_n \rightharpoonup 0$ but $\|x_n\| =
-1/\sqrt{2}$ for all $n$.
-
-### Weak limits can lose mass
-
-Strong convergence preserves the norm: $\|x_n - x\| \to 0$ implies $\|x_n\|
-\to \|x\|$. Weak convergence does not. The norm can *drop* in the limit, but it
-cannot increase.
-
-```{prf:proposition} Weak lower semicontinuity of the norm
-:label: norm-weak-lsc
-
-Let $X$ be a normed space. If $x_n \rightharpoonup x$ weakly, then
-
-$$\|x\| \leq \liminf_{n \to \infty} \|x_n\|.$$
-```
-
-````{prf:proof}
-:class: dropdown
-
-By the {prf:ref}`sup formula <hb-sup-formula>`, for any $f \in X^*$ with
-$\|f\| \leq 1$, we have $|f(x_n)| \leq \|f\| \cdot \|x_n\| \leq \|x_n\|$.
-Since $x_n \rightharpoonup x$, the left side converges: $|f(x_n)| \to |f(x)|$.
-The right side $\|x_n\|$ need not converge (the norms may oscillate), but
-$\liminf$ always exists. If $a_n \leq b_n$ and $\lim a_n$ exists, then $\lim
-a_n \leq \liminf b_n$. Therefore
-
-$$|f(x)| = \lim_{n \to \infty} |f(x_n)| \leq \liminf_{n \to \infty} \|x_n\|.$$
-
-Taking the supremum over all $f$ with $\|f\| \leq 1$:
-
-$$\|x\| = \sup_{\|f\| \leq 1} |f(x)| \leq \liminf_{n \to \infty} \|x_n\|.$$
-````
-
-This is the price of weak convergence: mass can escape to infinity. In the
-example $\sin(n\pi t) \rightharpoonup 0$, the norm stays at $1/\sqrt{2}$ while
-the weak limit has norm $0$. The inequality is sharp.
 
 
 ## Weak compactness in reflexive spaces
@@ -815,9 +770,121 @@ $\ell^1$ by
 $$J(x)(f) = \sum_{k=1}^\infty f_k \quad \text{for } f = (f_k) \in \ell^1.$$
 
 This is a perfectly good element of the bidual $c_0^{**} = \ell^\infty$, but it
-is not in $J(c_0)$. The sequence $(x_n)$ has "escaped" into the bidual: the
-readings converge, but the limit lives in $c_0^{**} \setminus J(c_0)$.
+is not in the range of $J$. Explicitly:
+
+$$J(c_0) = \{ (y_k) \in \ell^\infty : y_k \to 0 \}, \qquad
+(1, 1, 1, \ldots) \in \ell^\infty \setminus J(c_0),$$
+
+since the constant sequence does not converge to zero. So $J$ is not
+surjective: $J(c_0) \subsetneq \ell^\infty = c_0^{**}$. The sequence $(x_n)$
+has "escaped" into the bidual — the readings converge, but the limit lives in
+$c_0^{**} \setminus J(c_0)$.
 
 Reflexivity means $J(X) = X^{**}$: there is no gap, so there is no room to
 escape. In a reflexive space, every candidate limit that is consistent with the
 readings already lives in $X$.
+
+
+## Separation and convexity in the weak topology
+
+:::{tip} Optional Extension
+This section explores the topological separation properties of the weak topology
+and their connection to Mazur's theorem. It is not needed for the main
+development but clarifies *why* convexity plays such a distinguished role.
+:::
+
+### Separation axioms: from $T_2$ to $T_4$
+
+The separation axioms form a hierarchy of increasing strength:
+
+$$T_4 \implies T_{3\frac{1}{2}} \implies T_3 \implies T_2 \implies T_1.$$
+
+- **$T_2$ (Hausdorff):** Any two distinct *points* can be separated by disjoint
+  open sets.
+- **$T_3$ (regular Hausdorff):** Any *point* and *closed set* not containing it
+  can be separated by disjoint open sets.
+- **$T_{3\frac{1}{2}}$ (completely regular / Tychonoff):** Any *point* and
+  *closed set* not containing it can be separated by a *continuous function*
+  $f : X \to [0, 1]$.
+- **$T_4$ (normal Hausdorff):** Any two *disjoint closed sets* can be separated
+  by disjoint open sets.
+
+Each level upgrades what can be separated: $T_2$ separates points from points,
+$T_3$ separates points from closed sets by open sets, $T_{3\frac{1}{2}}$
+strengthens this to separation by continuous functions, and $T_4$ separates
+closed sets from closed sets.
+
+```{prf:proposition} Metric spaces are $T_4$
+:label: metric-T4
+
+Every metric space $(X, d)$ is $T_4$.
+```
+
+````{prf:proof}
+:class: dropdown
+
+Given disjoint closed sets $A, B \subset X$, the function
+
+$$f(x) = \frac{d(x, A)}{d(x, A) + d(x, B)}$$
+
+is continuous with $f = 0$ on $A$ and $f = 1$ on $B$ (this works because $d(x,
+A) + d(x, B) > 0$ when $A \cap B = \emptyset$ and both are closed), so $U =
+f^{-1}([0, \tfrac{1}{2}))$ and $V = f^{-1}((\tfrac{1}{2}, 1])$ are disjoint
+open sets separating $A$ and $B$.
+````
+
+Since every normed space is a metric space, every Banach space is $T_4$ in its
+norm topology. When we pass to the **weak topology**, we lose the metric but
+the topology is still Hausdorff ($T_2$), since $X^*$ separates points.
+
+### Mazur's theorem: convexity restores separation
+
+The natural question is: can we separate points from *closed sets*, not just
+from other points? The weak topology is defined so that every $f \in X^*$ is
+continuous, and the Hahn-Banach theorem produces such an $f$ that strictly
+separates a point from a closed **convex** set. So for convex sets, the
+functionals in $X^*$ play exactly the role of the separating continuous
+functions required by the $T_{3\frac{1}{2}}$ axiom. Mazur's theorem makes
+this precise: convexity is exactly the condition under which norm-closure and
+weak-closure agree.
+
+```{prf:theorem} Mazur's theorem
+:label: mazur-theorem
+
+Let $X$ be a normed space and $C \subseteq X$ a convex set. Then $C$ is
+norm-closed if and only if it is weakly closed.
+```
+
+````{prf:proof}
+:class: dropdown
+
+Since the weak topology is coarser than the norm topology, every weakly closed
+set is norm-closed. The content is the converse: a norm-closed convex set is
+weakly closed.
+
+It suffices to show that if $x_0 \notin C$ and $C$ is norm-closed and convex,
+then $x_0$ is not in the weak closure of $C$, i.e., there is a weakly open set
+containing $x_0$ that misses $C$.
+
+Since $C$ is norm-closed and $x_0 \notin C$, there exists $\delta > 0$ with
+$B_\delta(x_0) \cap C = \emptyset$. By the geometric form of the Hahn-Banach
+theorem (strict separation of a point from a closed convex set), there exists $f
+\in X^*$ and $\alpha \in \mathbb{R}$ such that
+
+$$f(x_0) > \alpha \geq f(c) \quad \text{for all } c \in C.$$
+
+The set $\{x \in X : f(x) > \alpha\}$ is a weakly open slab containing $x_0$
+and disjoint from $C$. Therefore $x_0$ is not in the weak closure of $C$.
+````
+
+Mazur's theorem says that for convex sets, you cannot tell the difference
+between norm-closure and weak-closure. This is why the closed unit ball, closed
+convex hulls, and closed subspaces are all weakly closed. Non-convex sets do not
+enjoy this protection: the set $\{e_n\}$ in $\ell^2$ is norm-closed but not
+weakly closed.
+
+The connection to separation is now clear: the weak topology lacks $T_4$
+(separation of arbitrary closed sets), but Hahn-Banach gives separation of
+points from **closed convex** sets. Mazur's theorem is the payoff — convexity
+is the precise condition under which the weak topology's separation power
+suffices.

@@ -72,8 +72,6 @@ project:
         # 4. Distributions and Sobolev Spaces
         - file: distributions/index.md
           level: 1
-        - file: distributions/introduction.md
-          level: 2
         - file: distributions/test-functions.md
           level: 2
         - file: distributions/distributions.md
@@ -82,10 +80,38 @@ project:
           level: 2
         - file: distributions/structure.md
           level: 2
-        - file: distributions/averaging.md
+        - file: distributions/sobolev.md
           level: 2
-        - file: distributions/applications.md
+        - file: distributions/embeddings.md
           level: 2
+        - file: distributions/banach-algebras.md
+          level: 2
+        - file: distributions/sobolev-duality.md
+          level: 2
+        #- file: distributions/applications.md
+        #  level: 2
+        #- file: distributions/weak-pde.md
+        #  level: 2
+        #- file: distributions/neural-networks.md
+        #  level: 2
+        #- file: distributions/measures.md
+        #  level: 2
+        #- file: distributions/generative-models.md
+        #  level: 2
+        #- file: distributions/gradient-flows.md
+        #  level: 2
+        ## 5. Spectral Theory
+        #- file: spectral/index.md
+        #  level: 1
+        # 6. Fixed Point Theorems
+        #- file: fixedpoint/index.md
+        #  level: 1
+        # 7. Calculus of Variations
+        #- file: calcvar/index.md
+        #  level: 1
+        # 8. Semigroups and Neural ODEs
+        #- file: semigroups/index.md
+        #  level: 1
   downloads:
     - id: full-book-pdf
       title: Download Full Book (PDF)
@@ -125,15 +151,30 @@ project:
         - file: duality/weak-star.md
         - file: duality/convergence-comparison.md
     - file: distributions/index.md
-      title: Distributions
+      title: Distributions and Sobolev Spaces
       children:
-        - file: distributions/introduction.md
         - file: distributions/test-functions.md
         - file: distributions/distributions.md
         - file: distributions/operations.md
         - file: distributions/structure.md
-        - file: distributions/averaging.md
-        - file: distributions/applications.md
+        - file: distributions/sobolev.md
+        - file: distributions/embeddings.md
+        - file: distributions/banach-algebras.md
+        - file: distributions/sobolev-duality.md
+        #- file: distributions/applications.md
+        #- file: distributions/weak-pde.md
+        #- file: distributions/neural-networks.md
+        #- file: distributions/measures.md
+        #- file: distributions/generative-models.md
+        #- file: distributions/gradient-flows.md
+    #- file: spectral/index.md
+    #  title: Spectral Theory
+    #- file: fixedpoint/index.md
+    #  title: Fixed Point Theorems
+    #- file: calcvar/index.md
+    #  title: Calculus of Variations
+    #- file: semigroups/index.md
+    #  title: Semigroups and Neural ODEs
     - title: Jupyter Notebooks
       children:
         - file: notebooks/01_fourier_series.ipynb

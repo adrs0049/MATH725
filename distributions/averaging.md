@@ -9,20 +9,20 @@ downloads:
     title: Download PDF
 ---
 
-## Distributions as Averaging Operators
+# Distributions as Averaging Operators
 
 One of the most intuitive ways to understand distributions is to view them as "averaging
 operators" that extract information through local averaging. This perspective has deep
 connections to physical measurements and provides insights into the behaviour of distributions
 of different orders.
 
-### Distributions and Measurements
+## Distributions and Measurements
 
 In physics, no measurement can capture a true point value. All physical measurements
 involve some form of averaging over a small region. Distributions provide a mathematical
 framework that naturally accomodates this reality.
 
-#### Physical Interpretation of Test Functions
+### Physical Interpretation of Test Functions
 
 When we evaluate a distribution $T$ against a test function $\phi$ to get
 $\langle T, \phi \rangle$, we can interpret $\phi$ as the "response profile"
@@ -49,7 +49,7 @@ and directional sensitivity.
 - For flux measurements (e.g. particle or energy flux) $\phi(x)$ represents how the detector
 samples both position and orientation.
 
-#### Physical examples
+### Physical examples
 
 - A thermometer doesn't measure temperature at a single point but averages molecular
 kinetic energy over a small volume.
@@ -64,7 +64,7 @@ as measuring the distribution
 $T$ with an apparatus whose sensitivity profile is described by $\phi$.
 
 
-### Behavior with Concentrating Test Functions
+## Behavior with Concentrating Test Functions
 
 Consider a sequence of "bump functions" $\{ \phi_n \}$ that concentrate around a point $x_0$.
 

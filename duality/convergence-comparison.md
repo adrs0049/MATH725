@@ -62,88 +62,20 @@ expectations converge without the random variables getting close in the $L^1$
 norm.
 
 
-### Convergence of measures as weak\* convergence
+### Measures and weak\* convergence
 
-Measures fit naturally into this picture. By the
-{prf:ref}`Riesz-Markov-Kakutani theorem <riesz-markov>`, $C(K)^* \cong
-\mathcal{M}(K)$, the space of finite signed Radon measures on a compact
-Hausdorff space $K$. Each measure $\mu$ acts as a functional on $C(K)$ via
-$\mu(g) = \int_K g\,d\mu$.
+The richest example of weak\* convergence in practice is the convergence of
+measures. By the Riesz–Markov–Kakutani theorem, $C(K)^* \cong
+\mathcal{M}(K)$ (the space of finite signed Radon measures), and weak\*
+convergence of measures means $\int g \, d\mu_n \to \int g \, d\mu$ for
+every continuous $g$. For probability measures, this is **convergence in
+distribution** — the convergence in the central limit theorem.
 
-```{prf:definition} Total variation norm
-:label: tv-norm-def
-
-For a signed measure $\mu = \mu^+ - \mu^-$ (Jordan decomposition), the **total variation norm** is
-
-$$\|\mu\|_{TV} = |\mu|(K) = \mu^+(K) + \mu^-(K).$$
-
-The space $\mathcal{M}(K)$ equipped with $\|\cdot\|_{TV}$ is a Banach space.
-```
-
-The total variation norm is the natural "strong" notion of distance between
-measures: $\|\mu_n - \mu\|_{TV} \to 0$ means the measures agree on all
-measurable sets asymptotically. This is a very demanding requirement.
-
-```{prf:definition} Weak convergence of measures
-:label: weak-measures-def
-
-Let $K$ be a compact Hausdorff space and let $(\mu_n)_{n \geq 1}$ be a sequence
-in $\mathcal{M}(K)$. We say $\mu_n \rightharpoonup \mu$ **weakly** if
-
-$$\phi(\mu_n) \to \phi(\mu) \quad \text{for every } \phi \in \mathcal{M}(K)^* = C(K)^{**}.$$
-```
-
-This is the weak topology on $\mathcal{M}(K)$, which requires testing against
-the bidual $C(K)^{**}$. Just as in the general setting, this bidual can be much
-larger than $C(K)$ and is difficult to describe explicitly.
-
-```{prf:definition} Weak* convergence of measures
-:label: weak-star-measures-def
-
-Let $K$ be a compact Hausdorff space and let $(\mu_n)_{n \geq 1}$ be a sequence in $\mathcal{M}(K) = C(K)^*$. We say $\mu_n \xrightarrow{w^*} \mu$ if
-
-$$\int_K g\,d\mu_n \to \int_K g\,d\mu \quad \text{for every } g \in C(K).$$
-```
-
-Weak\* convergence is much more forgiving: it tests only against elements of
-$C(K)$, not the full bidual $C(K)^{**}$. This echoes exactly the choice we made
-in the general setting.
-
-### Convergence in distribution
-
-If $\mu_n$ and $\mu$ are **probability measures** on $K$ (i.e., $\mu_n \geq 0$,
-$\mu_n(K) = 1$), then weak\* convergence in $\mathcal{M}(K) = C(K)^*$ becomes
-
-$$\mathbb{E}_{\mu_n}[g] \to \mathbb{E}_\mu[g] \quad \text{for every continuous } g \in C(K).$$
-
-This is **convergence in distribution** (also called weak convergence of
-probability measures in the probability literature). It is the convergence in
-the central limit theorem: the *distributions* $\mu_n$ of
-$\frac{1}{\sqrt{n}}\sum_{i=1}^n X_i$ converge to the Gaussian measure $\mu$,
-meaning the expected value of every continuous test function converges.
-
-```{prf:example} Converging Dirac masses
-:label: dirac-weak-star
-
-The sequence $\delta_{1/n}$ converges weak\* to $\delta_0$ in $C([0,1])^*$. Each $\delta_p$ evaluates a function at the point $p$: $\delta_p(g) = g(p)$. As $p = 1/n$ moves toward $0$, continuity gives $g(1/n) \to g(0)$ for every $g \in C([0,1])$.
-
-In total variation, however, $\|\delta_{1/n} - \delta_0\|_{TV} = 2$ for all $n$, since they assign mass to disjoint points. The measures converge in "statistics" (every continuous observable stabilizes) but remain far apart as objects in $\mathcal{M}([0,1])$.
-```
-
-
-### The three convergences for probability measures
-
-| Convergence | Space / pairing | What converges |
-|---|---|---|
-| **In distribution** (= weak\* in $C(K)^*$) | Measures $\mu_n \in \mathcal{M}(K) = C(K)^*$ | $\int g\,d\mu_n \to \int g\,d\mu$ for all $g \in C(K)$ |
-| **In expectation** (= weak in $L^1$) | Random variables $X_n \in L^1(\Omega)$ | $\mathbb{E}[X_n h] \to \mathbb{E}[Xh]$ for all $h \in L^\infty(\Omega)$ |
-| **In total variation** (= strong in $\mathcal{M}(K)$) | Measures $\mu_n \in \mathcal{M}(K)$ | $\|\mu_n - \mu\|_{TV} \to 0$ |
-
-Convergence in distribution lives in $C(K)^*$ and only tests against continuous
-functions. Convergence in expectation lives in $L^1(\Omega)$ and tests against
-all bounded measurable functions (it requires the random variables to be defined
-on a common probability space). Total variation convergence is the norm topology
-on $\mathcal{M}(K)$.
+We develop this fully — including the total variation norm, Wasserstein
+distances, tightness, Prokhorov's theorem, and optimal transport — in the
+distributions chapter on measure norms. There, the duality framework from
+this chapter combines with the distributional framework to give a complete
+picture of what different norms on measures "see."
 
 
 ## The direct method: a first look
@@ -185,3 +117,132 @@ functional analysis, exactly what Banach-Alaoglu and Eberlein-Šmulian provide.
 Step 3 requires that $\mathcal{F}$ behaves well under weak limits, which is
 where convexity or compensated compactness arguments enter. We will return to
 this in detail when we study Sobolev spaces and variational problems.
+
+### The direct method in a reflexive space
+
+```{prf:example} Minimizing the Dirichlet energy
+:label: direct-method-dirichlet
+
+Let $\Omega \subset \mathbb{R}^d$ be a bounded open set with smooth boundary,
+and fix a boundary datum $g \in H^{1/2}(\partial\Omega)$. Consider the
+**Dirichlet energy**
+
+$$\mathcal{E}(u) = \frac{1}{2}\int_\Omega |\nabla u|^2 \, dx$$
+
+over the admissible set $\mathcal{A} = \{u \in H^1(\Omega) : u|_{\partial\Omega} = g\}$.
+We claim that $\mathcal{E}$ attains its minimum on $\mathcal{A}$.
+
+**Step 1 (Boundedness).** Let $(u_n)$ be a minimizing sequence:
+$\mathcal{E}(u_n) \to \inf_{\mathcal{A}} \mathcal{E}$. Since $\mathcal{E}(u_n)$
+is bounded, so is $\|\nabla u_n\|_{L^2}$. The Poincaré inequality (applied to
+$u_n - \tilde{g}$ for any fixed extension $\tilde{g} \in H^1(\Omega)$ of $g$)
+gives $\|u_n\|_{H^1} \leq C$.
+
+**Step 2 (Compactness).** The Sobolev space $H^1(\Omega) = W^{1,2}(\Omega)$ is
+a Hilbert space, hence reflexive. By {prf:ref}`weak-compactness-reflexive`,
+the bounded sequence $(u_n)$ has a weakly convergent subsequence
+$u_{n_k} \rightharpoonup u$ in $H^1(\Omega)$. The trace operator is
+continuous in the weak topology, so $u|_{\partial\Omega} = g$ and $u \in \mathcal{A}$.
+
+**Step 3 (Lower semicontinuity).** The functional $u \mapsto \int_\Omega
+|\nabla u|^2 \, dx$ is convex and continuous in the norm topology, so by
+Mazur's theorem ({prf:ref}`mazur-theorem`) its sublevel sets are weakly
+closed. Equivalently, $\mathcal{E}$ is weakly lower semicontinuous:
+
+$$\mathcal{E}(u) \leq \liminf_{k \to \infty} \mathcal{E}(u_{n_k}) = \inf_{\mathcal{A}} \mathcal{E}.$$
+
+Therefore $u$ is a minimizer. The minimizer is unique by strict convexity of
+$\mathcal{E}$, and satisfies the Euler-Lagrange equation $-\Delta u = 0$ in
+$\Omega$ (Laplace's equation).
+```
+
+The entire argument rests on two pillars: reflexivity of $H^1$ gives weak
+compactness, and convexity of $\mathcal{E}$ gives weak lower semicontinuity.
+Remove either and the argument collapses.
+
+```{prf:remark} Why convexity gives weak lower semicontinuity
+:label: remark-why-lsc
+
+Step 3 is the subtlest part of the direct method. Why can't the energy
+*increase* when we pass to a weak limit? There are three ways to see this.
+
+**Direct proof for the Dirichlet energy.** Since $u_{n_k} \rightharpoonup
+u$ in $H^1$, we have $\nabla u_{n_k} \rightharpoonup \nabla u$ in $L^2$.
+Weak convergence means $\langle \nabla u_{n_k}, w \rangle \to \langle
+\nabla u, w \rangle$ for every $w \in L^2$. Taking $w = \nabla u$:
+
+$$\|\nabla u\|_{L^2}^2 = \langle \nabla u, \nabla u \rangle = \lim_k \langle \nabla u_{n_k}, \nabla u \rangle \leq \liminf_k \|\nabla u_{n_k}\|_{L^2} \cdot \|\nabla u\|_{L^2}$$
+
+by Cauchy–Schwarz. Dividing by $\|\nabla u\|_{L^2}$ gives $\|\nabla
+u\|_{L^2} \leq \liminf_k \|\nabla u_{n_k}\|_{L^2}$, hence
+$\mathcal{E}(u) \leq \liminf_k \mathcal{E}(u_{n_k})$. The same argument
+shows that **every norm is weakly lower semicontinuous**: the norm can
+only drop under weak limits, never increase.
+
+**Via Mazur's theorem.** More generally, let $\mathcal{F}$ be any convex
+and norm-continuous functional. Its sublevel sets $\{u : \mathcal{F}(u)
+\leq c\}$ are convex (by convexity of $\mathcal{F}$) and norm-closed (by
+continuity). By Mazur's theorem ({prf:ref}`mazur-theorem`), convex
+norm-closed sets are weakly closed. So the sublevel sets are weakly closed,
+which is equivalent to $\mathcal{F}$ being weakly lower semicontinuous.
+
+**The intuition.** By Mazur's theorem, there exist convex combinations
+$v_k = \sum_j \lambda_j^{(k)} u_{n_j}$ converging *strongly* to $u$.
+For a convex functional, Jensen's inequality gives
+
+$$\mathcal{F}(v_k) = \mathcal{F}\!\left(\sum_j \lambda_j^{(k)} u_{n_j}\right) \leq \sum_j \lambda_j^{(k)} \mathcal{F}(u_{n_j}).$$
+
+The right-hand side is at most $\max_j \mathcal{F}(u_{n_j})$, which is
+eventually close to $\liminf \mathcal{F}(u_{n_k})$. By norm continuity,
+$\mathcal{F}(v_k) \to \mathcal{F}(u)$, giving the inequality. In short:
+weak limits are limits of averages, and convex functionals can't be fooled
+by averaging.
+```
+
+### What goes wrong without reflexivity
+
+```{prf:example} Failure of the direct method in $L^1$
+:label: direct-method-L1-failure
+
+Consider the functional
+
+$$\mathcal{F}(u) = \left| \int_0^1 u(x) \, dx - 1 \right|$$
+
+over the constraint set $\mathcal{C} = \{u \in L^1([0,1]) : u \geq 0, \
+\|u\|_{L^1} = 1\}$. The infimum is $\inf_{\mathcal{C}} \mathcal{F} = 0$,
+attained by the constant function $u = 1$.
+
+Now replace the objective with something that rewards concentration. Define
+
+$$\mathcal{G}(u) = -\int_0^1 u(x)^2 \, dx$$
+
+over the same constraint set $\mathcal{C}$. A minimizing sequence is given
+by the **approximations to the identity**:
+
+$$u_n(x) = n \, \mathbf{1}_{[0, 1/n]}(x).$$
+
+Each $u_n \in \mathcal{C}$ with $\|u_n\|_{L^1} = 1$ and $\mathcal{G}(u_n) =
+-n \to -\infty$, so $\inf_{\mathcal{C}} \mathcal{G} = -\infty$.
+
+But more instructive is what happens to the sequence itself. As measures,
+$u_n \, dx \rightharpoonup^* \delta_0$ in $\mathcal{M}([0,1]) = C([0,1])^*$:
+for any continuous test function $\varphi$,
+
+$$\int_0^1 \varphi(x) \, u_n(x) \, dx = n \int_0^{1/n} \varphi(x) \, dx \to \varphi(0).$$
+
+The weak-$*$ limit $\delta_0$ is a perfectly good Radon measure, but it does
+not belong to $L^1$. The mass has **concentrated** at a single point. This
+is the failure mode: $L^1$ is not reflexive, so bounded sequences need not
+have weakly convergent subsequences in $L^1$. The sequence escapes to the
+larger space of measures, and the direct method cannot recover a minimizer
+in the original space.
+```
+
+The contrast between {prf:ref}`direct-method-dirichlet` and
+{prf:ref}`direct-method-L1-failure` illustrates why reflexivity is not a
+technical convenience but a structural requirement. In reflexive spaces, bounded
+sets are weakly compact and the direct method closes. In non-reflexive spaces
+like $L^1$, minimizing sequences can concentrate or oscillate their way out of
+the space, and one must either enlarge the space (to measures) or impose
+additional compactness conditions (such as equi-integrability via the
+Dunford-Pettis theorem).
