@@ -43,9 +43,13 @@ Let $\Omega \subseteq \mathbb{R}^d$ be open, $k \geq 0$ an integer, and $1
 \leq p \leq \infty$. The **Sobolev space** $W^{k,p}(\Omega)$ consists of all
 functions $u \in L^p(\Omega)$ whose weak derivatives $D^\alpha u$ exist and
 belong to $L^p(\Omega)$ for all multi-indices $|\alpha| \leq k$. The
-**Sobolev norm** is
+**Sobolev norm** is, for $1 \leq p < \infty$,
 
-$$\|u\|_{W^{k,p}} = \sum_{|\alpha| \leq k} \|D^\alpha u\|_{L^p(\Omega)}.$$
+$$\|u\|_{W^{k,p}} = \left( \sum_{|\alpha| \leq k} \|D^\alpha u\|_{L^p(\Omega)}^p \right)^{1/p},$$
+
+and for $p = \infty$,
+
+$$\|u\|_{W^{k,\infty}} = \max_{|\alpha| \leq k} \|D^\alpha u\|_{L^\infty(\Omega)}.$$
 ```
 
 ```{prf:proposition} $W^{k,p}(\Omega)$ is a Banach space

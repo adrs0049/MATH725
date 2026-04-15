@@ -21,13 +21,17 @@ project:
           level: 1
         - file: introduction/intro.md
           level: 2
-        - file: introduction/function-spaces.md
+        - file: introduction/ck-spaces.md
+          level: 2
+        - file: introduction/lp-spaces.md
           level: 2
         - file: introduction/approximation.md
           level: 2
         #- file: introduction/hilbert-probability.md
         #  level: 2
         - file: introduction/basic-properties-of-spaces.md
+          level: 2
+        - file: introduction/compactness-function-spaces.md
           level: 2
         # 2. Linear Operators
         - file: lops/index.md
@@ -88,10 +92,10 @@ project:
           level: 2
         - file: distributions/sobolev-duality.md
           level: 2
-        #- file: distributions/applications.md
-        #  level: 2
-        #- file: distributions/weak-pde.md
-        #  level: 2
+        - file: distributions/applications.md
+          level: 2
+        - file: distributions/weak-pde.md
+          level: 2
         #- file: distributions/neural-networks.md
         #  level: 2
         #- file: distributions/measures.md
@@ -123,10 +127,12 @@ project:
       title: Introduction
       children:
         - file: introduction/intro.md
-        - file: introduction/function-spaces.md
+        - file: introduction/ck-spaces.md
+        - file: introduction/lp-spaces.md
         - file: introduction/approximation.md
         #- file: introduction/hilbert-probability.md
         - file: introduction/basic-properties-of-spaces.md
+        - file: introduction/compactness-function-spaces.md
     - file: lops/index.md
       title: Linear Operators
       children:
@@ -156,17 +162,17 @@ project:
         - file: distributions/test-functions.md
         - file: distributions/distributions.md
         - file: distributions/operations.md
+        - file: distributions/applications.md
         - file: distributions/structure.md
         - file: distributions/sobolev.md
         - file: distributions/embeddings.md
         - file: distributions/banach-algebras.md
         - file: distributions/sobolev-duality.md
-        #- file: distributions/applications.md
-        #- file: distributions/weak-pde.md
-        #- file: distributions/neural-networks.md
-        #- file: distributions/measures.md
-        #- file: distributions/generative-models.md
-        #- file: distributions/gradient-flows.md
+        - file: distributions/weak-pde.md
+        - file: distributions/neural-networks.md
+        - file: distributions/measures.md
+        - file: distributions/generative-models.md
+        - file: distributions/gradient-flows.md
     #- file: spectral/index.md
     #  title: Spectral Theory
     #- file: fixedpoint/index.md

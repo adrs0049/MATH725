@@ -43,13 +43,13 @@ Let $T : X \to Y$ be Fredholm. Then:
 2. $T^* : Y^* \to X^*$ is Fredholm with $\operatorname{ind}(T^*) = -\operatorname{ind}(T)$.
 3. The four subspace relations hold with full equality:
 
-$$\ker(T^*) = \operatorname{Range}(T)^\perp, \qquad \operatorname{Range}(T^*) = \ker(T)^\perp.$$
+   $$\ker(T^*) = \operatorname{Range}(T)^\perp, \qquad \operatorname{Range}(T^*) = \ker(T)^\perp.$$
 
 4. $X$ and $Y$ decompose as topological direct sums:
 
-$$X = \ker(T) \oplus Z, \qquad Y = \operatorname{Range}(T) \oplus W,$$
+   $$X = \ker(T) \oplus Z, \qquad Y = \operatorname{Range}(T) \oplus W,$$
 
-where $T|_Z : Z \to \operatorname{Range}(T)$ is an isomorphism and $\dim W = \operatorname{codim} \operatorname{Range}(T)$.
+   where $T|_Z : Z \to \operatorname{Range}(T)$ is an isomorphism and $\dim W = \operatorname{codim} \operatorname{Range}(T)$.
 
 ````{prf:proof}
 :class: dropdown
