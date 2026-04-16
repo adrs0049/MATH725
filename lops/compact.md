@@ -11,74 +11,13 @@ downloads:
 
 # Compact Operators
 
-Almost every existence argument in analysis follows the same three-step template:
-
-1. **Construct an approximate sequence** of "almost-solutions" (minimizing sequences, Galerkin
-   approximations, Euler polygonal approximations, maximizers of a Rayleigh quotient, etc.).
-2. **Extract a convergent subsequence.** This is where compactness enters.
-3. **Pass to the limit.** Show the limit actually solves the original problem.
-
-In finite dimensions step 2 is free: Bolzano-Weierstrass guarantees that every bounded sequence in
-$\mathbb{R}^n$ has a convergent subsequence. This is why eigenvalue decompositions, the SVD, the
-direct method of the calculus of variations, and Peano's ODE existence theorem all "just work" in
-$\mathbb{R}^n$. Each reduces to building an approximate sequence on a compact set and extracting a
-convergent subsequence.
-
-In infinite dimensions, closed bounded sets are **no longer compact**
-({prf:ref}`ex-unit-ball-l2-not-compact`), and step 2 fails for general bounded operators. Compact
-operators are precisely the class of operators for which it **does not break down**: they restore
-step 2 as a property of the *operator* rather than the space.
-
-```{prf:definition} Compact, precompact, and totally bounded sets
-:label: def-compact-precompact
-
-Let $(M, d)$ be a metric space and $A \subset M$.
-
-1. $A$ is **compact** if every open cover of $A$ has a finite subcover, or equivalently, if every
-   sequence in $A$ has a subsequence converging to a point in $A$.
-2. $A$ is **precompact** (or **relatively compact**) if its closure $\overline{A}$ is compact, or
-   equivalently, if every sequence in $A$ has a subsequence that is Cauchy.
-3. $A$ is **totally bounded** if for every $\varepsilon > 0$, $A$ can be covered by finitely many
-   balls of radius $\varepsilon$.
-```
-
-The key equivalence is:
-
-> **$A$ is compact $\iff$ $A$ is complete and totally bounded.**
-
-In a complete metric space (such as a Banach space), precompactness and total boundedness coincide:
-$A$ is precompact if and only if it is totally bounded.
-
-**Why both conditions are needed.**
-- *Total boundedness without completeness fails.* The open interval $(0,1)$ is totally bounded in
-  $\mathbb{R}$, but the sequence $1/n$ converges to $0 \notin (0,1)$. The limit escapes through a
-  "hole."
-- *Completeness without total boundedness fails.* The unit ball of $\ell^2$ is complete, but the
-  orthonormal sequence $(e_n)$ has all elements distance $\sqrt{2}$ apart, so no finite
-  $\varepsilon$-cover works for $\varepsilon < \sqrt{2}/2$. There are "too many directions."
-
-Total boundedness is the condition that makes a set **approximately finite-dimensional**: at every
-resolution $\varepsilon$, the set is indistinguishable from a finite set. Completeness then ensures
-that Cauchy subsequences (built by the pigeonhole principle at finer and finer scales) actually
-converge.
-
-```{prf:remark} Compact sets in infinite dimensions
-:label: rem-compact-sets-inf-dim
-
-Boundedness alone is not enough. The unit ball of $\ell^2$ is closed and bounded, yet the
-orthonormal sequence $(e_n)$ has every pair distance $\sqrt{2}$ apart, so no subsequence can be
-Cauchy. You need a constraint that suppresses this "too many directions" problem, i.e. you need
-total boundedness ({prf:ref}`def-compact-precompact`).
-
-A concrete and important example: the unit ball of $H^1(\Omega)$, viewed inside $L^2(\Omega)$, is
-precompact (Rellich-Kondrachov). The reason is visible in Fourier space. An $H^1$ bound forces
-$|\hat{u}(k)|^2 \leq C/(1 + |k|^2)$, so high-frequency modes are uniformly suppressed. For any
-$\varepsilon > 0$, all the $L^2$ energy beyond a sufficiently large frequency $N$ is less than
-$\varepsilon$, uniformly over the entire $H^1$ ball. The remaining low-frequency part lives in a
-finite-dimensional space. This is total boundedness: the derivative bound kills oscillations that
-would otherwise prevent clustering, and the bounded domain prevents mass from escaping to spatial
-infinity.
-```
+In infinite dimensions, closed bounded sets are no longer compact
+({prf:ref}`ex-unit-ball-l2-not-compact`), so bounded operators do not in general send bounded
+sequences to sequences with convergent subsequences. Compact operators are the class for which that
+*does* hold: they restore Bolzano-Weierstrass as a property of the operator, which is why they play
+the role of "infinite-dimensional matrices" throughout PDEs, spectral theory, and the calculus of
+variations. For the underlying metric-space notions of compactness, precompactness, and total
+boundedness, see {prf:ref}`def-compact-precompact` and {prf:ref}`rem-compact-sets-inf-dim`.
 
 ## Definition and Basic Properties
 

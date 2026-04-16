@@ -2,27 +2,61 @@
 exports:
   - format: pdf
     template: ./_templates/plain_narrow
-    output: exports/basic-properties-of-spaces.pdf
-    id: introduction-basic-properties-of-spaces-pdf
+    output: exports/compactness.pdf
+    id: introduction-compactness-pdf
 downloads:
-  - id: introduction-basic-properties-of-spaces-pdf
+  - id: introduction-compactness-pdf
     title: Download PDF
 ---
 
-# Compactness and Topological Equivalence
+# Compactness
 
-We now turn to two fundamental topological properties of Banach spaces that distinguish finite-dimensional spaces from infinite-dimensional ones: compactness of bounded sets and equivalence of norms.
+Almost every existence argument in analysis follows the same three-step template:
 
+1. **Construct an approximate sequence** of "almost-solutions" (minimizing sequences, Galerkin
+   approximations, Euler polygonal approximations, maximizers of a Rayleigh quotient, etc.).
+2. **Extract a convergent subsequence.** This is where compactness enters.
+3. **Pass to the limit.** Show the limit actually solves the original problem.
 
-## Compactness
+In finite dimensions step 2 is free: Bolzano-Weierstrass guarantees that every bounded sequence in
+$\mathbb{R}^n$ has a convergent subsequence. This is why eigenvalue decompositions, the SVD, the
+direct method of the calculus of variations, and Peano's ODE existence theorem all "just work" in
+$\mathbb{R}^n$. Each reduces to building an approximate sequence on a compact set and extracting a
+convergent subsequence. In infinite dimensions, closed bounded sets are no longer compact, and step
+2 fails without additional structure.
 
-```{prf:definition} Compact Set
-:label: def-compact
+```{prf:definition} Compact, precompact, and totally bounded sets
+:label: def-compact-precompact
 
-A subset $E \subset X$ is compact if either:
-1. each open cover contains a finite subcover.
-2. each sequence $\{x_n\} \subset E$ contains a convergent subsequence.
+Let $(M, d)$ be a metric space and $A \subset M$.
+
+1. $A$ is **compact** if every open cover of $A$ has a finite subcover, or equivalently, if every
+   sequence in $A$ has a subsequence converging to a point in $A$.
+2. $A$ is **precompact** (or **relatively compact**) if its closure $\overline{A}$ is compact, or
+   equivalently, if every sequence in $A$ has a subsequence that is Cauchy.
+3. $A$ is **totally bounded** if for every $\varepsilon > 0$, $A$ can be covered by finitely many
+   balls of radius $\varepsilon$.
 ```
+
+The key equivalence is:
+
+> **$A$ is compact $\iff$ $A$ is complete and totally bounded.**
+
+In a complete metric space (such as a Banach space), precompactness and total boundedness coincide:
+$A$ is precompact if and only if it is totally bounded.
+
+**Why both conditions are needed.**
+- *Total boundedness without completeness fails.* The open interval $(0,1)$ is totally bounded in
+  $\mathbb{R}$, but the sequence $1/n$ converges to $0 \notin (0,1)$. The limit escapes through a
+  "hole."
+- *Completeness without total boundedness fails.* The unit ball of $\ell^2$ is complete, but the
+  orthonormal sequence $(e_n)$ has all elements distance $\sqrt{2}$ apart, so no finite
+  $\varepsilon$-cover works for $\varepsilon < \sqrt{2}/2$. There are "too many directions."
+
+Total boundedness is the condition that makes a set **approximately finite-dimensional**: at every
+resolution $\varepsilon$, the set is indistinguishable from a finite set. Completeness then ensures
+that Cauchy subsequences (built by the pigeonhole principle at finer and finer scales) actually
+converge.
 
 In finite dimensions, compactness is characterized by the Heine-Borel theorem: a set is compact if and only if it is closed and bounded.
 
@@ -55,33 +89,22 @@ Every pair of distinct elements is at distance $\sqrt{2}$ apart. Therefore no su
 The failure of the Heine-Borel theorem in infinite dimensions is one of the most important distinctions between finite- and infinite-dimensional analysis. Closed and bounded sets need not be compact, and establishing compactness requires additional structure (e.g. equicontinuity in the Arzelà-Ascoli theorem, or tightness in probability theory). For this reason, compactness arguments play a crucial and often delicate role throughout functional analysis.
 ```
 
+```{prf:remark} Compact sets in infinite dimensions
+:label: rem-compact-sets-inf-dim
 
-## Equivalence of Norms
+Boundedness alone is not enough. The unit ball of $\ell^2$ is closed and bounded, yet the
+orthonormal sequence $(e_n)$ has every pair distance $\sqrt{2}$ apart, so no subsequence can be
+Cauchy. You need a constraint that suppresses this "too many directions" problem, i.e. you need
+total boundedness ({prf:ref}`def-compact-precompact`).
 
-```{prf:definition} Equivalent Norms
-:label: def-equiv-norms
-
-Two norms $\|x\|^1$ and $\|x\|^2$ are equivalent if there exists $a, b > 0$ such that
-$a \|x\|^1 \leq \|x\|^2 \leq b \|x\|^1\quad \forall x \in X$
+A concrete and important example: the unit ball of $H^1(\Omega)$, viewed inside $L^2(\Omega)$, is
+precompact (Rellich-Kondrachov). The reason is visible in Fourier space. An $H^1$ bound forces
+$|\hat{u}(k)|^2 \leq C/(1 + |k|^2)$, so high-frequency modes are uniformly suppressed. For any
+$\varepsilon > 0$, all the $L^2$ energy beyond a sufficiently large frequency $N$ is less than
+$\varepsilon$, uniformly over the entire $H^1$ ball. The remaining low-frequency part lives in a
+finite-dimensional space. This is total boundedness: the derivative bound kills oscillations that
+would otherwise prevent clustering, and the bounded domain prevents mass from escaping to spatial
+infinity.
 ```
 
-Note that the previous definition calls two norms equivalent when they induce the same underlying topology on $X$. In other words, they generate the same open sets or intuitively induce the same notion of two elements being close.
 
-**Geometric intuition.** The condition $a\|x\|^1 \leq \|x\|^2 \leq b\|x\|^1$ says that the unit ball of one norm can be scaled to fit inside the unit ball of the other, and vice versa. In $\mathbb{R}^2$, for example, the $\ell^1$ ball (a diamond), the $\ell^2$ ball (a circle), and the $\ell^\infty$ ball (a square) all have different shapes — but each one can be scaled up or down to contain, or be contained in, any of the others. This mutual containment of balls is exactly what equivalent topologies means: the same sequences converge, the same sets are open, and the same functions are continuous.
-
-```{prf:theorem} Equivalence of Norms in $\mathbb{R}^n$
-:label: thm-rn-norms-equiv
-
-In $\mathbb{R}^n$ all norms are equivalent.
-```
-
-```{prf:proof}
-
-This is merely a sketch of a proof. The key idea is that in $\mathbb{R}^n$ all the unit balls can be scaled so that they fit into each other. Allowing us to show that the open sets in $(\mathbb{R}^n, \|x\|_p)$ are the same as in $(\mathbb{R}^n, \|x\|_q)$.
-```
-
-```{prf:remark} Failure in Infinite Dimensions
-:label: rem-norms-not-equiv-infinite
-
-This theorem fails in infinite dimensions. For instance, on $\mathcal{C}^0([0,1])$ the norms $\|\cdot\|_\infty$ and $\|\cdot\|_1$ are **not** equivalent: a sequence of functions can converge in $L^1$ without converging uniformly. The choice of norm — and hence the topology — matters fundamentally in infinite-dimensional analysis and determines which operators are bounded, which functionals are continuous, and which sequences converge.
-```

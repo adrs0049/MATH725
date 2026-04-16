@@ -507,31 +507,9 @@ Notice what each ingredient contributed:
 - **Volume scaling** ($\|f\|_{L^p} \sim A R^{d/p}$) is where the factor $d$
   enters, yielding the exchange rate $1/d$ per derivative.
 
-### Scaling: a second derivation
-
-The same exponent falls out of pure dimensional analysis, without reference
-to any particular function. For $u \in C_c^\infty(\mathbb{R}^d)$ and the
-rescaling $u_\lambda(x) = u(\lambda x)$,
-
-$$\|u_\lambda\|_{L^q}^q = \lambda^{-d}\,\|u\|_{L^q}^q, \qquad
-  \|\nabla u_\lambda\|_{L^p}^p = \lambda^{p - d}\,\|\nabla u\|_{L^p}^p.$$
-
-If an inequality of the form $\|u\|_{L^q} \leq C\,\|\nabla u\|_{L^p}$ is to
-survive rescaling as $\lambda \to 0$ and $\lambda \to \infty$, the exponents
-of $\lambda$ on both sides must match:
-
-$$-\frac{d}{q} = 1 - \frac{d}{p} \quad\Longleftrightarrow\quad
-  \frac{1}{q} = \frac{1}{p} - \frac{1}{d}.$$
-
-So dimensions alone force the Sobolev exponent. The uncertainty argument
-above is the quantitative statement that this candidate inequality actually
-holds, with the extremizers $R = 1/N$ realizing the saturating case.
-
-Two consistency checks fall out. In $d = 1$ with $p = 2$, the formula gives
-$p^* = \infty$, matching the Hölder estimate in the Poincaré section. In
-$d \geq 2$ with only one derivative, $p^*$ is finite, and reaching continuity
-requires *more* derivatives. The threshold $sp > d$ in the theorem below is
-exactly the scaling condition $p^* = \infty$.
+A purely dimensional derivation of the same Sobolev exponent, via rescaling
+$u_\lambda(x) = u(\lambda x)$, is worked through in
+{prf:ref}`ex-sobolev-scaling`.
 
 ### The general embedding theorem
 
