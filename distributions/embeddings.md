@@ -528,9 +528,25 @@ instance Lipschitz boundary, or $\Omega = \mathbb{R}^d$).
    function is "almost continuous" but may have logarithmic singularities.
 
 3. **Supercritical case** ($kp > d$): $W^{k,p}(\Omega) \hookrightarrow
-   C^{m,\alpha}(\overline{\Omega})$ for appropriate $m$ and $\alpha$.
+   C^{m,\alpha}(\overline{\Omega})$, where the orders of smoothness and
+   Hölder regularity are determined by the **Sobolev number**
+
+   $$s \;=\; k - \tfrac{d}{p} \;>\; 0,$$
+
+   which records "how much regularity is left over after spending $d/p$
+   derivatives on dimension." The split is
+
+   - If $d/p \notin \mathbb{Z}$: $\;m = \lfloor s \rfloor\;$ and
+     $\;\alpha = s - \lfloor s \rfloor \in (0,1)$. Equivalently
+     $m = k - \lfloor d/p \rfloor - 1$ and $\alpha = \lfloor d/p \rfloor + 1 - d/p$,
+     so that $m + \alpha = s$.
+   - If $d/p \in \mathbb{Z}$ (boundary case): $\;m = k - d/p - 1\;$ and the
+     embedding holds for *every* $\alpha \in (0,1)$, but in general not for
+     $\alpha = 1$ (Lipschitz can fail).
+
    Controlling enough derivatives in $L^p$ forces continuity, and even
-   Hölder regularity.
+   Hölder regularity, with the leftover budget $s$ split between integer
+   smoothness ($m$) and a fractional Hölder exponent ($\alpha$).
 ```
 
 Each clause is the intuition made precise. The subcritical exponent $p^*$ is

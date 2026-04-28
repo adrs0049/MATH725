@@ -162,26 +162,76 @@ Lax-Milgram reduces to the Riesz representation theorem with $M = \alpha = 1$.
 :label: remark-lax-milgram-direct-method
 :class: dropdown
 
-The two hypotheses of Lax-Milgram, continuity and coercivity, play exactly
-the same roles as the two ingredients of the direct method for
-variational problems.
+The two hypotheses of Lax-Milgram play exactly the same roles as the two
+ingredients of the direct method for variational problems. Recall the
+direct method ({prf:ref}`direct-method-dirichlet`): to minimize
+$E: V \to \mathbb{R}$, take a minimizing sequence $u_n$, use *coercivity*
+to force $(u_n)$ to be bounded, use *Banach-Alaoglu*
+({prf:ref}`banach-alaoglu`) to extract a weakly convergent subsequence
+$u_{n_k} \rightharpoonup u$, and use *weak lower semicontinuity* to
+conclude $E(u) \leq \liminf E(u_{n_k}) = \inf E$. Two ingredients:
+coercivity to *get* a weak limit, weak l.s.c. to *pass to it*.
 
-**Coercivity** ($B(u,u) \geq \alpha\|u\|^2$) is the analogue of
-*coercivity of the energy functional*: it ensures that minimizing
-sequences are bounded in $V$, so Banach-Alaoglu gives a weakly
-convergent subsequence. Without it, sequences can escape to infinity.
+When $B$ is symmetric, Lax-Milgram *is* the direct method applied to the
+energy
 
-**Continuity** ($|B(u,v)| \leq M\|u\|\|v\|$) is the analogue of
-*weak lower semicontinuity*: it ensures that the bilinear form is
-compatible with weak limits, so we can pass from the approximating
-sequence to the limit.
+$$E(v) = \tfrac{1}{2} B(v,v) - \langle f, v \rangle,$$
 
-This is not a coincidence. When $B$ is symmetric, Lax-Milgram *is* the
-direct method: the solution $u$ minimizes the energy
-$E(v) = \frac{1}{2}B(v,v) - \langle f, v \rangle$, and the two
-hypotheses guarantee exactly that $E$ is coercive and weakly lower
-semicontinuous. Lax-Milgram extends this to non-symmetric $B$, where
-there is no energy to minimize but the same abstract structure persists.
+whose Euler-Lagrange equation is $B(u,v) = \langle f, v\rangle$. The two
+Lax-Milgram hypotheses translate into the two direct-method ingredients
+as follows.
+
+**Coercivity of $B$ $\Longrightarrow$ coercivity of $E$.** From
+$B(v,v) \geq \alpha\|v\|^2$,
+
+$$E(v) \;\geq\; \tfrac{\alpha}{2}\|v\|^2 - \|f\|_{V^*}\|v\| \;\longrightarrow\; \infty
+\quad \text{as } \|v\| \to \infty.$$
+
+So minimizing sequences are bounded in $V$. This is the same mechanism
+that produces the a priori estimate $\|u\|_V \leq \tfrac{1}{\alpha}\|f\|_{V^*}$
+in the Lax-Milgram conclusion: coercivity controls the size of the
+solution.
+
+**Continuity of $B$ + symmetry + coercivity $\Longrightarrow$ weak
+l.s.c. of $E$.** This step is subtler than it looks. Continuity of $B$
+makes $v \mapsto \tfrac{1}{2} B(v,v)$ continuous in the *norm* topology
+(since $|B(v,v)| \leq M\|v\|^2$), but norm continuity alone does **not**
+imply weak l.s.c. — $v \mapsto -\|v\|^2$ is norm-continuous yet fails to
+be weakly l.s.c. The bridge is **convexity**, supplied by
+{prf:ref}`Mazur's theorem <mazur-theorem>`:
+
+> A convex, norm-continuous functional on a Banach space is weakly
+> lower semicontinuous.
+
+Symmetry together with coercivity makes $v \mapsto \tfrac12 B(v,v)$ a
+positive-definite quadratic form, hence convex. Continuity then promotes
+convexity to weak l.s.c. via Mazur. So the honest reading of the
+Lax-Milgram hypotheses under symmetry is
+
+$$\underbrace{\text{continuity}}_{\text{norm continuity of } E}
+\;+\;
+\underbrace{\text{coercivity} + \text{symmetry}}_{\text{convexity of } E}
+\;\xrightarrow{\text{Mazur}}\;
+\text{weak l.s.c. of } E.$$
+
+The shorthand "continuity of $B$ $\leftrightarrow$ weak l.s.c." is
+harmless in the symmetric setting because convexity is already on the
+table for free.
+
+**Non-symmetric case.** When $B$ is not symmetric there is no energy to
+minimize, and the direct method does not literally apply. The proof of
+Lax-Milgram instead routes through Riesz representation and the operator
+$A: V \to V$ with $B(u,v) = \langle Au, v\rangle_V$. But the *roles* of
+the two hypotheses are preserved:
+
+- Coercivity gives the lower bound $\|Au\|_V \geq \alpha \|u\|_V$, which
+  forces $A$ to be injective with closed range — the "compactness /
+  a priori bound" step.
+- Continuity makes $A$ a bounded operator in the first place — the
+  "pass to the limit" step.
+
+So the dichotomy *coercivity controls size, continuity controls limits*
+survives even when there is no energy functional in sight.
 ```
 
 ## The Gelfand triple
